@@ -1,0 +1,1 @@
+export {getAllTest} from './testService';
