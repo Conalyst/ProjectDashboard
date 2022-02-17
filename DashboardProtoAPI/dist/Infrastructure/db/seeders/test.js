@@ -8,48 +8,26 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const uuid_1 = require("uuid");
-'use strict';
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        /**
-         * Add seed commands here.
-         *
-         * Example:
-         * await queryInterface.bulkInsert('People', [{
-         *   name: 'John Doe',
-         *   isBetaMember: false
-         * }], {});
-        */
-        yield queryInterface.bulkInsert('tests', [{
-                id: (0, uuid_1.v4)(),
-                title: 'test1',
+        yield queryInterface.bulkInsert("Tests", [
+            {
+                id: 3,
+                title: 'test3',
                 createdAt: new Date(),
-                updatedAt: new Date()
-            }]);
-        yield queryInterface.bulkInsert('tests', [{
-                id: (0, uuid_1.v4)(),
-                title: 'test2',
-                done: true,
+                updatedAt: new Date(),
+            },
+        ]);
+        yield queryInterface.bulkInsert("Tests", [
+            {
+                id: 4,
+                title: 'test4',
                 createdAt: new Date(),
-                updatedAt: new Date()
-            }]);
-        yield queryInterface.bulkInsert('orders', [{
-                userId: 4,
-                restaurantId: 4,
-                done: false,
-                createdAt: new Date(),
-                updatedAt: new Date()
-            }]);
+                updatedAt: new Date(),
+            },
+        ]);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        /**
-         * Add commands to revert seed here.
-         *
-         * Example:
-         * await queryInterface.bulkDelete('orders', null, {});
-         */
-        yield queryInterface.bulkDelete('tests', null, {});
-    })
+        return queryInterface.bulkDelete("Tests", null, {});
+    }),
 };
