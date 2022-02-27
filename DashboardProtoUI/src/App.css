@@ -1,4 +1,4 @@
-.App {
+/*.App {
   text-align: center;
 }
 
@@ -35,4 +35,114 @@
   to {
     transform: rotate(360deg);
   }
+}*/
+
+/* Dashboard */
+.Default-dashboard-page {
+  position: absolute;
+  width: 1440px;
+  height: 733px;
+  flex-grow: 0;
+  padding: 32px 25px 34px 23px;
+  background-color: #f1f1f1;
+}
+
+/*Navbar*/
+/*.Sidebar {
+  position: absolute;  
+  height: 1173px;
+  width: 75px;
+  left: 24px;
+  top: 32px;
+  margin: 2px 0 137px 26px;
+  padding: 14px 74.2px 13px 74px;
+  border-radius: 7px;
+  border: solid 1.5px #f1f1f1;
+  background-color: #fff;
+  filter: drop-shadow(0px 16px 20px rgba(46, 46, 46, 0.15));
+}*/
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+html, body, html * {
+  font-family: 'Roboto', sans-serif;
+}
+.container-fluid{
+  width: 1440px;
+  height: 733px;
+  flex-grow: 0;
+  padding: 32px 25px 34px 23px;
+  background-color: #f1f1f1;
+}
+.Rectangle-48 {
+  width: 192px;
+  height: 665px;
+  margin: 2px 26px 0 1px;
+  border-radius: 6px;
+  border: solid 1.5px #f1f1f1;
+  background-color: #fff;
+}
+.Side-Bar-Main--Profile-2432 {
+  width: 192px;
+  height: 665px;
+  margin: 0 26px 2px 1px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+}
+.Company-Name {
+  font-family: Roboto;
+  font-size: 9px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+a {
+  text-decoration: none;
+}
+.icon-name {
+  width: 68px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 9px 0 9px 18px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+.icon-name-orange {
+  width: 68px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 9px 0 9px 18px;
+  font-family: Roboto;
+  font-size: 13px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #e98226;
+}
+.User-Name {
+  font-family: Roboto;
+  font-size: 9px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+li{
+  list-style: none;
+  padding: 14px 0;
 }
