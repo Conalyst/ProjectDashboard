@@ -66,83 +66,171 @@
 html, body, html * {
   font-family: 'Roboto', sans-serif;
 }
-.container-fluid{
-  width: 1440px;
-  height: 733px;
-  flex-grow: 0;
-  padding: 32px 25px 34px 23px;
-  background-color: #f1f1f1;
-}
-.Rectangle-48 {
-  width: 192px;
-  height: 665px;
-  margin: 2px 26px 0 1px;
-  border-radius: 6px;
-  border: solid 1.5px #f1f1f1;
-  background-color: #fff;
-}
-.Side-Bar-Main--Profile-2432 {
-  width: 192px;
-  height: 665px;
-  margin: 0 26px 2px 1px;
-  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
-}
-.Company-Name {
-  font-family: Roboto;
-  font-size: 9px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: center;
-  color: #2e2e2e;
-}
+
 a {
   text-decoration: none;
 }
-.icon-name {
-  width: 68px;
-  height: 16px;
-  flex-grow: 0;
-  margin: 9px 0 9px 18px;
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #2e2e2e;
+
+.db-site-container{
+  display: flex;
+  flex: column;
+  background-color: #f1f1f1;
+  min-width: 100vw;
+  min-height: 100vh;
+  padding: 32px 25px;
 }
-.icon-name-orange {
-  width: 68px;
-  height: 16px;
-  flex-grow: 0;
-  margin: 9px 0 9px 18px;
-  font-family: Roboto;
-  font-size: 13px;
-  font-weight: 500;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  text-align: left;
-  color: #e98226;
+
+.db-container {
+  border: solid 1.5px #f1f1f1;
+  background-color: #fff;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
 }
-.User-Name {
+
+.db-sidenav {
+  position: fixed;
+  padding-top: 14px;
+  width: 192px;
+  height: calc(100vh - 68px);
+  border-radius: 6px;
+}
+
+.db-sidenav .user-info {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+img#company-icon {
+  max-height: 50px;
+  width: auto;
+}
+
+img#user-icon {
+  max-height: 35px;
+  width: auto;
+}
+
+.user-label {
+  margin-top: 10px;
   font-family: Roboto;
   font-size: 9px;
-  font-weight: normal;
+  color: #2e2e2e;
+}
+
+.sidenav-menu {
+  margin-left: -1px;
+  padding-left: 0px;
+}
+
+.sidenav-menu > li {
+  list-style: none;
+}
+
+.sidenav-item {
+  padding: 0 0 0 20px;
+  border-left: solid 2px transparent;
+  font-size: 13px;
+  font-weight: 500;
   font-stretch: normal;
   font-style: normal;
   line-height: normal;
   letter-spacing: normal;
-  text-align: center;
+  text-align: left;
+}
+
+.sidenav-item:hover:not(.sidenav-active) {
+  border-left: solid 2px #000;
+}
+
+.sidenav-active {
+  border-left: solid 2px #e98226;
+}
+
+.sidenav-active > .sidenav-link {
+  color: #e98226 !important;
+}
+.sidenav-link:not(.sidenav-active) {
   color: #2e2e2e;
 }
-li{
-  list-style: none;
-  padding: 14px 0;
+.sidenav-link {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  margin-top: 17px;
+}
+
+.sidenav-link:hover {
+  text-decoration: none;
+}
+
+img.sidenav-icon {
+  width: 22px;
+  height: auto;
+  margin-right: 18px;
+}
+
+.db-container-main {
+  display: flex;
+  flex: column;
+  width: 100%;
+  margin-left: 217px;
+}
+
+.db-topnav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 74px;
+  width: 100%;
+  height: 75px;
+  border-radius: 8px;
+}
+
+.db-search {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f1f1f1 !important;
+  width: 324px;
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+}
+
+.db-search input {
+  flex-grow: 1;
+  background-color: #f1f1f1;
+  padding-left: 14px;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.db-search input:active, .db-search input:focus {
+  border: none;
+}
+
+.db-search button {
+  flex-basis: 0;
+  height: 100%;
+  border: none;
+}
+
+.db-search button:hover {
+  background: none !important;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 30px;
+  height: 35px;
+}
+
+img.topnav-icon {
+  height: 20px;
+  width: auto;
 }
