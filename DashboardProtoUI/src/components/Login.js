@@ -4,6 +4,15 @@ import { getAllTest } from "../services";
 import vendor_icon from '../images/icons/vendor_icon.png';
 
 export const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [Id, setId] = useState("");
+  const [errors, setErrors] = useState("");
+  const userInfo = {
+    id: undefined,
+    email: undefined,
+  };
+
  
     const [tests, setTests] = useState(null);
 
@@ -11,7 +20,7 @@ export const Login = () => {
         return new Promise((resolve, reject) => {
           try {
             // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
+           Login()
             .then((res) => {
               setTests(res);
               //resolve(res);
@@ -38,13 +47,13 @@ export const Login = () => {
               <Form>
                 <Form.Group className="mb-4" controlId="formBasicEmail">
                   <Form.Label>Email</Form.Label>
-                  <Form.Control type="email" />
+                  <Form.Control type="email" name="email" label="email" onChange={(e) => { setEmail(e.target.value); }}/>
                 </Form.Group>
                 <Form.Group className="mb-4" controlId="formBasicPassword">
                   <Form.Label>Password</Form.Label>
-                  <Form.Control type="password" />
+                  <Form.Control type="password" name="password" label="password" onChange={(e) => { setPassword(e.target.value); }}/>
                 </Form.Group>
-                <Button className="w-100" variant="primary" type="submit">Login</Button>
+                <Button className="w-100" variant="primary" type="submit"   onClick={() => submitLogin()}>Login</Button>
               </Form>
             </div>
         </div>
