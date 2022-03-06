@@ -44,7 +44,7 @@ export const Login = () => {
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password" />
                 </Form.Group>
-                <Button className="w-100" variant="primary" type="submit">Login</Button>
+                <Button className="w-100" variant="primary" type="submit" href="/dashboard">Login</Button>
               </Form>
             </div>
         </div>
