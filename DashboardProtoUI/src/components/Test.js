@@ -12,6 +12,7 @@ export const Test = () => {
             // do db call  or API endpoint axios call here and return the promise.
            getAllTest()
             .then((res) => {
+              console.log("------------");
               setTests(res);
               //resolve(res);
             })
