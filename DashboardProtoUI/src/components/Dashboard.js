@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, FormControl, InputGroup} from "react-bootstrap";
+import {Button, InputGroup, Tabs, Tab} from "react-bootstrap";
 import { getAllTest } from "../services";
 import company_icon from '../images/user/company_icon.png';
 import user_icon from '../images/user/user_icon.png';
@@ -16,12 +16,15 @@ import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 
+import DashboardVisual from "./DashboardVisual";
+import DashboardDetails from "./DashboardDetails";
+import DashboardHistory from "./DashboardHistory";
 
 export const Dashboard = () => {
  
     const [tests, setTests] = useState(null);
 
-    useEffect(() => {
+/*    useEffect(() => {
         return new Promise((resolve, reject) => {
           try {
             // do db call  or API endpoint axios call here and return the promise.
@@ -40,6 +43,7 @@ export const Dashboard = () => {
           }
         });
       }, []);
+*/
     return (
       <div class="db-site-container"> 
         <div class="db-container db-sidenav">
@@ -110,6 +114,19 @@ export const Dashboard = () => {
               <img class="topnav-icon" src={info} alt="Help" draggable="false"/>
               <img class="topnav-icon" src={notification} alt="Notifications" draggable="false"/>
             </div>
+          </div>
+          <div class="dashboard-main-wrapper">
+          <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
+            <Tab eventKey="visual" title="Visual">
+              <DashboardVisual/>
+            </Tab>
+            <Tab eventKey="detail" title="Details">
+              <DashboardDetails/>
+            </Tab>
+            <Tab eventKey="history" title="History">
+              <DashboardHistory/>
+            </Tab>
+          </Tabs>
           </div>
         </div>
       </div>
