@@ -59,11 +59,7 @@ export const Login = (props) => {
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password"  id="password" name='password' placeholder="Enter password"  required  onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
-<<<<<<< HEAD
-                <Button className="w-100" variant="primary" type="submit" href="/dashboard">Login</Button>
-=======
                 <Button className="w-100" variant="primary" type="submit" onClick={() =>onLogin()}>Login</Button>
->>>>>>> origin/Frontend
               </Form>
             </div>
         </div>
