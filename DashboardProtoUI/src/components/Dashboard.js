@@ -79,7 +79,7 @@ export const Dashboard = () => {
                 </a>
              </li>
              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
+                <a class="sidenav-link" href="/dashboard">
                   <img class="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
@@ -89,7 +89,7 @@ export const Dashboard = () => {
                 </a>
               </li>
               <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
+                <a class="sidenav-link" href="">
                   <img class="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>

@@ -402,7 +402,7 @@ td.bar-charts-summary {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin: 135px 40.1px 0 40px;
+  margin: 135px 100.1px 0 40px;
   padding: 0;
   border: solid 0.8px #145b93;
 }
@@ -477,7 +477,7 @@ td.bar-charts-summary {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-between;
   gap: 30px;
   height: 35px;
   margin-top: 60px;
