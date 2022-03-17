@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
+import outline_filter from '../images/icons/outline_filter.png';
+import info_white from '../images/icons/outline_info_white_.png';
 
 export const DashboardDetails = () => {
 
@@ -10,16 +12,14 @@ export const DashboardDetails = () => {
     <>     
         <div class="asset-menu-buttons">
                     <button class="Button-Icon-Manage"> Manage</button> 
-                    <button class="Button-Icon-Filter"> Filter</button>
+                    <button class="Button-Icon-Filter"> <img  src={outline_filter} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
             <thead>
                 <tr class="row-item-master-01 cr-button__text">
                     <th>
-                        <span class="material-icons-outlined">
-                            info
-                        </span>
+                    <img  src={info_white} alt =""/>
                     </th>
                     <th>IDs</th>
                     <th>Title</th>
