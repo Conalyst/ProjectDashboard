@@ -45,8 +45,8 @@ export const Dashboard = () => {
       }, []);
 */
     return (
-      <div class="db-site-container"> 
-        <div class="db-container db-sidenav">
+      <div className="db-site-container"> 
+        <div className="db-container db-sidenav">
           <div class="db-sidenav-profile" data-mdb-color="dark" role="navigation" data-mdb-hidden="false"
               data-mdb-accordion="true">
             <div class="user-info">

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import data from "../data.json";
+import info_black from '../images/icons/info_icon.png';
 
 export const DashboardDetails = () => {
 
@@ -11,8 +12,8 @@ export const DashboardDetails = () => {
                     <button class="Button-Icon-Manage"> Manage</button> 
                     <button class="Button-Icon-Filter"> Filter</button>
         </div> 
-        <div class="table-border-blue">
-        <Table striped hover size="sm" class="table-items-tables-table--column-items table-border-blue">
+        <div className="table-border-blue">
+        <Table striped hover size="sm" class="table-items-tables-table--column-items">
             <thead>
                 <tr class="row-item-master-01 cr-button__text">
                     <th>
@@ -35,9 +36,7 @@ export const DashboardDetails = () => {
                 {assets.map((asset) => (
                 <tr class="cr-text">
                     <td>
-                        <span class="material-icons-outlined">
-                        info
-                        </span>
+                    <img  src={info_black} alt =""/>
                     </td>
                     <td>{asset.id}</td>
                     <td>{asset.title}</td>
