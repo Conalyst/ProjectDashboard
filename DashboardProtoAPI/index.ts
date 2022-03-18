@@ -13,11 +13,11 @@ const origin = {
 }
 
 app.use(cors(origin))
+
 testRouter.get("/tests",
   (req, res) => {
      console.log("+++++++++++")
       testApi.getAll(req, res);
-    
   }
 )
 app.use('/api/v2', testRouter)
@@ -26,3 +26,4 @@ app.listen(port, () => console.log(`App listening on PORT ${port}`));
 
 
 // init asset_routes branch
+
