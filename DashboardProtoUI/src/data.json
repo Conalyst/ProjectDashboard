@@ -97,5 +97,104 @@
         "availability": "L" ,
         "rating": "L",
         "datasource": "TRA2021"
+    },
+    {
+        "id": 5,
+        "title": "ORG Executives",
+        "description": "IT executive are responsible",
+        "category": "Data",
+        "confidentiality": "N/A",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "L",
+        "datasource": "TRA2021"
+    },
+    {
+        "id": 7,
+        "title": "Security",
+        "description": "Travel documents and itienaries",
+        "category": "Data",
+        "confidentiality": "H",
+        "integrity": "L",
+        "availability": "H" ,
+        "rating": "H",
+        "datasource": "TRA2021"
+    },
+    {   
+        "id": 10,
+        "title": "ORG Website",
+        "description": "Labs, research facilities",
+        "category": "Data",
+        "confidentiality": "H",
+        "integrity": "M",
+        "availability": "M" ,
+        "rating": "M",
+        "datasource": "TRA2021"
+    },
+    {   
+        "id": 12,
+        "title": "DualCode LMS",
+        "description": "A fibre link exists",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "N/A",
+        "availability": "L" ,
+        "rating": "H",
+        "datasource": "TRA2021"
+    },
+    {   
+        "id": 16,
+        "title": "Security",
+        "description": "Document containing policy",
+        "category": "Data",
+        "confidentiality": "H",
+        "integrity": "L",
+        "availability": "H" ,
+        "rating": "M",
+        "datasource": "TRA2021"
+    },
+    {   
+        "id": 19,
+        "title": "Travel-Party",
+        "description": "Travel documents and itineraries",
+        "category": "Data",
+        "confidentiality": "H",
+        "integrity": "N/A",
+        "availability": "L" ,
+        "rating": "L",
+        "datasource": "TRA2021"
+    },
+    { 
+        "id": 25,
+        "title": "ORG Executives",
+        "description": "Labs, research facilities",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "M",
+         "datasource": "TRA2021"
+    },
+    {
+        "id": 30,
+        "title": "Third-Party",
+        "description": "IT Staff are responsible",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "M",
+        "datasource": "TRA2021"
+    },
+    {
+        "id": 5,
+        "title": "ORG Executives",
+        "description": "IT executive are responsible",
+        "category": "Data",
+        "confidentiality": "N/A",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "L",
+        "datasource": "TRA2021"
     }
 ]

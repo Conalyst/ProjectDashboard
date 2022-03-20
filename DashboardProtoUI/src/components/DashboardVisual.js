@@ -1,13 +1,13 @@
 export const DashboardVisual = () => {
     return (
     <>
-        <div class="asset-rating"></div>
-            <table class="visual-rating">
+        <div className="asset-rating"></div>
+            <table className="visual-rating">
                 <tr>
-                    <td class="stack-bars-summary">
+                    <td className="stack-bars-summary">
                         Confidentiality
                     </td>
-                    <td class="bar-charts-summary">
+                    <td className="bar-charts-summary">
                         Availability
                     </td>
                 </tr>

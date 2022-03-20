@@ -2,22 +2,23 @@ import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
-import outline_filter from '../images/icons/outline_filter.png';
-import info_white from '../images/icons/outline_info_white_.png';
+import filter_blue from '../images/icons/filter_blue.png';
+import info_white from '../images/icons/outline_info_white.png';
+import cancel_icon from '../images/icons/cancel_icon.png';
 
 export const DashboardDetails = () => {
 
     const [assets, setAssets] = useState(data);
     return (
     <>     
-        <div class="asset-menu-buttons">
-                    <button class="Button-Icon-Manage"> Manage</button> 
-                    <button class="Button-Icon-Filter"> <img  src={outline_filter} alt =""/> Filter</button>
+        <div className="asset-menu-buttons">
+                    <button className="Button-Icon-Manage"> Manage</button> 
+                    <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
-        <div className="table-border-blue">
+        <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
             <thead>
-                <tr class="row-item-master-01 cr-button__text">
+                <tr className="row-item-master-01 cr-button__text">
                     <th>
                     <img  src={info_white} alt =""/>
                     </th>
@@ -34,9 +35,9 @@ export const DashboardDetails = () => {
             </thead>
             <tbody>
                 {assets.map((asset) => (
-                <tr class="cr-text">
+                <tr className="cr-text">
                     <td>
-                    <img  src={info_black} alt =""/>
+                        <button type="button" className="button-modal" data-toggle="modal" data-target="#myModal"><img src={info_black} alt =""/></button>
                     </td>
                     <td>{asset.id}</td>
                     <td>{asset.title}</td>
@@ -52,6 +53,33 @@ export const DashboardDetails = () => {
             </tbody>
         </Table>   
         </div> 
+            <div className="Filter-Main-2">
+                <div className="Filters">
+                    Filters
+               <img src={cancel_icon} alt =""/></div>
+            <div className="filter_catergory_frame"> <span className="filter_label">
+  Asset Category
+</span><div className="filter_input_rectangle"><span className="data_input">
+  Data
+</span></div></div>
+<div className="filter_catergory_frame"> <span className="filter_label">
+Confidentiality
+</span><div className="filter_input_rectangle"><span className="data_input">
+  All
+</span></div></div>
+<div className="filter_catergory_frame"> <span className="filter_label">
+Integrity
+</span><div className="filter_input_rectangle"><span className="data_input">
+  All
+</span></div></div>
+<div className="filter_catergory_frame"> <span className="filter_label">
+Availability
+</span><div className="filter_input_rectangle"><span className="data_input">
+  High
+</span></div></div>
+         
+            <div className="Button-Filter">Filter</div>
+        </div>
     </>
     );
 };

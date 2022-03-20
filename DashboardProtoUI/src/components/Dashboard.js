@@ -47,75 +47,75 @@ export const Dashboard = () => {
     return (
       <div className="db-site-container"> 
         <div className="db-container db-sidenav">
-          <div class="db-sidenav-profile" data-mdb-color="dark" role="navigation" data-mdb-hidden="false"
+          <div className="db-sidenav-profile" data-mdb-color="dark" role="navigation" data-mdb-hidden="false"
               data-mdb-accordion="true">
-            <div class="user-info">
+            <div className="user-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p class="user-label">Company Name</p>
+              <p className="user-label">Company Name</p>
             </div>
-            <div class="user-info">
+            <div className="user-info">
               <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-              <p class="user-label">Alex Toma</p>
+              <p className="user-label">Alex Toma</p>
             </div>
-            <ul class="sidenav-menu">
-              <li class="sidenav-item sidenav-active">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
+            <ul className="sidenav-menu">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
                 </a>   
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={risks} alt =""/>Risks
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={risks} alt =""/>Risks
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={threats} alt =""/>Threats
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li class="sidenav-item">
-                <a class="sidenav-link" href="/dashboard">
-                  <img class="sidenav-icon" src={assets} alt =""/>Assets
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="/dashboard">
+                  <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={recommendations} alt =""/>Recommendations
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="">
-                  <img class="sidenav-icon" src={reports} alt =""/>Reports
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="">
+                  <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="#">
-                  <img class="sidenav-icon" src={settings} alt =""/>Settings
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="#">
+                  <img className="sidenav-icon" src={settings} alt =""/>Settings
                 </a>
               </li>
             </ul>
           </div>
         </div>
-        <div class="db-container-main">
-          <div class="db-container db-topnav">
+        <div className="db-container-main">
+          <div className="db-container db-topnav">
             <InputGroup className="db-search">
               <input type="text" placeholder="Search" aria-label="Search" />
               <Button variant="outline-secondary" id="button-addon2">
                 <img src={search}/>
               </Button>
             </InputGroup>
-            <div class="menu-nav">
+            <div className="menu-nav">
               <img id="vendor" src={vendor_icon} alt="Valencia" draggable="false"/>
-              <img class="topnav-icon" src={info} alt="Help" draggable="false"/>
-              <img class="topnav-icon" src={notification} alt="Notifications" draggable="false"/>
+              <img className="topnav-icon" src={info} alt="Help" draggable="false"/>
+              <img className="topnav-icon" src={notification} alt="Notifications" draggable="false"/>
             </div>
           </div>
-          <div class="dashboard-main-wrapper">
+          <div className="dashboard-main-wrapper">
           <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
             <Tab eventKey="visual" title="Visual">
               <DashboardVisual/>

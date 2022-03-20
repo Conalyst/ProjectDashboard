@@ -399,9 +399,9 @@ td.bar-charts-summary {
   gap: 8px;
   padding: 8px 16px 8px 12px;
   border-radius: 4px;
-  border: solid 1px #0D395c;
+  border: solid 1px #145b93;
   background-color: #fff;
-  color: #0D395c;
+  color: #145b93;
 }
 
 .table-items-tables-table--column-items {
@@ -469,9 +469,171 @@ td.bar-charts-summary {
   text-align: center;
 }
 
-.table-border-blue 
-{
-  padding: 0 1.5%;
+.table-border-blue {
+  margin-left: 1.5%;
+  width:97%;
+  border: 1px solid #145b93;
 }
 
+.button-modal {
+  border: none;
+  background: none;
+}
 
+.scrollable {
+  height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/*Filter*/
+.filter {
+position: absolute;
+width: 320px;
+height: 619px;
+left: 1106px;
+top: 33px;
+overflow-y: scroll;
+background: #FFFFFF;
+/* Shadow Sidebar 1 */
+box-shadow: 0px 16px 20px rgba(46, 46, 46, 0.15);
+border-radius: 7px;
+}
+
+.Filter-Main-2 {
+  width: 320px;
+  height: 619px;
+  margin: 33px 14px 49px 890px;
+  padding: 60px 0 8px 20px;
+  border-radius: 7px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  padding: 19px 37.5px 2px 19px;
+  border: solid 1px #145b93;
+  background-color: #f1f1f1;
+}
+
+.Filters {
+  width: 61px;
+  height: 24px;
+  margin: 0 14px 13px 0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+.cancel {
+  width: 12px;
+  height: 13.1px;
+  margin: 5.9px 0 17.9px 34.7px;
+  color:solid #2e2e2e;
+}
+
+.filter_catergory_frame {
+  width: 278px;
+  height: 71px;
+  margin: 46px 16px 40px 1px;
+}
+
+.filter_label {
+  width: 96px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 0 182px 10px 0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(46, 46, 46, 0.75);
+}
+.filter_input_rectangle {
+  width: 278px;
+  height: 45px;
+  flex-grow: 0;
+  margin: 10px 0 0;
+  padding: 12px 12px 9px 16px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}  
+  
+.Assets {
+  width: 278px;
+  height: 71px;
+  margin: 46px 16px 40px 1px;
+}
+
+.Confidentiality {
+  width: 278px;
+  height: 71px;
+  margin: 8px 16px 40px 1px;
+}
+
+.Integrity {
+  width: 279px;
+  height: 71px;
+  margin: 40px 16px 40px 0;
+}
+
+.Availability {
+  width: 278px;
+  height: 71px;
+  margin: 40px 16px 45px 1px;
+  padding: 26px 0 0;
+}
+
+.Button-Filter {
+  width: 100px;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  margin: 45px 16px 20px 179px;
+  padding: 11px 18px;
+  border-radius: 4px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  background-color: #0d518b;
+  color: white;
+  border: #145b93;
+}
+
+.Rectangle-1363 {
+  width: 318px;
+  height: 58px;
+  padding: 19px 37.5px 2px 19px;
+  box-shadow: 0 10px 20px 0 rgba(46, 46, 46, 0.15);
+  border: solid 1px #145b93;
+  background-color: #f1f1f1;
+}
+
+.data_input {
+  width: 88px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 3px 138px 5px 0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}

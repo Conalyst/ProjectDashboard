@@ -28,13 +28,13 @@ export const Login = (props) => {
    });
   }  
     return (
-        <div class="login-container">
-            <div class="login-welcome">
+        <div className="login-container">
+            <div className="login-welcome">
                 <img src={vendor_icon} />
-                <div class="welcome-title">Welcome to Valencia Dashboard</div>
-                <div class="welcome-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div className="welcome-title">Welcome to Valencia Dashboard</div>
+                <div className="welcome-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
             </div>
-            <div class="login-form-container">
+            <div className="login-form-container">
               <p>Don&apos;t have an account? <a href="#">Get in touch to get started.</a></p>
               <Form onSubmit={submitHandler}>
                 <Form.Group className="mb-4" controlId="formBasicEmail">
