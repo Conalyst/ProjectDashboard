@@ -513,9 +513,12 @@ border-radius: 7px;
 }
 
 .Filters {
-  width: 61px;
+  display: flex;
+  flex-direction: row;
+  width: 278px;
   height: 24px;
   margin: 0 14px 13px 0;
+  justify-content: space-between;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -636,4 +639,8 @@ border-radius: 7px;
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
+}
+
+li {
+  list-style: none;
 }

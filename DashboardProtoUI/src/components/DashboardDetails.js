@@ -12,8 +12,8 @@ export const DashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-                    <button className="Button-Icon-Manage"> Manage</button> 
-                    <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+                <button className="Button-Icon-Manage"> Manage</button> 
+                <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
@@ -54,30 +54,21 @@ export const DashboardDetails = () => {
         </Table>   
         </div> 
             <div className="Filter-Main-2">
-                <div className="Filters">
-                    Filters
-               <img src={cancel_icon} alt =""/></div>
-            <div className="filter_catergory_frame"> <span className="filter_label">
-  Asset Category
-</span><div className="filter_input_rectangle"><span className="data_input">
-  Data
-</span></div></div>
-<div className="filter_catergory_frame"> <span className="filter_label">
-Confidentiality
-</span><div className="filter_input_rectangle"><span className="data_input">
-  All
-</span></div></div>
-<div className="filter_catergory_frame"> <span className="filter_label">
-Integrity
-</span><div className="filter_input_rectangle"><span className="data_input">
-  All
-</span></div></div>
-<div className="filter_catergory_frame"> <span className="filter_label">
-Availability
-</span><div className="filter_input_rectangle"><span className="data_input">
-  High
-</span></div></div>
-         
+                <div className="Filters"><span>Filters</span> 
+                    <img src={cancel_icon} alt =""/>
+               </div>
+            <div className="filter_catergory_frame"> <span className="filter_label"> Asset Category</span>
+                <div className="filter_input_rectangle"><span className="data_input">Data</span></div>
+            </div>
+            <div className="filter_catergory_frame"> <span className="filter_label">Confidentiality</span>
+                <div className="filter_input_rectangle"><span className="data_input"> All</span></div>
+            </div>
+            <div className="filter_catergory_frame"> <span className="filter_label">Integrity</span>
+                <div className="filter_input_rectangle"><span className="data_input">All</span></div>
+            </div>
+            <div className="filter_catergory_frame"> <span className="filter_label">Availability</span>
+                <div className="filter_input_rectangle"><span className="data_input">High</span></div>
+            </div>         
             <div className="Button-Filter">Filter</div>
         </div>
     </>
