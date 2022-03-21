@@ -36,7 +36,17 @@ interface CompanyAssetAttributes {
      */
 
  
-    static associate(models: any) {
+    // static associate(models: any) {
+    //   // define association here
+    //   AssetEntity.belongsToMany(CompanyEntity, {
+    //     through: CompanyAssetEntity
+    //   })
+    //   CompanyEntity.belongsToMany(AssetEntity, {
+    //     through: CompanyAssetEntity
+    //   })
+    // }
+
+        static associate(models: any) {
       // define association here
       AssetEntity.belongsToMany(CompanyEntity, {
         through: CompanyAssetEntity
@@ -45,6 +55,7 @@ interface CompanyAssetAttributes {
         through: CompanyAssetEntity
       })
     }
+
   }
   
   CompanyAssetEntity.init({

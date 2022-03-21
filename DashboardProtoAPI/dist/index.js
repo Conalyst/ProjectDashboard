@@ -14,29 +14,32 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const cors_1 = __importDefault(require("cors"));
-require('dotenv').config();
+require("dotenv").config();
 const app = (0, express_1.default)();
 const test_1 = require("./test");
 const asset_1 = require("./routes/asset");
 const Asset_1 = require("./Infrastructure/db/models/Asset");
+const CompanyAsset_1 = require("./Infrastructure/db/models/CompanyAsset");
 const testApi = new test_1.TestApi();
 const assetApi = new asset_1.AssetApi();
 const router = express_1.default.Router();
 const origin = {
-    origin: '*',
+    origin: "*",
 };
 app.use((0, cors_1.default)(origin));
-app.use('/api/v2', router);
+app.use("/api/v2", router);
 // app.use('/api/v2', assetRouter)
 router.get("/", (req, res) => {
-    return ("Hello World");
+    return "Hello World";
 });
 router.get("/tests", (req, res) => {
     testApi.getAll(req, res);
 });
+// get all asset list in database 
 router.get("/assets", (req, res) => {
     assetApi.getAllAssets(req, res);
 });
+// get a specific asset information 
 router.get("/assets/:id", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let assetId = req.params.id;
     console.log("asset id is:", assetId);
@@ -49,6 +52,26 @@ router.get("/assets/:id", (req, res) => __awaiter(void 0, void 0, void 0, functi
             msg: " failed to find this asset",
             status: 500,
             route: "/assets/:id",
+        });
+    }
+}));
+// get a company asset list
+router.get("/:companyId/assets", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    let companyId = req.params.companyId;
+    console.log("assetCompany id is:", companyId);
+    try {
+        const record = yield CompanyAsset_1.CompanyAssetEntity.findAll({
+            where: { companyId: companyId },
+            // include: [{model: Asset, 
+            //   required: true}] 
+        });
+        return res.json({ record, msg: "find this company assets" });
+    }
+    catch (err) {
+        return res.json({
+            msg: " failed to find this company assets",
+            status: 500,
+            route: "/:companyId/assets",
         });
     }
 }));
