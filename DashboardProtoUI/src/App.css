@@ -737,3 +737,71 @@ border-radius: 7px;
 li {
   list-style: none;
 }
+
+.Filter-Main-3 {
+  width: 278px;
+  height: 403px;
+  flex-grow: 0;
+  border-radius: 7px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  margin: 33px 14px 49px 890px;
+  border: solid 1px #145b93;
+  background-color: #f1f1f1;
+}
+
+.SubMenuAssetAll {
+  display: flex;
+  width: 278px;
+  height: 403px;
+  flex-grow: 0;
+}
+
+.Rectangle-979 {
+  width: 278px;
+  height: 45px;
+  flex-grow: 0;
+  padding: 11px 20px 10px 234px;
+  border: solid 1px #f9f9f9;
+  background-color: #f1f1f1;
+}
+
+.Rectangle-935 {
+  width: 275px;
+  height: 48px;
+  flex-grow: 0;
+  border: solid 1px #f1f1f1;
+  background-color: #f9f9f9;
+}
+
+.Button-Primary-Done {
+  display: flex;
+  width: 100px;
+  height: 36px;
+  flex-grow: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 10px;
+  margin: 19px 26px 0 152px;
+  padding: 11px 18px;
+  border-radius: 4px;
+  background-color: #0d518b;
+  color: #fff;
+}
+
+.Network-Data-Center {
+  width: 142px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 4px 0 4px 13px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
