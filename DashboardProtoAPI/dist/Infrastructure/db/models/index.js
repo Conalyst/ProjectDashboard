@@ -1,5 +1,4 @@
 'use strict';
-Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -30,4 +29,4 @@ Object.keys(db).forEach(modelName => {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-exports.default = db;
+module.exports = db;

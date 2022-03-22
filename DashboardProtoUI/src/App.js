@@ -1,17 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-import Test from './components/Test'
+import "./App.css";
+import WrapperComponent from "./components/WrapperComponent";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-       
-   
-          <h1> Welcome </h1>
-       
-        
-        <Test/>
-       
+    <div
+      className="App"
+      style={{ minHeight: "100vh", display: "flex", flexDirection: "column" }}
+    >
+      <BrowserRouter>
+        <WrapperComponent />
+      </BrowserRouter>
     </div>
   );
 }

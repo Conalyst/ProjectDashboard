@@ -9,31 +9,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.TestApi = void 0;
-const TestRepository_1 = require("./Infrastructure/repositories/TestRepository");
-class TestApi {
+exports.UserRepository = void 0;
+const user_1 = require("../db/models/user");
+class UserRepository {
     constructor() {
-        this._testRepository = new TestRepository_1.TestRepository();
     }
-    getAll(req, res) {
+    Get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let testsList = yield this._testRepository.Get();
-            return res.status(200).json(testsList);
+            let users = yield user_1.UserEntity.findAll();
+            return users;
         });
     }
-    ;
-    create(req, res) {
+    GetByUsername(unsername) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("in create ", req.body);
-            // const commentDto = this.getDtoFromRequest(req);
-            // let createComment = await this._commentsRepository.Create(toEntity(commentDto))
-            // if(createComment){
-            //     console.log('comment created', createComment);
-            //     return res.status(201).json(createComment);
-            // }else{
-            //     return res.status(400).send("The comment could not be created. Please check the provided data.")
-            // }
+            return user_1.UserEntity.findOne({
+                where: { username: `${unsername}` }
+            });
+        });
+    }
+    Create(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return model.save();
         });
     }
 }
-exports.TestApi = TestApi;
+exports.UserRepository = UserRepository;
