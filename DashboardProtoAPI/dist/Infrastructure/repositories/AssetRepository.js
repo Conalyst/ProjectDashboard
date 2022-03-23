@@ -25,10 +25,5 @@ class AssetRepository {
             return Asset_1.AssetEntity.findByPk(id);
         });
     }
-    GetByCompanyId(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            // return Company.findByPk(id); 
-        });
-    }
 }
 exports.AssetRepository = AssetRepository;

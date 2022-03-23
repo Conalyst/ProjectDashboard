@@ -14,7 +14,5 @@ export class AssetRepository {
       return Asset.findByPk(id); 
     }
 
-    public async GetByCompanyId(id:number): Promise<Company | null>{
-      // return Company.findByPk(id); 
-    }
+
 }

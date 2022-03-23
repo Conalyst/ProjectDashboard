@@ -4,8 +4,10 @@ import {
   Association
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
+// import db from '../models'
 import { AssetEntity } from './Asset'
 import { CompanyEntity } from './Company'
+
 
 
 
@@ -37,20 +39,23 @@ interface CompanyAssetAttributes {
 
  
     static associate(models: any) {
+      console.log("association --------");
       // define association here
       AssetEntity.belongsToMany(CompanyEntity, {
         through: CompanyAssetEntity, 
-        // foreignKey: 'assetId',
-        // otherKey: 'companyId'
+        foreignKey:  { name: 'assetId', allowNull: false } 
+        // // foreignKey: 'assetId',
+        // // otherKey: 'companyId'
       })
       CompanyEntity.belongsToMany(AssetEntity, {
         through: CompanyAssetEntity,
+        foreignKey:  { name: 'companyId', allowNull: false } 
         // foreignKey: 'companyId',
         // otherKey: 'assetId'
       }) 
     }
   }
-  
+
   CompanyAssetEntity.init({
     id:{
       type:DataTypes.INTEGER,

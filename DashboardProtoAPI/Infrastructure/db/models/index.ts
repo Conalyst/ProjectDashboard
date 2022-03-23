@@ -7,6 +7,7 @@ const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
 const db: any= {};
+import {CompanyAssetEntity} from './CompanyAsset'
 
 let sequelize: any;
 if (config.use_env_variable) {
@@ -15,17 +16,22 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
+CompanyAssetEntity.associate({})
+
 fs
   .readdirSync(__dirname)
   .filter((file: string) => {
-    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.ts');
+    // console.log("fd filter", file);
+    return (file.indexOf('.') !== 0) && (file !== basename) && (file.slice(-3) === '.js');
   })
   .forEach((file: any) => {
+    // console.log("fd foreach");
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;
   });
 
 Object.keys(db).forEach(modelName => {
+  console.log("modelName");
   if (db[modelName].associate) {
     db[modelName].associate(db);
   }

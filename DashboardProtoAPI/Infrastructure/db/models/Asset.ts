@@ -4,6 +4,7 @@ import {
   Association
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
+// import db from '../models'
 import {CompanyEntity} from './Company'
 import {AssetCategoryEntity} from './AssetCategory'
 import { CompanyAssetEntity } from "./CompanyAsset";

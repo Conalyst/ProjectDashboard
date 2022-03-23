@@ -18,6 +18,7 @@ require("dotenv").config();
 const app = (0, express_1.default)();
 const test_1 = require("./test");
 const asset_1 = require("./routes/asset");
+const Asset_1 = require("./Infrastructure/db/models/Asset");
 const Company_1 = require("./Infrastructure/db/models/Company");
 const testApi = new test_1.TestApi();
 const assetApi = new asset_1.AssetApi();
@@ -46,9 +47,38 @@ router.get("/assets/:id", (req, res) => {
 router.get("/company/:id/assets", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let companyId = req.params.id;
     console.log("assetCompany id is:", companyId);
+    //////// ----------version 1
+    // Asset.belongsToMany(Company, {
+    //   through: CompanyAsset, 
+    //   foreignKey:  { name: 'assetId', allowNull: false }
+    //   // // foreignKey: 'assetId',
+    //   // // otherKey: 'companyId'
+    // })
+    // Company.belongsToMany(Asset, {
+    //   through: CompanyAsset,
+    //   foreignKey:  { name: 'companyId', allowNull: false } 
+    //   // foreignKey: 'companyId',
+    //   // otherKey: 'assetId'
+    // }) 
+    //////// ----------version 2
+    Asset_1.AssetEntity.belongsToMany(Company_1.CompanyEntity, {
+        through: "company_assets",
+        foreignKey: { name: 'assetId', allowNull: false }
+        // // foreignKey: 'assetId',
+        // // otherKey: 'companyId'
+    });
+    Company_1.CompanyEntity.belongsToMany(Asset_1.AssetEntity, {
+        through: "company_assets",
+        foreignKey: { name: 'companyId', allowNull: false }
+        // foreignKey: 'companyId',
+        // otherKey: 'assetId'
+    });
+    console.log(Company_1.CompanyEntity);
     try {
         const record = yield Company_1.CompanyEntity.findAll({ where: { id: companyId },
-            //  include: Asset
+            include: [
+                { model: Asset_1.AssetEntity, attributes: ["title"] }
+            ]
         });
         // const record = await Company.findAll({where: {id: companyId}});
         // console.log(record);

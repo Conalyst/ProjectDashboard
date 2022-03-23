@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyAssetEntity = void 0;
 const sequelize_1 = require("sequelize");
 const sequelize_2 = require("../config/sequelize");
+// import db from '../models'
 const Asset_1 = require("./Asset");
 const Company_1 = require("./Company");
 class CompanyAssetEntity extends sequelize_1.Model {
@@ -12,14 +13,17 @@ class CompanyAssetEntity extends sequelize_1.Model {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
+        console.log("association --------");
         // define association here
         Asset_1.AssetEntity.belongsToMany(Company_1.CompanyEntity, {
             through: CompanyAssetEntity,
-            // foreignKey: 'assetId',
-            // otherKey: 'companyId'
+            foreignKey: { name: 'assetId', allowNull: false }
+            // // foreignKey: 'assetId',
+            // // otherKey: 'companyId'
         });
         Company_1.CompanyEntity.belongsToMany(Asset_1.AssetEntity, {
             through: CompanyAssetEntity,
+            foreignKey: { name: 'companyId', allowNull: false }
             // foreignKey: 'companyId',
             // otherKey: 'assetId'
         });

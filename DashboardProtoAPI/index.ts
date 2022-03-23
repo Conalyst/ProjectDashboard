@@ -9,6 +9,7 @@ import db from "./Infrastructure/db/models";
 import { AssetEntity as Asset } from "./Infrastructure/db/models/Asset";
 import { CompanyAssetEntity as CompanyAsset } from "./Infrastructure/db/models/CompanyAsset";
 import { CompanyEntity as Company } from "./Infrastructure/db/models/Company";
+import { AssetCategoryEntity } from "./Infrastructure/db/models/AssetCategory";
 
 const testApi = new TestApi();
 const assetApi = new AssetApi();
@@ -45,9 +46,41 @@ router.get("/assets/:id", (req, res) => {
 router.get("/company/:id/assets", async (req: Request, res: Response) => {
   let companyId = req.params.id;
   console.log("assetCompany id is:", companyId);
+  //////// ----------version 1
+  // Asset.belongsToMany(Company, {
+  //   through: CompanyAsset, 
+  //   foreignKey:  { name: 'assetId', allowNull: false }
+  //   // // foreignKey: 'assetId',
+  //   // // otherKey: 'companyId'
+  // })
+  // Company.belongsToMany(Asset, {
+  //   through: CompanyAsset,
+  //   foreignKey:  { name: 'companyId', allowNull: false } 
+  //   // foreignKey: 'companyId',
+  //   // otherKey: 'assetId'
+  // }) 
+
+  //////// ----------version 2
+
+  Asset.belongsToMany(Company, {
+    through: "company_assets", 
+    foreignKey:  { name: 'assetId', allowNull: false }
+    // // foreignKey: 'assetId',
+    // // otherKey: 'companyId'
+  })
+  Company.belongsToMany(Asset, {
+    through: "company_assets",
+    foreignKey:  { name: 'companyId', allowNull: false } 
+    // foreignKey: 'companyId',
+    // otherKey: 'assetId'
+  }) 
+
+  console.log(Company);
   try {
-    const record = await Company.findAll({where: {id: companyId},
-                                          //  include: Asset
+    const record = await Company.findAll({where: {id: companyId}, 
+                                          include: [
+                                            {model: Asset, attributes: ["title"]}
+                                        ]
                                         });
     // const record = await Company.findAll({where: {id: companyId}});
     // console.log(record);

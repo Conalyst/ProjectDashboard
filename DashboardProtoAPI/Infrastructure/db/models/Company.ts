@@ -5,6 +5,7 @@ import {
 } from "sequelize";
 
 import { sequelize }  from '../config/sequelize'
+// import db from '../models'
 import { UserEntity } from './User'
 import { AssetEntity } from './Asset'
 import { CompanyAssetEntity } from './CompanyAsset' 
@@ -38,17 +39,17 @@ interface CompanyAttributes {
     };
 
     static associate(models: any) {
-      CompanyEntity.hasMany(UserEntity, {
-        sourceKey: "id",
-        foreignKey: "companyId",
-        as: "users",
-      });
-      CompanyEntity.belongsToMany(AssetEntity, {
-        through: "company_assets",
-        foreignKey: "companyId",
-        otherKey: "assetId",
-        as: "assets"
-      });
+      // CompanyEntity.hasMany(UserEntity, {
+      //   sourceKey: "id",
+      //   foreignKey: "companyId",
+      //   as: "users",
+      // });s
+      // CompanyEntity.belongsToMany(AssetEntity, {
+      //   through: "company_assets",
+      //   foreignKey: "companyId",
+      //   otherKey: "assetId",
+      //   as: "assets"
+      // });
     };
   }
   CompanyEntity.init({

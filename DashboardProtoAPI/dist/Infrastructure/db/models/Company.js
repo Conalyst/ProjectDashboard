@@ -3,21 +3,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.CompanyEntity = void 0;
 const sequelize_1 = require("sequelize");
 const sequelize_2 = require("../config/sequelize");
-const User_1 = require("./User");
-const Asset_1 = require("./Asset");
 class CompanyEntity extends sequelize_1.Model {
     static associate(models) {
-        CompanyEntity.hasMany(User_1.UserEntity, {
-            sourceKey: "id",
-            foreignKey: "companyId",
-            as: "users",
-        });
-        CompanyEntity.belongsToMany(Asset_1.AssetEntity, {
-            through: "company_assets",
-            foreignKey: "companyId",
-            otherKey: "assetId",
-            as: "assets"
-        });
+        // CompanyEntity.hasMany(UserEntity, {
+        //   sourceKey: "id",
+        //   foreignKey: "companyId",
+        //   as: "users",
+        // });s
+        // CompanyEntity.belongsToMany(AssetEntity, {
+        //   through: "company_assets",
+        //   foreignKey: "companyId",
+        //   otherKey: "assetId",
+        //   as: "assets"
+        // });
     }
     ;
 }
