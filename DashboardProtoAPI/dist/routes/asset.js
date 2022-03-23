@@ -22,5 +22,30 @@ class AssetApi {
         });
     }
     ;
+    // async getAssetsById(req: express.Request, res: express.Response){
+    //   let assetId = req.params.id;
+    //   console.log("asset id is:" , assetId);
+    //   // let asset = await this._asset.GetById(assetId);
+    //   // return  res.status(200).json(asset);
+    // };
+    getAssetsById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let assetId = req.params.id;
+            console.log("asset id is:", assetId);
+            try {
+                const record = yield this._asset.GetById(assetId);
+                return res.json({ record, msg: "find this record" });
+            }
+            catch (err) {
+                console.log(err);
+                return res.json({
+                    msg: " failed to find this asset",
+                    status: 500,
+                    route: "/assets/:id",
+                });
+            }
+        });
+    }
+    ;
 }
 exports.AssetApi = AssetApi;

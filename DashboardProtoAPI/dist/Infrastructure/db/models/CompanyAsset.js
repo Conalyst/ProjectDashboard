@@ -11,22 +11,17 @@ class CompanyAssetEntity extends sequelize_1.Model {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    // static associate(models: any) {
-    //   // define association here
-    //   AssetEntity.belongsToMany(CompanyEntity, {
-    //     through: CompanyAssetEntity
-    //   })
-    //   CompanyEntity.belongsToMany(AssetEntity, {
-    //     through: CompanyAssetEntity
-    //   })
-    // }
     static associate(models) {
         // define association here
         Asset_1.AssetEntity.belongsToMany(Company_1.CompanyEntity, {
-            through: CompanyAssetEntity
+            through: CompanyAssetEntity,
+            // foreignKey: 'assetId',
+            // otherKey: 'companyId'
         });
         Company_1.CompanyEntity.belongsToMany(Asset_1.AssetEntity, {
-            through: CompanyAssetEntity
+            through: CompanyAssetEntity,
+            // foreignKey: 'companyId',
+            // otherKey: 'assetId'
         });
     }
 }

@@ -6,6 +6,7 @@ import {
 import {sequelize}  from '../config/sequelize'
 import {CompanyEntity} from './Company'
 import {AssetCategoryEntity} from './AssetCategory'
+import { CompanyAssetEntity } from "./CompanyAsset";
 
 interface AssetAttributes {
   id: number;
@@ -22,7 +23,6 @@ interface AssetAttributes {
     public title!: string;
     public description!: string;
 
-
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -30,7 +30,7 @@ interface AssetAttributes {
      */
 
     static associate(models: any) {
-      // define association here
+      // define association here 
       AssetCategoryEntity.belongsTo(AssetEntity)
       AssetEntity.hasMany(AssetCategoryEntity)
     }

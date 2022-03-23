@@ -11,7 +11,7 @@ class AssetEntity extends sequelize_1.Model {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-        // define association here
+        // define association here 
         AssetCategory_1.AssetCategoryEntity.belongsTo(AssetEntity);
         AssetEntity.hasMany(AssetCategory_1.AssetCategoryEntity);
     }

@@ -1,5 +1,6 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 import  {AssetEntity as Asset}  from "../db/models/Asset"
+import { CompanyEntity as Company } from "../db/models/Company";
 
 
 export class AssetRepository {
@@ -11,5 +12,9 @@ export class AssetRepository {
     }   
     public async GetById(id:number): Promise<Asset | null>{
       return Asset.findByPk(id); 
+    }
+
+    public async GetByCompanyId(id:number): Promise<Company | null>{
+      // return Company.findByPk(id); 
     }
 }

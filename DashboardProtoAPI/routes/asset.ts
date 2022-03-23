@@ -17,5 +17,22 @@ export class AssetApi{
     //   // let asset = await this._asset.GetById(assetId);
     //   // return  res.status(200).json(asset);
     // };
+
+    async getAssetsById(req: express.Request, res: express.Response){
+      let assetId = req.params.id;
+      console.log("asset id is:" , assetId);
+      try {
+          const record = await this._asset.GetById(assetId);
+          return res.json({ record, msg: "find this record" });
+        } catch (err) {
+          console.log(err);
+          return res.json({
+            msg: " failed to find this asset",
+            status: 500,
+            route: "/assets/:id",
+          });
+        }
+    };
+
 }
 

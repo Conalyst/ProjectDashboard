@@ -7,6 +7,8 @@ import {
 import { sequelize }  from '../config/sequelize'
 import { UserEntity } from './User'
 import { AssetEntity } from './Asset'
+import { CompanyAssetEntity } from './CompanyAsset' 
+
 interface CompanyAttributes {
   id: number;
   name: string;
@@ -36,18 +38,18 @@ interface CompanyAttributes {
     };
 
     static associate(models: any) {
-      // CompanyEntity.hasMany(UserEntity, {
-      //   sourceKey: "id",
-      //   foreignKey: "companyId",
-      //   as: "users",
-      // });
-      // CompanyEntity.belongsToMany(AssetEntity, {
-      //   through: "company_assets",
-      //   foreignKey: "companyId",
-      //   otherKey: "assetId",
-      //   as: "assets"
-      // });
-    }
+      CompanyEntity.hasMany(UserEntity, {
+        sourceKey: "id",
+        foreignKey: "companyId",
+        as: "users",
+      });
+      CompanyEntity.belongsToMany(AssetEntity, {
+        through: "company_assets",
+        foreignKey: "companyId",
+        otherKey: "assetId",
+        as: "assets"
+      });
+    };
   }
   CompanyEntity.init({
     id:{

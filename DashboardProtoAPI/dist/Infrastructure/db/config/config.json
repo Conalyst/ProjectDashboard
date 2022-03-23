@@ -1,7 +1,7 @@
 {
     "development": {
-        "username": "labber",
-        "password": "labber",
+        "username": "hadjira",
+        "password": "hadjira2022",
         "database": "dashboarddb",
         "host": "127.0.0.1",
         "dialect": "postgres"

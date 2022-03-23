@@ -8,6 +8,7 @@ import db from "./Infrastructure/db/models";
 
 import { AssetEntity as Asset } from "./Infrastructure/db/models/Asset";
 import { CompanyAssetEntity as CompanyAsset } from "./Infrastructure/db/models/CompanyAsset";
+import { CompanyEntity as Company } from "./Infrastructure/db/models/Company";
 
 const testApi = new TestApi();
 const assetApi = new AssetApi();
@@ -36,37 +37,27 @@ router.get("/assets", (req, res) => {
 });
 
 // get a specific asset information 
-router.get("/assets/:id", async (req: Request, res: Response) => {
-  let assetId = req.params.id;
-  console.log("asset id is:", assetId);
-  try {
-    const record = await Asset.findOne({ where: { id: assetId } });
-    return res.json({ record, msg: "find this record" });
-  } catch (err) {
-    return res.json({
-      msg: " failed to find this asset",
-      status: 500,
-      route: "/assets/:id",
-    });
-  }
+router.get("/assets/:id", (req, res) => {
+  assetApi.getAssetsById(req,res); 
 });
 
 // get a company asset list
-router.get("/:companyId/assets", async (req: Request, res: Response) => {
-  let companyId = req.params.companyId;
+router.get("/company/:id/assets", async (req: Request, res: Response) => {
+  let companyId = req.params.id;
   console.log("assetCompany id is:", companyId);
   try {
-    const record = await CompanyAsset.findAll({ 
-                                                  where: { companyId: companyId}, 
-                                                // include: [{model: Asset, 
-                                                //   required: true}] 
-                                                });
+    const record = await Company.findAll({where: {id: companyId},
+                                          //  include: Asset
+                                        });
+    // const record = await Company.findAll({where: {id: companyId}});
+    // console.log(record);
     return res.json({ record, msg: "find this company assets" });
   } catch (err) {
+    console.log(err);
     return res.json({
       msg: " failed to find this company assets",
       status: 500,
-      route: "/:companyId/assets",
+      route: "/company/:id/assets",
     });
   }
 });
