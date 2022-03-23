@@ -41,6 +41,14 @@ html, body, html * {
   font-family: 'Roboto', sans-serif;
 }
 
+a {
+  text-decoration: none;
+}
+
+/* =============================================
+                  LOGIN PAGE
+==============================================*/
+
 .login-container {
   display: flex;
   justify-content: space-between;
@@ -50,6 +58,8 @@ html, body, html * {
   min-height: 100vh;
   padding: 43px 52px 37px 52px;
 }
+
+/* ========== WELCOME TEXT & LOGO ========== */
 
 .login-welcome {
   flex-basis: 0;
@@ -73,6 +83,8 @@ html, body, html * {
   font-size: 28px;
   color: #e98226;
 }
+
+/* =============== LOGIN FORM =============== */
 
 .login-form-container {
   flex-basis: 0;
@@ -115,41 +127,15 @@ html, body, html * {
   font-size: 24px;
 }
 
-/* Dashboard */
-.Default-dashboard-page {
-  position: absolute;
-  width: 1440px;
-  height: 733px;
-  flex-grow: 0;
-  padding: 32px 25px 34px 23px;
-  background-color: #f1f1f1;
-}
-
-/*Navbar*/
-/*.Sidebar {
-  position: absolute;  
-  height: 1173px;
-  width: 75px;
-  left: 24px;
-  top: 32px;
-  margin: 2px 0 137px 26px;
-  padding: 14px 74.2px 13px 74px;
-  border-radius: 7px;
-  border: solid 1.5px #f1f1f1;
-  background-color: #fff;
-  filter: drop-shadow(0px 16px 20px rgba(46, 46, 46, 0.15));
-}*/
-
-a {
-  text-decoration: none;
-}
-
-.db-site-container{
+/* =============================================
+          DASHBOARD NAVIGATION & MENUS
+==============================================*/
+.db-site-container {
   display: flex;
-  flex: column;
   background-color: #f1f1f1;
   min-width: 100vw;
   min-height: 100vh;
+  height: auto;
   padding: 32px 25px;
 }
 
@@ -159,7 +145,13 @@ a {
   box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
 }
 
+/* ================ SIDEBAR ================ */
+
 .db-sidenav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: auto;
   position: fixed;
   padding-top: 14px;
   width: 192px;
@@ -167,7 +159,7 @@ a {
   border-radius: 6px;
 }
 
-.db-sidenav .user-info {
+.db-sidenav .company-info {
   margin-bottom: 30px;
   text-align: center;
 }
@@ -210,10 +202,6 @@ img#user-icon {
   text-align: left;
 }
 
-.sidenav-item:hover:not(.sidenav-active) {
-  border-left: solid 2px #000;
-}
-
 .sidenav-active {
   border-left: solid 2px #e98226;
 }
@@ -221,9 +209,11 @@ img#user-icon {
 .sidenav-active > .sidenav-link {
   color: #e98226 !important;
 }
-.sidenav-link:not(.sidenav-active) {
-  color: #2e2e2e;
+
+.sidenav-active img {
+  filter: invert(72%) sepia(68%) saturate(4243%) hue-rotate(348deg) brightness(98%) contrast(86%) !important;
 }
+
 .sidenav-link {
   display: flex;
   align-items: center;
@@ -231,8 +221,17 @@ img#user-icon {
   margin-top: 17px;
 }
 
+.sidenav-link:not(.sidenav-active) {
+  color: #2e2e2e;
+}
+
 .sidenav-link:hover {
+  color: #e98226;
   text-decoration: none;
+}
+
+.sidenav-link:hover img {
+  filter: invert(72%) sepia(68%) saturate(4243%) hue-rotate(348deg) brightness(98%) contrast(86%);
 }
 
 img.sidenav-icon {
@@ -240,6 +239,21 @@ img.sidenav-icon {
   height: auto;
   margin-right: 18px;
 }
+
+.user-info {
+  padding-left: 16px;
+}
+
+.user-info span {
+  margin-left: 18px;
+}
+
+p.sidenav-vendor-info {
+  font-size: 9px;
+  text-align: center;
+}
+
+/* ========== NAVBAR & CONTAINERS ========== */
 
 .db-container-main {
   display: flex;
@@ -254,6 +268,7 @@ img.sidenav-icon {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-shrink: 0;
   padding: 0 74px;
   width: 100%;
   height: 75px;
@@ -314,7 +329,6 @@ img.topnav-icon {
                 MAIN DASHBOARD
 ==============================================*/
 
-/* Dashboard Visual */
 .dashboard-main-wrapper {
   display: flex;
   flex-direction: column;
@@ -325,9 +339,53 @@ img.topnav-icon {
   flex-grow: 1;
 }
 
-.db-container-main .nav-tabs {
-  background: #f1f1f1;
+.dashboard-main.nav-tabs {
+  background: #f9f9f9;
   margin-bottom: 0 !important;
+  border-radius: 6px 6px 0 0;
+}
+
+.dashboard-main .nav-link {
+  padding-top: 15px;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.dashboard-main li.nav-item button {
+  height: 50px;
+  color: rgba(46, 46, 46, 0.75) !important;
+  border-radius: 6px 6px 0 0;
+  border-top: none;
+  border-bottom: solid 3px #f1f1f1;
+}
+
+.dashboard-main li.nav-item  button.active {
+  height: 50px;
+  color: #e98226 !important;
+  text-decoration: underline;
+  border-radius: 6px 6px 0 0;
+  border-top: none;
+  border-bottom: solid 3px #fff;
+}
+
+.dashboard-main li.nav-item button#dashboard-tab-visual:not(.active) {
+  border-left: none;
+  border-right: solid 3px #f9f9f9;
+}
+
+.dashboard-main li.nav-item button#dashboard-tab-visual.active {
+  border-left: none;
+  border-right: solid 3px #f1f1f1;
+}
+
+.dashboard-main li.nav-item button#dashboard-tab-history:not(.active) {
+  border-left: solid 3px #f9f9f9;
+  border-right: none;
+}
+
+.dashboard-main li.nav-item button#dashboard-tab-history.active {
+  border-left: solid 3px #f1f1f1;
+  border-right: none;
 }
 
 .db-container-main .tab-content {
@@ -335,9 +393,19 @@ img.topnav-icon {
   background: #fff;
   padding: 35px 32px 32px 32px;
   border-radius: 0 0 6px 6px;
- }
+  overflow: hidden;
+}
+
+.db-container-main .tab-content > div {
+  overflow: auto;
+}
+
+/* ================= VISUAL ================= */
 
 .asset-rating {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   background: #f1f1f1;
   flex-grow: 0;
   padding: 17px 45px;
@@ -345,6 +413,31 @@ img.topnav-icon {
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(46, 46, 46, 0.25);
   height: 83px;
+}
+
+.asset-rating p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+  color: #848484;
+}
+
+.asset-rating p:first-child {
+  font-weight: 600;
+  color: #2e2e2e;
+}
+
+.asset-rating p:nth-child(2) {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  color: #848484;
+}
+
+.asset-rating p:not(:first-child).active {
+  color: #e98226;
 }
 
 table.visual-rating {
@@ -362,7 +455,7 @@ td.bar-charts-summary {
   width: 60%;
 }
 
-/* Dashboard Details */
+/* ================ DETAILS ================ */
 
 .asset-menu-buttons {
   display: flex;

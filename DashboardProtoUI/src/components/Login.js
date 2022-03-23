@@ -17,7 +17,7 @@ export const Login = (props) => {
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
-    props.history.push('/dashboard');
+    props.history.push('/dashboard/asset');
   };
 
   const history =useHistory();
