@@ -25,7 +25,7 @@ interface UserAttributes {
     public companyId!: number;
     public roleId!: number;
     public createdAt!: Date;
-    public updatedAt!: Date  | null;;
+    public updatedAt!: Date  | null;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
