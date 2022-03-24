@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 module.exports = {
     up: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        yield queryInterface.bulkInsert("Users", [
+        yield queryInterface.bulkInsert("users", [
             {
                 id: 1,
                 username: 'abd@g.c',
@@ -20,7 +20,7 @@ module.exports = {
                 user_type: "internal"
             },
         ]);
-        yield queryInterface.bulkInsert("Users", [
+        yield queryInterface.bulkInsert("users", [
             {
                 id: 2,
                 username: 'clientAdmin@g.c',
@@ -32,6 +32,6 @@ module.exports = {
         ]);
     }),
     down: (queryInterface, Sequelize) => __awaiter(void 0, void 0, void 0, function* () {
-        return queryInterface.bulkDelete("Users", null, {});
+        return queryInterface.bulkDelete("users", null, {});
     }),
 };

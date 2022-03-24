@@ -2,8 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginRequestDto = void 0;
 class LoginRequestDto {
-    constructor(username, password) {
-        this.username = username;
+    constructor(email, password) {
+        this.email = email;
         this.Password = password;
     }
 }

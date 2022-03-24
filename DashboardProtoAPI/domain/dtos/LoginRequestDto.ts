@@ -2,11 +2,11 @@ import { IBaseDto } from "../contracts/IBaseDto";
 
 
 export class LoginRequestDto{
-    constructor(username: string, password:string){
-        this.username = username;
+    constructor(email: string, password:string){
+        this.email = email;
         this.Password = password;
     }
 
-    username: string;
+    email: string;
     Password: string;
 }

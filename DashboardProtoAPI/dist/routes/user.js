@@ -10,12 +10,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserApi = void 0;
-const UserRepository_1 = require("./Infrastructure/repositories/UserRepository");
-const userMapper_1 = require("./application/mappers/userMapper");
-const UserDto_1 = require("./domain/dtos/UserDto");
+const UserRepository_1 = require("../Infrastructure/repositories/UserRepository");
+const userMapper_1 = require("../application/mappers/userMapper");
+const UserDto_1 = require("../domain/dtos/UserDto");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const LoginRequestDto_1 = require("./domain/dtos/LoginRequestDto");
+const LoginRequestDto_1 = require("../domain/dtos/LoginRequestDto");
 class UserApi {
     constructor() {
         this._userRepository = new UserRepository_1.UserRepository();
@@ -30,10 +30,11 @@ class UserApi {
     //endpoint create user
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { username, password, user_type } = req.body;
-            const alreadyExistsUser = yield this._userRepository.GetByUsername(username).catch((err) => {
+            const { email, password } = req.body;
+            const alreadyExistsUser = yield this._userRepository.GetUserByemail(email).catch((err) => {
                 console.log("Error: ", err);
             });
+            console.log("in user ts", alreadyExistsUser);
             if (alreadyExistsUser) {
                 return res.status(409).json({ message: "User with this email already exists!" });
             }
@@ -52,26 +53,34 @@ class UserApi {
     login(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const loginDto = this.getLoginDtoFromRequest(req);
-            let existingUser = yield this._userRepository.GetByUsername(req.body.username);
-            console.log(existingUser);
+            let existingUser = yield this._userRepository.GetUserByemail(req.body.email);
+            console.log("######", existingUser);
             if (!existingUser)
                 return res
                     .status(400)
                     .json({ message: "Email or password does not match!" });
-            if (existingUser.password !== loginDto.Password)
-                return res
-                    .status(400)
-                    .json({ message: "Email or password does not match!" });
-            const jwtToken = jwt.sign({ id: existingUser.id, email: existingUser.username }, process.env.JWT_SECRET);
-            res.json({ message: "Welcome Back!", token: jwtToken });
+            try {
+                if (yield bcrypt.compare(req.body.password, existingUser.password)) {
+                    const jwtToken = jwt.sign({ id: existingUser.id, email: existingUser.email }, process.env.JWT_SECRET);
+                    res.json({ message: "Welcome Back!", token: jwtToken });
+                }
+                else {
+                    return res
+                        .status(400)
+                        .json({ message: " password does not match!" });
+                }
+            }
+            catch (_a) {
+                res.status(500).send();
+            }
         });
     }
     //#region private methods
     getDtoFromRequest(req) {
-        return new UserDto_1.UserDto(req.body.id, new Date(), req.body.username, req.body.password, req.body.user_type);
+        return new UserDto_1.UserDto(req.body.id, req.body.name, req.body.email, req.body.password, req.body.companyId, req.body.roleId, new Date());
     }
     getLoginDtoFromRequest(req) {
-        return new LoginRequestDto_1.LoginRequestDto(req.body.username, req.body.password);
+        return new LoginRequestDto_1.LoginRequestDto(req.body.email, req.body.password);
     }
 }
 exports.UserApi = UserApi;

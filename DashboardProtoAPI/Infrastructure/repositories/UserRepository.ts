@@ -1,6 +1,6 @@
 import { Model } from "sequelize-typescript";
 import { BaseRepository } from "../contracts/BaseRepository"
-import { UserEntity } from "../db/models/user";
+import { UserEntity } from "../db/models/User";
 
 export class UserRepository {
     constructor(){
@@ -10,9 +10,9 @@ export class UserRepository {
         let users  = await UserEntity.findAll();
         return users;
     }   
-    async GetByUsername(unsername: string): Promise<UserEntity | null>{
+    async GetUserByemail(email: string): Promise<UserEntity | null>{
         return  UserEntity.findOne({
-             where: {username: `${unsername}`}
+             where: {email: `${email}`}
          })
      }
     public async Create(model: Model<UserEntity>){

@@ -9,29 +9,27 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CheckAuth = void 0;
-class CheckAuth {
+exports.AssetApi = void 0;
+const AssetRepository_1 = require("../Infrastructure/repositories/AssetRepository");
+class AssetApi {
     constructor() {
+        this._asset = new AssetRepository_1.AssetRepository();
     }
-    checkAuth(req, res) {
+    getAllAssets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const token = req.header('autorization');
-            if (!token) {
-                return res.status(400).json({
-                    "errors": [{
-                            "message": "No token found"
-                        }
-                    ]
-                });
-            }
-            return res.status(200).json({
-                "message": [{
-                        "message": "there is token wwwwww"
-                    }
-                ]
-            });
+            let assetList = yield this._asset.Get();
+            return res.status(200).json(assetList);
+        });
+    }
+    ;
+    getAssetsById(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // let assetId = req.body;
+            // console.log(assetId)
+            // let asset = await this._asset.GetById(assetId);
+            // return  res.status(200).json(asset);
         });
     }
     ;
 }
-exports.CheckAuth = CheckAuth;
+exports.AssetApi = AssetApi;

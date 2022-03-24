@@ -4,13 +4,13 @@ const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const ExtractJwt = passportJwt.ExtractJwt;
 const StrategyJwt = passportJwt.Strategy;
-const User = require("../db/models/user");
-const user_1 = require("../db/models/user");
+const User = require("../db/models/User");
+const User_1 = require("../db/models/User");
 passport.use(new StrategyJwt({
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: process.env.JWT_SECRET,
 }, function (jwtPayload, done) {
-    return user_1.UserEntity.findOne({
+    return User_1.UserEntity.findOne({
         where: { id: jwtPayload.id }
     })
         .then((user) => {

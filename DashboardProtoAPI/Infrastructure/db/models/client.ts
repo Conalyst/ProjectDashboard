@@ -4,7 +4,7 @@ import {
   Association
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
-import { UserEntity } from "./user";
+import { UserEntity } from "./User";
 interface ClientAttributes {
   id: number;
   name: string;
@@ -37,7 +37,7 @@ implements ClientAttributes {
   ClientEntity.hasMany(UserEntity, {
     sourceKey: "id",
     foreignKey: "clientId",
-    as: "Users",
+    as: "users",
   });
  
  

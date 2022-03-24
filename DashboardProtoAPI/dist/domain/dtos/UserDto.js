@@ -2,13 +2,15 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserDto = void 0;
 class UserDto {
-    constructor(id, createAt, username, password, user_type) {
+    constructor(id, name, email, password, companyId, roleId, createAt) {
         this.Id = id;
+        this.name = name;
+        this.email = email;
+        this.Password = password;
+        this.CompanyId = companyId;
+        this.RoleId = roleId;
         this.CreatedAt = createAt;
         this.UpdatedAt = null;
-        this.username = username;
-        this.Password = password;
-        this.User_Type = user_type;
     }
 }
 exports.UserDto = UserDto;

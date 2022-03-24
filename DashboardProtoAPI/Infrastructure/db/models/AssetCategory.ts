@@ -4,16 +4,15 @@ import {
   Association
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
-import { UserEntity } from './User'
-import {ValenciaEntity} from './Valencia'
+import { AssetEntity } from './Asset'
 
-interface RoleAttributes {
+interface AssetCategoryAttributes {
   id: number;
   name: string;
 }
 
- export  class RoleEntity extends Model <RoleAttributes> 
-  implements RoleAttributes {
+ export  class AssetCategoryEntity extends Model <AssetCategoryAttributes> 
+  implements AssetCategoryAttributes {
     public id!: number;
     public name!: string;
  
@@ -23,20 +22,17 @@ interface RoleAttributes {
      * The `models/index` file will call this method automatically.
      */
 
+
     static associate(models: any) {
-      RoleEntity.hasMany(UserEntity, {
+      // define association here
+      AssetCategoryEntity.hasMany(AssetEntity, {
         sourceKey: "id",
-        foreignKey: "roleId",
-        as: "users",
-      });
-      RoleEntity.hasMany(ValenciaEntity, {
-        sourceKey: "id",
-        foreignKey: "roleId",
-        as: "valencia",
+        foreignKey: "asset_categoryId",
+        as: "assets",
       });
     }
   }
-  RoleEntity.init({
+  AssetCategoryEntity.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -49,7 +45,8 @@ interface RoleAttributes {
     } 
   }, {
     sequelize,
-    modelName: 'Role',
-    tableName: 'roles'
+    modelName: 'AssetCategory',
+    tableName: 'asset_category'
   });
  
+
