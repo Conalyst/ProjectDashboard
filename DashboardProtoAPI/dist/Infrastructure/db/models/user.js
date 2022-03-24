@@ -6,7 +6,6 @@ const sequelize_2 = require("../config/sequelize");
 const Company_1 = require("./Company");
 const Role_1 = require("./Role");
 class UserEntity extends sequelize_1.Model {
-    ;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -30,7 +29,7 @@ UserEntity.init({
     },
     name: {
         type: sequelize_1.DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     },
     email: {
         type: sequelize_1.DataTypes.STRING,
@@ -42,14 +41,14 @@ UserEntity.init({
     },
     companyId: {
         type: sequelize_1.DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
     },
     roleId: {
         type: sequelize_1.DataTypes.INTEGER,
         allowNull: false,
-    },
-    createdAt: sequelize_1.DataTypes.DATE,
+    }
 }, {
     sequelize: sequelize_2.sequelize,
-    modelName: 'users'
+    modelName: 'User',
+    tableName: 'users'
 });
