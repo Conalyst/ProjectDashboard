@@ -13,7 +13,6 @@ interface UserAttributes {
   password: string;
   companyId: number;
   roleId: number;
-  createdAt: Date;
 }
 
  export  class UserEntity extends Model <UserAttributes> 
@@ -24,8 +23,7 @@ interface UserAttributes {
     public password!: string;
     public companyId!: number;
     public roleId!: number;
-    public createdAt!: Date;
-    public updatedAt!: Date  | null;
+
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -49,7 +47,7 @@ interface UserAttributes {
     },
     name:{
       type:DataTypes.STRING,
-      allowNull:true
+      allowNull:false
     } ,
     email:{
       type:DataTypes.STRING,
@@ -61,14 +59,16 @@ interface UserAttributes {
     } ,
     companyId: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     } ,
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    createdAt: DataTypes.DATE,     
+    }       
   }, {
     sequelize,
-    modelName: 'users'
+    modelName: 'User',
+    tableName: 'users'
   });
+  
+ 
