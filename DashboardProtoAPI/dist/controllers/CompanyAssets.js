@@ -9,18 +9,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserApi = void 0;
-const UserRepository_1 = require("../Infrastructure/repositories/UserRepository");
-class UserApi {
+exports.CompanyAssetsApi = void 0;
+const CompanyAssetsRepository_1 = require("../Infrastructure/repositories/CompanyAssetsRepository");
+class CompanyAssetsApi {
     constructor() {
-        this._userRepository = new UserRepository_1.UserRepository();
+        this._asset = new CompanyAssetsRepository_1.CompanyAssetsRepository();
     }
-    getAllUsers(req, res) {
+    getAssetsByCompanyId(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let usersList = yield this._userRepository.Get();
-            return res.status(200).json(usersList);
+            let companyId = req.params.id;
+            console.log(companyId);
+            let assets = yield this._asset.GetByCompanyId(companyId);
+            return res.status(200).json(assets);
         });
     }
     ;
 }
-exports.UserApi = UserApi;
+exports.CompanyAssetsApi = CompanyAssetsApi;

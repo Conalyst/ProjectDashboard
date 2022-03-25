@@ -12,31 +12,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.AssetRepository = void 0;
-// import   Asset  from "../db/models"
-// import   AssetOutput  from "../db/models"
-// import  AssetCategory  from "../db/models";
+exports.CompanyAssetsRepository = void 0;
+// import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
+// import {AssetEntity} from '../db/models/Asset'
 const models_1 = __importDefault(require("../db/models"));
-class AssetRepository {
+class CompanyAssetsRepository {
     constructor() {
     }
-    Get() {
+    // public async Get(): Promise<Asset[]>{
+    //     let assets  = await Asset.findAll();
+    //     return assets;
+    // }   
+    // public async GetById(id:number): Promise<Asset | null>{
+    //   return Asset.findByPk(id);
+    // }   
+    GetByCompanyId(companyId) {
         return __awaiter(this, void 0, void 0, function* () {
-            let assets = yield models_1.default.Asset.findAll({
-                include: [models_1.default.AssetCategory]
+            let assets = yield models_1.default.CompanyAsset.findAll({
+                where: { companyId: `${companyId}` },
+                include: [models_1.default.Asset, models_1.default.Company]
+                // include: { all: true, nested: true }
             });
             return assets;
         });
     }
-    GetById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return models_1.default.Asset.findByPk(id);
-        });
-    }
-    GetByCompanyId(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return models_1.default.Asset.findByPk(id);
-        });
-    }
 }
-exports.AssetRepository = AssetRepository;
+exports.CompanyAssetsRepository = CompanyAssetsRepository;

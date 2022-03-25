@@ -3,14 +3,10 @@ import {
   DataTypes,
   Association
 } from "sequelize";
-import {sequelize}  from '../config/sequelize'
-import { AssetEntity } from './Asset'
-import { CompanyEntity } from './Company'
-
-
+import { PrimaryKey } from "sequelize-typescript";
 
 interface CompanyAssetAttributes {
-  id: number,
+  id:number
   assetId: number;
   companyId: number;
   confidentiality: string;
@@ -19,7 +15,8 @@ interface CompanyAssetAttributes {
   rating: string;
 }
 
- export  class CompanyAssetEntity extends Model <CompanyAssetAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+  class CompanyAsset extends Model <CompanyAssetAttributes> 
   implements CompanyAssetAttributes {
     public id!: number;
     public assetId!: number;
@@ -37,17 +34,16 @@ interface CompanyAssetAttributes {
 
  
     static associate(models: any) {
-      // define association here
-      AssetEntity.belongsToMany(CompanyEntity, {
-        through: CompanyAssetEntity
+      CompanyAsset.belongsTo(models.Company, {
+        foreignKey: 'companyId'
       })
-      CompanyEntity.belongsToMany(AssetEntity, {
-        through: CompanyAssetEntity
+      CompanyAsset.belongsTo(models.Asset, {
+        foreignKey: 'assetId'
       })
     }
   }
   
-  CompanyAssetEntity.init({
+  CompanyAsset.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -56,11 +52,21 @@ interface CompanyAssetAttributes {
     },
     assetId:{
       type:DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      // unique: true,
+      references: {
+        model: 'Asset',
+        key: 'id'
+      }
     },
     companyId:{
       type:DataTypes.INTEGER,
-      allowNull: false
+      allowNull: false,
+      // unique: true,
+      references: {
+        model: 'Company',
+        key: 'id'
+      }
     },
     confidentiality:{
       type:DataTypes.STRING,
@@ -83,5 +89,5 @@ interface CompanyAssetAttributes {
     modelName: 'CompanyAsset',
     tableName: 'company_assets'
   });
- 
-
+  return CompanyAsset
+}

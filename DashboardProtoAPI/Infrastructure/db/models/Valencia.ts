@@ -4,7 +4,6 @@ import {
   Association
 } from "sequelize";
 
-import {sequelize}  from '../config/sequelize'
 
 interface ValenciaAttributes {
   id: number;
@@ -14,7 +13,8 @@ interface ValenciaAttributes {
   roleId: number;
 }
 
- export  class ValenciaEntity extends Model <ValenciaAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+ class Valencia extends Model <ValenciaAttributes> 
   implements ValenciaAttributes {
     public id!: number;
     public name!: string;
@@ -37,7 +37,7 @@ interface ValenciaAttributes {
       // clients: Association<UserEntity, ClientEntity>
     }
   }
-  ValenciaEntity.init({
+  Valencia.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -65,4 +65,5 @@ interface ValenciaAttributes {
     modelName: 'Valencia',
     tableName: 'valencia'
   });
-  
+  return Valencia
+}

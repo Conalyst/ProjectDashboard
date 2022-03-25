@@ -1,20 +1,22 @@
-import express from 'express'
-import  {AssetRepository as Asset} from '../Infrastructure/repositories/AssetRepository'
-export class AssetApi{
-    private _asset:any;
-    constructor(){
-        this._asset = new Asset();
-    }
-    
-    async getAllAssets(req: express.Request, res: express.Response){
-      let assetList = await this._asset.Get();
-      return  res.status(200).json(assetList);
-    };
+import {Router, Request, Response} from 'express'
+import { AssetApi } from '../controllers/asset'
 
-    async getAssetsById(req: express.Request, res: express.Response){
-      // let assetId = req.body;
-      // console.log(assetId)
-      // let asset = await this._asset.GetById(assetId);
-      // return  res.status(200).json(asset);
-    };
-}
+const assetApi = new AssetApi();
+
+const assetRouter = Router();
+
+
+// assetRouter.get("/", (req: Request, res: Response) => {     
+//     return res.status(200).send("Hello World");    
+//   }
+// )
+
+assetRouter.get("/", (req, res) => {     
+  assetApi.getAllAssets(req, res);    
+})
+
+assetRouter.get("/:id", (req, res) => {     
+  assetApi.getAssetsById(req, res);    
+})
+
+export default assetRouter;
