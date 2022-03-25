@@ -3,47 +3,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ClientEntity = void 0;
 const sequelize_1 = require("sequelize");
 const sequelize_2 = require("../config/sequelize");
-const user_1 = require("./user");
+const User_1 = require("./User");
 class ClientEntity extends sequelize_1.Model {
-    static associate(models) {
-        // define association here
-        // clients: Association<UserEntity, ClientEntity>
-    }
 }
 exports.ClientEntity = ClientEntity;
 ClientEntity.init({
-    id: {
-        type: sequelize_1.DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-    name: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false
-    },
-    address: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    },
-    website: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    },
-    email: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: false
-    },
-    phone: {
-        type: sequelize_1.DataTypes.STRING,
-        allowNull: true
-    }
+    id: sequelize_1.DataTypes.INTEGER,
+    name: sequelize_1.DataTypes.STRING,
 }, {
     sequelize: sequelize_2.sequelize,
     modelName: 'Client',
-    tableName: 'clients'
 });
-ClientEntity.hasMany(user_1.UserEntity, {
+ClientEntity.hasMany(User_1.UserEntity, {
     sourceKey: "id",
     foreignKey: "clientId",
     as: "users",

@@ -59,7 +59,7 @@ interface AssetAttributes {
   }, {
     sequelize,
     modelName: 'Asset',
-    tableName: 'assets'
+    tableName: 'asset'
   });
   
 

@@ -39,5 +39,5 @@ AssetEntity.init({
 }, {
     sequelize: sequelize_2.sequelize,
     modelName: 'Asset',
-    tableName: 'assets'
+    tableName: 'asset'
 });

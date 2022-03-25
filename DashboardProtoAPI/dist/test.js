@@ -22,5 +22,18 @@ class TestApi {
         });
     }
     ;
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("in create ", req.body);
+            // const commentDto = this.getDtoFromRequest(req);
+            // let createComment = await this._commentsRepository.Create(toEntity(commentDto))
+            // if(createComment){
+            //     console.log('comment created', createComment);
+            //     return res.status(201).json(createComment);
+            // }else{
+            //     return res.status(400).send("The comment could not be created. Please check the provided data.")
+            // }
+        });
+    }
 }
 exports.TestApi = TestApi;
