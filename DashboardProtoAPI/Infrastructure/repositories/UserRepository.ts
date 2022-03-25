@@ -1,6 +1,6 @@
 import { Model } from "sequelize-typescript";
 import { BaseRepository } from "../contracts/BaseRepository"
-import { UserEntity } from "../db/models/User";
+import { UserEntity } from "../db/models/user";
 
 export class UserRepository {
     constructor(){

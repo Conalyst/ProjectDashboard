@@ -4,7 +4,7 @@ import {
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
 import {CompanyEntity} from './Company'
-import {RoleEntity} from './Role'
+import {RoleEntity} from './role'
 
 interface UserAttributes {
   id: number;
