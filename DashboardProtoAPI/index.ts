@@ -20,7 +20,7 @@ const origin = {
 
 
 const port = process.env.PORT || 3002;
- db.sequelize.sync({ alter: true }).then(() => {
+ db.sequelize.sync({ force: true }).then(() => {
   console.log("Welcome.......")
   app.listen(port, () => console.log(`App listening on PORT ${port}`));
  })
