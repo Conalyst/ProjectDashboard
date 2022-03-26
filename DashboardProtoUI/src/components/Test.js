@@ -5,17 +5,6 @@ import { LOGIN } from "../navigation/constants";
 
 export const Test = () => {
 
-  const history = useHistory();
-
-  const goTo = () =>   {  
-    history.push({
-      pathname: LOGIN,
-      state: { 
-        
-      }
-    });  
-   
-}
     const [tests, setTests] = useState(null);
 
     useEffect(() => {
