@@ -1,9 +1,10 @@
 import { UserDto } from "../../domain/dtos/UserDto"
-import {UserEntity} from "../../Infrastructure/db/models/User"
+// import User from "../../Infrastructure/db/models/User"
+import db from "../../Infrastructure/db/models"
 
-
-export const toEntity = (userDto: UserDto): UserEntity => {
-    let userEntity = new UserEntity();
+export const toEntity = (userDto: UserDto) => {
+    let userEntity = new db.User();
+    console.log("userEntity", userEntity)
     userEntity.id = userDto.Id;
     userEntity.email = userDto.email;
     userEntity.password = userDto.Password;

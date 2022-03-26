@@ -1,18 +1,21 @@
 import {
   Model,
-  DataTypes
 } from "sequelize";
 import {sequelize}  from '../config/sequelize'
 interface TestAttributes {
   id: number;
   title: string;
+  createdAt: Date;
+  updatedAt: Date | null;
 }
 
- export  class TestEntity extends Model <TestAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+ class Test extends Model <TestAttributes> 
   implements TestAttributes {
     public id!: number;
     public title!: string;
-
+    public createdAt!: Date;
+    public updatedAt!: Date | null;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -22,7 +25,7 @@ interface TestAttributes {
       // define association here
     }
   }
-  TestEntity.init({
+  Test.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -32,9 +35,18 @@ interface TestAttributes {
     title:{
       type:DataTypes.STRING,
       allowNull:false
-    } 
+    } ,
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    createdAt: {
+      type: new DataTypes.DATE,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Test',
   });
- 
+  return Test
+}

@@ -2,8 +2,9 @@ const passport = require("passport");
 const passportJwt = require("passport-jwt");
 const ExtractJwt = passportJwt.ExtractJwt;
 const StrategyJwt = passportJwt.Strategy;
-const User = require("../db/models/User");
-import { UserEntity } from "../db/models/User";
+// const User = require("../db/models/User");
+// import  User  from "../db/models/User";
+import db from '../db/models'
 
 passport.use(
   new StrategyJwt(
@@ -12,7 +13,7 @@ passport.use(
       secretOrKey: process.env.JWT_SECRET,
     },
     function (jwtPayload, done) {
-        return  UserEntity.findOne({
+        return  db.User.findOne({
             where: {id: jwtPayload.id }
         })
         .then((user) => {

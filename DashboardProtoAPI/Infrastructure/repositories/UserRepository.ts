@@ -1,21 +1,25 @@
 import { Model } from "sequelize-typescript";
 import { BaseRepository } from "../contracts/BaseRepository"
-import { UserEntity } from "../db/models/user";
+// import User from '../db/models'
+import db from '../db/models'
+const User = require("../db/models")
 
 export class UserRepository {
     constructor(){
          
     }
-    public async Get(): Promise<UserEntity[]>{
-        let users  = await UserEntity.findAll();
+    public async Get(){
+        let users  = await db.User.findAll();
         return users;
     }   
-    async GetUserByemail(email: string): Promise<UserEntity | null>{
-        return  UserEntity.findOne({
+    async GetUserByemail(email: string){
+
+        const User = await db.User.findOne({
              where: {email: `${email}`}
          })
+         return User;
      }
-    public async Create(model: Model<UserEntity>){
-        return model.save();
+    public async Create(model: Model<typeof User>){
+        return db.User.create(model['dataValues']);
     }
 }

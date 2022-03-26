@@ -4,7 +4,6 @@ import {
   Association
 } from "sequelize";
 
-import {sequelize}  from '../config/sequelize'
 
 interface ValenciaAttributes {
   id: number;
@@ -12,16 +11,20 @@ interface ValenciaAttributes {
   email: string;
   password: string;
   roleId: number;
+  createdAt: Date;
+  updatedAt: Date | null;
 }
 
- export  class ValenciaEntity extends Model <ValenciaAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+ class Valencia extends Model <ValenciaAttributes> 
   implements ValenciaAttributes {
     public id!: number;
     public name!: string;
     public email!: string;
     public password!: string;
     public roleId!: number;
-
+    public createdAt!: Date;
+    public updatedAt!: Date | null;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -37,7 +40,7 @@ interface ValenciaAttributes {
       // clients: Association<UserEntity, ClientEntity>
     }
   }
-  ValenciaEntity.init({
+  Valencia.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -59,10 +62,19 @@ interface ValenciaAttributes {
     roleId:{
       type:DataTypes.INTEGER,
       allowNull:true
-    } 
+    } ,
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    createdAt: {
+      type: new DataTypes.DATE,
+      allowNull: false,
+    },
   }, {
     sequelize,
     modelName: 'Valencia',
     tableName: 'valencia'
   });
-  
+  return Valencia
+}

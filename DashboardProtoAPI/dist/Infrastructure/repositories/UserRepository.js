@@ -8,28 +8,34 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserRepository = void 0;
-const User_1 = require("../db/models/User");
+// import User from '../db/models'
+const models_1 = __importDefault(require("../db/models"));
+const User = require("../db/models");
 class UserRepository {
     constructor() {
     }
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let users = yield User_1.UserEntity.findAll();
+            let users = yield models_1.default.User.findAll();
             return users;
         });
     }
     GetUserByemail(email) {
         return __awaiter(this, void 0, void 0, function* () {
-            return User_1.UserEntity.findOne({
+            const User = yield models_1.default.User.findOne({
                 where: { email: `${email}` }
             });
+            return User;
         });
     }
     Create(model) {
         return __awaiter(this, void 0, void 0, function* () {
-            return model.save();
+            return models_1.default.User.create(model['dataValues']);
         });
     }
 }

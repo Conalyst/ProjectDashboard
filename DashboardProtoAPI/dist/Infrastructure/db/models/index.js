@@ -1,4 +1,5 @@
 'use strict';
+Object.defineProperty(exports, "__esModule", { value: true });
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
@@ -20,6 +21,7 @@ fs
 })
     .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    console.log("model....", model);
     db[model.name] = model;
 });
 Object.keys(db).forEach(modelName => {
@@ -29,4 +31,4 @@ Object.keys(db).forEach(modelName => {
 });
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
-module.exports = db;
+exports.default = db;

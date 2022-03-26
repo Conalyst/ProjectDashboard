@@ -4,9 +4,6 @@ import {
   Association
 } from "sequelize";
 
-import { sequelize }  from '../config/sequelize'
-import { UserEntity } from './User'
-import { AssetEntity } from './Asset'
 interface CompanyAttributes {
   id: number;
   name: string;
@@ -14,9 +11,12 @@ interface CompanyAttributes {
   website: string;
   email: string;
   phone: string;
+  createdAt: Date;
+  updatedAt: Date | null;
 }
 
- export  class CompanyEntity extends Model <CompanyAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+  class Company extends Model <CompanyAttributes> 
   implements CompanyAttributes {
     public id!: number;
     public name!: string;
@@ -24,32 +24,21 @@ interface CompanyAttributes {
     public website!: string;
     public email!: string;
     public phone!: string;
-
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
-    public static associations: { 
-      // users: Association<CompanyEntity, UserEntity>; 
-      //  company_assets: Association<CompanyEntity, AssetEntity>; 
-    };
+    public createdAt!: Date;
+    public updatedAt!: Date | null;
 
     static associate(models: any) {
-      // CompanyEntity.hasMany(UserEntity, {
-      //   sourceKey: "id",
-      //   foreignKey: "companyId",
-      //   as: "users",
-      // });
-      // CompanyEntity.belongsToMany(AssetEntity, {
-      //   through: "company_assets",
-      //   foreignKey: "companyId",
-      //   otherKey: "assetId",
-      //   as: "assets"
-      // });
+      Company.hasMany(models.User, {
+        sourceKey: "id",
+        foreignKey: "companyId",
+      });
+      Company.belongsToMany(models.Asset, {
+        through: models.CompanyAsset,
+        foreignKey: 'companyId'
+      }) 
     }
   }
-  CompanyEntity.init({
+  Company.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -75,13 +64,25 @@ interface CompanyAttributes {
     phone:{
       type:DataTypes.STRING,
       allowNull:true
-    } 
+    } ,
+    createdAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
+    }
   }, {
     sequelize,
     modelName: 'Company',
     tableName: 'companies'
   });
   
+  return Company
+}
  
 
   // CompanyEntity.belongsToMany(AssetEntity, {
