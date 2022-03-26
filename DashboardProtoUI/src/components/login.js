@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import {Button, Form} from "react-bootstrap";
 import vendor_icon from '../images/icons/vendor_icon.png';
-import { DASHBOARD } from "../navigation/CONSTANTS";
+import { DASHBOARD } from "../navigation/constants";
 import { login } from '../actions/userActions';
 
 export const Login = (props) => {
