@@ -4,29 +4,32 @@ import {useHistory} from 'react-router-dom'
 import {Button, Form} from "react-bootstrap";
 import vendor_icon from '../images/icons/vendor_icon.png';
 import { DASHBOARD } from "../navigation/CONSTANTS";
-import { login } from '../actions/userActions';
+
 
 export const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { userInfo, loading, error } = userLogin;
+ // const history =useHistory();
+ //const onLogin =()=>{
+ //history.push({
+ //   pathname: DASHBOARD,
 
-  const dispatch = useDispatch();
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(login(email, password));
-    props.history.push('/dashboard/asset');
-  };
+ //  });
+ // }  
+ const submitHandler = () => {
+  Axios.post("http://localhost:3002/api/v2/login", {
+    username: username,
+    password: password,
+  }).then((response) => {
+    if (response.data.message) {
+      console.log(response.data)
+    } else {
+      console.log(response.message)
+    }
+  });
+};
 
-  const history =useHistory();
-  const onLogin =()=>{
-  history.push({
-     pathname: DASHBOARD,
-
-   });
-  }  
     return (
         <div className="login-container">
             <div className="login-welcome">
@@ -45,7 +48,7 @@ export const Login = (props) => {
                   <Form.Label>Password</Form.Label>
                   <Form.Control type="password"  id="password" value={password} placeholder="Enter password"  required  onChange={(e) => setPassword(e.target.value)} />
                 </Form.Group>
-                <Button className="w-100" variant="primary" type="submit"onClick={() =>onLogin()}>Login</Button>
+                <Button className="w-100" variant="primary" type="submit">Login</Button>
               </Form>
             </div>
         </div>
