@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react"; 
 import { getAllTest } from "../services";
 import Axios, { AxiosResponse }from 'axios'
+import {Button, Form} from "react-bootstrap";
+import vendor_icon from '../images/icons/vendor_icon.png';
 
 export const Login = () => {
  
@@ -57,9 +59,16 @@ export const Login = () => {
         });
       }, []);
       return (
-        <div className="App">
-          <div className="registration">
-            <h1>Registration</h1>
+        <div className="login-container">
+          <div className="login-welcome">
+                <img src={vendor_icon} />
+                <div className="welcome-title">Welcome to Valencia Dashboard</div>
+                <div className="welcome-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            </div>
+            <div className="login-form-container">
+              <p>Don&apos;t have an account? <a href="#">Get in touch to get started.</a></p>
+          <div>
+            <div className="mb-4">
             <label>Username</label>
             <input
               type="text"
@@ -67,6 +76,8 @@ export const Login = () => {
                 setUsernameReg(e.target.value);
               }}
             />
+            </div>
+            <div className="mb-4">
             <label>Password</label>
             <input
               type="text"
@@ -74,18 +85,23 @@ export const Login = () => {
                 setPasswordReg(e.target.value);
               }}
             />
-            <button onClick={register}> Register </button>
+            </div>
+            <button className="w-100" variant="primary" onClick={register}> Register </button>
           </div>
-    
-          <div className="login">
-            <h1>Login</h1>
+          <div className="mb-4"></div>
+          <div>
+          <div className="mb-4">
+          <label>Email</label>
             <input
-              type="text"
+              type="email"
               placeholder="Username..."
               onChange={(e) => {
                 setUsername(e.target.value);
               }}
             />
+            </div>
+             <div className="mb-4">
+            <label>Password</label>
             <input
               type="password"
               placeholder="Password..."
@@ -93,10 +109,11 @@ export const Login = () => {
                 setPassword(e.target.value);
               }}
             />
-            <button onClick={login}> Login </button>
+             </div>
+            <button className="w-100" variant="primary" onClick={login}> Login </button>
           </div>
-    
           <h1>{loginStatus}</h1>
+          </div>
         </div>
       );
   }

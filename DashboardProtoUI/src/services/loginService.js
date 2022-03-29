@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios, { AxiosResponse }from 'axios'
-import { POST_LOGIN_USER} from "./CONSTANTS";
+import { POST_LOGIN_USER} from "./constants";
 
 /**
  * Function to fetch all the users.
