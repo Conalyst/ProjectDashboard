@@ -544,7 +544,7 @@ td.bar-charts-summary {
 
 .cr-button__text {
   width: 22px;
-  height: 16px;
+  height: 48px;
   align-self: center;
   flex-grow: 0;
   font-family: NunitoSans;
@@ -560,6 +560,7 @@ td.bar-charts-summary {
 
 .cr-text {
   text-align: center;
+  height: 48px;
 }
 
 .table-border-blue {
@@ -804,4 +805,21 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
+}
+
+/*Recommendations*/
+.rec-button__text {
+  width: 22px;
+  height: 48px;
+  align-self: center;
+  flex-grow: 0;
+  font-family: NunitoSans;
+  font-size: 14.3px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.15;
+  letter-spacing: 0.14px;
+  text-align: center;
+  color: #f9f9f9;
 }
