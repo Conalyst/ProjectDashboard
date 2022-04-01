@@ -1,10 +1,10 @@
-'use strict';
 import {
   Model,
-  UUIDV4,
-  
-}  from 'sequelize';
-// import sequelize from 'sequelize/types/sequelize';
+  DataTypes
+} from "sequelize";
+import {sequelize}  from '../config/sequelize'
+import {CompanyEntity} from './Company'
+import {RoleEntity} from './Role'
 
 interface UserAttributes {
   id: number;
@@ -13,12 +13,9 @@ interface UserAttributes {
   password: string;
   companyId: number;
   roleId: number;
-  createdAt: Date;
-  updatedAt: Date | null;
 }
 
-module.exports = (sequelize: any, DataTypes:any) => {
-  class User extends Model <UserAttributes> 
+ export  class UserEntity extends Model <UserAttributes> 
   implements UserAttributes {
     public id!: number;
     public name!: string;
@@ -26,30 +23,27 @@ module.exports = (sequelize: any, DataTypes:any) => {
     public password!: string;
     public companyId!: number;
     public roleId!: number;
-    public createdAt!: Date;
-    public updatedAt!: Date | null;
+
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models: any) {
-      User.belongsTo(models.Company, {
-        targetKey: 'id',
-        foreignKey: 'companyId'
-      })
-      User.belongsTo(models.Role, {
-        targetKey: 'id',
-        foreignKey: 'roleId'
-      })
+      // define association here
+      UserEntity.belongsTo(CompanyEntity);
+      CompanyEntity.hasMany(UserEntity);
+      
+      UserEntity.belongsTo(RoleEntity);
+      RoleEntity.hasMany(UserEntity);
     }
   }
-  User.init({
+  UserEntity.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
       primaryKey:true,
-      autoIncrement: true
+      autoIncrement:true
     },
     name:{
       type:DataTypes.STRING,
@@ -57,8 +51,7 @@ module.exports = (sequelize: any, DataTypes:any) => {
     } ,
     email:{
       type:DataTypes.STRING,
-      allowNull:false,
-      unique: true
+      allowNull:false
     } ,
     password:{
       type:DataTypes.STRING,
@@ -71,16 +64,6 @@ module.exports = (sequelize: any, DataTypes:any) => {
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    } ,
-    createdAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
     }       
   }, {
     sequelize,
@@ -88,5 +71,4 @@ module.exports = (sequelize: any, DataTypes:any) => {
     tableName: 'users'
   });
   
-  return User;
-}
+ 
