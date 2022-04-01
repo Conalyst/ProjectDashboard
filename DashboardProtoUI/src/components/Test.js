@@ -5,17 +5,6 @@ import { LOGIN } from "../navigation/constants";
 
 export const Test = () => {
 
-  const history = useHistory();
-
-  const goTo = () =>   {  
-    history.push({
-      pathname: LOGIN,
-      state: { 
-        
-      }
-    });  
-   
-}
     const [tests, setTests] = useState(null);
 
     useEffect(() => {
@@ -57,9 +46,9 @@ export const Test = () => {
                           </div>);
                           
                       })}
-                  <button   name="next_button" onClick={()=>goTo()}>Next
+                  {/* <button   name="next_button" onClick={()=>goTo()}>Next
                         <i className="material-icons right">navigate_next</i>
-                      </button>
+                      </button> */}
                   </div>
                
      

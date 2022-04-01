@@ -1,10 +1,10 @@
+'use strict';
 import {
   Model,
-  DataTypes
-} from "sequelize";
-import {sequelize}  from '../config/sequelize'
-import {CompanyEntity} from './Company'
-import {RoleEntity} from './Role'
+  UUIDV4,
+  
+}  from 'sequelize';
+// import sequelize from 'sequelize/types/sequelize';
 
 interface UserAttributes {
   id: number;
@@ -14,9 +14,11 @@ interface UserAttributes {
   companyId: number;
   roleId: number;
   createdAt: Date;
+  updatedAt: Date | null;
 }
 
- export  class UserEntity extends Model <UserAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+  class User extends Model <UserAttributes> 
   implements UserAttributes {
     public id!: number;
     public name!: string;
@@ -25,35 +27,38 @@ interface UserAttributes {
     public companyId!: number;
     public roleId!: number;
     public createdAt!: Date;
-    public updatedAt!: Date  | null;;
+    public updatedAt!: Date | null;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
     static associate(models: any) {
-      // define association here
-      UserEntity.belongsTo(CompanyEntity);
-      CompanyEntity.hasMany(UserEntity);
-      
-      UserEntity.belongsTo(RoleEntity);
-      RoleEntity.hasMany(UserEntity);
+      User.belongsTo(models.Company, {
+        targetKey: 'id',
+        foreignKey: 'companyId'
+      })
+      User.belongsTo(models.Role, {
+        targetKey: 'id',
+        foreignKey: 'roleId'
+      })
     }
   }
-  UserEntity.init({
+  User.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
       primaryKey:true,
-      autoIncrement:true
+      autoIncrement: true
     },
     name:{
       type:DataTypes.STRING,
-      allowNull:true
+      allowNull:false
     } ,
     email:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      unique: true
     } ,
     password:{
       type:DataTypes.STRING,
@@ -61,14 +66,27 @@ interface UserAttributes {
     } ,
     companyId: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
     } ,
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    } ,
+    createdAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
     },
-    createdAt: DataTypes.DATE,     
+    updatedAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
+    }       
   }, {
     sequelize,
-    modelName: 'users'
+    modelName: 'User',
+    tableName: 'users'
   });
+  
+  return User;
+}
