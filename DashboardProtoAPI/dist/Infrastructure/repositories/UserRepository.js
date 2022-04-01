@@ -28,7 +28,8 @@ class UserRepository {
     GetUserByemail(email) {
         return __awaiter(this, void 0, void 0, function* () {
             const User = yield models_1.default.User.findOne({
-                where: { email: `${email}` }
+                where: { email: `${email}` },
+                include: [models_1.default.Role]
             });
             return User;
         });

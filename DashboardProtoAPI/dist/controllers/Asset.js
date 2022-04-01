@@ -13,11 +13,11 @@ exports.AssetApi = void 0;
 const AssetRepository_1 = require("../Infrastructure/repositories/AssetRepository");
 class AssetApi {
     constructor() {
-        this._asset = new AssetRepository_1.AssetRepository();
+        this._assetRepository = new AssetRepository_1.AssetRepository();
     }
     getAllAssets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let assetList = yield this._asset.Get();
+            let assetList = yield this._assetRepository.Get();
             console.log("Helllllo");
             return res.status(200).json(assetList);
         });
@@ -27,7 +27,7 @@ class AssetApi {
         return __awaiter(this, void 0, void 0, function* () {
             let assetId = req.params.id;
             console.log(assetId);
-            let asset = yield this._asset.GetById(assetId);
+            let asset = yield this._assetRepository.GetById(assetId);
             return res.status(200).json(asset);
         });
     }

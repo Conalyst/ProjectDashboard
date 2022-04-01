@@ -3,7 +3,6 @@ import { BaseRepository } from "../contracts/BaseRepository"
 // import User from '../db/models'
 import db from '../db/models'
 const User = require("../db/models")
-
 export class UserRepository {
     constructor(){
          
@@ -15,7 +14,8 @@ export class UserRepository {
     async GetUserByemail(email: string){
 
         const User = await db.User.findOne({
-             where: {email: `${email}`}
+             where: {email: `${email}`},
+             include: [db.Role]
          })
          return User;
      }

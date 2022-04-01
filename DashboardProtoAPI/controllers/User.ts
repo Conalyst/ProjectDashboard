@@ -44,28 +44,31 @@ export class UserApi{
     async login(req: express.Request, res: express.Response){
         const loginDto = this.getLoginDtoFromRequest(req);
         let existingUser = await this._userRepository.GetUserByemail(req.body.email)
-        existingUser = existingUser["dataValues"]
-        console.log("######",existingUser)
-        if (!existingUser)
-        return res
-        .status(400)
-        .json({ message: "Email or password does not match!" });
-        console.log(req.body.password + " , " + existingUser.password)
-        try {
-          if ( await bcrypt.compare(req.body.password,existingUser.password )) {           
-            const jwtToken = jwt.sign(
-                { id: existingUser.id, email: existingUser.email},
-                process.env.JWT_SECRET
-            );
-            res.json({ message: "Welcome Back!", token: jwtToken });
-          }else {
+        if (!existingUser){
             return res
-            .status(400)
-            .json({ message: " password does not match!" });
-          }
-        } catch{
-           res.status(500).send()
+        .status(400)
+        .json({ message: "Email or password does not correct!" });
+        
         }
+      
+        else {
+            try {
+                if ( await bcrypt.compare(req.body.password,existingUser.password )) {           
+                  const jwtToken = jwt.sign(
+                      { id: existingUser.id, email: existingUser.email},
+                      process.env.JWT_SECRET
+                  );
+                  res.json({ message: "Welcome Back!", token: jwtToken, role:existingUser.Role.name });
+                }else {
+                  return res
+                  .status(400)
+                  .json({ message: " password does not match!" });
+                }
+              } catch{
+                 res.status(500).send()
+              }
+        }
+      
     }
     //#region private methods
     getDtoFromRequest(req: express.Request){

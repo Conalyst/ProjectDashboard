@@ -54,26 +54,26 @@ class UserApi {
         return __awaiter(this, void 0, void 0, function* () {
             const loginDto = this.getLoginDtoFromRequest(req);
             let existingUser = yield this._userRepository.GetUserByemail(req.body.email);
-            existingUser = existingUser["dataValues"];
-            console.log("######", existingUser);
-            if (!existingUser)
+            if (!existingUser) {
                 return res
                     .status(400)
-                    .json({ message: "Email or password does not match!" });
-            console.log(req.body.password + " , " + existingUser.password);
-            try {
-                if (yield bcrypt.compare(req.body.password, existingUser.password)) {
-                    const jwtToken = jwt.sign({ id: existingUser.id, email: existingUser.email }, process.env.JWT_SECRET);
-                    res.json({ message: "Welcome Back!", token: jwtToken });
-                }
-                else {
-                    return res
-                        .status(400)
-                        .json({ message: " password does not match!" });
-                }
+                    .json({ message: "Email or password does not correct!" });
             }
-            catch (_a) {
-                res.status(500).send();
+            else {
+                try {
+                    if (yield bcrypt.compare(req.body.password, existingUser.password)) {
+                        const jwtToken = jwt.sign({ id: existingUser.id, email: existingUser.email }, process.env.JWT_SECRET);
+                        res.json({ message: "Welcome Back!", token: jwtToken, role: existingUser.Role.name });
+                    }
+                    else {
+                        return res
+                            .status(400)
+                            .json({ message: " password does not match!" });
+                    }
+                }
+                catch (_a) {
+                    res.status(500).send();
+                }
             }
         });
     }
