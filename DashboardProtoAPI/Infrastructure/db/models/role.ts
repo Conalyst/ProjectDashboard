@@ -1,22 +1,22 @@
 import {
   Model,
+  DataTypes,
+  Association
 } from "sequelize";
-
+import {sequelize}  from '../config/sequelize'
+import { UserEntity } from './User'
+import {ValenciaEntity} from './Valencia'
 
 interface RoleAttributes {
   id: number;
   name: string;
-  createdAt: Date;
-  updatedAt: Date | null;
 }
 
-module.exports = (sequelize: any, DataTypes:any) => {
-class Role extends Model <RoleAttributes> 
+ export  class RoleEntity extends Model <RoleAttributes> 
   implements RoleAttributes {
     public id!: number;
     public name!: string;
-    public createdAt!: Date;
-    public updatedAt!: Date | null;
+ 
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -24,14 +24,19 @@ class Role extends Model <RoleAttributes>
      */
 
     static associate(models: any) {
-      Role.hasMany(models.User, {
+      RoleEntity.hasMany(UserEntity, {
         sourceKey: "id",
         foreignKey: "roleId",
-        // as: "users",
+        as: "users",
+      });
+      RoleEntity.hasMany(ValenciaEntity, {
+        sourceKey: "id",
+        foreignKey: "roleId",
+        as: "valencia",
       });
     }
   }
-  Role.init({
+  RoleEntity.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
@@ -41,23 +46,10 @@ class Role extends Model <RoleAttributes>
     name:{
       type:DataTypes.STRING,
       allowNull:false
-    },
-    createdAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
-    }
-
+    } 
   }, {
     sequelize,
     modelName: 'Role',
     tableName: 'roles'
   });
-
-  return Role
-}
+ 
