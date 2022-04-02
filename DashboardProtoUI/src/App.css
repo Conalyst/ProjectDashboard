@@ -807,7 +807,7 @@ li {
   color: #2e2e2e;
 }
 
-/*Recommendations*/
+/* ========== RECOMMENDATIONS ========== */
 .rec-button__text {
   width: 22px;
   height: 48px;
@@ -823,3 +823,45 @@ li {
   text-align: center;
   color: #f9f9f9;
 }
+
+.cell-1{
+  border-collapse: separate;
+  border-spacing:0.4em;
+  background:#ffffff;
+  border-bottom: 5px solid transparent;
+  background-clip: padding-box;
+  cursor:pointer
+  }
+
+  #demo{
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
+  }
+  #summary {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  #summary p.collapse:not(.show) {
+      height: 16px !important;
+      overflow: hidden;
+    
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;  
+  }
+  
+  #summary p.collapsing {
+      min-height: 16px !important;
+  }
+  
+  #summary a.collapsed:after  {
+      content: '+ Read More';
+  }
+  
+  #summary a:not(.collapsed):after {
+      content: '- Read Less';
+  }
+  

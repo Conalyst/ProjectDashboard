@@ -45,63 +45,63 @@ export const RecDashboard = () => {
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
-        <div class="db-sidenav-profile" data-mdb-color="dark" role="navigation" data-mdb-hidden="false"
+        <div className="db-sidenav-profile" data-mdb-color="dark" role="navigation" data-mdb-hidden="false"
               data-mdb-accordion="true">
-            <div class="company-info">
+            <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p class="user-label">Company Name</p>
+              <p className="user-label">Company Name</p>
             </div>
-            <ul class="sidenav-menu">
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="/dashboard">
-                  <img class="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
+            <ul className="sidenav-menu">
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="/dashboard">
+                  <img className="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
                 </a>   
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="./risk">
-                  <img class="sidenav-icon" src={risks} alt =""/>Risks
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="./risk">
+                  <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="./vulner">
-                  <img class="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="./vulner">
+                  <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="./threat">
-                  <img class="sidenav-icon" src={threats} alt =""/>Threats
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="./threat">
+                  <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li class="sidenav-item">
-                <a class="sidenav-link" href="./asset">
-                  <img class="sidenav-icon" src={assets} alt =""/>Assets
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="./asset">
+                  <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li class="sidenav-item sidenav-active">
-                <a class="sidenav-link" href="./rec">
-                  <img class="sidenav-icon" src={recommendations} alt =""/>Recommendations
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="./rec">
+                  <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
-              <li class="sidenav-item">
-                <a class="sidenav-link" href="./report">
-                  <img class="sidenav-icon" src={reports} alt =""/>Reports
+              <li className="sidenav-item">
+                <a className="sidenav-link" href="./report">
+                  <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
             </ul>
         </div>
         <div>
-          <div class="user-info">
+          <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span class="user-label">Alex Toma</span>
+            <span className="user-label">Alex Toma</span>
           </div>
-          <ul class="sidenav-menu">
-            <li class="sidenav-item">
-              <a class="sidenav-link" href="/settings">
-                <img class="sidenav-icon" src={settings} alt =""/>Settings
+          <ul className="sidenav-menu">
+            <li className="sidenav-item">
+              <a className="sidenav-link" href="/settings">
+                <img className="sidenav-icon" src={settings} alt =""/>Settings
               </a>
             </li>
           </ul>
-          <p class="sidenav-vendor-info">Powered by Valencia IP</p>
+          <p className="sidenav-vendor-info">Powered by Valencia IP</p>
         </div>
       </div>
       <div className="db-container-main">

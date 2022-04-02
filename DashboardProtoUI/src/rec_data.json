@@ -2,7 +2,7 @@
     {
         "id": 1,
         "title": "Retire SiteScrape",
-        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services for the Microsoft Windows and Mac operating systems. It includes Microsoft Word, Excel, PowerPoint, Outlook and OneNote. Microsoft Office is standard on all KU-owned workstations for faculty and staff. This asset includes M365 with locally stored documents. ",
         "safeguard": "L",
         "risks_ids": "R1, R3, R5"
     },
