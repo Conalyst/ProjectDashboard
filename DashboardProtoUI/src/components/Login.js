@@ -49,7 +49,7 @@ const handleSubmit = e => {
     }
   }).catch(err =>{
     if(err.response.status == 400)
-     setErr('email or password not valid.');
+     setErr('Email or Password is not valid.');
 })
 };
 
@@ -73,8 +73,7 @@ const handleSubmit = e => {
                 </Form.Group>
                 <Button className="w-100" variant="primary" type="submit">Login</Button>
               </Form>
-              <span style={err ? {visibility: "visible", color: "red"}: null} >{err}</span>
-           
+              <p className="login-error"style={err ? {visibility: "visible", color: "red"}: null} >{err}</p>
             </div>
         </div>
     );

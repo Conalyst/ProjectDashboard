@@ -1,0 +1,86 @@
+[
+    {
+        "id": 1,
+        "title": "Retire SiteScrape",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services for the Microsoft Windows and Mac operating systems.",
+        "safeguard": "L",
+        "risks_ids": "R1, R3, R5"
+    },
+    {
+        "id": 2,
+        "title": "Encrypt Endpoint",
+        "description": "This asset refers to a formal policy plan that is well documented.",
+        "safeguard": "H",
+        "risks_ids": "R1, R6, R10"
+    },
+    {   
+        "id": 3,
+        "title": "Implement MF",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "safeguard": "M",
+        "risks_ids": "R1, R3, R5, R15"
+    },
+    {   
+        "id": 4,
+        "title": "Enhance Logging",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "safeguard": "H",
+        "risks_ids": "R1, R3, R5"
+    },
+    {   
+        "id": 5,
+        "title": "Improve Malicious",
+        "description": "A domain controller is a server that responds to authentication requests and verifies users.",
+        "safeguard": "M",
+        "risks_ids": "R1, R3, R6, R15"
+    },
+    {   
+        "id": 6,
+        "title": "Isolate DNS",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "safeguard": "L",
+        "risks_ids": "R1, R5, R6"
+    },
+    {
+        "id": 7,
+        "title": "Retire SiteScrape",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "safeguard": "L",
+        "risks_ids": "R1, R3, R6, R15"
+    },
+    {
+        "id": 8,
+        "title": "Encrypt Endpoint",
+        "description": "This asset refers to a formal policy plan that is well documented.",
+        "safeguard": "H",
+        "risks_ids": "R1, R3, R5"
+    },
+    {   
+        "id": 9,
+        "title": "Implement MF",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "safeguard": "M",
+        "risks_ids": "R3, R3, R15"
+    },
+    {   
+        "id": 10,
+        "title": "Enhance Logging",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "safeguard": "H",
+        "risks_ids": "R1, R6, R15"
+    },
+    {   
+        "id": 11,
+        "title": "Improve Malicious",
+        "description": "A domain controller is a server that responds to authentication requests and verifies users.",
+        "safeguard": "M",
+        "risks_ids": "R1, R3, R5"
+    },
+    {   
+        "id": 12,
+        "title": "Isolate DNS",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "safeguard": "L",
+        "risks_ids": "R1, R3, R5, R10"
+    }
+]

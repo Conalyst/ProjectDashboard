@@ -4,10 +4,34 @@ import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
+import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 
 export const DashboardDetails = () => {
 
     const [assets, setAssets] = useState(data);
+
+   /*    const [assets, setAssets] = useState([]);
+    useEffect(() => {
+        return new Promise((resolve, reject) => {
+          try {
+              
+            // do db call or API endpoint axios call here and return the promise.
+            getAllAssets()
+            .then((res) => {
+              setAssets(res);
+              resolve(res);
+            })
+              .catch((err) => {
+                setAssets([]); 
+                reject("Request error!");
+              });
+          } catch (error) {
+            console.error("error!==", error);
+            reject("signin error!");
+          }
+        });
+      }, []); */
+
     return (
     <>     
         <div className="asset-menu-buttons">
