@@ -17,5 +17,5 @@ const sequelizeConfig = {
 };
 exports.sequelize = new sequelize_1.Sequelize(sequelizeConfig.DBNAME, sequelizeConfig.USERNAME, sequelizeConfig.PASSWORD, {
     host: sequelizeConfig.HOST,
-    dialect: 'postgres'
+    dialect: sequelizeConfig.DIALECT
 });

@@ -1,12 +1,13 @@
 import { BaseRepository } from "../contracts/BaseRepository"
-import  {TestEntity as Entity, TestEntity}  from "../db/models/test"
+// import  {TestEntity as Entity, TestEntity}  from "../db/models/Test"
+import db from '../db/models'
 
 export class TestRepository {
     constructor(){
          
     }
-    public async Get(): Promise<TestEntity[]>{
-        let dishs  = await TestEntity.findAll();
+    public async Get(){
+        let dishs  = await db.Test.findAll();
         return dishs;
     }   
 }

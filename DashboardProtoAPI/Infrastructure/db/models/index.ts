@@ -6,7 +6,7 @@ const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
 const config = require(__dirname + '/../config/config.json')[env];
-const db: any= {};
+const db: any = {};
 
 let sequelize: any;
 if (config.use_env_variable) {
@@ -22,6 +22,7 @@ fs
   })
   .forEach((file: any) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+    console.log("model....", model)
     db[model.name] = model;
   });
 

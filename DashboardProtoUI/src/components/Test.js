@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react"; 
+import { useHistory ,useLocation} from "react-router-dom";
 import { getAllTest } from "../services";
- 
+import { LOGIN } from "../navigation/constants"; 
 
 export const Test = () => {
- 
+
     const [tests, setTests] = useState(null);
 
     useEffect(() => {
@@ -12,7 +13,7 @@ export const Test = () => {
             // do db call  or API endpoint axios call here and return the promise.
            getAllTest()
             .then((res) => {
-              console.log("------------");
+              console.log("#########",res.title)
               setTests(res);
               //resolve(res);
             })
@@ -43,8 +44,11 @@ export const Test = () => {
                               <span >{test.title}</span>
                             </label>              
                           </div>);
+                          
                       })}
-                
+                  {/* <button   name="next_button" onClick={()=>goTo()}>Next
+                        <i className="material-icons right">navigate_next</i>
+                      </button> */}
                   </div>
                
      
