@@ -2,7 +2,7 @@ import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 
-export const DashboardVisual = () => {
+export const VulDashboardVisual = () => {
     return (
     <>
         <div class="asset-rating">
@@ -31,4 +31,4 @@ export const DashboardVisual = () => {
     </>
     );
 };
-export default DashboardVisual;
+export default VulDashboardVisual;

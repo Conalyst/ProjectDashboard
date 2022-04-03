@@ -63,7 +63,7 @@ export const RecDashboard = () => {
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vulner">
+                <a className="sidenav-link" href="./vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>

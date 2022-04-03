@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
-import rec_data from "../rec_data.json";
+import vul_data from "../vul_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
 
 export const RecDashboardDetails = () => {
 
-    const [recommendations, setRecommendationa] = useState(rec_data);
+    const [vulnerabilities, setVulnerabilities] = useState(vul_data);
     return (
     <>     
         <div className="asset-menu-buttons">
@@ -19,18 +19,22 @@ export const RecDashboardDetails = () => {
                     <th>IDs</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Safeguard</th>
-                    <th>Risks Ids</th>
+                    <th>Category</th>
+                    <th>Impact</th>
+                    <th>Likelihood</th>
+                    <th>Rating</th>
                 </tr>
             </thead>
             <tbody>
-                {recommendations.map((recommendation) => (
+                {vulnerabilities.map((vulnerability) => (
                 <tr className="cr-text ">
-                    <td>{recommendation.id}</td>
-                    <td>{recommendation.title}</td>
-                    <td>{recommendation.description}</td>
-                    <td>{recommendation.safeguard}</td>
-                    <td>{recommendation.risks_ids}</td>
+                    <td>{vulnerability.id}</td>
+                    <td>{vulnerability.title}</td>
+                    <td>{vulnerability.description}</td>
+                    <td>{vulnerability.category}</td>
+                    <td>{vulnerability.impact}</td>
+                    <td>{vulnerability.likelihood}</td>
+                    <td>{vulnerability.rating}</td>
                 </tr>
             ) )}
             </tbody>

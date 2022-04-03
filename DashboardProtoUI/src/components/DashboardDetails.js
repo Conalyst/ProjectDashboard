@@ -53,7 +53,6 @@ export const DashboardDetails = () => {
                     <th>Integretity</th>
                     <th>Availability</th>
                     <th>Rating</th>
-                    <th>Datasource</th>
                 </tr>
             </thead>
             <tbody>
@@ -70,7 +69,6 @@ export const DashboardDetails = () => {
                     <td>{asset.integrity}</td>
                     <td>{asset.availability}</td>
                     <td>{asset.rating}</td>
-                    <td>{asset.datasource}</td>
                 </tr>
             ) )}
             </tbody>

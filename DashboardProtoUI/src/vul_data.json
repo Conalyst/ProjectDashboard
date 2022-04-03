@@ -1,0 +1,110 @@
+[
+    {
+        "id": 1,
+        "title": "Retire SiteScrape",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services for the Microsoft Windows and Mac operating systems.",
+        "category": "Technical",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 2,
+        "title": "Encrypt Endpoint",
+        "description": "This asset refers to a formal policy plan that is well documented.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "M",
+        "rating" : "H"
+    },
+    {   
+        "id": 3,
+        "title": "Implement MF",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 4,
+        "title": "Enhance Logging",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 5,
+        "title": "Improve Malicious",
+        "description": "A domain controller is a server that responds to authentication requests and verifies users.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 6,
+        "title": "Isolate DNS",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 7,
+        "title": "Retire SiteScrape",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 8,
+        "title": "Encrypt Endpoint",
+        "description": "This asset refers to a formal policy plan that is well documented.",
+        "category": "Technical",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 9,
+        "title": "Implement MF",
+        "description": "A secret that should be know to an individual or system to control access to a system.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 10,
+        "title": "Enhance Logging",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "category": "Technical",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 11,
+        "title": "Improve Malicious",
+        "description": "A domain controller is a server that responds to authentication requests and verifies users.",
+        "category": "Technical",
+        "impact": "H",
+        "likelihood": "M",
+        "rating" : "L"
+    },
+    {   
+        "id": 12,
+        "title": "Isolate DNS",
+        "description": "Microsoft Office is an office suite of desktop applications, servers and services.",
+        "category": "Technical",
+        "impact": "H",
+        "likelihood": "L",
+        "rating" : "L"
+    }
+]

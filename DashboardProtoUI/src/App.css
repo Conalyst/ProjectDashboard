@@ -875,4 +875,61 @@ li {
   #summary a:not(.collapsed):after {
       content: '- Read Less';
   }
+
+/*.Injury-Level {
+  width: 230px;
+  height: 289px;
+  margin: 17px 65px 7px 19px;
+  padding: 0 0 118px;
+}
+
+.Color {
+  width: 225px;
+  height: 53px;
+  padding: 3px 6px 3.7px 5px;
+  background-color: #f1f1f1;
+}
   
+.dark_blue {
+  width: 112px;
+  height: 36px;
+  margin: 0 0 2px;
+  background-color: #09375f;
+}
+
+.blue {
+  width: 59px;
+  height: 36px;
+  margin: 0 20px 2px 0;
+  background-color: #126dba;
+}
+
+.grey {
+  width: 46px;
+  height: 36px;
+  background-color: #72b7f2;
+}
+*/
+
+.injury-level1 {
+  position: absolute;
+  width: 230px;
+  height: 53px;
+  left: 160px;
+  top: 247px;
+  box-shadow: inset 0px 4px 4px rgba(46, 46, 46, 0.05);
+  filter: drop-shadow(0px 4px 4px rgba(46, 46, 46, 0.15));
+  border-radius: 6px;
+}
+
+.dark_blue {
+  position: absolute;
+  width: 230px;
+  height: 53px;
+  left: 160px;
+  top: 247px;
+  box-shadow: inset 0px 4px 4px rgba(46, 46, 46, 0.05);
+  filter: drop-shadow(0px 4px 4px rgba(46, 46, 46, 0.15));
+  border-radius: 6px;
+}
+

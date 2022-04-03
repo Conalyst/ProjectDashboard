@@ -15,11 +15,11 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import DashboardVisual from "./DashboardVisual";
-import DashboardDetails from "./DashboardDetails";
-import DashboardHistory from "./DashboardHistory";
+import VulDashboardVisual from "./VulDashboardVisual";
+import VulDashboardDetails from "./VulDashboardDetails";
+import VulDashboardHistory from "./VulDashboardHistory";
 
-export const Dashboard = () => { 
+export const VulDashboard = () => { 
   const [tests, setTests] = useState(null);
 
 /*    useEffect(() => {
@@ -62,7 +62,7 @@ export const Dashboard = () => {
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="./vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
@@ -72,8 +72,8 @@ export const Dashboard = () => {
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item sidenav-active">
-                <a className="sidenav-link" href="">
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="./asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
@@ -119,15 +119,15 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
+        <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
             <Tab eventKey="visual" title="Visual" id="db-tab-visual">
-              <DashboardVisual/>
+              <VulDashboardVisual/>
             </Tab>
             <Tab eventKey="detail" title="Details" id="db-tab-details">
-              <DashboardDetails/>
+              <VulDashboardDetails/>
             </Tab>
             <Tab eventKey="history" title="History" id="db-tab-history">
-              <DashboardHistory/>
+              <VulDashboardHistory/>
             </Tab>
           </Tabs>
         </div>
@@ -135,4 +135,4 @@ export const Dashboard = () => {
     </div>
   );
 }
-export default Dashboard;
+export default VulDashboard;
