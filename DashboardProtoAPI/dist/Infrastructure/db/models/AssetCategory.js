@@ -12,6 +12,7 @@ class AssetCategoryEntity extends sequelize_1.Model {
      */
     static associate(models) {
         // define association here
+        console.log("---------------assetCategory");
         AssetCategoryEntity.hasMany(Asset_1.AssetEntity, {
             sourceKey: "id",
             foreignKey: "asset_categoryId",

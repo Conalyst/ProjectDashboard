@@ -25,6 +25,7 @@ interface AssetCategoryAttributes {
 
     static associate(models: any) {
       // define association here
+      console.log("---------------assetCategory")
       AssetCategoryEntity.hasMany(AssetEntity, {
         sourceKey: "id",
         foreignKey: "asset_categoryId",

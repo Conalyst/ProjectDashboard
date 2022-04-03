@@ -19,6 +19,7 @@ const app = (0, express_1.default)();
 const test_1 = require("./test");
 const asset_1 = require("./routes/asset");
 const Asset_1 = require("./Infrastructure/db/models/Asset");
+const CompanyAsset_1 = require("./Infrastructure/db/models/CompanyAsset");
 const Company_1 = require("./Infrastructure/db/models/Company");
 const testApi = new test_1.TestApi();
 const assetApi = new asset_1.AssetApi();
@@ -48,36 +49,49 @@ router.get("/company/:id/assets", (req, res) => __awaiter(void 0, void 0, void 0
     let companyId = req.params.id;
     console.log("assetCompany id is:", companyId);
     //////// ----------version 1
-    // Asset.belongsToMany(Company, {
-    //   through: CompanyAsset, 
-    //   foreignKey:  { name: 'assetId', allowNull: false }
-    //   // // foreignKey: 'assetId',
-    //   // // otherKey: 'companyId'
-    // })
-    // Company.belongsToMany(Asset, {
-    //   through: CompanyAsset,
-    //   foreignKey:  { name: 'companyId', allowNull: false } 
-    //   // foreignKey: 'companyId',
-    //   // otherKey: 'assetId'
-    // }) 
-    //////// ----------version 2
     Asset_1.AssetEntity.belongsToMany(Company_1.CompanyEntity, {
-        through: "company_assets",
+        through: CompanyAsset_1.CompanyAssetEntity,
         foreignKey: { name: 'assetId', allowNull: false }
         // // foreignKey: 'assetId',
         // // otherKey: 'companyId'
     });
     Company_1.CompanyEntity.belongsToMany(Asset_1.AssetEntity, {
-        through: "company_assets",
+        through: CompanyAsset_1.CompanyAssetEntity,
         foreignKey: { name: 'companyId', allowNull: false }
         // foreignKey: 'companyId',
         // otherKey: 'assetId'
     });
+    //   Team.hasMany(Player);
+    // Player.belongsTo(Team);
+    //  AssetCategoryEntity.hasMany(Asset, {
+    //   foreignKey: 'asset_categoryId' 
+    // });
+    // Asset.belongsTo(AssetCategoryEntity);
+    //////// ----------version 2
+    // Asset.belongsToMany(Company, {
+    //   through: "company_assets", 
+    //   foreignKey:  { name: 'assetId', allowNull: false }
+    //   // // foreignKey: 'assetId',
+    //   // // otherKey: 'companyId'
+    // })
+    // Company.belongsToMany(Asset, {
+    //   through: "company_assets",
+    //   foreignKey:  { name: 'companyId', allowNull: false } 
+    //   // foreignKey: 'companyId',
+    //   // otherKey: 'assetId'
+    // }) 
+    // AssetCategoryEntity.hasMany(Asset, {
+    //   sourceKey: "id",
+    //   foreignKey: "asset_categoryId",
+    //   as: "assets",
+    // });
     console.log(Company_1.CompanyEntity);
     try {
         const record = yield Company_1.CompanyEntity.findAll({ where: { id: companyId },
             include: [
-                { model: Asset_1.AssetEntity, attributes: ["title"] }
+                { model: Asset_1.AssetEntity },
+                // {model: CompanyAsset, attributes: ["confidentiality", "integrity", "availability", "rating"]}, 
+                // {model: AssetCategoryEntity}
             ]
         });
         // const record = await Company.findAll({where: {id: companyId}});
