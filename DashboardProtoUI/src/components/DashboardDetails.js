@@ -4,7 +4,9 @@ import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import axios from "axios";
+// import axios from "axios";
+import { pullCompanyAssets } from "../services/companyAssetsService";
+
 
 export const DashboardDetails = () => {
 
@@ -21,7 +23,9 @@ export const DashboardDetails = () => {
         //   "Authorization"
         // ] = `Bearer ${parsedUser.accessToken}`;
         
-        axios.get(`http://localhost:5000/api/v2/assets/company/${parsedUser.companyId}`).then((result) => {
+        pullCompanyAssets(parsedUser.companyId)
+        .then((result) => {
+            // console.log('under dashboard details', result.data);
             setAssets(result.data);
         })
       }, []);
