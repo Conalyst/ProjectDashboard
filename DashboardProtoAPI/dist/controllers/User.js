@@ -26,17 +26,20 @@ class UserApi {
             return res.status(200).json(usersList);
         });
     }
-    ;
     //endpoint create user
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { email, password } = req.body;
-            const alreadyExistsUser = yield this._userRepository.GetUserByemail(email).catch((err) => {
+            const alreadyExistsUser = yield this._userRepository
+                .GetUserByemail(email)
+                .catch((err) => {
                 console.log("Error: ", err);
             });
             console.log("in user ts", alreadyExistsUser);
             if (alreadyExistsUser) {
-                return res.status(409).json({ message: "User with this email already exists!" });
+                return res
+                    .status(409)
+                    .json({ message: "User with this email already exists!" });
             }
             const userDto = this.getDtoFromRequest(req);
             const salt = yield bcrypt.genSalt();
@@ -46,7 +49,9 @@ class UserApi {
                 return res.status(201).json(createdUser);
             }
             else {
-                return res.status(400).send("The user could not be created. Please check the provided data.");
+                return res
+                    .status(400)
+                    .send("The user could not be created. Please check the provided data.");
             }
         });
     }
@@ -61,14 +66,20 @@ class UserApi {
             }
             else {
                 try {
+                    console.log("backend - controller - User.ts - existingUser", existingUser);
                     if (yield bcrypt.compare(req.body.password, existingUser.password)) {
                         const jwtToken = jwt.sign({ id: existingUser.id, email: existingUser.email }, process.env.JWT_SECRET);
-                        res.json({ message: "Welcome Back!", token: jwtToken, role: existingUser.Role.name });
+                        //   res.json({ message: "Welcome Back!", token: jwtToken, role:existingUser.Role.name });
+                        res.json({
+                            message: "Welcome Back!",
+                            token: jwtToken,
+                            role: existingUser.Role.name,
+                            companyId: existingUser.companyId,
+                            name: existingUser.name
+                        });
                     }
                     else {
-                        return res
-                            .status(400)
-                            .json({ message: " password does not match!" });
+                        return res.status(400).json({ message: " password does not match!" });
                     }
                 }
                 catch (_a) {

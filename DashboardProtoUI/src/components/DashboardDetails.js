@@ -4,10 +4,31 @@ import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
+import axios from "axios";
 
 export const DashboardDetails = () => {
 
-    const [assets, setAssets] = useState(data);
+    const [assets, setAssets] = useState([]);
+
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("storedUser");
+    
+        const parsedUser = JSON.parse(storedUser);
+        console.log("parsedUser",parsedUser);
+    
+        // axios.defaults.headers.common[
+        //   "Authorization"
+        // ] = `Bearer ${parsedUser.accessToken}`;
+        
+        axios.get(`http://localhost:5000/api/v2/assets/company/${parsedUser.companyId}`).then((result) => {
+            setAssets(result.data);
+        })
+      }, []);
+
+
+
+
     return (
     <>     
         <div className="asset-menu-buttons">
@@ -38,10 +59,10 @@ export const DashboardDetails = () => {
                     <td>
                         <button type="button" className="button-modal" data-toggle="modal" data-target="#myModal"><img src={info_black} alt =""/></button>
                     </td>
-                    <td>{asset.id}</td>
-                    <td>{asset.title}</td>
-                    <td>{asset.description}</td>
-                    <td>{asset.category}</td>
+                    <td>{asset.assetId}</td>
+                    <td>{asset.Asset.title}</td>
+                    <td>{asset.Asset.description}</td>
+                    <td>{asset.Asset.categoryId}</td>
                     <td>{asset.confidentiality}</td>
                     <td>{asset.integrity}</td>
                     <td>{asset.availability}</td>
