@@ -51,6 +51,7 @@ export const ThreatsDashboardDetails = () => {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Category</th>
+                    <th>Agent</th>
                     <th>Impact</th>
                     <th>Likelihood</th>
                     <th>Rating</th>
@@ -114,6 +115,7 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.title}</td>
                     <td>{threat.description}</td>
                     <td>{threat.category}</td>
+                    <td>{threat.agent}</td>
                     <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
                     <td>{threat.rating}</td>
