@@ -13,6 +13,8 @@ interface UserAttributes {
   password: string;
   companyId: number;
   roleId: number;
+  createdAt: Date;
+  updatedAt: Date | null;
 }
 
 module.exports = (sequelize: any, DataTypes:any) => {
@@ -24,7 +26,8 @@ module.exports = (sequelize: any, DataTypes:any) => {
     public password!: string;
     public companyId!: number;
     public roleId!: number;
-
+    public createdAt!: Date;
+    public updatedAt!: Date | null;
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -32,9 +35,11 @@ module.exports = (sequelize: any, DataTypes:any) => {
      */
     static associate(models: any) {
       User.belongsTo(models.Company, {
+        targetKey: 'id',
         foreignKey: 'companyId'
       })
       User.belongsTo(models.Role, {
+        targetKey: 'id',
         foreignKey: 'roleId'
       })
     }
@@ -66,6 +71,16 @@ module.exports = (sequelize: any, DataTypes:any) => {
     roleId: {
       type: DataTypes.INTEGER,
       allowNull: false,
+    } ,
+    createdAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      defaultValue: new Date(),
+      type: DataTypes.DATE
     }       
   }, {
     sequelize,
