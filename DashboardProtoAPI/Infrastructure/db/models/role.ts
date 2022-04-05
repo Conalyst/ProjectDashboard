@@ -1,13 +1,13 @@
 import {
   Model,
+  DataTypes,
+  Association
 } from "sequelize";
 
 
 interface RoleAttributes {
   id: number;
   name: string;
-  createdAt: Date;
-  updatedAt: Date | null;
 }
 
 module.exports = (sequelize: any, DataTypes:any) => {
@@ -15,8 +15,7 @@ class Role extends Model <RoleAttributes>
   implements RoleAttributes {
     public id!: number;
     public name!: string;
-    public createdAt!: Date;
-    public updatedAt!: Date | null;
+ 
     /**
      * Helper method for defining associations.
      * This method is not a part of Sequelize lifecycle.
@@ -41,18 +40,7 @@ class Role extends Model <RoleAttributes>
     name:{
       type:DataTypes.STRING,
       allowNull:false
-    },
-    createdAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
-    },
-    updatedAt: {
-      allowNull: false,
-      defaultValue: new Date(),
-      type: DataTypes.DATE
-    }
-
+    } 
   }, {
     sequelize,
     modelName: 'Role',
