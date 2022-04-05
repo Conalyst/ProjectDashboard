@@ -1,0 +1,92 @@
+[
+    {
+        "id": 1,
+        "title": "Accidental viewing of confidential information ",
+        "description": "A ORG employee having access to user information breaches confidentiality by viewing information.",
+        "category": "Accidental",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 2,
+        "title": "Misconfiguration of System",
+        "description": "ORG IT Staff accidentally misconfigure a system causing an outage or security incident.",
+        "category": "Accidental",
+        "impact": "L",
+        "likelihood": "M",
+        "rating" : "H"
+    },
+    {   
+        "id": 3,
+        "title": "Unencrypted exchange of documents via e-mail",
+        "description": "ORG staff, third-party assessor, external-  member or ORG client accidentally send sensitive, confidential, or Protected B information, unencrypted using e-mail.",
+        "category": "Accidental",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 4,
+        "title": "Lost/Stolen Device",
+        "description": "An ORG staff member or third-party assessor realizes their laptop has been lost or stolen, containing Client Data.  These devices do not leverage hard disk encryption, potentially leaving sensitive data easily exposed to a criminal with minimal time and resources to extract data ",
+        "category":"Accidental",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 5,
+        "title": "Hacker targets ORG endpoint(s) ",
+        "description": "An attacker exploits technical vulnerabilities in ORG‚Äôs application and/or workstation with the intention of exfiltrating or destroying sensitive or confidential information",
+        "category": "Deliberate",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 6,
+        "title": "ORG Employee accidentally downloads malware",
+        "description": "Malware infects ORG assets through drive-by-download or phishing causing interruption of service or potential loss of records.  ",
+        "category": "Deliberate",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 7,
+        "title": "Assessor accidentally downloads malware",
+        "description": "A third-party assessor has a device compromised either by drive-by download, phishing, or theft resulting in client information being exfiltrated.",
+        "category": "Deliberate",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {
+        "id": 8,
+        "title": "Employee victim of financial fraud",
+        "description": "An ORG employee with access to accounting software transfers funds to an attacker through a phishing scam whereby the attacker posed as a legitimate business contact",
+        "category": "Deliberate",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 9,
+        "title": "ORG Employee Credentials are lost/stolen",
+        "description": "An ORG employee provides their ORG Active Directory or other application credentials to an attacker through phishing",
+        "category": "Deliberate",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    },
+    {   
+        "id": 10,
+        "title": "ORG Network or Server Compromised ",
+        "description": "An attacker gains access to ORG network and/or application administrative credentials leveraging weak access controls.",
+        "category": "Deliberate",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H"
+    }
+]

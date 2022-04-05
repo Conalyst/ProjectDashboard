@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
+import ManageModal from "./ManageModal";
+
 
 export const RecDashboardDetails = () => {
 
@@ -9,8 +11,9 @@ export const RecDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-                <button className="Button-Icon-Manage"> Manage</button> 
-                <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+            <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
+                 <ManageModal/>
+            <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
@@ -20,7 +23,7 @@ export const RecDashboardDetails = () => {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Safeguard</th>
-                    <th>Risks Ids</th>
+                    <th>Risk IDs</th>
                 </tr>
             </thead>
             <tbody>

@@ -2,11 +2,11 @@ import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 
-export const VulDashboardVisual = () => {
+export const ThreatsDashboardVisual = () => {
     return (
     <>
         <div class="asset-rating">
-            <p>Vulnerability Ratings</p>
+            <p>Threat Ratings</p>
             <p>Total<br/>82</p>
             <p>High<br/>20</p>
             <p>Medium<br/>15</p>
@@ -31,4 +31,4 @@ export const VulDashboardVisual = () => {
     </>
     );
 };
-export default VulDashboardVisual;
+export default ThreatsDashboardVisual;

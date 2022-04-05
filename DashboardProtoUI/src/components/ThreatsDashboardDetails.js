@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
-import vul_data from "../vul_data.json";
+import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageModal from "./ManageModal";
 
 
-export const VulDashboardDetails = () => {
+export const ThreatsDashboardDetails = () => {
 
-    const [vulnerabilities, setVulnerabilities] = useState(vul_data);
+    const [threats, setThreats] = useState(thr_data);
 
    /*    const [assets, setAssets] = useState([]);
     useEffect(() => {
@@ -37,8 +37,7 @@ export const VulDashboardDetails = () => {
     <>     
         <div className="asset-menu-buttons">
                 <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-              
-              <ManageModal/>
+                  <ManageModal/>
                 <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -58,7 +57,7 @@ export const VulDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {vulnerabilities.map((vulnerability) => (
+                {threats.map((threat) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
@@ -111,13 +110,13 @@ export const VulDashboardDetails = () => {
                 </div>
               </div>
                     </td>
-                    <td>{vulnerability.id}</td>
-                    <td>{vulnerability.title}</td>
-                    <td>{vulnerability.description}</td>
-                    <td>{vulnerability.category}</td>
-                    <td>{vulnerability.impact}</td>
-                    <td>{vulnerability.likelihood}</td>
-                    <td>{vulnerability.rating}</td>
+                    <td>{threat.id}</td>
+                    <td>{threat.title}</td>
+                    <td>{threat.description}</td>
+                    <td>{threat.category}</td>
+                    <td>{threat.impact}</td>
+                    <td>{threat.likelihood}</td>
+                    <td>{threat.rating}</td>
                 </tr>
             ) )}
             </tbody>
@@ -126,4 +125,4 @@ export const VulDashboardDetails = () => {
     </>
     );
 };
-export default VulDashboardDetails;
+export default ThreatsDashboardDetails;
