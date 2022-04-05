@@ -15,7 +15,7 @@ testRouter.get("/", passport.authenticate("jwt", { session: false }),
       testApi.getAll(req, res);
     
   })
-  testRouter.post("/tests", 
+  testRouter.post("/", 
  (req, res) => testApi.create(req, res)
 );
 

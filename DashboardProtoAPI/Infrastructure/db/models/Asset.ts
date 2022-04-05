@@ -44,6 +44,9 @@ module.exports = (sequelize: any, DataTypes:any) => {
     categoryId:{
       type:DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {  msg: "You must enter a id" }
+    },
     },
     title:{
       type:DataTypes.TEXT,

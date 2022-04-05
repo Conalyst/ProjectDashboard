@@ -1,6 +1,7 @@
 import express from 'express'
 import  {AssetRepository } from '../Infrastructure/repositories/AssetRepository'
-
+import { AssetDto } from '../domain/dtos/AssetDto'
+import {toEntity} from '../application/mappers/assetMapper'
 export class AssetApi{
     private _assetRepository:any;
     constructor(){
@@ -19,4 +20,41 @@ export class AssetApi{
       let asset = await this._assetRepository.GetById(assetId);
       return  res.status(200).json(asset);
     };
+
+
+     //endpoint create Asset
+     async create(req: express.Request, res: express.Response){
+        
+      const { title} = req.body;
+     
+      const alreadyExistsAsset = await this._assetRepository.GetAssetByTitle(title)
+      .catch(
+      (err) => {
+          console.log("Error: ", err);
+      }
+      );
+      console.log("in Asset ts", alreadyExistsAsset)
+      if (alreadyExistsAsset) {
+      return res.status(409).json({ message: "this Asset already exist!" });
+      }else{
+        const assetDto = this.getDtoFromRequest(req);
+        
+        let createdAsset = await this._assetRepository.Create(toEntity(assetDto))
+        console.log("kkkkkkk",createdAsset)
+      if(createdAsset){
+          return res.status(201).json(createdAsset);
+      }else{
+          return res.status(400).send("The asset could not be created. Please check the provided data.")
+      }
+      }
+      
+  }
+
+    //#region private methods
+    getDtoFromRequest(req: express.Request){
+        
+      return new AssetDto(req.body.id, req.body.categoryId,req.body.title, req.body.description, new Date());
+  }
+ 
+  //#endregion
 }
