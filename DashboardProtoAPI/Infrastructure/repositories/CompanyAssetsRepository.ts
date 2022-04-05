@@ -12,7 +12,12 @@ export class CompanyAssetsRepository {
     public async GetByCompanyId(companyId: number){
       let assets = await db.CompanyAsset.findAll({
         where: {companyId: `${companyId}`},
-        include: [db.Asset, db.Company]
+        include: [{model: db.Asset, 
+                  include: [{model:db.AssetCategory, attributes:['id', 'name']}],
+                  attributes: ['id','title','description']},
+                 {model: db.Company, attributes:['id','name']}
+                ],
+                 attributes: ['id','assetId','companyId','integrity','confidentiality','integrity','availability','rating']
         // include: { all: true, nested: true }
       })
         return assets;      
