@@ -1,45 +1,44 @@
 import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
-import data from "../data.json";
+import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageModal from "./ManageModal";
-// import axios from "axios";
-import { pullCompanyAssets } from "../services/companyAssetsService";
 
 
-export const DashboardDetails = () => {
+export const ThreatsDashboardDetails = () => {
 
-    const [assets, setAssets] = useState([]);
+    const [threats, setThreats] = useState(thr_data);
 
-
+   /*    const [assets, setAssets] = useState([]);
     useEffect(() => {
-        const storedUser = localStorage.getItem("storedUser");
-    
-        const parsedUser = JSON.parse(storedUser);
-        console.log("parsedUser",parsedUser);
-    
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${parsedUser.accessToken}`;
-        
-        pullCompanyAssets(parsedUser.companyId)
-        .then((result) => {
-            console.log('under dashboard details', result.data);
-            setAssets(result.data);
-        })
-      }, []);
-
-
-
+        return new Promise((resolve, reject) => {
+          try {
+              
+            // do db call or API endpoint axios call here and return the promise.
+            getAllAssets()
+            .then((res) => {
+              setAssets(res);
+              resolve(res);
+            })
+              .catch((err) => {
+                setAssets([]); 
+                reject("Request error!");
+              });
+          } catch (error) {
+            console.error("error!==", error);
+            reject("signin error!");
+          }
+        });
+      }, []); */
 
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-            <ManageModal/>
-          <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+                <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
+                  <ManageModal/>
+                <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
@@ -52,22 +51,22 @@ export const DashboardDetails = () => {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Category</th>
-                    <th>Confidentiality</th>
-                    <th>Integretity</th>
-                    <th>Availability</th>
+                    <th>Agent</th>
+                    <th>Impact</th>
+                    <th>Likelihood</th>
                     <th>Rating</th>
                 </tr>
             </thead>
             <tbody>
-                {assets.map((asset) => (
+                {threats.map((threat) => (
                 <tr className="cr-text">
                     <td>
-                  <button ctype="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                      <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
               <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog">
                   <div className="modal-content">
                     <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel1">Asset</h5>
+                      <h5 className="modal-title" id="exampleModalLabel"> Asset</h5>
                       <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div className="modal-body">
@@ -103,22 +102,23 @@ export const DashboardDetails = () => {
                       </div>
                     </div>
                   </div>
-                  ...
-                  </div>
+                    ...
+                 </div>
                     <div className="modal-footer">
+                      
                     </div>
                   </div>
                 </div>
               </div>
                     </td>
-                    <td>{asset.assetId}</td>
-                    <td>{asset.Asset.title}</td>
-                    <td>{asset.Asset.description}</td>
-                    <td>{asset.Asset.categoryId}</td>
-                    <td>{asset.confidentiality}</td>
-                    <td>{asset.integrity}</td>
-                    <td>{asset.availability}</td>
-                    <td>{asset.rating}</td>
+                    <td>{threat.id}</td>
+                    <td>{threat.title}</td>
+                    <td>{threat.description}</td>
+                    <td>{threat.category}</td>
+                    <td>{threat.agent}</td>
+                    <td>{threat.impact}</td>
+                    <td>{threat.likelihood}</td>
+                    <td>{threat.rating}</td>
                 </tr>
             ) )}
             </tbody>
@@ -127,4 +127,4 @@ export const DashboardDetails = () => {
     </>
     );
 };
-export default DashboardDetails;
+export default ThreatsDashboardDetails;
