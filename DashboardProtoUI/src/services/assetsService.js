@@ -1,4 +1,4 @@
-import { SYSTEM_ERROR } from "../config/CONSTANTS";
+/*import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
 import { GET_ALL_ASSETS, GET_ASSET_BY_COMPANY_ID, GET_ASSET_BY_ID } from "./constants";
   
@@ -50,4 +50,4 @@ import { GET_ALL_ASSETS, GET_ASSET_BY_COMPANY_ID, GET_ASSET_BY_ID } from "./cons
         reject(SYSTEM_ERROR);
       }
     });
-  };
+  };*/
