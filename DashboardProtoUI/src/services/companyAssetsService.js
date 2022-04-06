@@ -5,12 +5,13 @@ import { COMPANYASSETS } from "./constants";
 
    // get company assets 
    export const pullCompanyAssets = (companyId) => {
-       
+       console.log('------front end ', companyId);
      return new Promise((resolve, reject) => {
        try {
          console.log(COMPANYASSETS());
          axios 
-         .get(COMPANYASSETS()+companyId)
+        //  .get(COMPANYASSETS()+companyId)
+        .get(COMPANYASSETS(companyId))
          .then(res => 
            {
             resolve(res);

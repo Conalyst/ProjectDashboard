@@ -25,7 +25,7 @@ export const DashboardDetails = () => {
         
         pullCompanyAssets(parsedUser.companyId)
         .then((result) => {
-            // console.log('under dashboard details', result.data);
+            console.log('under dashboard details', result.data);
             setAssets(result.data);
         })
       }, []);
