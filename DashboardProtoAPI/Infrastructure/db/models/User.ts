@@ -1,10 +1,10 @@
+'use strict';
 import {
   Model,
-  DataTypes
-} from "sequelize";
-import {sequelize}  from '../config/sequelize'
-import {CompanyEntity} from './Company'
-import {RoleEntity} from './Role'
+  UUIDV4,
+  
+}  from 'sequelize';
+// import sequelize from 'sequelize/types/sequelize';
 
 interface UserAttributes {
   id: number;
@@ -15,7 +15,8 @@ interface UserAttributes {
   roleId: number;
 }
 
- export  class UserEntity extends Model <UserAttributes> 
+module.exports = (sequelize: any, DataTypes:any) => {
+  class User extends Model <UserAttributes> 
   implements UserAttributes {
     public id!: number;
     public name!: string;
@@ -30,20 +31,20 @@ interface UserAttributes {
      * The `models/index` file will call this method automatically.
      */
     static associate(models: any) {
-      // define association here
-      UserEntity.belongsTo(CompanyEntity);
-      CompanyEntity.hasMany(UserEntity);
-      
-      UserEntity.belongsTo(RoleEntity);
-      RoleEntity.hasMany(UserEntity);
+      User.belongsTo(models.Company, {
+        foreignKey: 'companyId'
+      })
+      User.belongsTo(models.Role, {
+        foreignKey: 'roleId'
+      })
     }
   }
-  UserEntity.init({
+  User.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
       primaryKey:true,
-      autoIncrement:true
+      autoIncrement: true
     },
     name:{
       type:DataTypes.STRING,
@@ -51,7 +52,8 @@ interface UserAttributes {
     } ,
     email:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:false,
+      unique: true
     } ,
     password:{
       type:DataTypes.STRING,
@@ -71,4 +73,5 @@ interface UserAttributes {
     tableName: 'users'
   });
   
- 
+  return User;
+}
