@@ -1,23 +1,14 @@
-'use strict';
+"use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-    class User extends sequelize_1.Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
+    class Valencia extends sequelize_1.Model {
         static associate(models) {
-            User.belongsTo(models.Company, {
-                foreignKey: 'companyId'
-            });
-            User.belongsTo(models.Role, {
-                foreignKey: 'roleId'
-            });
+            // define association here
+            // clients: Association<UserEntity, ClientEntity>
         }
     }
-    User.init({
+    Valencia.init({
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -30,25 +21,28 @@ module.exports = (sequelize, DataTypes) => {
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
-            unique: true
+            allowNull: false
         },
         password: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        companyId: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-        },
         roleId: {
             type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        updatedAt: {
+            type: DataTypes.DATE,
             allowNull: false,
-        }
+        },
+        createdAt: {
+            type: new DataTypes.DATE,
+            allowNull: false,
+        },
     }, {
         sequelize,
-        modelName: 'User',
-        tableName: 'users'
+        modelName: 'Valencia',
+        tableName: 'valencia'
     });
-    return User;
+    return Valencia;
 };
