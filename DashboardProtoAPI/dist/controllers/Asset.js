@@ -11,6 +11,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetApi = void 0;
 const AssetRepository_1 = require("../Infrastructure/repositories/AssetRepository");
+const AssetDto_1 = require("../domain/dtos/AssetDto");
+const assetMapper_1 = require("../application/mappers/assetMapper");
 class AssetApi {
     constructor() {
         this._assetRepository = new AssetRepository_1.AssetRepository();
@@ -32,5 +34,32 @@ class AssetApi {
         });
     }
     ;
+    //endpoint create Asset
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { title } = req.body;
+            const alreadyExistsAsset = yield this._assetRepository.GetAssetByTitle(title)
+                .catch((err) => {
+                console.log("Error: ", err);
+            });
+            if (alreadyExistsAsset) {
+                return res.status(409).json({ message: "this Asset already exist!" });
+            }
+            else {
+                const assetDto = this.getDtoFromRequest(req);
+                let createdAsset = yield this._assetRepository.Create((0, assetMapper_1.toEntity)(assetDto));
+                if (createdAsset) {
+                    return res.status(201).json(createdAsset);
+                }
+                else {
+                    return res.status(400).send("The asset could not be created. Please check the provided data.");
+                }
+            }
+        });
+    }
+    //#region private methods
+    getDtoFromRequest(req) {
+        return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, new Date());
+    }
 }
 exports.AssetApi = AssetApi;

@@ -17,6 +17,7 @@ exports.AssetRepository = void 0;
 // import   AssetOutput  from "../db/models"
 // import  AssetCategory  from "../db/models";
 const models_1 = __importDefault(require("../db/models"));
+const Asset = require("../db/models");
 class AssetRepository {
     constructor() {
     }
@@ -28,14 +29,30 @@ class AssetRepository {
             return assets;
         });
     }
+    GetAssetById(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Asset = yield models_1.default.Asset.findOne({
+                where: { id: `${id}` }
+            });
+            return Asset;
+        });
+    }
     GetById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Asset.findByPk(id);
         });
     }
-    GetByCompanyId(id) {
+    GetAssetByTitle(title) {
         return __awaiter(this, void 0, void 0, function* () {
-            return models_1.default.Asset.findByPk(id);
+            const Asset = yield models_1.default.Asset.findOne({
+                where: { title: `${title}` }
+            });
+            return Asset;
+        });
+    }
+    Create(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.create(model['dataValues']);
         });
     }
 }
