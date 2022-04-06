@@ -5,7 +5,7 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
-import Manage from "./Manage";
+import ManageModal from "./ManageModal";
 
 export const DashboardDetails = () => {
 
@@ -36,8 +36,8 @@ export const DashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage">Manage</button> 
-            <Manage/>
+          <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
+            <ManageModal/>
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
