@@ -38,12 +38,16 @@ const handleSubmit = e => {
   };
  postLogin(requestDto)
   .then((response) => {
+    console.log('fontend - login', response.data); 
     if (response) {
-     
         const accessToken= response.data.token;
         Cookies.set("access", accessToken);
         setErr('');
         requestLogin(accessToken);
+
+      const user = JSON.stringify(response.data);
+      localStorage.setItem("storedUser", user);
+
     } else {
       console.log("no response ")
     }
