@@ -22,6 +22,9 @@ import DashboardHistory from "./DashboardHistory";
 
 export const Dashboard = () => { 
   const [tests, setTests] = useState(null);
+  const storedUser = localStorage.getItem("storedUser");
+    
+  const parsedUser = JSON.parse(storedUser);
 
 /*    useEffect(() => {
         return new Promise((resolve, reject) => {
@@ -93,7 +96,7 @@ export const Dashboard = () => {
         <div>
           <div class="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span class="user-label">Alex Toma</span>
+            <span class="user-label">{parsedUser.name}</span>
           </div>
           <ul class="sidenav-menu">
             <li class="sidenav-item">
