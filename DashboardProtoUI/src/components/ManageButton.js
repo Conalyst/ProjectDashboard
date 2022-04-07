@@ -1,13 +1,13 @@
 import React from 'react';
 import {Button, InputGroup, Form} from "react-bootstrap";
 
-const ManageModal = () => {
+const ManageButton = () => {
   return (
     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
       <div className="modal-content Manage-listAdd-modal">
         <div className="modal-header Rectangle-top-modal">
-          <h5 className="modal-title Add-New-Asset-modal" id="exampleModalLabel">Add New Asset</h5>
+          <h5 className="modal-title Add-New-Asset-modal" id="exampleModalLabel">Add New</h5>
           <button type="button" className="btn-close Top-Cancel" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div className="modal-body Rectangle-grey-box-modal">
@@ -71,4 +71,4 @@ const ManageModal = () => {
   )
 }
 
-export default ManageModal
+export default ManageButton

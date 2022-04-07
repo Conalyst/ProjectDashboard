@@ -1244,6 +1244,104 @@ li {
     background-color: #fff;
     color: #145b93;
   }
+
+  .V-T-Color {
+    width: 225px;
+    height: 53px;
+    margin: 0 0.8px 0 0;
+    padding: 3px 103.9px 14px 5.8px;
+    background-color: #f1f1f1;
+  }
+
+  .Dark-Blue-Color {
+    width: 115.3px;
+    height: 36px;
+    padding: 0 0px 0 6.8px;
+    background-color: #09375f;
+  }
+  .Light-Blue-Color {
+    width: 24.2px;
+    height: 36px;
+    margin: 0 33.4px 2px 57.2px;
+    background-color: #126dba;
+  }
+
+  .Grey-Color {
+    width: 76.5px;
+    height: 36px;
+    margin: 0 0 2px 9.9px;
+    background-color: #72b7f2;
+  }
+
+  .Top-3-threat-agents-with-High-Overall-ratings {
+    width: 219px;
+    height: 38px;
+    margin: 13px 160px 31px 53px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e2e2e;
+  }
+
+  .Rectangle-1407 {
+    width: 83px;
+    height: 31px;
+    margin: 31px 296px 14px 53px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f1f1f1;
+  }
+
+  .Rectangle-6 {
+    width: 1174px;
+    height: 575px;
+    flex-grow: 0;
+    margin: 17px 26px 0 24px;
+    padding: 30.3px 32px 54px;
+    box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+    border: solid 3px #f1f1f1;
+    background-color: #fff;
+  }
+
+  .Rectangle-1409 {
+    width: 153px;
+    height: 31px;
+    margin: 13px 226px 2px 53px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f1f1f1;
+  }
+  
+  .Phishing {
+    width: 63px;
+    height: 19px;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e2e2e;
+  }
+  
+  .Rectangle-1408 {
+    width: 169px;
+    height: 31px;
+    margin: 14px 210px 14px 53px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+    background-color: #f1f1f1;
+  }
   
   
 
