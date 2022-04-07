@@ -157,7 +157,8 @@ export const AddAsset = () => {
           </Form>
         </div>
           <div className="test">
-            <Button className="Button-Icon-done" type="submit" onClick={() =>onAddAsset()}>
+            {/* <Button className="Button-Icon-done" type="submit" onClick={() =>onAddAsset()}> */}
+            <Button className="Button-Icon-done" type="submit" >
               Done
             </Button>
             </div>
