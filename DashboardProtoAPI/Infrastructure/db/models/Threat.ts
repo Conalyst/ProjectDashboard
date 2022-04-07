@@ -5,9 +5,10 @@ import {
   
 }  from 'sequelize';
 
-interface AssetAttributes {
+interface ThreatAttributes {
   id: number;
-  categoryId:number;
+  category: string;
+  agent: string;
   title: string;
   description: string;
   createdAt: Date;
@@ -15,39 +16,39 @@ interface AssetAttributes {
 }
 
 module.exports = (sequelize: any, DataTypes:any) => {
-  class Asset extends Model <AssetAttributes> 
-  implements AssetAttributes {
+  class Threat extends Model <ThreatAttributes> 
+  implements ThreatAttributes {
     public id!: number;
-    public categoryId!: number;
+    public category!: string;
+    public agent!: string;
     public title!: string;
     public description!: string;
     public createdAt!: Date;
     public updatedAt!: Date | null;
 
     static associate(models: any) {
-      Asset.belongsTo(models.AssetCategory, {
-        foreignKey: 'categoryId',
-      })
-      Asset.belongsToMany(models.Company, {
-        through: models.CompanyAsset,
-        foreignKey: 'assetId' 
+      // Asset.belongsTo(models.AssetCategory, {
+      //   foreignKey: 'categoryId',
+      // })
+      Threat.belongsToMany(models.Vulnerability, {
+        through: models.VulnerabilityThreat,
+        foreignKey: 'threatId' 
       }) 
-      Asset.belongsToMany(models.Vulnerability, {
-        through: models.AssetVulnerability,
-        foreignKey: 'assetId' 
-      }) 
-    
     }
   }
-  Asset.init({
+  Threat.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
       primaryKey:true,
       autoIncrement:true
     },
-    categoryId:{
-      type:DataTypes.INTEGER,
+    category:{
+      type:DataTypes.TEXT,
+      allowNull: false,
+    },
+    agent:{
+      type:DataTypes.TEXT,
       allowNull: false,
     },
     title:{
@@ -68,8 +69,8 @@ module.exports = (sequelize: any, DataTypes:any) => {
     },
   }, {
     sequelize,
-    modelName: 'Asset',
-    tableName: 'assets'
+    modelName: 'Threat',
+    tableName: 'threats'
   });
-  return Asset;
+  return Threat;
 }
