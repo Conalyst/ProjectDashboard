@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
-import ManageModal from "./ManageModal";
+import ManageButton from "./ManageButton";
 
 
 export const RecDashboardDetails = () => {
@@ -12,7 +12,7 @@ export const RecDashboardDetails = () => {
     <>     
         <div className="asset-menu-buttons">
             <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-                 <ManageModal/>
+                 <ManageButton/>
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">

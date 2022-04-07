@@ -4,7 +4,7 @@ import vul_data from "../vul_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import ManageModal from "./ManageModal";
+import ManageButton from "./ManageButton";
 
 
 export const VulDashboardDetails = () => {
@@ -38,7 +38,7 @@ export const VulDashboardDetails = () => {
         <div className="asset-menu-buttons">
                 <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
               
-              <ManageModal/>
+              <ManageButton/>
                 <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">

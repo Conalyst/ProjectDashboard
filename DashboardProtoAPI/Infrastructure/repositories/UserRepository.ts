@@ -8,14 +8,17 @@ export class UserRepository {
          
     }
     public async Get(){
-        let users  = await db.User.findAll();
+        let users  = await db.User.findAll({
+            include: [db.Role, db.Company]
+        });
         return users;
     }   
     async GetUserByemail(email: string){
 
         const User = await db.User.findOne({
              where: {email: `${email}`},
-             include: [db.Role]
+             include: [db.Role,db.Company]
+              
          })
          return User;
      }

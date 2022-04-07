@@ -15,7 +15,7 @@ export class UserApi {
     let usersList = await this._userRepository.Get();
     return res.status(200).json(usersList);
   }
-
+  
   //endpoint create user
   async create(req: express.Request, res: express.Response) {
     const { email, password } = req.body;
@@ -70,7 +70,8 @@ export class UserApi {
             token: jwtToken,
             role: existingUser.Role.name,
             companyId: existingUser.companyId,
-            name:existingUser.name
+            name:existingUser.name,
+            CompanyName:existingUser.Company.name
           });
         } else {
           return res.status(400).json({ message: " password does not match!" });
