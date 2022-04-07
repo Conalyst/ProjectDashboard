@@ -17,7 +17,7 @@ import {
     ADDASSET,
     LOGIN,
     TEST
-} from "./constants";
+} from "./CONSTANTS";
 
 export const RouterConfig = (props) => {
     return (
