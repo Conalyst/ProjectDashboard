@@ -15,17 +15,15 @@ export const DashboardDetails = () => {
 
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("storedUser");
-    
+        const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
+        console.log("parsed user dashboard", parsedUser);
         pullCompanyAssets(parsedUser.companyId)
         .then((result) => {
             console.log('under dashboard details', result.data);
             setAssets(result.data);
         })
       }, []);
-
-
 
 
     return (
