@@ -15,15 +15,12 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import DashboardVisual from "./DashboardVisual";
-import DashboardDetails from "./DashboardDetails";
-import DashboardHistory from "./DashboardHistory";
+import ThreatsDashboardVisual from "./ThreatsDashboardVisual";
+import ThreatsDashboardDetails from "./ThreatsDashboardDetails";
+import ThreatsDashboardHistory from "./ThreatsDashboardHistory";
 
-export const Dashboard = () => { 
+export const ThreatsDashboard = () => { 
   const [tests, setTests] = useState(null);
-  const storedUser = localStorage.getItem("storedUser");
-    
-  const parsedUser = JSON.parse(storedUser);
 
 /*    useEffect(() => {
         return new Promise((resolve, reject) => {
@@ -70,13 +67,13 @@ export const Dashboard = () => {
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="./threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item sidenav-active">
-                <a className="sidenav-link" href="">
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="./asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
@@ -95,9 +92,7 @@ export const Dashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
- 
-            <span class="user-label">{parsedUser.name}</span>
- 
+            <span className="user-label">Alex Toma</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -124,15 +119,15 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
+        <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
             <Tab eventKey="visual" title="Visual" id="db-tab-visual">
-              <DashboardVisual/>
+              <ThreatsDashboardVisual/>
             </Tab>
             <Tab eventKey="detail" title="Details" id="db-tab-details">
-              <DashboardDetails/>
+              <ThreatsDashboardDetails/>
             </Tab>
             <Tab eventKey="history" title="History" id="db-tab-history">
-              <DashboardHistory/>
+              <ThreatsDashboardHistory/>
             </Tab>
           </Tabs>
         </div>
@@ -140,4 +135,4 @@ export const Dashboard = () => {
     </div>
   );
 }
-export default Dashboard;
+export default ThreatsDashboard;

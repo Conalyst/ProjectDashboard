@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Tabs, Tab} from "react-bootstrap";
+import {Button, InputGroup, Form} from "react-bootstrap";
 import { getAllTest } from "../services";
 import company_icon from '../images/user/company_icon.png';
 import user_icon from '../images/user/user_icon.png';
@@ -15,36 +15,14 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import DashboardVisual from "./DashboardVisual";
-import DashboardDetails from "./DashboardDetails";
-import DashboardHistory from "./DashboardHistory";
+import {useHistory} from 'react-router-dom'
+import ManageModal from "./ManageModal";
 
-export const Dashboard = () => { 
-  const [tests, setTests] = useState(null);
-  const storedUser = localStorage.getItem("storedUser");
-    
-  const parsedUser = JSON.parse(storedUser);
 
-/*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
+export const AddAsset = () => { 
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
+
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -95,9 +73,7 @@ export const Dashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
- 
-            <span class="user-label">{parsedUser.name}</span>
- 
+            <span className="user-label">Alex Toma</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -124,20 +100,72 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
-            <Tab eventKey="visual" title="Visual" id="db-tab-visual">
-              <DashboardVisual/>
-            </Tab>
-            <Tab eventKey="detail" title="Details" id="db-tab-details">
-              <DashboardDetails/>
-            </Tab>
-            <Tab eventKey="history" title="History" id="db-tab-history">
-              <DashboardHistory/>
-            </Tab>
-          </Tabs>
+          <div className="Manage-listAdd">
+            <div className="Rectangle-top">
+            <span className="Add-New-Asset">
+                Add New Asset
+            </span>
+            <span className="Top-Cancel">X</span>
+            <div className="Rectangle-grey-box">
+            <Form>
+            <div className="row g-2">
+              <div className="column-form col-md">
+                    <Form.Group className="mb-3">
+                  <Form.Label className="Label">Title</Form.Label>
+                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" >
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3" id="exampleFormControlInput1">
+                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </Form.Select>
+                </Form.Group>
+                </div>
+                <div className="col-md">
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label-right">Category</Form.Label>
+                  <Form.Select className="Frame-right">
+                    <option>Software</option>
+                    <option>Data</option>
+                    <option>Network</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <Form.Label className="Label-right">Description</Form.Label>
+                  <Form.Control className="Frame-desc" as="textarea" rows="9" name="address" onChange={(e) => setDescription(e.target.value)}/>
+                </Form.Group>
+              </div>
+            </div>
+          </Form>
+        </div>
+          <div className="test">
+            <Button className="Button-Icon-done" type="submit" onClick={() =>onAddAsset()}>
+              Done
+            </Button>
+            </div>
+          </div>
+        </div>
         </div>
       </div>
     </div>
   );
 }
-export default Dashboard;
+export default AddAsset;
