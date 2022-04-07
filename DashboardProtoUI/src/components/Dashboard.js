@@ -24,27 +24,6 @@ export const Dashboard = () => {
   const storedUser = localStorage.getItem("storedUser");
     
   const parsedUser = JSON.parse(storedUser);
-
-/*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -52,7 +31,7 @@ export const Dashboard = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">

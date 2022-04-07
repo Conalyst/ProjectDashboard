@@ -18,12 +18,6 @@ export const DashboardDetails = () => {
         const storedUser = localStorage.getItem("storedUser");
     
         const parsedUser = JSON.parse(storedUser);
-        console.log("parsedUser",parsedUser);
-    
-        // axios.defaults.headers.common[
-        //   "Authorization"
-        // ] = `Bearer ${parsedUser.accessToken}`;
-        
         pullCompanyAssets(parsedUser.companyId)
         .then((result) => {
             console.log('under dashboard details', result.data);
@@ -39,7 +33,6 @@ export const DashboardDetails = () => {
         <div className="asset-menu-buttons">
           <button className="Button-Icon-AddAsset-modal"data-bs-toggle="modal" data-bs-target="#exampleModal"> Add Asset</button> 
             <ManageModal/>
-          <button className="Button-Icon-Filter-modal"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">

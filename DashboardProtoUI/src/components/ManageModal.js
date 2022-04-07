@@ -11,7 +11,7 @@ const ManageModal = () => {
 const onAddAsset = () =>{
  
 if (!assetTitle) {
-  setErrors("A asset title is needed!");
+  setErrors("An asset title is needed!");
 } else {
   var requestDto = {
     title: assetTitle,

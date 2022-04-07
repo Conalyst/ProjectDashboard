@@ -6,7 +6,7 @@ export const ThreatsDashboardVisual = () => {
     return (
     <>
         <div class="asset-rating">
-            <p>Threat Ratings</p>
+            <p>Threats Ratings</p>
             <p>Total<br/>82</p>
             <p>High<br/>20</p>
             <p>Medium<br/>15</p>

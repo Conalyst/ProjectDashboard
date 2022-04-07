@@ -75,7 +75,8 @@ class UserApi {
                             token: jwtToken,
                             role: existingUser.Role.name,
                             companyId: existingUser.companyId,
-                            name: existingUser.name
+                            name: existingUser.name,
+                            CompanyName: existingUser.Company.name
                         });
                     }
                     else {
