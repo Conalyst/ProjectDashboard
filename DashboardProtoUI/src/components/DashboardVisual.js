@@ -1,6 +1,8 @@
 import React from "react";
 import * as crossfilter from "crossfilter2";
-import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
+import SummaryBarChart from './db-visuals/SummaryBarChart';
+import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
+import { assetData } from "./db-visuals/visuals-data";
 
 export const DashboardVisual = () => {
     return (
@@ -15,18 +17,36 @@ export const DashboardVisual = () => {
             <table className="visual-rating">
                 <tr>
                     <td className="stack-bars-summary">
-                        Confidentiality
+                        <div className="stack-bar-h">
+                            Confidentiality
+                            <div>
+                                <SummaryStackedChart data={assetData.confi} />                            
+                            </div>
+                        </div>
+                        <div className="stack-bar-h">
+                            Integrity
+                            <div>
+                                <SummaryStackedChart data={assetData.integrity} />                            
+                            </div>
+                        </div>
+                        <div className="stack-bar-h">
+                            Availability
+                            <div>
+                                <SummaryStackedChart data={assetData.avail} />                            
+                            </div>
+                        </div>
                     </td>
-                    <td className="bar-charts-summary">
-                        Availability
-                    </td>
+                <td className="bar-charts-summary">
+                    <span>All Categories</span><br/>
+                    <SummaryBarChart data={assetData.summary} />
+                </td>
                 </tr>
             </table>
-        <div className="injury-level1">
+        {/* <div className="injury-level1">
                 <span className="dark_blue"></span>
                 <span className="blue"></span>
                 <span class="grey"></span>
-        </div>
+            </div> */}
             
     </>
     );
