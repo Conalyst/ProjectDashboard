@@ -1,7 +1,47 @@
-import React from 'react';
+import React ,  { useState, useEffect } from 'react';
 import {Button, InputGroup, Form} from "react-bootstrap";
-
+import {
+  postAsset
+} from "../services/assetsService";
 const ManageModal = () => {
+  const [assetTitle, setAssetTitle] = useState("");
+  const [description,setDescription] = useState("");
+  const [errors, setErrors] = useState(""); 
+
+const onAddAsset = () =>{
+ 
+if (!assetTitle) {
+  setErrors("A asset title is needed!");
+} else {
+  var requestDto = {
+    title: assetTitle,
+    description:description,
+     categoryId: 2
+  };
+  postAsset(requestDto)
+    .then((result) => {
+      setAssetTitle("");
+      setDescription("")
+      // getCommentByRestaurant(restaurantId).then((result) => {
+      //   setCommentsListData(result);
+      // });
+      setErrors("This asset created successfully !");
+    })
+    .catch((err) => {
+      console.log(err);
+      if (err.response.status == 404) {
+        setErrors("No comment found!");
+      } else {
+        if (err.response.status == 400) {
+          setErrors("restaurantId is not valid!");
+        } else {
+          setErrors("Unknow error!");
+        }
+      }
+    });
+}
+}
+
   return (
     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
@@ -16,7 +56,11 @@ const ManageModal = () => {
               <div className="column-form col-md">
                     <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left"
+                   type="text" 
+                   value={assetTitle} 
+                   onChange={(e) => setAssetTitle(e.target.value)}
+                   />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
@@ -59,6 +103,8 @@ const ManageModal = () => {
               </div>
             </div>
           </Form>
+          <p className="login-error"style={errors ? {visibility: "visible", color: "red"}: null} >{errors}</p>
+    
         </div>
         <div className="modal-footer Rectangle-top-modal">
             <Button className="Button-Icon-done-modal" type="submit" onClick={() =>onAddAsset()}>

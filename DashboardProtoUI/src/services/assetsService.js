@@ -1,6 +1,6 @@
-/*import { SYSTEM_ERROR } from "../config/CONSTANTS";
+import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_ASSETS, GET_ASSET_BY_COMPANY_ID, GET_ASSET_BY_ID } from "./constants";
+import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./constants";
   
   export const getAllAssets = () => {
     return new Promise((resolve, reject) => {
@@ -23,7 +23,7 @@ import { GET_ALL_ASSETS, GET_ASSET_BY_COMPANY_ID, GET_ASSET_BY_ID } from "./cons
     return new Promise((resolve, reject) => {
       try {
         axios       
-        .get(GET_ASSET_BY_COMPANY_ID(companyId))
+        .get(COMPANYASSETS(companyId))
         .then(res => {
             resolve(res.data);
         })
@@ -50,4 +50,23 @@ import { GET_ALL_ASSETS, GET_ASSET_BY_COMPANY_ID, GET_ASSET_BY_ID } from "./cons
         reject(SYSTEM_ERROR);
       }
     });
-  };*/
+  };
+
+  export const postAsset = (asset) => {
+    return new Promise((resolve, reject) => {
+      try {
+        axios       
+        .post(POST_ASSET(),asset)
+        .then(res => {
+            resolve(res.data);
+        })
+        .catch((err) => {
+          console.log("postasset > axios err=", err);
+          reject("Error in postasset axios!");
+        });
+      } catch (error) {
+        console.error("in addAsset > postAsset, Err===", error);
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };

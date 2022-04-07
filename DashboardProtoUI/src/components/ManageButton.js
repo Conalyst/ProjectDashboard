@@ -1,7 +1,15 @@
-import React from 'react';
+import React,  { useState, useEffect } from 'react';
 import {Button, InputGroup, Form} from "react-bootstrap";
 
+
 const ManageButton = () => {
+  const [assetTitle, setAssetTitle] = useState("");
+  const [Description,setDescription] = useState("");
+
+const onAddAsset = () =>{
+ 
+}
+
   return (
     <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div className="modal-dialog">
@@ -16,7 +24,11 @@ const ManageButton = () => {
               <div className="column-form col-md">
                     <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" 
+                  type="text" 
+                 
+                  onChange={(e) => setAssetTitle(e.target.value)}
+                  />
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
@@ -59,7 +71,7 @@ const ManageButton = () => {
               </div>
             </div>
           </Form>
-        </div>
+            </div>
         <div className="modal-footer Rectangle-top-modal">
             <Button className="Button-Icon-done-modal" type="submit" onClick={() =>onAddAsset()}>
               Done
