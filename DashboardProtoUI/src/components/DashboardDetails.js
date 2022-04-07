@@ -21,6 +21,11 @@ export const DashboardDetails = () => {
         pullCompanyAssets(parsedUser.companyId)
         .then((result) => {
             console.log('under dashboard details', result.data);
+            console.log("result", result.data[0])
+            console.log("asset", result.data[0].Asset)
+            console.log("asset-category", result.data[0].Asset.AssetCategory)
+            console.log("Vuln", result.data[0].Asset.Vulnerabilities)
+            console.log("threats", result.data[0].Asset.Vulnerabilities[0].Threats)
             setAssets(result.data);
         })
       }, []);

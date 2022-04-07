@@ -23,9 +23,7 @@ module.exports = (sequelize: any, DataTypes:any) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models: any) {
-      // User.belongsToMany(models.Project, {
-      //   through: 'ProjectAssignments'
-      // })
+
       AssetCategory.hasMany(models.Asset, {
         foreignKey: 'categoryId'
       })

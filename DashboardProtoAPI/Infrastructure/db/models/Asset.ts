@@ -34,9 +34,12 @@ module.exports = (sequelize: any, DataTypes:any) => {
       }) 
       Asset.belongsToMany(models.Vulnerability, {
         through: models.AssetVulnerability,
-        foreignKey: 'assetId' 
+        foreignKey: 'assetId' ,
       }) 
-    
+      // Asset.belongsTo(models.AssetVulnerability, {
+      //   foreignKey: 'assetId',
+      //   as: 'abc'
+      // })
     }
   }
   Asset.init({
