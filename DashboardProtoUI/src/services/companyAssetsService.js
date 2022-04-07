@@ -8,7 +8,7 @@ import { COMPANYASSETS } from "./constants";
        console.log('------front end ', companyId);
      return new Promise((resolve, reject) => {
        try {
-         console.log(COMPANYASSETS());
+         console.log("compasset..", COMPANYASSETS(companyId));
          axios 
         //  .get(COMPANYASSETS()+companyId)
         .get(COMPANYASSETS(companyId))
