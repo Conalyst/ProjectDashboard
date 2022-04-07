@@ -1071,8 +1071,7 @@ li {
     justify-content: center;
     margin: 24px 2px 0 93%;
     align-items: center;
-    gap: 10px;
-    
+    gap: 10px;    
     border-radius: 4px;
     background-color: #145b93;
     color: white;
@@ -1150,5 +1149,101 @@ li {
     font-size: 14px;
     font-family: Roboto;
   }
+
+/* ========== Modal Manage list/Add ========== */
+
+  /*.Rectangle-top-modal {
+    width: 1000px;
+    height: 58px;
+    margin: 0 0 39px;
+    padding: 19px 20px 18px 19px;
+    box-shadow: 0 10px 20px 0 rgba(46, 46, 46, 0.15);
+    border: solid 1px #145b93;
+    background-color: #f1f1f1;
+  }*/
+
+  .Rectangle-grey-box-modal {
+    width: 950px;
+    height: 420px;
+    flex-grow: 0;
+    margin: 50px 24px 24px 24px;
+    padding: 20px 28px 17px 29px;
+    border-radius: 5px;
+    background-color: #f1f1f1;
+  }
+
+  .Button-Icon-done-modal {
+    width: 100px;
+    height: 36px;
+    align-items: center;
+    gap: 10px;    
+    border-radius: 4px;
+    background-color: #145b93;
+    color: white;
+    border: #145b93;
+  }
+
+  .Rectangle-top-modal {
+    width: 1000px;
+    height: 58px;
+    box-shadow: 0 10px 20px 0 rgba(46, 46, 46, 0.15);
+    border: solid 1px #145b93;
+    background-color: #f1f1f1;
+  }
+
+  .Manage-listAdd-modal {
+    width: 1005px;
+    height: 609.78px;
+    flex-grow: 0;
+    padding: 1px 1px 26px;
+    border-radius: 7px;
+    box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+    background-color: #fff;
+  }
+
+  .Add-New-Asset-modal {
+    width: 124px;
+    height: 21px;
+    font-family: Roboto;
+    font-size: 18px;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    text-align: left;
+    color: #2e2e2e;
+  }
+
+  .Button-Icon-AddAsset-modal {
+    width: 106px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #145b93;
+    color: white;
+    border: #145b93;
+  }
+
+  .Button-Icon-Filter-modal {
+    width: 106px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px 8px 12px;
+    border-radius: 4px;
+    border: solid 1px #145b93;
+    background-color: #fff;
+    color: #145b93;
+  }
+  
   
 
