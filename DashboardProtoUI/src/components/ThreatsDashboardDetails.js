@@ -4,7 +4,8 @@ import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import ManageButton from "./ManageButton";
+import { MANAGE, ADDASSET, DASHBOARD } from "../navigation/constants";
+import {useHistory} from 'react-router-dom'
 
 
 export const ThreatsDashboardDetails = () => {
@@ -33,13 +34,21 @@ export const ThreatsDashboardDetails = () => {
         });
       }, []); */
 
-    return (
-    <>     
-        <div className="asset-menu-buttons">
-                <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-                  <ManageButton/>
-                <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
-        </div> 
+      const history =useHistory();
+      const onAddAsset =()=>{
+      history.push({
+         pathname: ADDASSET,
+    
+       });
+      }  
+  
+  
+      return (
+      <>     
+          <div className="asset-menu-buttons">
+            <button className="Button-Icon-Manage" onClick={onAddAsset}> Manage</button>  
+            <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+          </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
             <thead>

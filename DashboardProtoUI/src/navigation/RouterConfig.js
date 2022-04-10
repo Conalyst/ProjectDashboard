@@ -6,6 +6,7 @@ import RecDashboard from "../components/RecDashboard";
 import VulDashboard from "../components/VulDashboard";
 import ThreatsDashboard from "../components/ThreatsDashboard";
 import AddAsset from "../components/AddAsset";
+import Manage from "../components/Manage";
 import Login from '../components/Login'
 import Test from '../components/Test'
 
@@ -15,6 +16,7 @@ import {
     VULDASHBOARD,
     THREATSDASHBOARD,
     ADDASSET,
+    MANAGE,
     LOGIN,
     TEST
 } from "./constants";
@@ -36,6 +38,9 @@ export const RouterConfig = (props) => {
             </Route >
             <Route exact path={ADDASSET} >
                 <AddAsset/>
+            </Route >
+            <Route exact path={MANAGE} >
+                <MANAGE/>
             </Route >
             <Route exact path={TEST} >
                 <Test/>

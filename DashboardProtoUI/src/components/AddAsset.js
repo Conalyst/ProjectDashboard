@@ -16,12 +16,63 @@ import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import ManageModal from "./ManageModal";
+import { DASHBOARD } from "../navigation/constants";
 
 
 export const AddAsset = () => { 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+
+  const history =useHistory();
+
+  const onDone =()=>{
+  history.push({
+     pathname: DASHBOARD,
+
+   });
+  }  
+
+
+  const onCancel =()=>{
+  history.push({
+     pathname: DASHBOARD,
+
+   });
+  }  
+
+  /*const onAddAsset = () =>{
+ 
+    if (!assetTitle) {
+      setErrors("An asset title is needed!");
+    } else {
+      var requestDto = {
+        title: assetTitle,
+        description:description,
+         categoryId: 2
+      };
+      postAsset(requestDto)
+        .then((result) => {
+          setAssetTitle("");
+          setDescription("")
+          // getCommentByRestaurant(restaurantId).then((result) => {
+          //   setCommentsListData(result);
+          // });
+          setErrors("This asset created successfully !");
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status == 404) {
+            setErrors("No comment found!");
+          } else {
+            if (err.response.status == 400) {
+              setErrors("restaurantId is not valid!");
+            } else {
+              setErrors("Unknow error!");
+            }
+          }
+        });
+    }
+    }*/
 
   return (
     <div className="db-site-container">
@@ -105,7 +156,7 @@ export const AddAsset = () => {
             <span className="Add-New-Asset">
                 Add New Asset
             </span>
-            <span className="Top-Cancel">X</span>
+            <span><button className="Top-Cancel" onClick={() =>onDone()}>X</button></span>
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
@@ -157,7 +208,7 @@ export const AddAsset = () => {
           </Form>
         </div>
           <div className="test">
-            <Button className="Button-Icon-done" type="submit" onClick={() =>onAddAsset()}>
+            <Button className="Button-Icon-done" type="submit" onClick={() =>onDone()}>
               Done
             </Button>
             </div>

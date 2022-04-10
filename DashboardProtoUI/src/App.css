@@ -998,9 +998,6 @@ li {
 }
 
 .Add-New-Asset {
-  width: 124px;
-  height: 21px;
-  margin: 0 90% 0 0;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
@@ -1022,6 +1019,7 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
+  border:none;
 }
 
 .Rectangle-grey-box {
@@ -1273,7 +1271,7 @@ li {
     background-color: #72b7f2;
   }
 
-  .Top-3-threat-agents-with-High-Overall-ratings {
+  .Top-3-threat {
     width: 219px;
     height: 38px;
     margin: 13px 160px 31px 53px;
@@ -1342,6 +1340,140 @@ li {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     background-color: #f1f1f1;
   }
-  
-  
+
+
+/* ========== Info Button ========== */
+
+  .Rectangle-accordion-header {
+    width: 1000px;
+    height: 58.4px;
+    flex-grow: 0;
+    margin: 0 0 0.3px;
+    padding: 7px 8px 14.4px 7px;
+    border: solid 1px #f9f9f9;
+    background-color: #145b93;
+    text-align: center;
+  }
+
+  .Rectangle-accordion-content {
+    width: 1000px;
+    box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+    border: solid 1px #f1f1f1;
+    background-color: #fff;
+  }
+  .modal-body-box{
+    padding: 0 24px 28px 24px;
+  }
+
+  .accordion-title-name {
+    width: 125px;
+    height: 16px;
+    flex-grow: 0;
+    margin: 0 20px 0 55.4px;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    letter-spacing: 0.7px;
+    text-align: center;
+    color: #f9f9f9;
+  }
+
+ .accordion-title-name-black {
+  width: 125px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 0 20px 0 55.4px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-align: center;
+}
+
+.accordion-title-name-button {
+  width: 952px;
+  height: 36px;
+  flex-grow: 0;
+  margin: 0 0 0.2px;
+  padding: 5px 40px 9px 1px;
+  border: solid 1px #145b93;
+  background-color: #f1f1f1;
+  color : #145b93; ;
+}
+
+.accordion-title-name {
+  width: 125px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 0 20px 0 55.4px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-align: center;
+  color: #f9f9f9;
+}
+
+.accordion-tab-name {
+  width: 250px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 1px 258px 0 164px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-align: center;
+  color: #145b93;
+}
+
+.Rectangle-accordion-title-h {
+  width: 1000px;
+  height: 58.4px;
+  flex-grow: 0;
+  margin: 0 0 0.3px;
+  padding: 7px 8px 14.4px 7px;
+  text-align: center;
+  color: #2e2e2e;
+} 
+
+.BG {
+  width: 952px;
+  height: 80px;
+  margin: 0px 0 1px;
+  box-shadow: 0 2px 7.3px 0 rgba(46, 46, 46, 0.25);
+  background-color: #fff;
+}
+
+.BG-Frame {
+  width: 952px;
+  height: 100px;
+}
+
+.accordion-tab-name-black {
+  width: 250px;
+  height: 16px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.7px;
+  text-align: center;
+  color: #2e2e2e;
+}
 

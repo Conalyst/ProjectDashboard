@@ -2,17 +2,26 @@ import React, { useEffect, useState } from "react";
 import {Table} from "react-bootstrap";
 import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
-import ManageButton from "./ManageButton";
+import { MANAGE, ADDASSET, DASHBOARD } from "../navigation/constants";
+import {useHistory} from 'react-router-dom'
 
-
-export const RecDashboardDetails = () => {
+ 
+export const RecDashboardDetails = () => {   
 
     const [recommendations, setRecommendationa] = useState(rec_data);
+
+    const history =useHistory();
+    const onAddAsset =()=>{
+    history.push({
+       pathname: ADDASSET,
+  
+     });
+    }  
+
     return (
     <>     
         <div className="asset-menu-buttons">
-            <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-                 <ManageButton/>
+        <button className="Button-Icon-Manage" onClick={onAddAsset}> Manage</button>  
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">

@@ -15,7 +15,6 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-
 import RecDashboardDetails from "./RecDashboardDetails";
 import RecDashboardHistory from "./RecDashboardHistory";
 
