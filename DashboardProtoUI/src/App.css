@@ -592,16 +592,16 @@ td.bar-charts-summary {
 }
 
 /*Filter*/
-.filter {
+/*.filter {
 position: absolute;
 width: 320px;
 height: 619px;
 left: 1106px;
 top: 33px;
 overflow-y: scroll;
-background: #FFFFFF;
+background: #FFFFFF;*/
 /* Shadow Sidebar 1 */
-box-shadow: 0px 16px 20px rgba(46, 46, 46, 0.15);
+/*box-shadow: 0px 16px 20px rgba(46, 46, 46, 0.15);
 border-radius: 7px;
 }
 
@@ -816,7 +816,7 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
-}
+}*/
 
 /* ========== RECOMMENDATIONS ========== */
 .rec-button__text {
@@ -1475,5 +1475,118 @@ li {
   letter-spacing: 0.7px;
   text-align: center;
   color: #2e2e2e;
+}
+
+/* Filters*/
+
+.Filter-Main-Long {
+  width: 320px;
+  height: 679px;
+  flex-grow: 0;
+  padding: 1px 0 0 1px;
+  border-radius: 7px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  background-color: #fff;
+}
+
+.Rectangle-1363 {
+  width: 318px;
+  height: 58px;
+  margin: 0 1px 1px 0;
+  padding: 19px 37.5px 15px 19px;
+  box-shadow: 0 10px 20px 0 rgba(46, 46, 46, 0.15);
+  border: solid 1px #145b93;
+  background-color: #f1f1f1;
+}
+
+.Filters {
+  width: 61px;
+  height: 24px;
+  margin: 0 188.5px 0 0;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Vector {
+  width: 12px;
+  height: 13.1px;
+  margin: 5.9px 0 4.9px 188.5px;
+  background-color: rgba(46, 46, 46, 0.75);
+}
+
+.Asset-Category {
+  width: 96px;
+  height: 16px;
+  flex-grow: 0;
+  margin: 0 0 10px 0;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: rgba(46, 46, 46, 0.75);
+}
+
+.Rectangle-979 {
+  width: 278px;
+  height: 45px;
+  flex-grow: 0;
+  margin: 10px 0 0;
+  padding: 11px 12px 10px 16px;
+  border: solid 1px #f9f9f9;
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1370 {
+  width: 278px;
+  height: 48px;
+  flex-grow: 0;
+  margin: 47px 0 0;
+  padding: 10px 75px 14px 24px;
+  border: solid 1px #f1f1f1;
+  background-color: #f9f9f9;
+}
+
+.Rectangle-935 {
+  width: 278px;
+  height: 48px;
+  flex-grow: 0;
+  padding: 18px 200px 12px 26px;
+  border: solid 1px #f1f1f1;
+  background-color: #f9f9f9;
+}
+
+.Filter-Button-Icon-done {
+  width: 100px;
+  height: 36px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 45px 16px 20px 179px;
+  align-items: center;
+  gap: 10px;    
+  border-radius: 4px;
+  background-color: #145b93;
+  color: white;
+  border: #145b93;
+}
+
+.Rectangle-978 {
+  width: 278px;
+  height: 20px;
+  flex-grow: 0;
+  margin: 10px 0 0;
+  padding: 11px 12px 10px 16px;
+  border-radius: 5px;
 }
 

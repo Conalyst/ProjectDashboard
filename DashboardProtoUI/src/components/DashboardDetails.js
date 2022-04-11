@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Table} from "react-bootstrap";
+import {InputGroup, Table} from "react-bootstrap";
 import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
@@ -8,6 +8,7 @@ import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
 import { ADDASSET, DASHBOARD } from "../navigation/constants";
 import {useHistory} from 'react-router-dom'
+import Filter from "./Filter";
 
 export const DashboardDetails = () => {
 
