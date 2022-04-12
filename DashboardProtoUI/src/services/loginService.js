@@ -1,4 +1,4 @@
-import { SYSTEM_ERROR } from "../config/CONSTANTS";
+import { SYSTEM_ERROR } from "../config/constants";
 import axios from 'axios'
 import { LOGIN } from "./constants";
    // get test

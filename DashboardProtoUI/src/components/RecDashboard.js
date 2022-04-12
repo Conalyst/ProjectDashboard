@@ -16,11 +16,10 @@ import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 
-import DashboardVisual from "./DashboardVisual";
-import DashboardDetails from "./DashboardDetails";
-import DashboardHistory from "./DashboardHistory";
+import RecDashboardDetails from "./RecDashboardDetails";
+import RecDashboardHistory from "./RecDashboardHistory";
 
-export const Dashboard = () => { 
+export const RecDashboard = () => { 
   const [tests, setTests] = useState(null);
 
 /*    useEffect(() => {
@@ -73,12 +72,12 @@ export const Dashboard = () => {
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item sidenav-active">
-                <a className="sidenav-link" href="">
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="./asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="./rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
@@ -120,15 +119,12 @@ export const Dashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
-            <Tab eventKey="visual" title="Visual" id="db-tab-visual">
-              <DashboardVisual/>
-            </Tab>
-            <Tab eventKey="detail" title="Details" id="db-tab-details">
-              <DashboardDetails/>
+          <Tabs defaultActiveKey="detail" id="dashboard" className="mb-3 nav-fill dashboard-main">
+            <Tab eventKey="detail" title="Details" id="db-tab-visual">
+              <RecDashboardDetails/>
             </Tab>
             <Tab eventKey="history" title="History" id="db-tab-history">
-              <DashboardHistory/>
+              <RecDashboardHistory/>
             </Tab>
           </Tabs>
         </div>
@@ -136,4 +132,4 @@ export const Dashboard = () => {
     </div>
   );
 }
-export default Dashboard;
+export default RecDashboard;
