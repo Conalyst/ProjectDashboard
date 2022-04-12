@@ -1,0 +1,876 @@
+[
+  {
+      "id": 1,
+      "assetId": 1,
+      "companyId": 2,
+      "confidentiality": "L",
+      "integrity": "L",
+      "availability": "L",
+      "rating": "L",
+      "updatedAt": "2022-04-07T15:57:27.197Z",
+      "createdAt": "2022-04-07T15:57:27.197Z",
+      "Asset": {
+          "id": 1,
+          "categoryId": 1,
+          "title": "Microsoft Office",
+          "description": "Microsoft Office is an office suite of desktop applications, servers and services for the Microsoft Windows and Mac operating systems. It includes Microsoft Word, Excel, PowerPoint, Outlook and OneNote. Microsoft Office is standard on all KU-owned workstations for faculty and staff. This asset includes M365 with locally stored documents. ",
+          "AssetCategory": {
+              "id": 1,
+              "name": "Software"
+          },
+          "Vulnerabilities": [
+              {
+                  "id": 1,
+                  "category": "Operational",
+                  "title": "Back-up Validation, Process & Standards",
+                  "description": "There are backups; however there is no apparent backup policy which could lead to broken standards and potentail failure in backup avaliability. ",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 1,
+                              "vulnerability": 1,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.006Z",
+                              "createdAt": "2022-04-07T02:07:21.006Z"
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "category": "Accidental",
+                          "agent": "System dependencies ",
+                          "title": "Dependency System Outage",
+                          "description": "There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
+                          "VulnerabilityThreat": {
+                              "id": 2,
+                              "vulnerability": 1,
+                              "threatId": 2,
+                              "updatedAt": "2022-04-07T02:07:21.013Z",
+                              "createdAt": "2022-04-07T02:07:21.013Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 3,
+                              "vulnerability": 1,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.014Z",
+                              "createdAt": "2022-04-07T02:07:21.014Z"
+                          }
+                      },
+                      {
+                          "id": 4,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals ",
+                          "title": "Ransomware",
+                          "description": "An adversary gains administrative access to CLIENT NAME's system(s) and disables their function or encrypts key data, then demands payment to restore services. ",
+                          "VulnerabilityThreat": {
+                              "id": 4,
+                              "vulnerability": 1,
+                              "threatId": 4,
+                              "updatedAt": "2022-04-07T02:07:21.015Z",
+                              "createdAt": "2022-04-07T02:07:21.015Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 1,
+                      "assetId": 1,
+                      "vulnerabilityId": 1,
+                      "updatedAt": "2022-04-07T02:07:05.428Z",
+                      "createdAt": "2022-04-07T02:07:05.428Z"
+                  }
+              },
+              {
+                  "id": 2,
+                  "category": "Operational",
+                  "title": "Standardized Disaster Recovery Policy & Process",
+                  "description": "DR plan does exist however more governance and process should be in pace related to business continuity planning ",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 5,
+                              "vulnerability": 2,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.015Z",
+                              "createdAt": "2022-04-07T02:07:21.015Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 6,
+                              "vulnerability": 2,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.016Z",
+                              "createdAt": "2022-04-07T02:07:21.016Z"
+                          }
+                      },
+                      {
+                          "id": 4,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals ",
+                          "title": "Ransomware",
+                          "description": "An adversary gains administrative access to CLIENT NAME's system(s) and disables their function or encrypts key data, then demands payment to restore services. ",
+                          "VulnerabilityThreat": {
+                              "id": 7,
+                              "vulnerability": 2,
+                              "threatId": 4,
+                              "updatedAt": "2022-04-07T02:07:21.017Z",
+                              "createdAt": "2022-04-07T02:07:21.017Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 8,
+                              "vulnerability": 2,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.017Z",
+                              "createdAt": "2022-04-07T02:07:21.017Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 9,
+                              "vulnerability": 2,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.018Z",
+                              "createdAt": "2022-04-07T02:07:21.018Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 2,
+                      "assetId": 1,
+                      "vulnerabilityId": 2,
+                      "updatedAt": "2022-04-07T02:07:05.435Z",
+                      "createdAt": "2022-04-07T02:07:05.435Z"
+                  }
+              },
+              {
+                  "id": 3,
+                  "category": "Operational",
+                  "title": "Data Handling Best Practices & Policy",
+                  "description": "Data Loss Prevention / Data handeling standards",
+                  "Threats": [
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 10,
+                              "vulnerability": 3,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.019Z",
+                              "createdAt": "2022-04-07T02:07:21.019Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 11,
+                              "vulnerability": 3,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "category": "Deliberate",
+                          "agent": "Contractors and CLIENT NAME's Employee",
+                          "title": "Privileged Access Abuse (Administrator) ",
+                          "description": "A CLIENT NAME employee with privileged or administrative access abuses, modify or destroy large volumes of data or formulas, or lock users out of systems or bring entire systems offline.  ",
+                          "VulnerabilityThreat": {
+                              "id": 12,
+                              "vulnerability": 3,
+                              "threatId": 7,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 13,
+                              "vulnerability": 3,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.021Z",
+                              "createdAt": "2022-04-07T02:07:21.021Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 3,
+                      "assetId": 1,
+                      "vulnerabilityId": 3,
+                      "updatedAt": "2022-04-07T02:07:05.436Z",
+                      "createdAt": "2022-04-07T02:07:05.436Z"
+                  }
+              }
+          ]
+      },
+      "Company": {
+          "id": 2,
+          "name": "ABC Pvt. Lmtd"
+      }
+  },
+  {
+      "id": 2,
+      "assetId": 3,
+      "companyId": 2,
+      "confidentiality": "M",
+      "integrity": "M",
+      "availability": "M",
+      "rating": "M",
+      "updatedAt": "2022-04-07T15:57:27.208Z",
+      "createdAt": "2022-04-07T15:57:27.208Z",
+      "Asset": {
+          "id": 3,
+          "categoryId": 2,
+          "title": "File Server - User Data",
+          "description": "This asset represents a server which holds and controls access to separately stored files, as part of a multiuser system.",
+          "AssetCategory": {
+              "id": 2,
+              "name": "Network & Data Centre"
+          },
+          "Vulnerabilities": [
+              {
+                  "id": 3,
+                  "category": "Operational",
+                  "title": "Data Handling Best Practices & Policy",
+                  "description": "Data Loss Prevention / Data handeling standards",
+                  "Threats": [
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 10,
+                              "vulnerability": 3,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.019Z",
+                              "createdAt": "2022-04-07T02:07:21.019Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 11,
+                              "vulnerability": 3,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "category": "Deliberate",
+                          "agent": "Contractors and CLIENT NAME's Employee",
+                          "title": "Privileged Access Abuse (Administrator) ",
+                          "description": "A CLIENT NAME employee with privileged or administrative access abuses, modify or destroy large volumes of data or formulas, or lock users out of systems or bring entire systems offline.  ",
+                          "VulnerabilityThreat": {
+                              "id": 12,
+                              "vulnerability": 3,
+                              "threatId": 7,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 13,
+                              "vulnerability": 3,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.021Z",
+                              "createdAt": "2022-04-07T02:07:21.021Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 7,
+                      "assetId": 3,
+                      "vulnerabilityId": 3,
+                      "updatedAt": "2022-04-07T02:07:05.439Z",
+                      "createdAt": "2022-04-07T02:07:05.439Z"
+                  }
+              },
+              {
+                  "id": 4,
+                  "category": "Operational",
+                  "title": "Inconsistent Digital & Physical Processes",
+                  "description": "Paper processes and SOPs are a business standard, vulnerable to delay or limited access as there is a lack of consistency for digital sops/standards",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 14,
+                              "vulnerability": 4,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.021Z",
+                              "createdAt": "2022-04-07T02:07:21.021Z"
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "category": "Accidental",
+                          "agent": "System dependencies ",
+                          "title": "Dependency System Outage",
+                          "description": "There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
+                          "VulnerabilityThreat": {
+                              "id": 15,
+                              "vulnerability": 4,
+                              "threatId": 2,
+                              "updatedAt": "2022-04-07T02:07:21.022Z",
+                              "createdAt": "2022-04-07T02:07:21.022Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 16,
+                              "vulnerability": 4,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.022Z",
+                              "createdAt": "2022-04-07T02:07:21.022Z"
+                          }
+                      },
+                      {
+                          "id": 8,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminal",
+                          "title": "Malware ",
+                          "description": "Malware is successfully delivered to CLIENT NAME's systems which results in system outage, data exfiltration or performance problem.  ",
+                          "VulnerabilityThreat": {
+                              "id": 17,
+                              "vulnerability": 4,
+                              "threatId": 8,
+                              "updatedAt": "2022-04-07T02:07:21.023Z",
+                              "createdAt": "2022-04-07T02:07:21.023Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 8,
+                      "assetId": 3,
+                      "vulnerabilityId": 4,
+                      "updatedAt": "2022-04-07T02:07:05.440Z",
+                      "createdAt": "2022-04-07T02:07:05.440Z"
+                  }
+              }
+          ]
+      },
+      "Company": {
+          "id": 2,
+          "name": "ABC Pvt. Lmtd"
+      }
+  },
+  {
+      "id": 3,
+      "assetId": 5,
+      "companyId": 2,
+      "confidentiality": "H",
+      "integrity": "H",
+      "availability": "L",
+      "rating": "H",
+      "updatedAt": "2022-04-07T15:57:27.209Z",
+      "createdAt": "2022-04-07T15:57:27.209Z",
+      "Asset": {
+          "id": 5,
+          "categoryId": 3,
+          "title": "Account Password",
+          "description": "A secret that should be know to an individual or system to control access to a system.",
+          "AssetCategory": {
+              "id": 3,
+              "name": "Technical"
+          },
+          "Vulnerabilities": [
+              {
+                  "id": 2,
+                  "category": "Operational",
+                  "title": "Standardized Disaster Recovery Policy & Process",
+                  "description": "DR plan does exist however more governance and process should be in pace related to business continuity planning ",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 5,
+                              "vulnerability": 2,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.015Z",
+                              "createdAt": "2022-04-07T02:07:21.015Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 6,
+                              "vulnerability": 2,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.016Z",
+                              "createdAt": "2022-04-07T02:07:21.016Z"
+                          }
+                      },
+                      {
+                          "id": 4,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals ",
+                          "title": "Ransomware",
+                          "description": "An adversary gains administrative access to CLIENT NAME's system(s) and disables their function or encrypts key data, then demands payment to restore services. ",
+                          "VulnerabilityThreat": {
+                              "id": 7,
+                              "vulnerability": 2,
+                              "threatId": 4,
+                              "updatedAt": "2022-04-07T02:07:21.017Z",
+                              "createdAt": "2022-04-07T02:07:21.017Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 8,
+                              "vulnerability": 2,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.017Z",
+                              "createdAt": "2022-04-07T02:07:21.017Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 9,
+                              "vulnerability": 2,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.018Z",
+                              "createdAt": "2022-04-07T02:07:21.018Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 13,
+                      "assetId": 5,
+                      "vulnerabilityId": 2,
+                      "updatedAt": "2022-04-07T02:07:05.443Z",
+                      "createdAt": "2022-04-07T02:07:05.443Z"
+                  }
+              },
+              {
+                  "id": 4,
+                  "category": "Operational",
+                  "title": "Inconsistent Digital & Physical Processes",
+                  "description": "Paper processes and SOPs are a business standard, vulnerable to delay or limited access as there is a lack of consistency for digital sops/standards",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 14,
+                              "vulnerability": 4,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.021Z",
+                              "createdAt": "2022-04-07T02:07:21.021Z"
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "category": "Accidental",
+                          "agent": "System dependencies ",
+                          "title": "Dependency System Outage",
+                          "description": "There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
+                          "VulnerabilityThreat": {
+                              "id": 15,
+                              "vulnerability": 4,
+                              "threatId": 2,
+                              "updatedAt": "2022-04-07T02:07:21.022Z",
+                              "createdAt": "2022-04-07T02:07:21.022Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 16,
+                              "vulnerability": 4,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.022Z",
+                              "createdAt": "2022-04-07T02:07:21.022Z"
+                          }
+                      },
+                      {
+                          "id": 8,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminal",
+                          "title": "Malware ",
+                          "description": "Malware is successfully delivered to CLIENT NAME's systems which results in system outage, data exfiltration or performance problem.  ",
+                          "VulnerabilityThreat": {
+                              "id": 17,
+                              "vulnerability": 4,
+                              "threatId": 8,
+                              "updatedAt": "2022-04-07T02:07:21.023Z",
+                              "createdAt": "2022-04-07T02:07:21.023Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 14,
+                      "assetId": 5,
+                      "vulnerabilityId": 4,
+                      "updatedAt": "2022-04-07T02:07:05.444Z",
+                      "createdAt": "2022-04-07T02:07:05.444Z"
+                  }
+              },
+              {
+                  "id": 6,
+                  "category": "Operational",
+                  "title": "AD Hygene - Legacy GPs, AD domains",
+                  "description": "Legacy AD Polices, Legacy GPOS, Password expiration, vulnerabile user acounts",
+                  "Threats": [
+                      {
+                          "id": 2,
+                          "category": "Accidental",
+                          "agent": "System dependencies ",
+                          "title": "Dependency System Outage",
+                          "description": "There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
+                          "VulnerabilityThreat": {
+                              "id": 21,
+                              "vulnerability": 6,
+                              "threatId": 2,
+                              "updatedAt": "2022-04-07T02:07:21.025Z",
+                              "createdAt": "2022-04-07T02:07:21.025Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 22,
+                              "vulnerability": 6,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.025Z",
+                              "createdAt": "2022-04-07T02:07:21.025Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 23,
+                              "vulnerability": 6,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.026Z",
+                              "createdAt": "2022-04-07T02:07:21.026Z"
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "category": "Deliberate",
+                          "agent": "Contractors and CLIENT NAME's Employee",
+                          "title": "Privileged Access Abuse (Administrator) ",
+                          "description": "A CLIENT NAME employee with privileged or administrative access abuses, modify or destroy large volumes of data or formulas, or lock users out of systems or bring entire systems offline.  ",
+                          "VulnerabilityThreat": {
+                              "id": 24,
+                              "vulnerability": 6,
+                              "threatId": 7,
+                              "updatedAt": "2022-04-07T02:07:21.026Z",
+                              "createdAt": "2022-04-07T02:07:21.026Z"
+                          }
+                      },
+                      {
+                          "id": 8,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminal",
+                          "title": "Malware ",
+                          "description": "Malware is successfully delivered to CLIENT NAME's systems which results in system outage, data exfiltration or performance problem.  ",
+                          "VulnerabilityThreat": {
+                              "id": 25,
+                              "vulnerability": 6,
+                              "threatId": 8,
+                              "updatedAt": "2022-04-07T02:07:21.027Z",
+                              "createdAt": "2022-04-07T02:07:21.027Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 26,
+                              "vulnerability": 6,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.027Z",
+                              "createdAt": "2022-04-07T02:07:21.027Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 15,
+                      "assetId": 5,
+                      "vulnerabilityId": 6,
+                      "updatedAt": "2022-04-07T02:07:05.444Z",
+                      "createdAt": "2022-04-07T02:07:05.444Z"
+                  }
+              }
+          ]
+      },
+      "Company": {
+          "id": 2,
+          "name": "ABC Pvt. Lmtd"
+      }
+  },
+  {
+      "id": 4,
+      "assetId": 6,
+      "companyId": 2,
+      "confidentiality": "H",
+      "integrity": "H",
+      "availability": "H",
+      "rating": "H",
+      "updatedAt": "2022-04-07T15:57:27.210Z",
+      "createdAt": "2022-04-07T15:57:27.210Z",
+      "Asset": {
+          "id": 6,
+          "categoryId": 3,
+          "title": "Domain Controllers",
+          "description": "A domain controller is a server that responds to authentication requests and verifies users on computer networks.",
+          "AssetCategory": {
+              "id": 3,
+              "name": "Technical"
+          },
+          "Vulnerabilities": [
+              {
+                  "id": 1,
+                  "category": "Operational",
+                  "title": "Back-up Validation, Process & Standards",
+                  "description": "There are backups; however there is no apparent backup policy which could lead to broken standards and potentail failure in backup avaliability. ",
+                  "Threats": [
+                      {
+                          "id": 1,
+                          "category": "Accidental",
+                          "agent": "CLIENT NAME's Staff",
+                          "title": "Electronic Communication Mishandling",
+                          "description": "There is a threat of data leakage if an email is distributed or handed without proper care of due diligence, e.g., non encrypted email attachments.  ",
+                          "VulnerabilityThreat": {
+                              "id": 1,
+                              "vulnerability": 1,
+                              "threatId": 1,
+                              "updatedAt": "2022-04-07T02:07:21.006Z",
+                              "createdAt": "2022-04-07T02:07:21.006Z"
+                          }
+                      },
+                      {
+                          "id": 2,
+                          "category": "Accidental",
+                          "agent": "System dependencies ",
+                          "title": "Dependency System Outage",
+                          "description": "There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
+                          "VulnerabilityThreat": {
+                              "id": 2,
+                              "vulnerability": 1,
+                              "threatId": 2,
+                              "updatedAt": "2022-04-07T02:07:21.013Z",
+                              "createdAt": "2022-04-07T02:07:21.013Z"
+                          }
+                      },
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 3,
+                              "vulnerability": 1,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.014Z",
+                              "createdAt": "2022-04-07T02:07:21.014Z"
+                          }
+                      },
+                      {
+                          "id": 4,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals ",
+                          "title": "Ransomware",
+                          "description": "An adversary gains administrative access to CLIENT NAME's system(s) and disables their function or encrypts key data, then demands payment to restore services. ",
+                          "VulnerabilityThreat": {
+                              "id": 4,
+                              "vulnerability": 1,
+                              "threatId": 4,
+                              "updatedAt": "2022-04-07T02:07:21.015Z",
+                              "createdAt": "2022-04-07T02:07:21.015Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 16,
+                      "assetId": 6,
+                      "vulnerabilityId": 1,
+                      "updatedAt": "2022-04-07T02:07:05.445Z",
+                      "createdAt": "2022-04-07T02:07:05.445Z"
+                  }
+              },
+              {
+                  "id": 3,
+                  "category": "Operational",
+                  "title": "Data Handling Best Practices & Policy",
+                  "description": "Data Loss Prevention / Data handeling standards",
+                  "Threats": [
+                      {
+                          "id": 3,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Phishing (Sophisticated)",
+                          "description": "A targeted e-mail containing information relevant to CLIENT NAME staff or contractor (e.g., 'Spear Phishing') successfully exploits the trust of the person in order to obtain their account credentials or deliver malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 10,
+                              "vulnerability": 3,
+                              "threatId": 3,
+                              "updatedAt": "2022-04-07T02:07:21.019Z",
+                              "createdAt": "2022-04-07T02:07:21.019Z"
+                          }
+                      },
+                      {
+                          "id": 5,
+                          "category": "Deliberate",
+                          "agent": "Cyber Criminals",
+                          "title": "Phishing (Unsophisticated)",
+                          "description": "FUnlike Sophisticated phishing, this threat relates to a generic phishing e-mail successfully compromising CLIENT NAME's account credentials, or delivering malware or ransomware. A generic, non-targeted phishing e-mail sent to a number of employs successfully compromises employee or contractor account credentials or delivers malware or ransomware.",
+                          "VulnerabilityThreat": {
+                              "id": 11,
+                              "vulnerability": 3,
+                              "threatId": 5,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 7,
+                          "category": "Deliberate",
+                          "agent": "Contractors and CLIENT NAME's Employee",
+                          "title": "Privileged Access Abuse (Administrator) ",
+                          "description": "A CLIENT NAME employee with privileged or administrative access abuses, modify or destroy large volumes of data or formulas, or lock users out of systems or bring entire systems offline.  ",
+                          "VulnerabilityThreat": {
+                              "id": 12,
+                              "vulnerability": 3,
+                              "threatId": 7,
+                              "updatedAt": "2022-04-07T02:07:21.020Z",
+                              "createdAt": "2022-04-07T02:07:21.020Z"
+                          }
+                      },
+                      {
+                          "id": 9,
+                          "category": "Deliberate",
+                          "agent": "Sophisticated Cyber Criminals Organized Criminals ",
+                          "title": "Distributed Denial of Service (DDoS)",
+                          "description": "A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
+                          "VulnerabilityThreat": {
+                              "id": 13,
+                              "vulnerability": 3,
+                              "threatId": 9,
+                              "updatedAt": "2022-04-07T02:07:21.021Z",
+                              "createdAt": "2022-04-07T02:07:21.021Z"
+                          }
+                      }
+                  ],
+                  "AssetVulnerability": {
+                      "id": 17,
+                      "assetId": 6,
+                      "vulnerabilityId": 3,
+                      "updatedAt": "2022-04-07T02:07:05.445Z",
+                      "createdAt": "2022-04-07T02:07:05.445Z"
+                  }
+              }
+          ]
+      },
+      "Company": {
+          "id": 2,
+          "name": "ABC Pvt. Lmtd"
+      }
+  }
+]
