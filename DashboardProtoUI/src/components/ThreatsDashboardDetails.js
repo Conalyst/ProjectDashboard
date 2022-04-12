@@ -5,33 +5,29 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageButton from "./ManageButton";
-
+import { pullCompanyAssets } from "../services/companyAssetsService";
 
 export const ThreatsDashboardDetails = () => {
 
-    const [threats, setThreats] = useState(thr_data);
-
-   /*    const [assets, setAssets] = useState([]);
+    const [threats, setThreats] = useState(thr_data); 
+    const [assets, setAssets] = useState([]);
     useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-              
-            // do db call or API endpoint axios call here and return the promise.
-            getAllAssets()
-            .then((res) => {
-              setAssets(res);
-              resolve(res);
-            })
-              .catch((err) => {
-                setAssets([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("error!==", error);
-            reject("signin error!");
-          }
-        });
-      }, []); */
+    
+        const storedUser = localStorage.getItem("storedUser");   
+        const parsedUser = JSON.parse(storedUser);
+        console.log("parsed user dashboard", parsedUser);
+        pullCompanyAssets(parsedUser.companyId)
+        .then((result) => {
+            // console.log('under dashboard details', result.data);
+            // console.log("result", result.data[0])
+            // console.log("asset", result.data[0].Asset)
+            // console.log("asset-category", result.data[0].Asset.AssetCategory)
+            // console.log("Vuln", result.data[0].Asset.Vulnerabilities)
+            console.log("threats", result.data[0].Asset.Vulnerabilities[0].Threats)
+            setAssets(result.data[0].Asset.Vulnerabilities[0].Threats);
+        })
+   
+    }, []); 
 
     return (
     <>     
@@ -58,7 +54,8 @@ export const ThreatsDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {threats.map((threat) => (
+                {/* {threats.map((threat) => ( */}
+                  {assets.map((threat) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
@@ -116,9 +113,9 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.description}</td>
                     <td>{threat.category}</td>
                     <td>{threat.agent}</td>
-                    <td>{threat.impact}</td>
+                    {/* <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
-                    <td>{threat.rating}</td>
+                    <td>{threat.rating}</td> */}
                 </tr>
             ) )}
             </tbody>

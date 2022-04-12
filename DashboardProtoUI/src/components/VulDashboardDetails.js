@@ -5,7 +5,7 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageButton from "./ManageButton";
-
+import { pullCompanyAssets } from "../services/companyAssetsService";
 
 export const VulDashboardDetails = () => {
 
