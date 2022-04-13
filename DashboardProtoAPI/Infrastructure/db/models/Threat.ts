@@ -11,6 +11,9 @@ interface ThreatAttributes {
   agent: string;
   title: string;
   description: string;
+  impact: string;
+  likelihood: string;
+  rating: string;
   createdAt: Date;
   updatedAt: Date | null;
 }
@@ -23,6 +26,9 @@ module.exports = (sequelize: any, DataTypes:any) => {
     public agent!: string;
     public title!: string;
     public description!: string;
+    public impact!: string;
+    public likelihood!: string;
+    public rating!: string;
     public createdAt!: Date;
     public updatedAt!: Date | null;
 
@@ -59,6 +65,18 @@ module.exports = (sequelize: any, DataTypes:any) => {
       type:DataTypes.TEXT,
       // allowNull:false
     } ,
+    impact:{
+      type:DataTypes.STRING,
+      allowNull:false
+    } ,
+    likelihood: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    } ,
+    rating: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     updatedAt: {
       type: DataTypes.DATE,
       allowNull: false,

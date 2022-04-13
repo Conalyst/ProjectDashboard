@@ -2,8 +2,10 @@ import express from 'express'
 import  {AssetRepository } from '../Infrastructure/repositories/AssetRepository'
 import { AssetDto } from '../domain/dtos/AssetDto'
 import {toEntity} from '../application/mappers/assetMapper'
+
 export class AssetApi{
-    private _assetRepository:any;
+
+  private _assetRepository:any;
     constructor(){
         this._assetRepository  = new AssetRepository();
     }
@@ -17,7 +19,7 @@ export class AssetApi{
     async getAssetsById(req: express.Request, res: express.Response){
       let assetId = req.params.id;
       console.log(assetId)
-      let asset = await this._assetRepository.GetById(assetId);
+      let asset = await this._assetRepository.GetAssetById(assetId);
       return  res.status(200).json(asset);
     };
 
@@ -52,7 +54,7 @@ export class AssetApi{
     //#region private methods
     getDtoFromRequest(req: express.Request){
         
-      return new AssetDto(req.body.id, req.body.categoryId,req.body.title, req.body.description, new Date());
+      return new AssetDto(req.body.id, req.body.categoryId,req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, new Date());
   }
  
   //#endregion
