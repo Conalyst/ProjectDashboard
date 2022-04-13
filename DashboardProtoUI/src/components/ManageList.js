@@ -153,11 +153,11 @@ export const ManageList = () => {
         </div>
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
-            <div className="Rectangle-top">
-            <span className="Add-New-Asset">
+            <div className="Rectangle-top">            
+              <span className="Add-New-Asset">
                 Manage List
-            </span>
-            <span><button className="Top-Cancel" onClick={() =>onDone()}>X</button></span>
+              </span>
+              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
@@ -202,12 +202,12 @@ export const ManageList = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
                   <InputGroup className="ml-search">
-                    <input type="text" placeholder="Search" aria-label="Search" />
+                    <input type="search" id="gsearch" name="gsearch" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
                      <Button variant="outline-secondary" id="button-addon2">
                       <img src={search}/>
                     </Button>

@@ -156,7 +156,7 @@ export const AddAsset = () => {
             <span className="Add-New-Asset">
                 Add New Asset
             </span>
-            <span><button className="Top-Cancel" onClick={() =>onDone()}>X</button></span>
+            <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
@@ -207,7 +207,7 @@ export const AddAsset = () => {
             </div>
           </Form>
         </div>
-          <div className="test">
+        <div className="test">
             <Button className="Button-Icon-done" type="submit" onClick={() =>onDone()}>
               Done
             </Button>
