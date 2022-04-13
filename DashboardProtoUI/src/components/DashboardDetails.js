@@ -52,10 +52,10 @@ export const DashboardDetails = () => {
                   <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
               </td>
-                <td>{asset.id}</td>
-                <td>{asset.title}</td>
-                <td>{asset.description}</td>
-                <td>{asset.category}</td>
+                <td>{asset.assetId}</td>
+                <td>{asset.Asset.title}</td>
+                <td>{asset.Asset.description}</td>
+                <td>{asset.Asset.categoryId}</td>
                 <td>{asset.confidentiality}</td>
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
