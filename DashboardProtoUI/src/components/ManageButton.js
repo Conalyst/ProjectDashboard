@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 
 const ManageButton = () => {
   return (

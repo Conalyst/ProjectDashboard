@@ -47,59 +47,7 @@ export const ThreatsDashboardDetails = () => {
       <>     
           <div className="asset-menu-buttons">
             <button className="Button-Icon-Manage" onClick={onAddAsset}> Manage</button>  
-            <div class="dropdown">
-  <button class="btn btn-secondary dropdown-toggle Button-Icon-Filter-modal" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-  <img  src={filter_blue} alt =""/> Filter
-  </button>
-  <ul class="dropdown-menu">
-  <div class="Filter-Main-Long">
-  <div class="Rectangle-1363">
-  <span class="Filters">
-  Filters
-</span><div class="Vector">x</div>
-<div class="Rectangle-978"></div>
-<div class="Assets">
-<span class="Asset-Category">
-  Asset Category
-</span>
-<div class="Rectangle-979"></div>
-</div>
-<div class="Rectangle-978"></div>
-<div class="Assets">
-<span class="Asset-Category">
-  Confidentiality
-</span>
-<div class="Rectangle-979"></div>
-</div>
-<div class="Rectangle-978"></div>
-<div class="Assets">
-<span class="Asset-Category">
-  Integrity
-</span>
-<div class="Rectangle-979"></div>
-</div>
-<div class="Rectangle-978"></div>
-<div class="Assets">
-<span class="Asset-Category">
-  Availability
-</span>
-<div class="Rectangle-979"></div>
-</div>
-
-  <button className="Filter-Button-Icon-done">
-Filter
-</button>
-
-
-
-
-  </div>
-  </div>
-
-  
-</ul>
-</div>
-<button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+            <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
           </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
