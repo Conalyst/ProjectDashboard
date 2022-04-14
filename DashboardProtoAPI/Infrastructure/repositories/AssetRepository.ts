@@ -46,7 +46,7 @@ export class AssetRepository {
       
     }   
 
-    async GetAssetByTitle(title: string){
+    async GetByTitle(title: string){
 
       const Asset = await db.Asset.findOne({
            where: {title: `${title}`}
@@ -56,5 +56,9 @@ export class AssetRepository {
     
     public async Create(model: Model<typeof Asset>){
       return db.Asset.create(model['dataValues']);
+    }
+
+    public async Update(model: Model<typeof Asset>, id:number){
+        return db.Asset.update(model['dataValues'], {where: {id: `${id}`}});
     }
 }

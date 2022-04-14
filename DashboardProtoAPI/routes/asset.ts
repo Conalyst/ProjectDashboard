@@ -20,4 +20,10 @@ assetRouter.post("/",
   }
 )
 
+assetRouter.put("/:id",
+  (req, res) =>{
+    assetApi.update(req, res)
+  }
+)
+
 export default assetRouter;

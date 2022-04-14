@@ -38,7 +38,7 @@ class AssetApi {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title } = req.body;
-            const alreadyExistsAsset = yield this._assetRepository.GetAssetByTitle(title)
+            const alreadyExistsAsset = yield this._assetRepository.GetByTitle(title)
                 .catch((err) => {
                 console.log("Error: ", err);
             });
@@ -54,6 +54,30 @@ class AssetApi {
                 else {
                     return res.status(400).send("The asset could not be created. Please check the provided data.");
                 }
+            }
+        });
+    }
+    update(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            const exists = yield this._assetRepository.GetById(id)
+                .catch((err) => {
+                console.log("Error: ", err);
+            });
+            if (exists) {
+                const assetDto = this.getDtoFromRequest(req);
+                let updatedAsset = yield this._assetRepository.Update((0, assetMapper_1.toEntity)(assetDto), id);
+                if (updatedAsset) {
+                    console.log("updated..", updatedAsset);
+                    updatedAsset = yield this._assetRepository.GetById(id);
+                    return res.status(201).json(updatedAsset);
+                }
+                else {
+                    return res.status(400).send("The asset could not be updated. Please check the provided data.");
+                }
+            }
+            else {
+                return res.status(400).send("This asset doesn't exist. Please check the asset.");
             }
         });
     }

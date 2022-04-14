@@ -2,6 +2,7 @@ import express from 'express'
 import  {AssetRepository } from '../Infrastructure/repositories/AssetRepository'
 import { AssetDto } from '../domain/dtos/AssetDto'
 import {toEntity} from '../application/mappers/assetMapper'
+import { type } from 'os';
 
 export class AssetApi{
 
@@ -29,7 +30,7 @@ export class AssetApi{
         
       const { title} = req.body;
      
-      const alreadyExistsAsset = await this._assetRepository.GetAssetByTitle(title)
+      const alreadyExistsAsset = await this._assetRepository.GetByTitle(title)
       .catch(
       (err) => {
           console.log("Error: ", err);
@@ -50,6 +51,32 @@ export class AssetApi{
       }
       
   }
+
+  async update(req: express.Request, res: express.Response){
+        
+    const id = req.params.id;
+    const exists = await this._assetRepository.GetById(id)
+    .catch(
+    (err) => {
+        console.log("Error: ", err);
+    }
+    );
+    if (exists) {
+      const assetDto = this.getDtoFromRequest(req);      
+      let updatedAsset = await this._assetRepository.Update(toEntity(assetDto), id)
+    
+      if(updatedAsset){
+        console.log("updated..", updatedAsset)
+        updatedAsset = await this._assetRepository.GetById(id)
+        return res.status(201).json(updatedAsset);
+      }else{
+        return res.status(400).send("The asset could not be updated. Please check the provided data.")
+      }
+    } else {
+      return res.status(400).send("This asset doesn't exist. Please check the asset.")
+    }
+    
+}
 
     //#region private methods
     getDtoFromRequest(req: express.Request){

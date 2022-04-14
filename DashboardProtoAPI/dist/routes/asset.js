@@ -13,4 +13,7 @@ assetRouter.get("/:id", (req, res) => {
 assetRouter.post("/", (req, res) => {
     assetApi.create(req, res);
 });
+assetRouter.put("/:id", (req, res) => {
+    assetApi.update(req, res);
+});
 exports.default = assetRouter;

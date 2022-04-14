@@ -29,7 +29,7 @@ class ThreatRepository {
             return models_1.default.Threat.findByPk(id);
         });
     }
-    GetThreatByTitle(title) {
+    GetByTitle(title) {
         return __awaiter(this, void 0, void 0, function* () {
             const threat = yield models_1.default.Threat.findOne({
                 where: { title: `${title}` }
@@ -40,6 +40,12 @@ class ThreatRepository {
     Create(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Threat.create(model['dataValues']);
+        });
+    }
+    Update(model, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            console.log("model..", model['dataValues']);
+            return models_1.default.Threat.update(model['dataValues'], { where: { id: `${id}` } });
         });
     }
 }

@@ -13,4 +13,7 @@ threatRouter.get("/:id", (req, res) => {
 threatRouter.post("/", (req, res) => {
     threatApi.create(req, res);
 });
+threatRouter.put("/:id", (req, res) => {
+    threatApi.update(req, res);
+});
 exports.default = threatRouter;

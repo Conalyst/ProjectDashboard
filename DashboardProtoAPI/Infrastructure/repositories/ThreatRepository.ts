@@ -20,7 +20,7 @@ export class ThreatRepository {
       return db.Threat.findByPk(id);    
     }   
     
-    async GetThreatByTitle(title: string){
+    async GetByTitle(title: string){
 
       const threat = await db.Threat.findOne({
            where: {title: `${title}`}
@@ -31,4 +31,9 @@ export class ThreatRepository {
     public async Create(model: Model<typeof Threat>){
       return db.Threat.create(model['dataValues']);
     }
+
+    public async Update(model: Model<typeof Threat>, id:number){
+      console.log("model..", model['dataValues'])
+      return db.Threat.update(model['dataValues'], {where: {id: `${id}`}});
+  }
 }

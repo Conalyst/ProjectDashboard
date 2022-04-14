@@ -15,11 +15,11 @@ const ThreatDto_1 = require("../domain/dtos/ThreatDto");
 const ThreatMapper_1 = require("../application/mappers/ThreatMapper");
 class ThreatApi {
     constructor() {
-        this._ThreatRepository = new ThreatRepository_1.ThreatRepository();
+        this._threatRepository = new ThreatRepository_1.ThreatRepository();
     }
     getAllThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let threatList = yield this._ThreatRepository.Get();
+            let threatList = yield this._threatRepository.Get();
             // console.log("Helllllo")
             return res.status(200).json(threatList);
         });
@@ -29,7 +29,7 @@ class ThreatApi {
         return __awaiter(this, void 0, void 0, function* () {
             let threatId = req.params.id;
             console.log(threatId);
-            let threat = yield this._ThreatRepository.GetById(threatId);
+            let threat = yield this._threatRepository.GetById(threatId);
             return res.status(200).json(threat);
         });
     }
@@ -37,7 +37,7 @@ class ThreatApi {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title } = req.body;
-            const alreadyExistsThreat = yield this._ThreatRepository.GetThreatByTitle(title)
+            const alreadyExistsThreat = yield this._threatRepository.GetByTitle(title)
                 .catch((err) => {
                 console.log("Error: ", err);
             });
@@ -46,13 +46,36 @@ class ThreatApi {
             }
             else {
                 const threatDto = this.getDtoFromRequest(req);
-                let createdThreat = yield this._ThreatRepository.Create((0, ThreatMapper_1.toEntity)(threatDto));
+                let createdThreat = yield this._threatRepository.Create((0, ThreatMapper_1.toEntity)(threatDto));
                 if (createdThreat) {
                     return res.status(201).json(createdThreat);
                 }
                 else {
                     return res.status(400).send("The vulnerability could not be created. Please check the provided data.");
                 }
+            }
+        });
+    }
+    update(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            const exists = yield this._threatRepository.GetById(id)
+                .catch((err) => {
+                console.log("Error: ", err);
+            });
+            if (exists) {
+                const threatDto = this.getDtoFromRequest(req);
+                let updatedthreat = yield this._threatRepository.Update((0, ThreatMapper_1.toEntity)(threatDto), id);
+                if (updatedthreat) {
+                    updatedthreat = yield this._threatRepository.GetById(id);
+                    return res.status(201).json(updatedthreat);
+                }
+                else {
+                    return res.status(400).send("The threat could not be updated. Please check the provided data.");
+                }
+            }
+            else {
+                return res.status(400).send("This threat doesn't exist. Please check the threat.");
             }
         });
     }
