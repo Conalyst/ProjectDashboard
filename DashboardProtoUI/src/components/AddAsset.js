@@ -16,7 +16,7 @@ import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD } from "../navigation/constants";
+import { DASHBOARD, THREATSDASHBOARD } from "../navigation/constants";
 
 
 export const AddAsset = () => { 
@@ -208,9 +208,22 @@ export const AddAsset = () => {
           </Form>
         </div>
         <div className="test">
-            <Button className="Button-Icon-done" type="submit" onClick={() =>onDone()}>
-              Done
-            </Button>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
+           Done
+          </Button>
+          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div className="modal-dialog modal-dialog-centered">
+              <div className="modal-content Manage-list-add">
+                <div className="modal-header Rectangle-header">
+                  <h5 className="modal-title Asset-Added" id="exampleModalLabel">Asset Added</h5>
+                  </div>
+                  <div className="modal-body">
+                    <p className="New-asset-was-successfully-added-to-the-list">New asset was successfully added to the list.</p>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                  </div>              
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>

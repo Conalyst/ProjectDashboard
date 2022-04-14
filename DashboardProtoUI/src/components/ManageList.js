@@ -16,7 +16,7 @@ import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD } from "../navigation/constants";
+import { DASHBOARD, VULDASHBOARD } from "../navigation/constants";
 
 
 export const ManageList = () => { 
@@ -28,15 +28,15 @@ export const ManageList = () => {
 
   const onDone =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: VULDASHBOARD,
 
    });
   }  
 
 
-  const onCancel =()=>{
+  const onOk =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: VULDASHBOARD,
 
    });
   }  
@@ -218,9 +218,26 @@ export const ManageList = () => {
           </Form>
         </div>
           <div className="asset-menu-buttons">
-            <Button className="Button-Icon-Filter-modal" type="submit" onClick={() =>onDelete()}>
+            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Delete
             </Button>
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content Manage-list-delete">
+                  <div className="modal-header Rectangle-header">
+                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Vulnerabilities</h5>
+                  </div>
+                  <div className="modal-body">
+                    <p className="Remove-asset-message">Your selected threat will be removed from the list.<br></br>
+                    You can restore it within 15 days from History.</p>
+                    <div className="remove-menu-buttons">
+                  <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
+                  <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>           
             <Button className="Button-Icon-AddAsset-modal" type="submit" onClick={() =>onDone()}>
               Done
             </Button>
