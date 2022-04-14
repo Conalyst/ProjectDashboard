@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
-import {InputGroup, Table} from "react-bootstrap";
+import {InputGroup, Dropdown,  Table} from "react-bootstrap";
 import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
+import pen_white from '../images/icons/pen_white.png';
+import pen_black from '../images/icons/pen_black.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, DASHBOARD } from "../navigation/constants";
-import {useHistory} from 'react-router-dom'
+import { ADDASSET } from "../navigation/constants";
+import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
 
@@ -43,6 +45,9 @@ export const DashboardDetails = () => {
                     <th>Integrity</th>
                     <th>Availability</th>
                     <th>Rating</th>
+                    <th>
+                    <img  src={pen_white} alt =""/>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -60,6 +65,18 @@ export const DashboardDetails = () => {
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
                 <td>{asset.rating}</td>
+                <td>
+                <Dropdown className="dropdown-container">
+                  <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
+                    <img  src={pen_black} alt =""/>
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="rounded">
+                      <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
+                      <Dropdown.Item className="pen-button-link" href="/dashboard/managelist">Edit </Dropdown.Item>
+                      <Dropdown.Item className="pen-button-link" href="/dashboard/managelist">Remove</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>                
+                </td>
               </tr>
             ) )}
           </tbody>
