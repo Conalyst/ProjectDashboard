@@ -2,30 +2,23 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
-    class Asset extends sequelize_1.Model {
+    class Risk extends sequelize_1.Model {
         static associate(models) {
-            Asset.belongsTo(models.AssetCategory, {
-                foreignKey: 'categoryId',
-            });
-            Asset.belongsToMany(models.Vulnerability, {
-                through: models.AssetVulnerability,
-                foreignKey: 'assetId',
-            });
-            Asset.belongsToMany(models.Risk, {
+            Risk.belongsToMany(models.Asset, {
                 through: models.RiskAsset,
-                foreignKey: 'assetId',
+                foreignKey: 'riskId'
             });
         }
     }
-    Asset.init({
+    Risk.init({
         id: {
             type: DataTypes.INTEGER,
             allowNull: false,
             primaryKey: true,
             autoIncrement: true
         },
-        categoryId: {
-            type: DataTypes.INTEGER,
+        category: {
+            type: DataTypes.TEXT,
             allowNull: false,
         },
         title: {
@@ -36,15 +29,11 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.TEXT,
             // allowNull:false
         },
-        confidentiality: {
+        impact: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        integrity: {
-            type: DataTypes.STRING,
-            allowNull: false,
-        },
-        availability: {
+        likelihood: {
             type: DataTypes.STRING,
             allowNull: false,
         },
@@ -62,8 +51,8 @@ module.exports = (sequelize, DataTypes) => {
         },
     }, {
         sequelize,
-        modelName: 'Asset',
-        tableName: 'assets'
+        modelName: 'Risk',
+        tableName: 'risks'
     });
-    return Asset;
+    return Risk;
 };

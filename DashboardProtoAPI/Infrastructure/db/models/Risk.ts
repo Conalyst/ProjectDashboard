@@ -5,56 +5,48 @@ import {
   
 }  from 'sequelize';
 
-interface AssetAttributes {
+interface RiskAttributes {
   id: number;
-  categoryId:number;
+  category: string;
   title: string;
   description: string;
-  confidentiality: string;
-  integrity: string;
-  availability: string;
+  impact: string;
+  likelihood: string;
   rating: string;
   createdAt: Date;
   updatedAt: Date | null;
 }
 
 module.exports = (sequelize: any, DataTypes:any) => {
-  class Asset extends Model <AssetAttributes> 
-  implements AssetAttributes {
+  class Risk extends Model <RiskAttributes> 
+  implements RiskAttributes {
     public id!: number;
-    public categoryId!: number;
+    public category!: string;
     public title!: string;
     public description!: string;
-    public confidentiality!: string;
-    public integrity!: string;
-    public availability!: string;
+    public impact!: string;
+    public likelihood!: string;
     public rating!: string;
     public createdAt!: Date;
     public updatedAt!: Date | null;
 
     static associate(models: any) {
-      Asset.belongsTo(models.AssetCategory, {
-        foreignKey: 'categoryId',
-      })
-      Asset.belongsToMany(models.Vulnerability, {
-        through: models.AssetVulnerability,
-        foreignKey: 'assetId' ,
-      }) 
-      Asset.belongsToMany(models.Risk, {
+      
+      Risk.belongsToMany(models.Asset, {
         through: models.RiskAsset,
-        foreignKey: 'assetId' ,
+        foreignKey: 'riskId' 
       }) 
     }
   }
-  Asset.init({
+  Risk.init({
     id:{
       type:DataTypes.INTEGER,
       allowNull: false,
       primaryKey:true,
       autoIncrement:true
     },
-    categoryId:{
-      type:DataTypes.INTEGER,
+    category:{
+      type:DataTypes.TEXT,
       allowNull: false,
     },
     title:{
@@ -65,15 +57,11 @@ module.exports = (sequelize: any, DataTypes:any) => {
       type:DataTypes.TEXT,
       // allowNull:false
     } ,
-    confidentiality:{
+    impact:{
       type:DataTypes.STRING,
       allowNull:false
     } ,
-    integrity: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    } ,
-    availability: {
+    likelihood: {
       type: DataTypes.STRING,
       allowNull: false,
     } ,
@@ -91,8 +79,8 @@ module.exports = (sequelize: any, DataTypes:any) => {
     },
   }, {
     sequelize,
-    modelName: 'Asset',
-    tableName: 'assets'
+    modelName: 'Risk',
+    tableName: 'risks'
   });
-  return Asset;
+  return Risk;
 }

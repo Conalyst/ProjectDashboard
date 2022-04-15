@@ -5,7 +5,7 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageButton from "./ManageButton";
-import { pullCompanyAssets } from "../services/companyAssetsService";
+import { getAllThreats } from "../services/threatService";
 
 export const ThreatsDashboardDetails = () => {
 
@@ -16,15 +16,10 @@ export const ThreatsDashboardDetails = () => {
         const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
         console.log("parsed user dashboard", parsedUser);
-        pullCompanyAssets(parsedUser.companyId)
+        getAllThreats()
         .then((result) => {
-            // console.log('under dashboard details', result.data);
-            // console.log("result", result.data[0])
-            // console.log("asset", result.data[0].Asset)
-            // console.log("asset-category", result.data[0].Asset.AssetCategory)
-            // console.log("Vuln", result.data[0].Asset.Vulnerabilities)
-            console.log("threats", result.data[0].Asset.Vulnerabilities[0].Threats)
-            setAssets(result.data[0].Asset.Vulnerabilities[0].Threats);
+            console.log("Threats", result)
+            setAssets(result);
         })
    
     }, []); 
@@ -113,9 +108,9 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.description}</td>
                     <td>{threat.category}</td>
                     <td>{threat.agent}</td>
-                    {/* <td>{threat.impact}</td>
+                    <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
-                    <td>{threat.rating}</td> */}
+                    <td>{threat.rating}</td> 
                 </tr>
             ) )}
             </tbody>

@@ -13,9 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetRepository = void 0;
-// import   Asset  from "../db/models"
-// import   AssetOutput  from "../db/models"
-// import  AssetCategory  from "../db/models";
 const models_1 = __importDefault(require("../db/models"));
 const Asset = require("../db/models");
 class AssetRepository {
@@ -26,11 +23,11 @@ class AssetRepository {
             let assets = yield models_1.default.Asset.findAll({
                 include: [
                     { model: models_1.default.AssetCategory, attributes: ['id', 'name'] },
-                    // {
-                    //   model: db.Vulnerability,
-                    //   include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
-                    //   attributes: ['id','category','title', 'description']
-                    // }
+                    {
+                        model: models_1.default.Vulnerability,
+                        include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                        attributes: ['id', 'category', 'title', 'description']
+                    }
                 ]
             });
             return assets;

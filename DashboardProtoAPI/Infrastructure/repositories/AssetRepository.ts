@@ -1,9 +1,5 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 import { Model } from "sequelize-typescript";
-  // import   Asset  from "../db/models"
-// import   AssetOutput  from "../db/models"
-// import  AssetCategory  from "../db/models";
-
 import db from '../db/models'
 const Asset = require("../db/models")
 
@@ -15,11 +11,11 @@ export class AssetRepository {
         let assets  = await db.Asset.findAll({
             include: [
                       {model:db.AssetCategory, attributes: ['id', 'name']}, 
-                      // {
-                      //   model: db.Vulnerability,
-                      //   include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
-                      //   attributes: ['id','category','title', 'description']
-                      // }
+                      {
+                        model: db.Vulnerability,
+                        include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
+                        attributes: ['id','category','title', 'description']
+                      }
                      ]
         });
         return assets;
