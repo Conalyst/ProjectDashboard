@@ -1158,6 +1158,17 @@ li {
     color: #2e2e2e;
   }
 
+  .Frame-right {
+    width: 80%;
+    height: 48px;
+    margin: 4px 0 10px 0;
+    margin-left:20%;
+    margin-right: 20%;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+  }
+
   .optional{
     color: #e98226;
     font-size: 14px;
@@ -1785,8 +1796,6 @@ li {
   box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
   background-color: #fff;
 }
-
-
 
 .Remove-asset-message {
   width: 100%;

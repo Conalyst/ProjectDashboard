@@ -17,18 +17,21 @@ import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
 import { DASHBOARD, VULDASHBOARD } from "../navigation/constants";
+import Select from 'react-select';
+
 
 
 export const ManageList = () => { 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [searchvul, setSearchvul] = useState('');
+  //const [searchvul, setSearchvul] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
 
   const onDone =()=>{
   history.push({
-     pathname: VULDASHBOARD,
+     pathname: DASHBOARD,
 
    });
   }  
@@ -36,10 +39,23 @@ export const ManageList = () => {
 
   const onOk =()=>{
   history.push({
-     pathname: VULDASHBOARD,
+     pathname: DASHBOARD,
 
    });
   }  
+
+  const options = [
+    { value: 'v1', label: 'v1' },
+    { value: 'v2', label: 'v2' },
+    { value: 'v3', label: 'v3' },
+    { value: 'v4', label: 'v4' },
+    { value: 'v5', label: 'v5' },
+    { value: 'v6', label: 'v6' },
+    { value: 'v7', label: 'v7' },
+    { value: 'v8', label: 'v8' },
+    { value: 'v9', label: 'v9' },
+    { value: 'v10', label: 'v10'},
+  ];
 
   /*const onAddAsset = () =>{
  
@@ -206,12 +222,12 @@ export const ManageList = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
-                  <InputGroup className="ml-search">
-                    <input type="search" id="gsearch" name="gsearch" placeholder="Search" aria-label="Search" onChange={(e) => setSearch(e.target.value)} />
-                     <Button variant="outline-secondary" id="button-addon2">
-                      <img src={search}/>
-                    </Button>
-                  </InputGroup>
+                  <Select className="Frame-right"
+                    isMulti
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                   />
                 </Form.Group>
               </div>
             </div>

@@ -68,7 +68,7 @@ export const DashboardDetails = () => {
                 <td>
                 <Dropdown className="dropdown-container">
                   <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                    <img  src={pen_black} alt =""/>
+                    <img src={pen_black} alt =""/>
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="rounded">
                       <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
