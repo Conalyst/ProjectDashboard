@@ -9,6 +9,7 @@ import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./co
         axios
         .get(GET_ALL_ASSETS())
         .then((res) => {
+            console.log("res...", res.data)
            resolve(res.data);
         })
         .catch((err) => {

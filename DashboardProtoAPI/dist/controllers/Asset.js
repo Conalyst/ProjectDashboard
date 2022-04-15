@@ -29,7 +29,7 @@ class AssetApi {
         return __awaiter(this, void 0, void 0, function* () {
             let assetId = req.params.id;
             console.log(assetId);
-            let asset = yield this._assetRepository.GetById(assetId);
+            let asset = yield this._assetRepository.GetAssetById(assetId);
             return res.status(200).json(asset);
         });
     }
@@ -38,7 +38,7 @@ class AssetApi {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title } = req.body;
-            const alreadyExistsAsset = yield this._assetRepository.GetAssetByTitle(title)
+            const alreadyExistsAsset = yield this._assetRepository.GetByTitle(title)
                 .catch((err) => {
                 console.log("Error: ", err);
             });
@@ -57,9 +57,33 @@ class AssetApi {
             }
         });
     }
+    update(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = req.params.id;
+            const exists = yield this._assetRepository.GetById(id)
+                .catch((err) => {
+                console.log("Error: ", err);
+            });
+            if (exists) {
+                const assetDto = this.getDtoFromRequest(req);
+                let updatedAsset = yield this._assetRepository.Update((0, assetMapper_1.toEntity)(assetDto), id);
+                if (updatedAsset) {
+                    console.log("updated..", updatedAsset);
+                    updatedAsset = yield this._assetRepository.GetById(id);
+                    return res.status(201).json(updatedAsset);
+                }
+                else {
+                    return res.status(400).send("The asset could not be updated. Please check the provided data.");
+                }
+            }
+            else {
+                return res.status(400).send("This asset doesn't exist. Please check the asset.");
+            }
+        });
+    }
     //#region private methods
     getDtoFromRequest(req) {
-        return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, new Date());
+        return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, new Date());
     }
 }
 exports.AssetApi = AssetApi;

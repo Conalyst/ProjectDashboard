@@ -7,6 +7,7 @@ import info_white from '../images/icons/outline_info_white.png';
 import ManageModal from "./ManageModal";
 // import axios from "axios";
 import { pullCompanyAssets } from "../services/companyAssetsService";
+import { getAllAssets } from "../services/assetsService";
 
 
 export const DashboardDetails = () => {
@@ -15,17 +16,21 @@ export const DashboardDetails = () => {
 
 
     useEffect(() => {
-        const storedUser = localStorage.getItem("storedUser");
-    
+        const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
-        pullCompanyAssets(parsedUser.companyId)
+        console.log("parsed user dashboard", parsedUser);
+        getAllAssets()
         .then((result) => {
-            console.log('under dashboard details', result.data);
-            setAssets(result.data);
+            // console.log('under dashboard details', result.data);
+            // console.log("result", result.data[0])
+            // console.log("asset", result.data[0].Asset)
+            // console.log("asset-category", result.data[0].Asset.AssetCategory)
+            // console.log("Vuln", result.data[0].Asset.Vulnerabilities)
+            // console.log("threats", result.data[0].Asset.Vulnerabilities[0].Threats)
+            console.log("assets", result[0])
+            setAssets(result);
         })
       }, []);
-
-
 
 
     return (
@@ -105,9 +110,9 @@ export const DashboardDetails = () => {
               </div>
                     </td>
                     <td>{asset.assetId}</td>
-                    <td>{asset.Asset.title}</td>
-                    <td>{asset.Asset.description}</td>
-                    <td>{asset.Asset.categoryId}</td>
+                    <td>{asset.title}</td>
+                    <td>{asset.description}</td>
+                    <td>{asset.AssetCategory.name}</td>
                     <td>{asset.confidentiality}</td>
                     <td>{asset.integrity}</td>
                     <td>{asset.availability}</td>

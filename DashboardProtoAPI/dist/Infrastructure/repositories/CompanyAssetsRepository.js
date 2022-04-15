@@ -23,7 +23,26 @@ class CompanyAssetsRepository {
         return __awaiter(this, void 0, void 0, function* () {
             let assets = yield models_1.default.CompanyAsset.findAll({
                 where: { companyId: `${companyId}` },
-                include: [models_1.default.Asset, models_1.default.Company]
+                include: [
+                    {
+                        model: models_1.default.Asset,
+                        include: [
+                            {
+                                model: models_1.default.AssetCategory, attributes: ['id', 'name']
+                            },
+                            {
+                                model: models_1.default.Vulnerability,
+                                include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                                attributes: ['id', 'category', 'title', 'description']
+                            }
+                        ],
+                        attributes: ['id', 'categoryId', 'title', 'description']
+                    },
+                    {
+                        model: models_1.default.Company,
+                        attributes: ['id', 'name']
+                    }
+                ]
                 // include: { all: true, nested: true }
             });
             return assets;

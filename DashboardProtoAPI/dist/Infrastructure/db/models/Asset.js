@@ -7,9 +7,13 @@ module.exports = (sequelize, DataTypes) => {
             Asset.belongsTo(models.AssetCategory, {
                 foreignKey: 'categoryId',
             });
-            Asset.belongsToMany(models.Company, {
-                through: models.CompanyAsset,
-                foreignKey: 'assetId'
+            Asset.belongsToMany(models.Vulnerability, {
+                through: models.AssetVulnerability,
+                foreignKey: 'assetId',
+            });
+            Asset.belongsToMany(models.Risk, {
+                through: models.RiskAsset,
+                foreignKey: 'assetId',
             });
         }
     }
@@ -31,6 +35,22 @@ module.exports = (sequelize, DataTypes) => {
         description: {
             type: DataTypes.TEXT,
             // allowNull:false
+        },
+        confidentiality: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
+        integrity: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        availability: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        rating: {
+            type: DataTypes.STRING,
+            allowNull: false,
         },
         updatedAt: {
             type: DataTypes.DATE,

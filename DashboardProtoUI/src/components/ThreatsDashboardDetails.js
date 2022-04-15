@@ -5,33 +5,24 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import ManageButton from "./ManageButton";
-
+import { getAllThreats } from "../services/threatService";
 
 export const ThreatsDashboardDetails = () => {
 
-    const [threats, setThreats] = useState(thr_data);
-
-   /*    const [assets, setAssets] = useState([]);
+    const [threats, setThreats] = useState(thr_data); 
+    const [assets, setAssets] = useState([]);
     useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-              
-            // do db call or API endpoint axios call here and return the promise.
-            getAllAssets()
-            .then((res) => {
-              setAssets(res);
-              resolve(res);
-            })
-              .catch((err) => {
-                setAssets([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("error!==", error);
-            reject("signin error!");
-          }
-        });
-      }, []); */
+    
+        const storedUser = localStorage.getItem("storedUser");   
+        const parsedUser = JSON.parse(storedUser);
+        console.log("parsed user dashboard", parsedUser);
+        getAllThreats()
+        .then((result) => {
+            console.log("Threats", result)
+            setAssets(result);
+        })
+   
+    }, []); 
 
     return (
     <>     
@@ -58,7 +49,8 @@ export const ThreatsDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {threats.map((threat) => (
+                {/* {threats.map((threat) => ( */}
+                  {assets.map((threat) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
@@ -118,7 +110,7 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.agent}</td>
                     <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
-                    <td>{threat.rating}</td>
+                    <td>{threat.rating}</td> 
                 </tr>
             ) )}
             </tbody>
