@@ -23,7 +23,7 @@ export const RecDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-        <button className="Button-Icon-Manage" onClick={onAddRec}> Add Recommendation</button>  
+        <button className="Button-Icon-Manage" onClick={onAddRec}> Add Rec</button>  
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">

@@ -119,27 +119,27 @@ export const AddRec = () => {
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -190,51 +190,27 @@ export const AddRec = () => {
                   <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                </div>
-                <div className="col-md">
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc" rows="9" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label-right">Associated Risks <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Form.Label className="Label-left">Associated Risk <span className="optional">Optional</span></Form.Label>
+                  <Select className="Frame-left"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
                    />
+                </Form.Group>
+                </div>
+                <div className="col-md">
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label-right">Safeguard</Form.Label>
+                  <Form.Select className="Frame-right">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+                  <Form.Label className="Label-right">Description</Form.Label>
+                  <Form.Control className="Frame-desc" rows="9" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
               </div>
             </div>

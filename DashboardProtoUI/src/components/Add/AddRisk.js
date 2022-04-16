@@ -113,7 +113,7 @@ export const AddRisk = () => {
                   <img className="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
                 </a>   
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
@@ -218,9 +218,9 @@ export const AddRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                    <option>Goverance</option>
+                    <option>Technical</option>
+                    <option>Operational</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

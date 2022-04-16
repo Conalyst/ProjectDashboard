@@ -114,32 +114,32 @@ export const EditVul = () => {
                 </a>   
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
-              <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="">
-                  <img className="sidenav-icon" src={assets} alt =""/>Assets
+                <a className="sidenav-link" href="/asset">
+                  <img className="sidenav-icon" src={assets} alt ="/asset"/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -218,9 +218,9 @@ export const EditVul = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                    <option>Accidental</option>
+                    <option>Deliberate</option>
+                    <option>Natural hazard</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -251,7 +251,7 @@ export const EditVul = () => {
                     <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Vulnerability</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected Vulnerability will be removed from the list.<br></br>
+                    <p className="Remove-asset-message">Your selected vulnerability will be removed from the list.<br></br>
                     You can restore it within 15 days from History.</p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>

@@ -128,7 +128,7 @@ export const AddAsset = () => {
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item">
+             <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>

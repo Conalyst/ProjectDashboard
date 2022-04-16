@@ -25,7 +25,7 @@ export const VulDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vulnerability</button>  
+          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vul</button>  
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">

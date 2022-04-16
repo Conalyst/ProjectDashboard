@@ -112,7 +112,7 @@ export const AddThreat = () => {
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
@@ -179,7 +179,7 @@ export const AddThreat = () => {
                   <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
                     <option>Low</option>
                     <option>Medium</option>
@@ -187,7 +187,7 @@ export const AddThreat = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
                     <option>Low</option>
                     <option>Medium</option>
@@ -195,7 +195,7 @@ export const AddThreat = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
                     <option>Low</option>
                     <option>Medium</option>
@@ -207,14 +207,18 @@ export const AddThreat = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                    <option>Accidental</option>
+                    <option>Deliberate</option>
+                    <option>Natural hazard</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc-manage" as="textarea" name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage"  as="textarea" name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label-right">Agent <span className="optional">Optional</span></Form.Label>
+                  <Form.Control className="Frame-right" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
               </div>
             </div>

@@ -113,33 +113,33 @@ export const EditRisk = () => {
                   <img className="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
                 </a>   
               </li>
-              <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -218,9 +218,9 @@ export const EditRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                    <option>Goverance</option>
+                    <option>Technical</option>
+                    <option>Operational</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
@@ -248,10 +248,10 @@ export const EditRisk = () => {
               <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content Manage-list-delete">
                   <div className="modal-header Rectangle-header">
-                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Risks</h5>
+                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Risk</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected Risk will be removed from the list.<br></br>
+                    <p className="Remove-asset-message">Your selected risk will be removed from the list.<br></br>
                     You can restore it within 15 days from History.</p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>

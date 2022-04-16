@@ -96,32 +96,32 @@ export const EditThreat = () => {
                 </a>   
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
-              <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -172,7 +172,7 @@ export const EditThreat = () => {
                   <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
                     <option>Low</option>
                     <option>Medium</option>
@@ -180,7 +180,7 @@ export const EditThreat = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
                     <option>Low</option>
                     <option>Medium</option>
@@ -188,7 +188,7 @@ export const EditThreat = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
                     <option>Low</option>
                     <option>Medium</option>
@@ -200,14 +200,18 @@ export const EditThreat = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                    <option>Accidental</option>
+                    <option>Deliberate</option>
+                    <option>Natural hazard</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc"  rows="9" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage"  as="textarea" name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label-right">Agent <span className="optional">Optional</span></Form.Label>
+                  <Form.Control className="Frame-right" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
               </div>
             </div>
@@ -224,7 +228,7 @@ export const EditThreat = () => {
                     <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Threats</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected Threat will be removed from the list.<br></br>
+                    <p className="Remove-asset-message">Your selected threat will be removed from the list.<br></br>
                     You can restore it within 15 days from History.</p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>

@@ -118,7 +118,7 @@ export const AddVul = () => {
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
@@ -218,9 +218,9 @@ export const AddVul = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
+                  <option>Accidental</option>
+                    <option>Deliberate</option>
+                    <option>Natural hazard</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

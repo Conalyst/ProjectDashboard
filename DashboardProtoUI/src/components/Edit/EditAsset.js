@@ -114,32 +114,32 @@ export const EditAsset = () => {
                 </a>   
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item">
-                <a className="sidenav-link" href="">
+             <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -251,7 +251,7 @@ export const EditAsset = () => {
                     <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Assets</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected Asset will be removed from the list.<br></br>
+                    <p className="Remove-asset-message">Your selected asset will be removed from the list.<br></br>
                     You can restore it within 15 days from History.</p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>

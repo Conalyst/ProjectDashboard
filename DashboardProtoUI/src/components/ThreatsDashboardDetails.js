@@ -28,7 +28,7 @@ export const ThreatsDashboardDetails = () => {
       return (
       <>     
           <div className="asset-menu-buttons">
-            <button className="Button-Icon-Manage" onClick={onAddThreat}> Add Threat</button>  
+            <button className="Button-Icon-Manage-Threat" onClick={onAddThreat}> Add Threat</button>  
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
           </div> 
         <div className="table-border-blue scrollable">
