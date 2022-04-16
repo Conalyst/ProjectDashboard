@@ -222,7 +222,7 @@ export const EditAsset = () => {
                   <Form.Select className="Frame-right">
                     <option>Personnel</option>
                     <option>Data</option>
-                    <option>Network and Data</option>
+                    <option>Network and Data Center</option>
                     <option>Software</option>
                     <option>Intangible</option>
                   </Form.Select>
