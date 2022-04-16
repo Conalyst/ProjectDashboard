@@ -168,7 +168,7 @@ export const AddThreat = () => {
             <div className="Rectangle-top">            
             <div className="Add-New-Asset">
               <span>
-                Add Threat
+                Add New Threat
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                       

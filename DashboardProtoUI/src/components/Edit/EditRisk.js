@@ -220,7 +220,7 @@ export const EditRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Goverance</option>
+                    <option>Governance</option>
                     <option>Technical</option>
                     <option>Operational</option>
                   </Form.Select>

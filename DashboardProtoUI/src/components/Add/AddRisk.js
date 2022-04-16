@@ -179,7 +179,7 @@ export const AddRisk = () => {
             <div className="Rectangle-top">            
             <div className="Add-New-Asset">
               <span>
-                Add Risk
+                Add New Risk
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                
@@ -220,7 +220,7 @@ export const AddRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Goverance</option>
+                    <option>Governance</option>
                     <option>Technical</option>
                     <option>Operational</option>
                   </Form.Select>

@@ -179,7 +179,7 @@ export const AddAsset = () => {
             <div className="Rectangle-top">            
             <div className="Add-New-Asset">
               <span>
-                Add Asset
+                Add New Asset
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                       
