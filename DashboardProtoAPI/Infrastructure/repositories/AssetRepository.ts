@@ -49,6 +49,10 @@ export class AssetRepository {
        })
        return Asset;
     } 
+
+    async GetAssetRatings() {
+      
+    }
     
     public async Create(model: Model<typeof Asset>){
       return db.Asset.create(model['dataValues']);

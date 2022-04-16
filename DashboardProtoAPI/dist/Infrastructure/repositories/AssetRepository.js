@@ -62,6 +62,10 @@ class AssetRepository {
             return Asset;
         });
     }
+    GetAssetRatings() {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
     Create(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Asset.create(model['dataValues']);
