@@ -1,0 +1,103 @@
+[
+    {
+        "id": 1,
+        "title": "Lack of personnel clearance requirements and process for trusted personal ",
+        "description": "While ORG conducts a one-time background security check at during employee hiring processes, no formal process exists for staff to obtain Reliability Status (up to Protected B information) or Secret security (for Classified information) clearance prior to obtaining trusted or privileged access to ORG data. ",
+        "category": "Personal",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "Y"
+    },
+    {
+        "id": 2,
+        "title": "Lack of dedicated IT Security Staff  ",
+        "description": "ORG does not have any staff dedicated to information security and cybersecurity operations.",
+        "category": "Personal",
+        "impact": "L",
+        "likelihood": "M",
+        "rating" : "H",
+        "action" : "N"
+    },
+    {   
+        "id": 3,
+        "title": "Separation of duties for security responsibilities is not formally defined",
+        "description": "A formal segregation of duties that defines security responsibilities distinct from IT operations has not been defined; IT personnel have both administrative and security responsibilities; this should be addressed as the organization develops its security program and grows.  ",
+        "category": "Personal",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "Y"
+        
+    },
+    {   
+        "id": 4,
+        "title": "Generic security awareness training; not geared to Canadian or government requirements",
+        "description": "ORG‚ & security training program is provided by a UK provider, MetaCompliance.  MetaCompliance‚ & training is generic and does not take into consideration ORG‚ & requirements as a crown corporation or in handling Protected B information.",
+        "category":"Personal",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "N"
+    },
+    {   
+        "id": 5,
+        "title": "External-Team Members do not receive privacy or security training",
+        "description": "Members of ORG‚ & external Team do not receive any privacy or security awareness training.",
+        "category": "Personal",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "Y"
+    },
+    {   
+        "id": 6,
+        "title": "Corporate and IT policies lack utility for ORG operations; Policy Structure Unclear",
+        "description": "ORG has approximately 70 ‚Äì 80 documents labelled as either policies and SOPs, with some duplication (Infrastructure Acceptable Use Policy, IM/IT Acceptable Use Policy and IM/IT Acceptable Use SOP, for example).  Navigation of these policies may be confusing for ORG staff.",
+        "category": "Operational",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "N"
+    },
+    {
+        "id": 7,
+        "title": "No formal processes for involving IT in conducting security reviews with partners, vendors and cloud services",
+        "description": "ORG does not have any standard set of terms that must be included in to all contracts relating to privacy and security.  As such, not all vendor agreements allow privacy and security assessments to be conducted in order to allow the parties to verify compliance with the contracted provisions.  These should be present in all agreements and a process should exist to involve IT in the early stages of procurement to review any security requirements.",
+        "category": "Operational",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "N"
+    },
+    {
+        "id": 8,
+        "title": "Insufficient tools and processes for privileged account management ",
+        "description": "Privileged account management practices are not formalized; no privileged account monitoring solution has been implemented.  ",
+        "category": "Operational",
+        "impact": "M",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "N"
+    },
+    {   
+        "id": 9,
+        "title": "Lack of Incident Detection & Response processes for cooperation with Vendors",
+        "description": "ORG has not consistently included in their service agreements with their third-party vendors, or in their service delivery, a solution for monitoring and reporting incidents as they occur, or at what threshold notification to the parties must occur.  Some agreements contain incident response procedures, while others do not.",
+        "category": "Operational",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "Y"
+    },
+    {   
+        "id": 10,
+        "title": "Enhance Logging",
+        "description": "While ORG currently has documented incident management plans, they are not being followed.  ORG relies on internal staff to deal with a security incident without any formalized processes for identification, detection, containment, analysis, remediation and any necessary recovery. Playbooks should provide step-by-step processes for how to respond to certain incidents or the most common types of incidents (e.g. Malware, Phishing, DDoS)",
+        "category": "Operational",
+        "impact": "L",
+        "likelihood": "H",
+        "rating" : "H",
+        "action" : "Y"
+    }
+]
