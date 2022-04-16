@@ -177,10 +177,12 @@ export const AddRec = () => {
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
             <div className="Rectangle-top">            
-              <span className="Add-New-Asset">
-                Add New Recommendation
+            <div className="Add-New-Asset">
+              <span>
+                Add Recommendation
               </span>
-              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
+              <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
+              </div>                      
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">

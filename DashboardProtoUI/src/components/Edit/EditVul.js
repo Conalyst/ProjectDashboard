@@ -177,10 +177,12 @@ export const EditVul = () => {
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
             <div className="Rectangle-top">            
-              <span className="Add-New-Asset">
+            <div className="Add-New-Asset">
+              <span>
                 Edit Vulnerability
               </span>
-              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
+              <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
+              </div>            
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
@@ -220,7 +222,7 @@ export const EditVul = () => {
                   <Form.Select className="Frame-right">
                     <option>Accidental</option>
                     <option>Deliberate</option>
-                    <option>Natural hazard</option>
+                    <option>Natural Hazard</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

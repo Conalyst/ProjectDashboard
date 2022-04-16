@@ -998,6 +998,8 @@ li {
 }
 
 .Add-New-Asset {
+  display: flex;
+  flex-direction: row;
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
@@ -1007,6 +1009,8 @@ li {
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .Top-Cancel{

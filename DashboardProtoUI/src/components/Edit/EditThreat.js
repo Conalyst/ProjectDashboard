@@ -159,10 +159,12 @@ export const EditThreat = () => {
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
             <div className="Rectangle-top">            
-              <span className="Add-New-Asset">
+            <div className="Add-New-Asset">
+              <span>
                 Edit Threat
               </span>
-              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
+              <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
+              </div>                      
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">

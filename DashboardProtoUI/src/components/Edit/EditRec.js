@@ -177,10 +177,12 @@ export const EditRec = () => {
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
             <div className="Rectangle-top">            
-              <span className="Add-New-Asset">
-                Edit Recommendation
-              </span>
-              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
+              <div className="Add-New-Asset">
+                <span>
+                  Edit Recommendation
+                </span>
+                <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
+              </div>            
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
