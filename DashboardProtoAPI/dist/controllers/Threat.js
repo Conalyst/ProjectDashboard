@@ -79,6 +79,20 @@ class ThreatApi {
             }
         });
     }
+    // Delete Threat 
+    delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let threatId = req.params.id;
+            let existingThreat = yield this._threatRepository.GetById(threatId);
+            if (existingThreat) {
+                let updatedThreat = yield this._threatRepository.delete(existingThreat);
+                return res.status(200).send(`The threat with Id ${threatId} deleted  successfully..!`);
+            }
+            else {
+                return res.status(404).send("This threat does not exist.");
+            }
+        });
+    }
     //#region private methods
     getDtoFromRequest(req) {
         return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());

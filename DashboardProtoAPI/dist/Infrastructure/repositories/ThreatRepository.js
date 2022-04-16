@@ -48,5 +48,10 @@ class ThreatRepository {
             return models_1.default.Threat.update(model['dataValues'], { where: { id: `${id}` } });
         });
     }
+    delete(model, idThreat) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return model.destroy();
+        });
+    }
 }
 exports.ThreatRepository = ThreatRepository;

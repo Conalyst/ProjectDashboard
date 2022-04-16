@@ -81,6 +81,20 @@ class AssetApi {
             }
         });
     }
+    // Delete Asset 
+    delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let assetId = req.params.id;
+            let existingAsset = yield this._assetRepository.GetById(assetId);
+            if (existingAsset) {
+                let updatedAsset = yield this._assetRepository.delete(existingAsset);
+                return res.status(200).send(`The asset with Id ${assetId} deleted  successfully..!`);
+            }
+            else {
+                return res.status(404).send("This asset does not exist.");
+            }
+        });
+    }
     //#region private methods
     getDtoFromRequest(req) {
         return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, new Date());

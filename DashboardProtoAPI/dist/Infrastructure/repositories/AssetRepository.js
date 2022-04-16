@@ -72,5 +72,10 @@ class AssetRepository {
             return models_1.default.Asset.update(model['dataValues'], { where: { id: `${id}` } });
         });
     }
+    delete(model, idAsset) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return model.destroy();
+        });
+    }
 }
 exports.AssetRepository = AssetRepository;

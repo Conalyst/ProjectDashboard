@@ -68,6 +68,22 @@ export class ThreatApi{
     }
     
   }
+  // Delete Threat 
+async delete(req: express.Request, res: express.Response){
+  let threatId = req.params.id;
+   let existingThreat = await this._threatRepository.GetById(threatId);
+  if (existingThreat){
+  
+    let updatedThreat = await this._threatRepository.delete(existingThreat)
+   
+ 
+      return res.status(200).send( `The threat with Id ${threatId} deleted  successfully..!`)
+      
+    
+  } else{
+      return res.status(404).send("This threat does not exist.")
+  }
+}
     //#region private methods
     getDtoFromRequest(req: express.Request){
         
