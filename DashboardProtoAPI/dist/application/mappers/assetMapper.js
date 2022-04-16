@@ -11,6 +11,10 @@ const toEntity = (assetDto) => {
     assetEntity.categoryId = assetDto.categoryId;
     assetEntity.title = assetDto.title;
     assetEntity.description = assetDto.description;
+    assetEntity.confidentiality = assetDto.confidentiality;
+    assetEntity.integrity = assetDto.integrity;
+    assetEntity.availability = assetDto.availability;
+    assetEntity.rating = assetDto.rating;
     return assetEntity;
 };
 exports.toEntity = toEntity;

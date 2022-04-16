@@ -13,9 +13,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetRepository = void 0;
-// import   Asset  from "../db/models"
-// import   AssetOutput  from "../db/models"
-// import  AssetCategory  from "../db/models";
 const models_1 = __importDefault(require("../db/models"));
 const Asset = require("../db/models");
 class AssetRepository {
@@ -24,17 +21,32 @@ class AssetRepository {
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
             let assets = yield models_1.default.Asset.findAll({
-                include: [models_1.default.AssetCategory]
+                include: [
+                    { model: models_1.default.AssetCategory, attributes: ['id', 'name'] },
+                    {
+                        model: models_1.default.Vulnerability,
+                        include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                        attributes: ['id', 'category', 'title', 'description']
+                    }
+                ]
             });
             return assets;
         });
     }
     GetAssetById(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Asset = yield models_1.default.Asset.findOne({
-                where: { id: `${id}` }
+            const asset = yield models_1.default.Asset.findOne({
+                where: { id: `${id}` },
+                include: [
+                    { model: models_1.default.AssetCategory, attributes: ['id', 'name'] },
+                    {
+                        model: models_1.default.Vulnerability,
+                        include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                        attributes: ['id', 'category', 'title', 'description']
+                    }
+                ]
             });
-            return Asset;
+            return asset;
         });
     }
     GetById(id) {
@@ -42,7 +54,7 @@ class AssetRepository {
             return models_1.default.Asset.findByPk(id);
         });
     }
-    GetAssetByTitle(title) {
+    GetByTitle(title) {
         return __awaiter(this, void 0, void 0, function* () {
             const Asset = yield models_1.default.Asset.findOne({
                 where: { title: `${title}` }
@@ -53,6 +65,16 @@ class AssetRepository {
     Create(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Asset.create(model['dataValues']);
+        });
+    }
+    Update(model, id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.update(model['dataValues'], { where: { id: `${id}` } });
+        });
+    }
+    delete(model, idAsset) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return model.destroy();
         });
     }
 }

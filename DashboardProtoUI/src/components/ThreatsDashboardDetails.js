@@ -23,6 +23,25 @@ export const ThreatsDashboardDetails = () => {
     
        });
       }  
+import ManageButton from "./ManageButton";
+import { getAllThreats } from "../services/threatService";
+
+export const ThreatsDashboardDetails = () => {
+
+    const [threats, setThreats] = useState(thr_data); 
+    const [assets, setAssets] = useState([]);
+    useEffect(() => {
+    
+        const storedUser = localStorage.getItem("storedUser");   
+        const parsedUser = JSON.parse(storedUser);
+        console.log("parsed user dashboard", parsedUser);
+        getAllThreats()
+        .then((result) => {
+            console.log("Threats", result)
+            setAssets(result);
+        })
+   
+    }, []); 
 
       const onEditThreat =()=>{
         history.push({
@@ -59,7 +78,8 @@ export const ThreatsDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {threats.map((threat) => (
+                {/* {threats.map((threat) => ( */}
+                  {assets.map((threat) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
@@ -72,10 +92,14 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.agent}</td>
                     <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
+<<<<<<< HEAD
                     <td>{threat.rating}</td>
                      <td>
                      <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> 
                 </td>
+=======
+                    <td>{threat.rating}</td> 
+>>>>>>> origin/main
                 </tr>
             ) )}
             </tbody>

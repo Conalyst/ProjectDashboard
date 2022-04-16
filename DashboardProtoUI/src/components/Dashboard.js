@@ -22,8 +22,9 @@ import DashboardHistory from "./DashboardHistory";
 export const Dashboard = () => { 
   const [tests, setTests] = useState(null);
   const storedUser = localStorage.getItem("storedUser");
-    
+  
   const parsedUser = JSON.parse(storedUser);
+  console.log("parsed user", parsedUser);
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">

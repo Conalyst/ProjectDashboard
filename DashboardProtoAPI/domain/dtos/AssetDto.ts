@@ -2,11 +2,15 @@ import { IBaseDto } from "../contracts/IBaseDto";
 
 
 export class AssetDto implements IBaseDto{
-    constructor(id:number,categoryId: number,title: string,  description:string ,createAt: Date,){
+    constructor(id:number, categoryId:number, title:string,  description:string, confidentiality:string, integrity:string, availability:string, rating:string, createAt: Date,){
         this.Id = id;
         this.categoryId = categoryId;
         this.title = title;
         this.description = description;
+        this.confidentiality = confidentiality;
+        this.integrity = integrity;
+        this.availability = availability;
+        this.rating = rating;
         this.CreatedAt = createAt;
         this.UpdatedAt = null;
     }
@@ -15,6 +19,10 @@ export class AssetDto implements IBaseDto{
     categoryId: number;
     title: string;
     description: string;
+    confidentiality: string;
+    integrity: string;
+    availability: string;
+    rating: string;
     CreatedAt: Date;
     UpdatedAt: Date | null;
 }

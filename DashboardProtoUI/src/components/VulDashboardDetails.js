@@ -9,6 +9,8 @@ import pen_black from '../images/icons/pen_black.png';
 import {ADDVUL, EDITVUL} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
+import ManageButton from "./ManageButton";
+import { getAllVulnerabilities } from "../services/vulnerabilityService";
 
 export const VulDashboardDetails = () => {
 
@@ -28,6 +30,16 @@ export const VulDashboardDetails = () => {
   
      });
     }  
+    useEffect(() => {
+      const storedUser = localStorage.getItem("storedUser");   
+      const parsedUser = JSON.parse(storedUser);
+      console.log("parsed user dashboard", parsedUser);
+      getAllVulnerabilities()
+      .then((result) => {
+          console.log("Vulns", result)
+          setVulnerabilities(result);
+      })
+    }, []);
 
     return (
     <>     
