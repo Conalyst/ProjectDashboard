@@ -13,15 +13,23 @@ import { pullCompanyAssets } from "../services/companyAssetsService";
 import { Button } from "@mui/material";
 import { Modal } from "@mui/material";
 import { Box } from "@mui/material";
+import { select } from "d3";
 
 export const DashboardDetails = () => {
   const [assets, setAssets] = useState([]);
+  const [tempAssets, setTempAssets] = useState(assets);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [filterbox, setFilterbox] = useState(false);
-  const [selectAssetCat, setSelectAssetCat] = useState("All");
-
+  // const [selectAssetCat, setSelectAssetCat] = useState("All");
+  const [sel, setSel] = useState({
+    selAssetCat: "All",
+    selConfi: "All",
+    selInt: "All",
+    selAva: "All",
+    selRat: "All",
+  });
   // --------- need to change the background color
   // --------- need to change the box round
   const style = {
@@ -40,7 +48,7 @@ export const DashboardDetails = () => {
     const storedUser = localStorage.getItem("storedUser");
 
     const parsedUser = JSON.parse(storedUser);
-    console.log("parsedUser", parsedUser);
+    // console.log("parsedUser", parsedUser);
 
     // axios.defaults.headers.common[
     //   "Authorization"
@@ -49,33 +57,72 @@ export const DashboardDetails = () => {
     pullCompanyAssets(parsedUser.companyId).then((result) => {
       console.log("under dashboard details", result.data);
       setAssets(result.data);
+      setTempAssets(result.data);
     });
   }, []);
 
-  function handleFilter() {
+  function startFilter() {
+    setFilterbox(!filterbox);
+    setTempAssets(assets);
+  }
+
+  function closeFilter() {
     setFilterbox(!filterbox);
   }
 
-  function handleSelectAssetCat(selected) {
-    setSelectAssetCat(selected);
+  // function handleSelectAssetCat(selected) {
+  //   setSelectAssetCat(selected);
+  // }
+
+  // function afterFilter(selectAssetCat) {
+  //   if (selectAssetCat == "All") {
+  //     setTempAssets(
+  //       tempAssets.filter((tempAsset) => tempAsset.Asset.categoryId > 0)
+  //     );
+  //   } else {
+  //     setTempAssets(
+  //       tempAssets.filter(
+  //         (tempAsset) => tempAsset.Asset.categoryId == Number(selectAssetCat)
+  //       )
+  //     );
+  //     console.log("clicked filter", selectAssetCat);
+  //   }
+  // }
+
+  function handleSelect(item, selected) {
+    console.log("handleSelect", item, selected);
+    setSel((prev) => ({
+      ...prev,
+      item: selected,
+    }));
   }
 
-  function afterFilter(selectAssetCat){
-    console.log(typeof(Number(selectAssetCat)));
-
-    setAssets(assets.filter(asset=>asset.Asset.categoryId==Number(selectAssetCat)));
-    console.log("clicked filter", selectAssetCat);
-    
+  function afterFilter() {
+    // if (sel.selAssetCat == "All") {
+    //   setTempAssets(
+    //     tempAssets.filter((tempAsset) => tempAsset.Asset.categoryId > 0)
+    //   );
+    // } else {
+      setTempAssets(
+        tempAssets
+          .filter(
+            (tempAsset) => tempAsset.Asset.categoryId == Number(sel.selAssetCat)
+          )
+          .filter((tempAsset) => tempAsset.confidentiality == sel.selConfi)
+          .filter((tempAsset) => tempAsset.integrity == sel.selInt)
+          .filter((tempAsset) => tempAsset.availability == sel.selAva)
+          .filter((tempAsset) => tempAsset.rating == sel.selRat)
+      );
+      console.log("clicked filter", sel);
+    // }
   }
-
-  console.log(assets);
 
   return (
     <>
       <div className="asset-menu-buttons">
         <button className="Button-Icon-Manage"> Manage</button>
 
-        <button className="Button-Icon-Filter" onClick={handleFilter}>
+        <button className="Button-Icon-Filter" onClick={startFilter}>
           <img src={filter_blue} alt="" /> Filter
         </button>
 
@@ -88,43 +135,206 @@ export const DashboardDetails = () => {
                     <span className="Filter-word">Filters</span>
                     <img
                       className="Filter-cancel"
-                      onClick={handleFilter}
+                      onClick={closeFilter}
                       src={cancel_icon}
                       alt=""
                     />
                   </div>
                 </div>
 
-                <div className="filter_catergory_frame">
-                  <div>
-                    <span> Asset Category</span>
+                <div className="Filter-middle">
+                  <div className="filter_catergory_frame">
+                    <span className="filter_label"> Asset Category</span>
                   </div>
-                </div>
 
-                <div className="filter_selection">
-                  <Dropdown>
+                  <Dropdown className="filter_selection">
                     <Dropdown.Toggle
                       className="filter_selected"
                       id="dropdown-basic"
                       variant="outline-light"
                     >
-                      {selectAssetCat}
+                      {sel.selAssetCat}
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                      <li onClick={() => handleSelectAssetCat("All")}>All</li>
-                      <li onClick={() => handleSelectAssetCat("1")}>1</li>
-                      <li onClick={() => handleSelectAssetCat("2")}>2</li>
-                      <li onClick={() => handleSelectAssetCat("3")}>3</li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "All" }))
+                        }
+                      >
+                        All
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "1" }))
+                        }
+                      >
+                        1
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "2" }))
+                        }
+                      >
+                        2
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "3" }))
+                        }
+                      >
+                        3
+                      </li>
                       {/* <Dropdown.Item href="#/action-3">Personnel</Dropdown.Item> */}
-                      <li onClick={() => handleSelectAssetCat("4")}>4</li>
-                      <li onClick={() => handleSelectAssetCat("5")}>5</li>
-                      <li onClick={() => handleSelectAssetCat("6")}>6</li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "4" }))
+                        }
+                      >
+                        4
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "5" }))
+                        }
+                      >
+                        5
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selAssetCat: "6" }))
+                        }
+                      >
+                        6
+                      </li>
                     </Dropdown.Menu>
                   </Dropdown>
 
+                  <div className="filter_catergory_frame">
+                    <span className="filter_label"> Confidentiality</span>
+                  </div>
+
+                  <Dropdown className="filter_selection">
+                    <Dropdown.Toggle
+                      className="filter_selected"
+                      id="dropdown-basic"
+                      variant="outline-light"
+                    >
+                      {sel.selConfi}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selConfi: "All" }))
+                        }
+                      >
+                        All
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selConfi: "H" }))
+                        }
+                      >
+                        High
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selConfi: "M" }))
+                        }
+                      >
+                        Medium
+                      </li>
+                      <li
+                        onClick={() =>
+                          setSel((prev) => ({ ...prev, selConfi: "L" }))
+                        }
+                      >
+                        Low
+                      </li>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
+                  <div className="filter_catergory_frame">
+                    <span className="filter_label"> Integrity</span>
+                  </div>
+
+                  <Dropdown className="filter_selection">
+                    <Dropdown.Toggle
+                      className="filter_selected"
+                      id="dropdown-basic"
+                      variant="outline-light"
+                    >
+                      {sel.selInt}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <li onClick={() =>
+                          setSel((prev) => ({ ...prev, selInt: "All" }))}>All</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selInt: "H" }))}>High</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selInt: "M" }))}>
+                        Medium
+                      </li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selInt: "L" }))}>Low</li>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
+                  <div className="filter_catergory_frame">
+                    <span className="filter_label"> Availability</span>
+                  </div>
+
+                  <Dropdown className="filter_selection">
+                    <Dropdown.Toggle
+                      className="filter_selected"
+                      id="dropdown-basic"
+                      variant="outline-light"
+                    >
+                      {sel.selAva}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selAva: "All" }))}>All</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selAva: "H" }))}>High</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selAva: "M" }))}>
+                        Medium
+                      </li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selAva: "L" }))}>Low</li>
+                    </Dropdown.Menu>
+                  </Dropdown>
+
+                  <div className="filter_catergory_frame">
+                    <span className="filter_label"> Rating </span>
+                  </div>
+
+                  <Dropdown className="filter_selection">
+                    <Dropdown.Toggle
+                      className="filter_selected"
+                      id="dropdown-basic"
+                      variant="outline-light"
+                    >
+                      {sel.selRat}
+                    </Dropdown.Toggle>
+
+                    <Dropdown.Menu>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selRat: "All" }))}>All</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selRat: "H" }))}>High</li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selRat: "M" }))}>
+                        Medium
+                      </li>
+                      <li onClick={() => setSel((prev) => ({ ...prev, selRat: "L" }))}>Low</li>
+                    </Dropdown.Menu>
+                  </Dropdown>
                 </div>
-                <button className="Button-Filter" onClick={()=>afterFilter(selectAssetCat)}>Filter</button>
+
+                <button
+                  className="Button-Filter"
+                  onClick={() => {
+                    afterFilter();
+                    closeFilter();
+                  }}
+                >
+                  Filter
+                </button>
               </div>
             </div>
           </div>
@@ -155,7 +365,7 @@ export const DashboardDetails = () => {
             </tr>
           </thead>
           <tbody>
-            {assets.map((asset) => (
+            {tempAssets.map((asset) => (
               <tr className="cr-text ">
                 <td>
                   <Button onClick={handleOpen}>
