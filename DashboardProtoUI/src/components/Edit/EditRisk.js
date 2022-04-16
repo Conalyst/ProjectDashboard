@@ -179,7 +179,7 @@ export const EditRisk = () => {
             <div className="Rectangle-top">            
             <div className="Add-New-Asset">
               <span>
-                Add Risk
+                Edit Risk
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                              
