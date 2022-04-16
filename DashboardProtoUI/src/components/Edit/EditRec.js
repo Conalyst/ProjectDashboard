@@ -1,44 +1,68 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form} from "react-bootstrap";
-import { getAllTest } from "../services";
-import company_icon from '../images/user/company_icon.png';
-import user_icon from '../images/user/user_icon.png';
-import dashboard_a from '../images/icons/dashboard_icon.svg';
-import risks from '../images/icons/risk_icon.svg';
-import vulnerabilities from '../images/icons/vulner_icon.svg';
-import threats from '../images/icons/threat_icon.svg';
-import assets from '../images/icons/asset_icon.png';
-import recommendations from '../images/icons/rec_icon.svg';
-import reports from '../images/icons/report_icon.svg';
-import settings from '../images/icons/setting_icon.svg';
-import search from '../images/icons/search_icon.png';
-import notification from '../images/icons/noti_icon.png';
-import info from '../images/icons/info_icon.png';
-import vendor_icon from '../images/icons/vendor_icon.png';
+import { getAllTest } from "../../services";
+import company_icon from '../../images/user/company_icon.png';
+import user_icon from '../../images/user/user_icon.png';
+import dashboard_a from '../../images/icons/dashboard_icon.svg';
+import risks from '../../images/icons/risk_icon.svg';
+import vulnerabilities from '../../images/icons/vulner_icon.svg';
+import threats from '../../images/icons/threat_icon.svg';
+import assets from '../../images/icons/asset_icon.png';
+import recommendations from '../../images/icons/rec_icon.svg';
+import reports from '../../images/icons/report_icon.svg';
+import settings from '../../images/icons/setting_icon.svg';
+import search from '../../images/icons/search_icon.png';
+import notification from '../../images/icons/noti_icon.png';
+import info from '../../images/icons/info_icon.png';
+import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, THREATSDASHBOARD } from "../navigation/constants";
+import { RECDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+import Select from 'react-select';
 
 
-export const AddAsset = () => { 
+
+export const EditRec = () => { 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
+  //const [searchvul, setSearchvul] = useState('');
+  const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
 
   const onDone =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: RECDASHBOARD,
 
    });
   }  
-
 
   const onCancel =()=>{
+    history.push({
+       pathname: RECDASHBOARD,
+  
+     });
+    }  
+
+
+  const onOk =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: RECDASHBOARD,
 
    });
   }  
+
+  const options = [
+    { value: 'R1', label: 'R1' },
+    { value: 'R2', label: 'R2' },
+    { value: 'R3', label: 'R3' },
+    { value: 'R4', label: 'r4' },
+    { value: 'R5', label: 'R5' },
+    { value: 'R6', label: 'R6' },
+    { value: 'R7', label: 'R7' },
+    { value: 'R8', label: 'R8' },
+    { value: 'R9', label: 'R9' },
+    { value: 'R10', label:'R10'},
+  ];
 
   /*const onAddAsset = () =>{
  
@@ -104,7 +128,7 @@ export const AddAsset = () => {
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item sidenav-active">
+             <li className="sidenav-item">
                 <a className="sidenav-link" href="">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
@@ -152,16 +176,16 @@ export const AddAsset = () => {
         </div>
         <div className="dashboard-main-wrapper">
           <div className="Manage-listAdd">
-            <div className="Rectangle-top">
-            <span className="Add-New-Asset">
-                Add New Asset
-            </span>
-            <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>
+            <div className="Rectangle-top">            
+              <span className="Add-New-Asset">
+                Edit Recommendation
+              </span>
+              <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
             <div className="Rectangle-grey-box">
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
-                    <Form.Group className="mb-3">
+                <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
                   <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
                 </Form.Group>
@@ -201,29 +225,45 @@ export const AddAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc" as="textarea" rows="9" name="address" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label-right">Associated Risks <span className="optional">Optional</span></Form.Label>
+                  <Select className="Frame-right"
+                    isMulti
+                    defaultValue={selectedOption}
+                    onChange={setSelectedOption}
+                    options={options}
+                   />
                 </Form.Group>
               </div>
             </div>
           </Form>
         </div>
-        <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
-           Done
-          </Button>
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div className="modal-dialog modal-dialog-centered">
-              <div className="modal-content Manage-list-add">
-                <div className="modal-header Rectangle-header">
-                  <h5 className="modal-title Asset-Added" id="exampleModalLabel">Asset Added</h5>
+          <div className="asset-menu-buttons">
+            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete
+            </Button>
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content Manage-list-delete">
+                  <div className="modal-header Rectangle-header">
+                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Recommendation</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="New-asset-was-successfully-added-to-the-list">New asset was successfully added to the list.</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
-                  </div>              
+                    <p className="Remove-asset-message">Your selected Recommendation will be removed from the list.<br></br>
+                    You can restore it within 15 days from History.</p>
+                    <div className="remove-menu-buttons">
+                  <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
+                  <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>
+                  </div>
+                  </div>
                 </div>
               </div>
-            </div>
+            </div>           
+            <Button className="Button-Icon-AddAsset-modal" type="submit" onClick={() =>onDone()}>
+              Done
+            </Button>
             </div>
           </div>
         </div>
@@ -232,4 +272,4 @@ export const AddAsset = () => {
     </div>
   );
 }
-export default AddAsset;
+export default EditRec;

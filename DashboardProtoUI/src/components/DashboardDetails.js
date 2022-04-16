@@ -72,8 +72,8 @@ export const DashboardDetails = () => {
                   </Dropdown.Toggle>
                   <Dropdown.Menu className="rounded">
                       <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/managelist">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/managelist">Remove</Dropdown.Item>
+                      <Dropdown.Item className="pen-button-link" href="/editasset">Edit </Dropdown.Item>
+                      <Dropdown.Item className="pen-button-link" href="/editasset">Remove</Dropdown.Item>
                     </Dropdown.Menu>
                   </Dropdown>                
                 </td>

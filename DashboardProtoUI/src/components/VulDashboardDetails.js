@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import {Table} from "react-bootstrap";
+import {Table, Dropdown} from "react-bootstrap";
 import vul_data from "../vul_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import { MANAGELIST} from "../navigation/constants";
+import pen_white from '../images/icons/pen_white.png';
+import pen_black from '../images/icons/pen_black.png';
+import {ADDVUL} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 
@@ -13,9 +15,9 @@ export const VulDashboardDetails = () => {
     const [vulnerabilities, setVulnerabilities] = useState(vul_data);
 
     const history =useHistory();
-    const onManageList =()=>{
+    const onAddVul =()=>{
     history.push({
-       pathname: MANAGELIST,
+       pathname: ADDVUL,
   
      });
     }  
@@ -23,7 +25,7 @@ export const VulDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage" onClick={onManageList}> Manage</button>  
+          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vulnerability</button>  
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -40,6 +42,9 @@ export const VulDashboardDetails = () => {
                     <th>Impact</th>
                     <th>Likelihood</th>
                     <th>Rating</th>
+                    <th>
+                      <img  src={pen_white} alt =""/>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -56,6 +61,18 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.impact}</td>
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
+                    <td>
+                    <Dropdown className="dropdown-container">
+                      <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
+                        <img src={pen_black} alt =""/>
+                      </Dropdown.Toggle>
+                      <Dropdown.Menu className="rounded">
+                        <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
+                        <Dropdown.Item className="pen-button-link" href="/editvul">Edit </Dropdown.Item>
+                      <Dropdown.Item className="pen-button-link" href="/editvul">Remove</Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown> 
+                </td>
                 </tr>
             ) )}
             </tbody>

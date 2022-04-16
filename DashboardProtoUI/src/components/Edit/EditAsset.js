@@ -1,27 +1,27 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form} from "react-bootstrap";
-import { getAllTest } from "../services";
-import company_icon from '../images/user/company_icon.png';
-import user_icon from '../images/user/user_icon.png';
-import dashboard_a from '../images/icons/dashboard_icon.svg';
-import risks from '../images/icons/risk_icon.svg';
-import vulnerabilities from '../images/icons/vulner_icon.svg';
-import threats from '../images/icons/threat_icon.svg';
-import assets from '../images/icons/asset_icon.png';
-import recommendations from '../images/icons/rec_icon.svg';
-import reports from '../images/icons/report_icon.svg';
-import settings from '../images/icons/setting_icon.svg';
-import search from '../images/icons/search_icon.png';
-import notification from '../images/icons/noti_icon.png';
-import info from '../images/icons/info_icon.png';
-import vendor_icon from '../images/icons/vendor_icon.png';
+import { getAllTest } from "../../services";
+import company_icon from '../../images/user/company_icon.png';
+import user_icon from '../../images/user/user_icon.png';
+import dashboard_a from '../../images/icons/dashboard_icon.svg';
+import risks from '../../images/icons/risk_icon.svg';
+import vulnerabilities from '../../images/icons/vulner_icon.svg';
+import threats from '../../images/icons/threat_icon.svg';
+import assets from '../../images/icons/asset_icon.png';
+import recommendations from '../../images/icons/rec_icon.svg';
+import reports from '../../images/icons/report_icon.svg';
+import settings from '../../images/icons/setting_icon.svg';
+import search from '../../images/icons/search_icon.png';
+import notification from '../../images/icons/noti_icon.png';
+import info from '../../images/icons/info_icon.png';
+import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, VULDASHBOARD } from "../navigation/constants";
+import { DASHBOARD, VULDASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
 
-export const ManageList = () => { 
+export const EditAsset = () => { 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   //const [searchvul, setSearchvul] = useState('');
@@ -36,6 +36,13 @@ export const ManageList = () => {
    });
   }  
 
+  const onCancel =()=>{
+    history.push({
+       pathname: DASHBOARD,
+  
+     });
+    }  
+
 
   const onOk =()=>{
   history.push({
@@ -45,16 +52,16 @@ export const ManageList = () => {
   }  
 
   const options = [
-    { value: 'v1', label: 'v1' },
-    { value: 'v2', label: 'v2' },
-    { value: 'v3', label: 'v3' },
-    { value: 'v4', label: 'v4' },
-    { value: 'v5', label: 'v5' },
-    { value: 'v6', label: 'v6' },
-    { value: 'v7', label: 'v7' },
-    { value: 'v8', label: 'v8' },
-    { value: 'v9', label: 'v9' },
-    { value: 'v10', label: 'v10'},
+    { value: 'V1', label: 'V1' },
+    { value: 'V2', label: 'V2' },
+    { value: 'V3', label: 'V3' },
+    { value: 'V4', label: 'V4' },
+    { value: 'V5', label: 'V5' },
+    { value: 'V6', label: 'V6' },
+    { value: 'V7', label: 'V7' },
+    { value: 'V8', label: 'V8' },
+    { value: 'V9', label: 'V9' },
+    { value: 'V10', label:'V10'},
   ];
 
   /*const onAddAsset = () =>{
@@ -171,7 +178,7 @@ export const ManageList = () => {
           <div className="Manage-listAdd">
             <div className="Rectangle-top">            
               <span className="Add-New-Asset">
-                Manage List
+                Edit Asset
               </span>
               <span><button className="Top-Cancel" onClick={() =>onCancel()}>X</button></span>            
             <div className="Rectangle-grey-box">
@@ -265,4 +272,4 @@ export const ManageList = () => {
     </div>
   );
 }
-export default ManageList;
+export default EditAsset;

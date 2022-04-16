@@ -9,9 +9,17 @@ import Reports from "../components/Reports";
 import VulDashboard from "../components/VulDashboard";
 import ThreatsDashboard from "../components/ThreatsDashboard";
 import Settings from "../components/Settings";
-import AddAsset from "../components/AddAsset";
-import ManageList from "../components/ManageList";
-import Login from '../components/Login'
+import Login from '../components/Login';
+import AddAsset from "../components/Add/AddAsset";
+import EditAsset from "../components/Edit/EditAsset";
+import AddRec from "../components/Add/AddRec";
+import EditRec from "../components/Edit/EditRec";
+import AddVul from "../components/Add/AddVul";
+import EditVul from "../components/Edit/EditVul";
+import AddRisk from "../components/Add/AddRisk";
+import EditRisk from "../components/Edit/EditRisk";
+import AddThreat from "../components/Add/AddThreat";
+import EditThreat from "../components/Edit/EditThreat";
 import Test from '../components/Test'
 
 import {
@@ -22,10 +30,18 @@ import {
     VULDASHBOARD,
     THREATSDASHBOARD,
     REPORTS,
-    ADDASSET,
-    MANAGELIST,
     SETTINGS,
     LOGIN,
+    ADDASSET,
+    EDITASSET,
+    ADDREC,
+    EDITREC,
+    ADDTHREAT,
+    EDITTHREAT,
+    ADDVUL,
+    EDITVUL,
+    ADDRISK,
+    EDITRISK,
     TEST
 } from "./constants";
 
@@ -59,14 +75,38 @@ export const RouterConfig = (props) => {
             <Route exact path={ADDASSET} >
                 <AddAsset/>
             </Route >
-            <Route exact path={MANAGELIST} >
-                <ManageList/>
+            <Route exact path={EDITASSET} >
+                <EditAsset/>
             </Route >
             <Route exact path={TEST} >
                 <Test/>
             </Route >
             <Route exact path={LOGIN} >
                 <Login/>
+            </Route >
+            <Route exact path={ADDREC} >
+                <AddRec/>
+            </Route >
+            <Route exact path={EDITREC} >
+                <EditRec/>
+            </Route >
+            <Route exact path={ADDVUL} >
+                <AddVul/>
+            </Route >
+            <Route exact path={EDITVUL} >
+                <EditVul/>
+            </Route >
+            <Route exact path={ADDTHREAT} >
+                <AddThreat/>
+            </Route >
+            <Route exact path={EDITTHREAT} >
+                <EditThreat/>
+            </Route >
+            <Route exact path={ADDRISK} >
+                <AddRisk/>
+            </Route >
+            <Route exact path={EDITRISK} >
+                <EditRisk/>
             </Route >
             <Route path="*">
                 <NotFound />
