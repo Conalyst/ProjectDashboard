@@ -4,7 +4,7 @@ import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDTHREAT} from "../navigation/constants";
+import {ADDTHREAT, EDITTHREAT} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
@@ -23,6 +23,13 @@ export const ThreatsDashboardDetails = () => {
     
        });
       }  
+
+      const onEditThreat =()=>{
+        history.push({
+           pathname: EDITTHREAT,
+      
+         });
+        }      
   
   
       return (
@@ -67,16 +74,7 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.likelihood}</td>
                     <td>{threat.rating}</td>
                      <td>
-                <Dropdown className="dropdown-container">
-                  <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                    <img src={pen_black} alt =""/>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="rounded">
-                      <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editthreat">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editthreat">Remove</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown> 
+                     <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> 
                 </td>
                 </tr>
             ) )}

@@ -4,7 +4,7 @@ import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import { ADDREC } from "../navigation/constants";
+import { ADDREC, EDITREC } from "../navigation/constants";
 import {useHistory} from 'react-router-dom'
 
  
@@ -19,6 +19,13 @@ export const RecDashboardDetails = () => {
   
      });
     }  
+
+    const onEditRec =()=>{
+        history.push({
+           pathname: EDITREC,
+      
+         });
+        }  
 
     return (
     <>     
@@ -49,17 +56,10 @@ export const RecDashboardDetails = () => {
                     <td>{recommendation.safeguard}</td>
                     <td>{recommendation.risks_ids}</td>
                     <td>
-                   <Dropdown className="dropdown-container">
-                    <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                        <img src={pen_black} alt =""/>
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="rounded">
-                      <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editrec">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editrec">Remove</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>                
-                </td>
+                    <td>
+                     <button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button> 
+                    </td>             
+                    </td>
                 </tr>
             ) )}
             </tbody>

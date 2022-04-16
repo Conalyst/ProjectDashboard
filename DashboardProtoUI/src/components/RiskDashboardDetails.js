@@ -6,7 +6,7 @@ import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDRISK} from "../navigation/constants";
+import {ADDRISK, EDITRISK} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 
@@ -20,7 +20,14 @@ export const RiskDashboardDetails = () => {
        pathname: ADDRISK,
   
      });
-    }  
+    } 
+    
+    const onEditRisk =()=>{
+      history.push({
+         pathname: EDITRISK,
+    
+       });
+      } 
 
     return (
     <>     
@@ -64,16 +71,9 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.rating}</td>
                     <td>{risk.action}</td>
                     <td>
-                <Dropdown className="dropdown-container">
-                  <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                    <img src={pen_black} alt =""/>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="rounded">
-                      <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editrisk">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editrisk">Remove</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>                
+                    <td>
+                     <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> 
+                </td>            
                 </td>
                 </tr>
             ) )}

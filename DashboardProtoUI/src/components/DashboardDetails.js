@@ -8,7 +8,7 @@ import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
-import { ADDASSET } from "../navigation/constants";
+import { ADDASSET, EDITASSET } from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
@@ -23,6 +23,12 @@ export const DashboardDetails = () => {
        pathname: ADDASSET,
      });
     }  
+
+    const onEditAsset =()=>{
+    history.push({
+       pathname: EDITASSET,
+     });
+    } 
 
     return (
     <>     
@@ -66,16 +72,9 @@ export const DashboardDetails = () => {
                 <td>{asset.availability}</td>
                 <td>{asset.rating}</td>
                 <td>
-                <Dropdown className="dropdown-container">
-                  <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                    <img src={pen_black} alt =""/>
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="rounded">
-                      <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editasset">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editasset">Remove</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>                
+                <td>
+                     <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> 
+                    </td>               
                 </td>
               </tr>
             ) )}

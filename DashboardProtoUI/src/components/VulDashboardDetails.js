@@ -6,7 +6,7 @@ import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import {ADDVUL} from "../navigation/constants";
+import {ADDVUL, EDITVUL} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 
@@ -18,6 +18,13 @@ export const VulDashboardDetails = () => {
     const onAddVul =()=>{
     history.push({
        pathname: ADDVUL,
+  
+     });
+    }  
+
+    const onEditVul =()=>{
+    history.push({
+       pathname: EDITVUL,
   
      });
     }  
@@ -62,16 +69,7 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
                     <td>
-                    <Dropdown className="dropdown-container">
-                      <Dropdown.Toggle className="pen-button" id="dropdown-basic" variant="outline-light" >
-                        <img src={pen_black} alt =""/>
-                      </Dropdown.Toggle>
-                      <Dropdown.Menu className="rounded">
-                        <Dropdown.Item className="pen-button-link" href="#/status">Status</Dropdown.Item>
-                        <Dropdown.Item className="pen-button-link" href="/editvul">Edit </Dropdown.Item>
-                      <Dropdown.Item className="pen-button-link" href="/editvul">Remove</Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown> 
+                      <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> 
                 </td>
                 </tr>
             ) )}
