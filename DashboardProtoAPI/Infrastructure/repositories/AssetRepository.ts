@@ -57,4 +57,7 @@ export class AssetRepository {
     public async Update(model: Model<typeof Asset>, id:number){
         return db.Asset.update(model['dataValues'], {where: {id: `${id}`}});
     }
+    public async delete(model: Model<typeof Asset>, idAsset:number){
+      return model.destroy();
+    }
 }

@@ -16,4 +16,5 @@ assetRouter.post("/", (req, res) => {
 assetRouter.put("/:id", (req, res) => {
     assetApi.update(req, res);
 });
+assetRouter.delete('/:id', (req, res) => assetApi.delete(req, res));
 exports.default = assetRouter;

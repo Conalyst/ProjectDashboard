@@ -16,4 +16,5 @@ threatRouter.post("/", (req, res) => {
 threatRouter.put("/:id", (req, res) => {
     threatApi.update(req, res);
 });
+threatRouter.delete('/:id', (req, res) => threatApi.delete(req, res));
 exports.default = threatRouter;

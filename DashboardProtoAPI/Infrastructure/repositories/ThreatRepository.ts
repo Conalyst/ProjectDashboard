@@ -36,4 +36,7 @@ export class ThreatRepository {
       console.log("model..", model['dataValues'])
       return db.Threat.update(model['dataValues'], {where: {id: `${id}`}});
   }
+  public async delete(model: Model<typeof Threat>, idThreat:number){
+    return model.destroy();
+  }
 }
