@@ -241,10 +241,10 @@ export const ManageList = () => {
               <div className="modal-dialog modal-dialog-centered">
                 <div className="modal-content Manage-list-delete">
                   <div className="modal-header Rectangle-header">
-                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Vulnerabilities</h5>
+                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Assets</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected vulnerability will be removed from the list.<br></br>
+                    <p className="Remove-asset-message">Your selected Asset will be removed from the list.<br></br>
                     You can restore it within 15 days from History.</p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>

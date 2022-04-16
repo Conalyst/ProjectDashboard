@@ -15,10 +15,11 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import RecDashboardDetails from "./RecDashboardDetails";
-import RecDashboardHistory from "./RecDashboardHistory";
+import RiskDashboardVisual from "./RiskDashboardVisual";
+import RiskDashboardDetails from "./RiskDashboardDetails";
+import RiskDashboardHistory from "./RiskDashboardHistory";
 
-export const RecDashboard = () => { 
+export const RiskDashboard = () => { 
   const [tests, setTests] = useState(null);
 
 /*    useEffect(() => {
@@ -56,7 +57,7 @@ export const RecDashboard = () => {
                   <img className="sidenav-icon" src={dashboard_a} alt =""/>Dashboard
                 </a>   
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
@@ -76,7 +77,7 @@ export const RecDashboard = () => {
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li className="sidenav-item sidenav-active">
+              <li className="sidenav-item">
                 <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
@@ -118,12 +119,15 @@ export const RecDashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="detail" id="dashboard" className="mb-3 nav-fill dashboard-main">
-            <Tab eventKey="detail" title="Details" id="db-tab-visual">
-              <RecDashboardDetails/>
+        <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
+            <Tab eventKey="visual" title="Visual" id="db-tab-visual">
+              <RiskDashboardVisual/>
+            </Tab>
+            <Tab eventKey="detail" title="Details" id="db-tab-details">
+              <RiskDashboardDetails/>
             </Tab>
             <Tab eventKey="history" title="History" id="db-tab-history">
-              <RecDashboardHistory/>
+              <RiskDashboardHistory/>
             </Tab>
           </Tabs>
         </div>
@@ -131,4 +135,4 @@ export const RecDashboard = () => {
     </div>
   );
 }
-export default RecDashboard;
+export default RiskDashboard;

@@ -15,10 +15,8 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import RecDashboardDetails from "./RecDashboardDetails";
-import RecDashboardHistory from "./RecDashboardHistory";
 
-export const RecDashboard = () => { 
+export const Reports = () => { 
   const [tests, setTests] = useState(null);
 
 /*    useEffect(() => {
@@ -76,12 +74,12 @@ export const RecDashboard = () => {
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
-              <li className="sidenav-item sidenav-active">
+              <li className="sidenav-item">
                 <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
-              <li className="sidenav-item">
+              <li className="sidenav-item sidenav-active">
                 <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
@@ -118,17 +116,10 @@ export const RecDashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <Tabs defaultActiveKey="detail" id="dashboard" className="mb-3 nav-fill dashboard-main">
-            <Tab eventKey="detail" title="Details" id="db-tab-visual">
-              <RecDashboardDetails/>
-            </Tab>
-            <Tab eventKey="history" title="History" id="db-tab-history">
-              <RecDashboardHistory/>
-            </Tab>
-          </Tabs>
+            
         </div>
       </div>
     </div>
   );
 }
-export default RecDashboard;
+export default Reports;
