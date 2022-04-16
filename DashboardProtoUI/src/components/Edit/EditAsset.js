@@ -220,9 +220,11 @@ export const EditAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Software</option>
+                    <option>Personnel</option>
                     <option>Data</option>
-                    <option>Network</option>
+                    <option>Network and Data</option>
+                    <option>Software</option>
+                    <option>Intangible</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
