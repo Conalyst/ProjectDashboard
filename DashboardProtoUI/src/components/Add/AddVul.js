@@ -175,13 +175,13 @@ export const AddVul = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <div className="Manage-listAdd">
+          <div className="Manage-listAdd-long">
             <div className="Rectangle-top">            
               <div className="Add-New-Asset">
                 <span>Add New Vulnerability</span>              
                 <button className="Top-Cancel" onClick={() =>onCancel()}>X</button> 
             </div>         
-            <div className="Rectangle-grey-box">
+            <div className="Rectangle-grey-box-long">
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
@@ -207,6 +207,14 @@ export const AddVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left">
+                    <option>Low</option>
+                    <option>Medium</option>
+                    <option>High</option>
+                  </Form.Select>
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
                     <option>Low</option>
                     <option>Medium</option>
