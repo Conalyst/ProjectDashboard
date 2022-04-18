@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
 import {Table, Dropdown, InputGroup} from "react-bootstrap";
-import thr_data from "../thr_data.json";
+//import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDTHREAT, EDITTHREAT} from "../navigation/constants";
+import {ADDTHREAT, EDITTHREAT} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import Info from "./Info";
+//import ManageButton from "./ManageButton";
+import { getAllThreats } from "../services/threatService";
 
 
 export const ThreatsDashboardDetails = () => {
 
-    const [threats, setThreats] = useState(thr_data);
+    //const [threats, setThreats] = useState(thr_data);
+     
+    const [assets, setAssets] = useState([]);
 
    
       const history =useHistory();
@@ -23,13 +27,7 @@ export const ThreatsDashboardDetails = () => {
     
        });
       }  
-import ManageButton from "./ManageButton";
-import { getAllThreats } from "../services/threatService";
 
-export const ThreatsDashboardDetails = () => {
-
-    const [threats, setThreats] = useState(thr_data); 
-    const [assets, setAssets] = useState([]);
     useEffect(() => {
     
         const storedUser = localStorage.getItem("storedUser");   
@@ -92,14 +90,10 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.agent}</td>
                     <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
-<<<<<<< HEAD
                     <td>{threat.rating}</td>
                      <td>
                      <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> 
                 </td>
-=======
-                    <td>{threat.rating}</td> 
->>>>>>> origin/main
                 </tr>
             ) )}
             </tbody>

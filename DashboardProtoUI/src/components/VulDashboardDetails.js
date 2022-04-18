@@ -6,10 +6,10 @@ import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import {ADDVUL, EDITVUL} from "../navigation/constants";
+import {ADDVUL, EDITVUL} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
-import ManageButton from "./ManageButton";
+//import ManageButton from "./ManageButton";
 import { getAllVulnerabilities } from "../services/vulnerabilityService";
 
 export const VulDashboardDetails = () => {

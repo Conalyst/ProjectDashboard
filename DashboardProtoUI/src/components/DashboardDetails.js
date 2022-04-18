@@ -6,16 +6,22 @@ import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
+//import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
+//import { pullCompanyAssets } from "../services/companyAssetsService";
+import { getAllAssets } from "../services/assetsService";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, EDITASSET } from "../navigation/constants";
+import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
+//import ManageModal from "./ManageModal";
+// import axios from "axios";
+import { pullCompanyAssets } from "../services/companyAssetsService";
+//import { getAllAssets } from "../services/assetsService";
 
 export const DashboardDetails = () => {
 
-  const [assets, setAssets] = useState(data);
+  const [assets, setAssets] = useState([]);
 
     const history =useHistory();
     const onAddAsset =()=>{
@@ -29,17 +35,6 @@ export const DashboardDetails = () => {
        pathname: EDITASSET,
      });
     } 
-
-import ManageModal from "./ManageModal";
-// import axios from "axios";
-import { pullCompanyAssets } from "../services/companyAssetsService";
-import { getAllAssets } from "../services/assetsService";
-
-
-export const DashboardDetails = () => {
-
-    const [assets, setAssets] = useState([]);
-
 
     useEffect(() => {
         const storedUser = localStorage.getItem("storedUser");   
@@ -88,7 +83,6 @@ export const DashboardDetails = () => {
             <tbody>
                 {assets.map((asset) => (
                 <tr className="cr-text">
-<<<<<<< HEAD
                   <td>
                   <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
@@ -96,7 +90,7 @@ export const DashboardDetails = () => {
                 <td>{asset.assetId}</td>
                 <td>{asset.Asset.title}</td>
                 <td>{asset.Asset.description}</td>
-                <td>{asset.Asset.categoryId}</td>
+                <td>{asset.Asset.name}</td>
                 <td>{asset.confidentiality}</td>
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
@@ -107,67 +101,6 @@ export const DashboardDetails = () => {
                     </td>               
                 </td>
               </tr>
-=======
-                    <td>
-                  <button ctype="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
-              <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel1">Asset</h5>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                    <div className="accordion accordion-flush" id="accordionFlushExample">
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingOne">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          Accordion Item #1
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                      </div>
-                    </div>
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingTwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                          Accordion Item #2
-                        </button>
-                      </h2>
-                      <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                      </div>
-                    </div>
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingThree">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                          Accordion Item #3
-                        </button>
-                      </h2>
-                      <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                      </div>
-                    </div>
-                  </div>
-                  ...
-                  </div>
-                    <div className="modal-footer">
-                    </div>
-                  </div>
-                </div>
-              </div>
-                    </td>
-                    <td>{asset.assetId}</td>
-                    <td>{asset.title}</td>
-                    <td>{asset.description}</td>
-                    <td>{asset.AssetCategory.name}</td>
-                    <td>{asset.confidentiality}</td>
-                    <td>{asset.integrity}</td>
-                    <td>{asset.availability}</td>
-                    <td>{asset.rating}</td>
-                </tr>
->>>>>>> origin/main
             ) )}
           </tbody>
         </Table>   

@@ -1856,6 +1856,37 @@ li {
   border: #145b93;
 }
 
+/*With Rating*/
+.dashboard-main-wrapper-long {
+  display: flex;
+  flex-direction: column;
+  background: #f9f9f9;
+  border: solid 3px #f1f1f1;
+  border-radius: 6px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  flex-grow: 1;
+}
+
+.Rectangle-grey-box-long {
+  height: 520px;
+  flex-grow: 0;
+  margin: 50px 24px 24px 24px;
+  padding: 20px 28px 17px 29px;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+}
+
+.Manage-listAdd-long {
+  width: 100%;
+  height: 690.78px;
+  flex-grow: 0;
+  padding: 1px 1px 26px;
+  border-radius: 7px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  background-color: #fff;
+}
+
+
 
 
 
