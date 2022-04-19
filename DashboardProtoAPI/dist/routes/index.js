@@ -14,11 +14,36 @@ const Threat_1 = __importDefault(require("./Threat"));
 const VulnerabilityThreat_1 = __importDefault(require("./VulnerabilityThreat"));
 const Risk_1 = __importDefault(require("./Risk"));
 const RiskAsset_1 = __importDefault(require("./RiskAsset"));
+const apiRouter = require('./api');
 const router = (0, express_1.Router)();
+router.use('/', apiRouter);
+// Static routes
+// Serve React build files in production
+if (process.env.NODE_ENV === 'production') {
+    const path = require('path');
+    // Serve the frontend's index.html file at the root route
+    router.get('/', (req, res) => {
+        res.cookie('XSRF-TOKEN', req.csrfToken());
+        res.sendFile(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
+    });
+    // Serve the static assets in the frontend's build folder
+    router.use(express.static(path.resolve("../frontend/build")));
+    // Serve the frontend's index.html file at all other routes NOT starting with /api
+    router.get(/^(?!\/?api).*/, (req, res) => {
+        res.cookie('XSRF-TOKEN', req.csrfToken());
+        res.sendFile(path.resolve(__dirname, '../../frontend', 'build', 'index.html'));
+    });
+}
+// Add a XSRF-TOKEN cookie in development
+if (process.env.NODE_ENV !== 'production') {
+    router.get('/api/csrf/restore', (req, res) => {
+        res.cookie('XSRF-TOKEN', req.csrfToken());
+        res.status(201).json({});
+    });
+}
 router.use('/assets', asset_1.default);
 router.use('/assets/company', CompanyAssets_1.default);
 router.use('/users', user_1.default);
-router.use('/', user_1.default);
 // this is just a test of authorization
 router.use('/tests', Test_1.default);
 router.use('/vulnerabilities', Vulnerability_1.default);
