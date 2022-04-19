@@ -1,50 +1,38 @@
 import React, { useEffect, useState } from "react";
 import {Table, Dropdown} from "react-bootstrap";
-import vul_data from "../vul_data.json";
+import risk_data from "../risk_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
-import info_white from '../images/icons/outline_info_white.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import {ADDVUL, EDITVUL} from "../navigation/CONSTANTS";
+import info_white from '../images/icons/outline_info_white.png';
+import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
-//import ManageButton from "./ManageButton";
-import { getAllVulnerabilities } from "../services/vulnerabilityService";
 
-export const VulDashboardDetails = () => {
+export const RiskDashboardDetails = () => {
 
-    const [vulnerabilities, setVulnerabilities] = useState(vul_data);
+    const [risks, setRisk] = useState(risk_data);
 
     const history =useHistory();
-    const onAddVul =()=>{
+    const onManageList =()=>{
     history.push({
-       pathname: ADDVUL,
+       pathname: ADDRISK,
   
      });
-    }  
-
-    const onEditVul =()=>{
-    history.push({
-       pathname: EDITVUL,
-  
-     });
-    }  
-    useEffect(() => {
-      const storedUser = localStorage.getItem("storedUser");   
-      const parsedUser = JSON.parse(storedUser);
-      console.log("parsed user dashboard", parsedUser);
-      getAllVulnerabilities()
-      .then((result) => {
-          console.log("Vulns", result)
-          setVulnerabilities(result);
-      })
-    }, []);
+    } 
+    
+    const onEditRisk =()=>{
+      history.push({
+         pathname: EDITRISK,
+    
+       });
+      } 
 
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vul</button>  
+          <button className="Button-Icon-Manage" onClick={onManageList}> Add Risk</button>  
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -55,33 +43,37 @@ export const VulDashboardDetails = () => {
                     <img  src={info_white} alt =""/>
                     </th>
                     <th>IDs</th>
+                    <th>Category</th>
                     <th>Title</th>
                     <th>Description</th>
-                    <th>Category</th>
-                    <th>Impact</th>
                     <th>Likelihood</th>
+                    <th>Impact</th>
                     <th>Rating</th>
+                    <th>Action</th>
                     <th>
-                      <img  src={pen_white} alt =""/>
+                     <img  src={pen_white} alt =""/>
                     </th>
                 </tr>
             </thead>
             <tbody>
-                {vulnerabilities.map((vulnerability) => (
+                {risks.map((risk) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                       <Info/>
                     </td>
-                    <td>{vulnerability.id}</td>
-                    <td>{vulnerability.title}</td>
-                    <td>{vulnerability.description}</td>
-                    <td>{vulnerability.category}</td>
-                    <td>{vulnerability.impact}</td>
-                    <td>{vulnerability.likelihood}</td>
-                    <td>{vulnerability.rating}</td>
+                    <td>{risk.id}</td>
+                    <td>{risk.category}</td>
+                    <td>{risk.title}</td>
+                    <td>{risk.description}</td>                 
+                    <td>{risk.likelihood}</td>
+                    <td>{risk.impact}</td>
+                    <td>{risk.rating}</td>
+                    <td>{risk.action}</td>
                     <td>
-                      <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> 
+                    <td>
+                     <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> 
+                </td>            
                 </td>
                 </tr>
             ) )}
@@ -91,4 +83,4 @@ export const VulDashboardDetails = () => {
     </>
     );
 };
-export default VulDashboardDetails;
+export default RiskDashboardDetails;

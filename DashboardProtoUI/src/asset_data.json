@@ -1,0 +1,102 @@
+[
+    {
+        "id": 1,
+        "title": "ORG IT Staff",
+        "description": "IT Staff are responsible for the day-to-day operations of ORG‚ & business applications and supporting infrastructure.  In the event of a security incident, IT Staff would be engaged to respond to the incident. ",
+        "category": "Personnel",
+        "confidentiality": "H",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "L"        
+    },
+    {
+        "id": 2,
+        "title": "IT Vendors and Subcontractors",
+        "description": "Third parties service providers for ORG provide supplementary subject matter expertise and operational support when required.  Contractors may have trusted access to ORG‚ & network and applications.  ",
+        "category": "Personnel",
+        "confidentiality": "H",
+        "integrity": "L",
+        "availability": "H" ,
+        "rating": "H"
+    },
+    {   
+        "id": 3,
+        "title": "Partner and Client SiteScape Users",
+        "description": "ORG‚ clients and partners have access to SiteScape. Most users use SiteScape for the purposes of document exchange.  There are approximately 3500 Users, with only 2200 that are active.",
+        "category": "Personnel",
+        "confidentiality": "H",
+        "integrity": "M",
+        "availability": "M" ,
+        "rating": "M"
+    },
+    {   
+        "id": 4,
+        "title": "Third-Party Assessors",
+        "description": "For certain certifications, ORG must retain a third-party assessor who has the technical expertise to provide certification services.  These assessors will have access to confidential client information, enabling them to complete the accreditation process.",
+        "category": "Personnel",
+        "confidentiality": "L",
+        "integrity": "M",
+        "availability": "L" ,
+        "rating": "H"
+    },
+    {   
+        "id": 5,
+        "title": "ORG Executives",
+        "description": "The Executive Team establishes ORG‚ & strategic priorities and carries out its day-to-day operations.¬†",
+        "category": "Personnel",
+        "confidentiality": "H",
+        "integrity": "L",
+        "availability": "H" ,
+        "rating": "M"
+    },
+    {   
+        "id": 6,
+        "title": "External Team Members",
+        "description": "External Team Members are appointed by the federal government, and report to Parliament through the Minister of Innovation, Science and Economic Development. It is composed of up to 13 members who represent various stakeholder interests. Members review, approve and advise ORG on its strategic direction.",
+        "category": "Personnel",
+        "confidentiality": "H",
+        "integrity": "M",
+        "availability": "L" ,
+        "rating": "L"
+    },
+    { 
+        "id": 7,
+        "title": "Client Data",
+        "description": "Labs, research facilities and other bodies seeking certification provide ORG with the records (which may contain personal information) necessary to provide accreditation services.  Personal information may include name, address and contact information. Part of ORG‚  operations include the certification and accreditation of client facilities.  As part of the accreditation process, clients provide ORG with business confidential information which may relate to processes, financial data, intellectual property, or other trade secrets not otherwise known to the public or competitors.  Client contact‚ & responsible for interacting with ORG are provided with credentials to ORG‚ & instance of SiteScape and are directed to upload the relevant information there. ",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "M"
+    },
+    {
+        "id": 8,
+        "title": "Third-Party Credentials",
+        "description": "Third-party assessors and ORG clients have their own credentials to access services such as SiteScape.  A compromise of account credentials could expose personal or confidential information.",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "M"
+    },
+    {
+        "id": 9,
+        "title": "Personnel Record",
+        "description": "Personnel records maintained by ORG across all systems and business departments.  This information includes personal information, financial records, human resources information. ",
+        "category": "Data",
+        "confidentiality": "M",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "L"
+    },
+    {
+        "id": 10,
+        "title": "ORG Policy Documentation",
+        "description": "ORG‚ & policies, standards and standard operating procedures.  IT policies and procedures were revised/created by BDO Canada between 2017-2018.  ",
+        "category": "Data",
+        "confidentiality": "L",
+        "integrity": "H",
+        "availability": "L" ,
+        "rating": "L"
+    }
+]
