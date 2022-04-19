@@ -22,7 +22,6 @@ export const DashboardDetails = () => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [filterbox, setFilterbox] = useState(false);
-  // const [selectAssetCat, setSelectAssetCat] = useState("All");
   const [sel, setSel] = useState({
     selAssetCat: "All",
     selConfi: "All",
@@ -70,32 +69,13 @@ export const DashboardDetails = () => {
     setFilterbox(!filterbox);
   }
 
-  // function handleSelectAssetCat(selected) {
-  //   setSelectAssetCat(selected);
+  // function handleSelect(item, selected) {
+  //   console.log("handleSelect", item, selected);
+  //   setSel((prev) => ({
+  //     ...prev,
+  //     item: selected,
+  //   }));
   // }
-
-  // function afterFilter(selectAssetCat) {
-  //   if (selectAssetCat == "All") {
-  //     setTempAssets(
-  //       tempAssets.filter((tempAsset) => tempAsset.Asset.categoryId > 0)
-  //     );
-  //   } else {
-  //     setTempAssets(
-  //       tempAssets.filter(
-  //         (tempAsset) => tempAsset.Asset.categoryId == Number(selectAssetCat)
-  //       )
-  //     );
-  //     console.log("clicked filter", selectAssetCat);
-  //   }
-  // }
-
-  function handleSelect(item, selected) {
-    console.log("handleSelect", item, selected);
-    setSel((prev) => ({
-      ...prev,
-      item: selected,
-    }));
-  }
 
   function afterFilter() {
     // if (sel.selAssetCat == "All") {
@@ -105,13 +85,11 @@ export const DashboardDetails = () => {
     // } else {
       setTempAssets(
         tempAssets
-          .filter(
-            (tempAsset) => tempAsset.Asset.categoryId == Number(sel.selAssetCat)
-          )
-          .filter((tempAsset) => tempAsset.confidentiality == sel.selConfi)
-          .filter((tempAsset) => tempAsset.integrity == sel.selInt)
-          .filter((tempAsset) => tempAsset.availability == sel.selAva)
-          .filter((tempAsset) => tempAsset.rating == sel.selRat)
+          .filter(sel.selAssetCat != "All" ? (tempAsset) => tempAsset.Asset.categoryId == Number(sel.selAssetCat): (tempAsset) => tempAsset.Asset.categoryId != null )
+          .filter(sel.selConfi != "All" ? (tempAsset) => tempAsset.confidentiality == sel.selConfi :  (tempAsset) => tempAsset.confidentiality != null)
+          .filter(sel.selInt != "All" ? (tempAsset) => tempAsset.integrity == sel.selInt :  (tempAsset) => tempAsset.integrity != null)
+          .filter( sel.selAva != "All" ? (tempAsset) => tempAsset.availability == sel.selAva :  (tempAsset) =>tempAsset.availability != null)
+          .filter( sel.selRat != "All" ? (tempAsset) => tempAsset.rating == sel.selRat :  (tempAsset) => tempAsset.rating  != null)
       );
       console.log("clicked filter", sel);
     // }
@@ -159,28 +137,28 @@ export const DashboardDetails = () => {
                     <Dropdown.Menu>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "All" }))
+                          setSel((prev) => ({ ...prev, selAssetCat:"All" }))
                         }
                       >
                         All
                       </li>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "1" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 1 }))
                         }
                       >
                         1
                       </li>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "2" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 2 }))
                         }
                       >
                         2
                       </li>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "3" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 3 }))
                         }
                       >
                         3
@@ -188,21 +166,21 @@ export const DashboardDetails = () => {
                       {/* <Dropdown.Item href="#/action-3">Personnel</Dropdown.Item> */}
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "4" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 4 }))
                         }
                       >
                         4
                       </li>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "5" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 5 }))
                         }
                       >
                         5
                       </li>
                       <li
                         onClick={() =>
-                          setSel((prev) => ({ ...prev, selAssetCat: "6" }))
+                          setSel((prev) => ({ ...prev, selAssetCat: 6 }))
                         }
                       >
                         6
