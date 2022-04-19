@@ -16,7 +16,7 @@ import Filter from "./Filter";
 import Info from "./Info";
 //import ManageModal from "./ManageModal";
 // import axios from "axios";
-import { pullCompanyAssets } from "../services/companyAssetsService";
+// import { pullCompanyAssets } from "../services/companyAssetsService";
 //import { getAllAssets } from "../services/assetsService";
 
 export const DashboardDetails = () => {
@@ -88,9 +88,9 @@ export const DashboardDetails = () => {
                     <Info/>
               </td>
                 <td>{asset.assetId}</td>
-                <td>{asset.Asset.title}</td>
-                <td>{asset.Asset.description}</td>
-                <td>{asset.Asset.name}</td>
+                <td>{asset.title}</td>
+                <td>{asset.description}</td>
+                <td>{asset.AssetCategory.name}</td>
                 <td>{asset.confidentiality}</td>
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
