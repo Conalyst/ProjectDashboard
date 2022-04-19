@@ -1,45 +1,51 @@
 import React, { useEffect, useState } from "react";
-import {Table} from "react-bootstrap";
+import {Table, Dropdown} from "react-bootstrap";
 import vul_data from "../vul_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import ManageButton from "./ManageButton";
-
+import pen_white from '../images/icons/pen_white.png';
+import pen_black from '../images/icons/pen_black.png';
+import {ADDVUL, EDITVUL} from "../navigation/CONSTANTS";
+import {useHistory} from 'react-router-dom';
+import Info from "./Info";
+//import ManageButton from "./ManageButton";
+import { getAllVulnerabilities } from "../services/vulnerabilityService";
 
 export const VulDashboardDetails = () => {
 
     const [vulnerabilities, setVulnerabilities] = useState(vul_data);
 
-   /*    const [assets, setAssets] = useState([]);
+    const history =useHistory();
+    const onAddVul =()=>{
+    history.push({
+       pathname: ADDVUL,
+  
+     });
+    }  
+
+    const onEditVul =()=>{
+    history.push({
+       pathname: EDITVUL,
+  
+     });
+    }  
     useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-              
-            // do db call or API endpoint axios call here and return the promise.
-            getAllAssets()
-            .then((res) => {
-              setAssets(res);
-              resolve(res);
-            })
-              .catch((err) => {
-                setAssets([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("error!==", error);
-            reject("signin error!");
-          }
-        });
-      }, []); */
+      const storedUser = localStorage.getItem("storedUser");   
+      const parsedUser = JSON.parse(storedUser);
+      console.log("parsed user dashboard", parsedUser);
+      getAllVulnerabilities()
+      .then((result) => {
+          console.log("Vulns", result)
+          setVulnerabilities(result);
+      })
+    }, []);
 
     return (
     <>     
         <div className="asset-menu-buttons">
-                <button className="Button-Icon-Manage"data-bs-toggle="modal" data-bs-target="#exampleModal"> Manage</button> 
-              
-              <ManageButton/>
-                <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
+          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vul</button>  
+          <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
@@ -55,6 +61,9 @@ export const VulDashboardDetails = () => {
                     <th>Impact</th>
                     <th>Likelihood</th>
                     <th>Rating</th>
+                    <th>
+                      <img  src={pen_white} alt =""/>
+                    </th>
                 </tr>
             </thead>
             <tbody>
@@ -62,54 +71,7 @@ export const VulDashboardDetails = () => {
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
-              <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div className="modal-dialog">
-                  <div className="modal-content">
-                    <div className="modal-header">
-                      <h5 className="modal-title" id="exampleModalLabel"> Asset</h5>
-                      <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div className="modal-body">
-                    <div className="accordion accordion-flush" id="accordionFlushExample">
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingOne">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                          Accordion Item #1
-                        </button>
-                      </h2>
-                      <div id="flush-collapseOne" className="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the first item's accordion body.</div>
-                      </div>
-                    </div>
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingTwo">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                          Accordion Item #2
-                        </button>
-                      </h2>
-                      <div id="flush-collapseTwo" className="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                      </div>
-                    </div>
-                    <div className="accordion-item">
-                      <h2 className="accordion-header" id="flush-headingThree">
-                        <button className="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                          Accordion Item #3
-                        </button>
-                      </h2>
-                      <div id="flush-collapseThree" className="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div className="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                      </div>
-                    </div>
-                  </div>
-                    ...
-                 </div>
-                    <div className="modal-footer">
-                      
-                    </div>
-                  </div>
-                </div>
-              </div>
+                      <Info/>
                     </td>
                     <td>{vulnerability.id}</td>
                     <td>{vulnerability.title}</td>
@@ -118,6 +80,9 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.impact}</td>
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
+                    <td>
+                      <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> 
+                </td>
                 </tr>
             ) )}
             </tbody>

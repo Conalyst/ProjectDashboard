@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Tabs, Tab} from "react-bootstrap";
 import { getAllTest } from "../services";
 import company_icon from '../images/user/company_icon.png';
 import user_icon from '../images/user/user_icon.png';
@@ -15,14 +15,30 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-import {useHistory} from 'react-router-dom'
-import ManageModal from "./ManageModal";
 
+export const Reports = () => { 
+  const [tests, setTests] = useState(null);
 
-export const AddAsset = () => { 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-
+/*    useEffect(() => {
+        return new Promise((resolve, reject) => {
+          try {
+            // do db call  or API endpoint axios call here and return the promise.
+           getAllTest()
+            .then((res) => {
+              setTests(res);
+              //resolve(res);
+            })
+              .catch((err) => {
+                setTests([]); 
+                reject("Request error!");
+              });
+          } catch (error) {
+            console.error("GetTest error!==", error);
+            reject("Test error!");
+          }
+        });
+      }, []);
+*/
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -39,32 +55,32 @@ export const AddAsset = () => {
                 </a>   
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
-             <li className="sidenav-item sidenav-active">
-                <a className="sidenav-link" href="">
+             <li className="sidenav-item">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
-              <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+              <li className="sidenav-item sidenav-active">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -100,73 +116,10 @@ export const AddAsset = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-          <div className="Manage-listAdd">
-            <div className="Rectangle-top">
-            <span className="Add-New-Asset">
-                Add New Asset
-            </span>
-            <span className="Top-Cancel">X</span>
-            <div className="Rectangle-grey-box">
-            <Form>
-            <div className="row g-2">
-              <div className="column-form col-md">
-                    <Form.Group className="mb-3">
-                  <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
-                </div>
-                <div className="col-md">
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right">
-                    <option>Software</option>
-                    <option>Data</option>
-                    <option>Network</option>
-                  </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                  <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc" as="textarea" rows="9" name="address" onChange={(e) => setDescription(e.target.value)}/>
-                </Form.Group>
-              </div>
-            </div>
-          </Form>
-        </div>
-          <div className="test">
-            {/* <Button className="Button-Icon-done" type="submit" onClick={() =>onAddAsset()}> */}
-            <Button className="Button-Icon-done" type="submit" >
-              Done
-            </Button>
-            </div>
-          </div>
-        </div>
+            
         </div>
       </div>
     </div>
   );
 }
-export default AddAsset;
+export default Reports;

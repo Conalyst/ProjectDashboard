@@ -32,10 +32,10 @@ module.exports = (sequelize: any, DataTypes:any) => {
         sourceKey: "id",
         foreignKey: "companyId",
       });
-      Company.belongsToMany(models.Asset, {
-        through: models.CompanyAsset,
-        foreignKey: 'companyId'
-      }) 
+      // Company.belongsToMany(models.Asset, {
+      //   through: models.CompanyAsset,
+      //   foreignKey: 'companyId'
+      // }) 
     }
   }
   Company.init({

@@ -15,7 +15,6 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
-
 import RecDashboardDetails from "./RecDashboardDetails";
 import RecDashboardHistory from "./RecDashboardHistory";
 
@@ -58,32 +57,32 @@ export const RecDashboard = () => {
                 </a>   
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./risk">
+                <a className="sidenav-link" href="/risk">
                   <img className="sidenav-icon" src={risks} alt =""/>Risk Analysis
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="./asset">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item sidenav-active">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
