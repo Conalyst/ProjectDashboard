@@ -9,10 +9,10 @@ import threatRouter from './Threat'
 import vulnerabilityThreatRouter from './VulnerabilityThreat'
 import riskRouter from './Risk'
 import riskAssetRouter from './RiskAsset'
-const apiRouter = require('./api');
 import express from 'express'
 
 const router = Router()
+const apiRouter = Router();
 router.use('/', apiRouter)
 // Static routes
 // Serve React build files in production
@@ -39,12 +39,12 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 // Add a XSRF-TOKEN cookie in development
-if (process.env.NODE_ENV == 'production') {
-  router.get('/api/csrf/restore', (req, res) => {
-    // res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.status(201).json({});
-  });
-}
+// if (process.env.NODE_ENV == 'production') {
+//   router.get('/api/csrf/restore', (req, res) => {
+//     // res.cookie('XSRF-TOKEN', req.csrfToken());
+//     res.status(201).json({});
+//   });
+// }
 
 
 

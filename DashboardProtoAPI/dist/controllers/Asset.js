@@ -20,7 +20,7 @@ class AssetApi {
     getAllAssets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let assetList = yield this._assetRepository.Get();
-            console.log("Helllllo");
+            // console.log("Helllllo")
             return res.status(200).json(assetList);
         });
     }
@@ -28,7 +28,7 @@ class AssetApi {
     getAssetsById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let assetId = req.params.id;
-            console.log(assetId);
+            // console.log(assetId)
             let asset = yield this._assetRepository.GetAssetById(assetId);
             return res.status(200).json(asset);
         });
@@ -68,7 +68,7 @@ class AssetApi {
                 const assetDto = this.getDtoFromRequest(req);
                 let updatedAsset = yield this._assetRepository.Update((0, assetMapper_1.toEntity)(assetDto), id);
                 if (updatedAsset) {
-                    console.log("updated..", updatedAsset);
+                    // console.log("updated..", updatedAsset)
                     updatedAsset = yield this._assetRepository.GetById(id);
                     return res.status(201).json(updatedAsset);
                 }

@@ -6,8 +6,11 @@
   "type": "commonjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "tsc -w & nodemon index.ts",
-    "dev": "tsc -w & nodemon index.ts"
+    "sequelize": "sequelize",
+    "sequelize-cli": "sequelize-cli",
+    "start": "per-env",
+    "start:development": "nodemon -r dotenv/config index.ts",
+    "start:production": "node dist/index.js"
   },
   "author": "",
   "license": "ISC",
