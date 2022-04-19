@@ -13,13 +13,13 @@ export class AssetApi{
     
     async getAllAssets(req: express.Request, res: express.Response){
       let assetList = await this._assetRepository.Get();
-      console.log("Helllllo")
+      // console.log("Helllllo")
       return  res.status(200).json(assetList);
     };
 
     async getAssetsById(req: express.Request, res: express.Response){
       let assetId = req.params.id;
-      console.log(assetId)
+      // console.log(assetId)
       let asset = await this._assetRepository.GetAssetById(assetId);
       return  res.status(200).json(asset);
     };
@@ -65,7 +65,7 @@ export class AssetApi{
       let updatedAsset = await this._assetRepository.Update(toEntity(assetDto), id)
     
       if(updatedAsset){
-        console.log("updated..", updatedAsset)
+        // console.log("updated..", updatedAsset)
         updatedAsset = await this._assetRepository.GetById(id)
         return res.status(201).json(updatedAsset);
       }else{
