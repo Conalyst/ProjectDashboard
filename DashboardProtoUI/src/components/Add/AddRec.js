@@ -46,7 +46,7 @@ export const AddRec = () => {
 
   const onOk =()=>{
   history.push({
-     pathname: RECASHBOARD,
+     pathname: RECDASHBOARD,
 
    });
   }  
