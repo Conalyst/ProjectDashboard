@@ -23,7 +23,10 @@ if (process.env.NODE_ENV === 'production') {
     // Serve the frontend's index.html file at the root route
     router.get('/', (req, res) => {
         // res.cookie('XSRF-TOKEN', req.csrfToken());
-        res.sendFile(path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html'));
+        // res.sendFile(
+        //   path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html')
+        // );
+        res.send("WELCOME.....");
     });
     // // Serve the static assets in the frontend's build folder
     router.use(express_2.default.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
