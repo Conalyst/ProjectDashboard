@@ -51,11 +51,19 @@ export const EditRec = () => {
    });
   }  
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
   const options = [
     { value: 'R1', label: 'R1' },
     { value: 'R2', label: 'R2' },
     { value: 'R3', label: 'R3' },
-    { value: 'R4', label: 'r4' },
+    { value: 'R4', label: 'R4' },
     { value: 'R5', label: 'R5' },
     { value: 'R6', label: 'R6' },
     { value: 'R7', label: 'R7' },
@@ -148,7 +156,7 @@ export const EditRec = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">User Name</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -193,11 +201,12 @@ export const EditRec = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-left">Associated Risks <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-left"
+                  <Select className="Frame-left-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
                 </div>

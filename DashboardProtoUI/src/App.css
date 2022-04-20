@@ -1172,6 +1172,23 @@ li {
     border: solid 1px #2e2e2e;
     background-color: #fff;
   }
+  .Frame-right-multiselect {
+    width: 80%;
+    margin: 4px 0 10px 0;
+    margin-left:20%;
+    margin-right: 20%;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+  }
+
+  .Frame-left-multiselect {
+    width: 80%;
+    margin: 4px 0 10px 0;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+  }
 
   .optional{
     color: #e98226;

@@ -51,6 +51,14 @@ export const EditVul = () => {
    });
   }  
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
   const options = [
     { value: 'T1', label: 'T1' },
     { value: 'T2', label: 'T2' },
@@ -148,7 +156,7 @@ export const EditVul = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">User Name</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -239,11 +247,12 @@ export const EditVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Threats <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>

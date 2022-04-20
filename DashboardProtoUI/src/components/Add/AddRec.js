@@ -64,6 +64,14 @@ export const AddRec = () => {
     { value: 'R10', label:'R10'},
   ];
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
   /*const onAddAsset = () =>{
  
     if (!assetTitle) {
@@ -148,7 +156,7 @@ export const AddRec = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">User Name</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -193,11 +201,12 @@ export const AddRec = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-left">Associated Risk <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-left"
+                  <Select className="Frame-left-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
                 </div>
