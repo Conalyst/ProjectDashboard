@@ -25,6 +25,12 @@
     "database": "dashboard_db",
     "host": "0.0.0.0",
     "dialect": "postgres",
+    "dialectOptions": {
+      "ssl": {
+        "require": true, 
+        "rejectUnauthorized": false 
+      }
+    },
     "pool": {
       "max": 100,
       "min": 0,
