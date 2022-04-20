@@ -30,12 +30,12 @@ const router = Router()
   router.use(express.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
 
   // // Serve the frontend's index.html file at all other routes NOT starting with /api
-  router.get(/^(?!\/?api).*/, (req, res) => {
-    // res.cookie('XSRF-TOKEN', req.csrfToken());
-    res.sendFile(
-      path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html')
-    );
-  });
+//   router.get(/^(?!\/?api).*/, (req, res) => {
+//     // res.cookie('XSRF-TOKEN', req.csrfToken());
+//     res.sendFile(
+//       path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html')
+//     );
+//   });
  }
 
 // Add a XSRF-TOKEN cookie in development

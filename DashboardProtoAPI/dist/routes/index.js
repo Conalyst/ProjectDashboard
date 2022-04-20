@@ -28,10 +28,12 @@ if (process.env.NODE_ENV === 'production') {
     // // Serve the static assets in the frontend's build folder
     router.use(express_2.default.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
     // // Serve the frontend's index.html file at all other routes NOT starting with /api
-    router.get(/^(?!\/?api).*/, (req, res) => {
-        // res.cookie('XSRF-TOKEN', req.csrfToken());
-        res.sendFile(path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html'));
-    });
+    //   router.get(/^(?!\/?api).*/, (req, res) => {
+    //     // res.cookie('XSRF-TOKEN', req.csrfToken());
+    //     res.sendFile(
+    //       path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html')
+    //     );
+    //   });
 }
 // Add a XSRF-TOKEN cookie in development
 // if (process.env.NODE_ENV == 'production') {
