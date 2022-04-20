@@ -30,6 +30,7 @@
       "min": 0,
       "idle": 200000,
       "acquire": 1000000
-    }
+    },
+    "use_env_variable": "DATABASE_URL"
   }
 }
