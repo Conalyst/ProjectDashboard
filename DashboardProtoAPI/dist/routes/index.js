@@ -16,23 +16,21 @@ const Risk_1 = __importDefault(require("./Risk"));
 const RiskAsset_1 = __importDefault(require("./RiskAsset"));
 const express_2 = __importDefault(require("express"));
 const router = (0, express_1.Router)();
-const apiRouter = (0, express_1.Router)();
-router.use('/', apiRouter);
 // Static routes
 // Serve React build files in production
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
     const path = require('path');
     // Serve the frontend's index.html file at the root route
     router.get('/', (req, res) => {
         // res.cookie('XSRF-TOKEN', req.csrfToken());
-        res.sendFile(path.resolve(__dirname, '../../DashboardProtoAPI', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html'));
     });
-    // Serve the static assets in the frontend's build folder
-    router.use(express_2.default.static(path.resolve("../DashboardProtoAPI/build")));
-    // Serve the frontend's index.html file at all other routes NOT starting with /api
+    // // Serve the static assets in the frontend's build folder
+    router.use(express_2.default.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
+    // // Serve the frontend's index.html file at all other routes NOT starting with /api
     router.get(/^(?!\/?api).*/, (req, res) => {
         // res.cookie('XSRF-TOKEN', req.csrfToken());
-        res.sendFile(path.resolve(__dirname, '../../DashboardProtoAPI', 'build', 'index.html'));
+        res.sendFile(path.resolve(__dirname, '../../DashboardProtoUI', 'build', 'index.html'));
     });
 }
 // Add a XSRF-TOKEN cookie in development
@@ -42,6 +40,9 @@ if (process.env.NODE_ENV === 'development') {
 //     res.status(201).json({});
 //   });
 // }
+// router.get('/', (req, res) => {
+//   res.sendFile(path.resolve( __dirname,'../../DashboardProtoUI', 'build', 'index.html'))
+// })
 router.use('/assets', asset_1.default);
 router.use('/assets/company', CompanyAssets_1.default);
 router.use('/users', user_1.default);
