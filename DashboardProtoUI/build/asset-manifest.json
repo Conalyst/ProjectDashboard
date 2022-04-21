@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "./static/css/main.237e28e8.css",
-    "main.js": "./static/js/main.8d7dc739.js",
-    "static/js/787.a078529e.chunk.js": "./static/js/787.a078529e.chunk.js",
-    "static/media/rec_icon.svg": "./static/media/rec_icon.bd54ea245f1acb800306df6710b34742.svg",
-    "static/media/logo.svg": "./static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "static/media/vulner_icon.svg": "./static/media/vulner_icon.1994f1fad689a12e557a4006548aa11f.svg",
-    "static/media/setting_icon.svg": "./static/media/setting_icon.3d494062b3633901f7706de20802bd5c.svg",
-    "static/media/dashboard_icon.svg": "./static/media/dashboard_icon.5653043dbc6fb4db4c6509fea50cd0e6.svg",
-    "static/media/report_icon.svg": "./static/media/report_icon.3be3c5bef12fb952159b608a7e588aca.svg",
-    "index.html": "./index.html",
-    "static/media/risk_icon.svg": "./static/media/risk_icon.2549a853f895cbb5047222d69f024073.svg",
-    "static/media/threat_icon.svg": "./static/media/threat_icon.fa6605416f70317456a69a9f06612ef2.svg",
-    "main.237e28e8.css.map": "./static/css/main.237e28e8.css.map",
-    "main.8d7dc739.js.map": "./static/js/main.8d7dc739.js.map",
-    "787.a078529e.chunk.js.map": "./static/js/787.a078529e.chunk.js.map"
+    "main.css": "/static/css/main.237e28e8.css",
+    "main.js": "/static/js/main.91ced4d4.js",
+    "static/js/787.a078529e.chunk.js": "/static/js/787.a078529e.chunk.js",
+    "static/media/rec_icon.svg": "/static/media/rec_icon.bd54ea245f1acb800306df6710b34742.svg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "static/media/vulner_icon.svg": "/static/media/vulner_icon.1994f1fad689a12e557a4006548aa11f.svg",
+    "static/media/setting_icon.svg": "/static/media/setting_icon.3d494062b3633901f7706de20802bd5c.svg",
+    "static/media/dashboard_icon.svg": "/static/media/dashboard_icon.5653043dbc6fb4db4c6509fea50cd0e6.svg",
+    "static/media/report_icon.svg": "/static/media/report_icon.3be3c5bef12fb952159b608a7e588aca.svg",
+    "index.html": "/index.html",
+    "static/media/risk_icon.svg": "/static/media/risk_icon.2549a853f895cbb5047222d69f024073.svg",
+    "static/media/threat_icon.svg": "/static/media/threat_icon.fa6605416f70317456a69a9f06612ef2.svg",
+    "main.237e28e8.css.map": "/static/css/main.237e28e8.css.map",
+    "main.91ced4d4.js.map": "/static/js/main.91ced4d4.js.map",
+    "787.a078529e.chunk.js.map": "/static/js/787.a078529e.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.237e28e8.css",
-    "static/js/main.8d7dc739.js"
+    "static/js/main.91ced4d4.js"
   ]
 }
