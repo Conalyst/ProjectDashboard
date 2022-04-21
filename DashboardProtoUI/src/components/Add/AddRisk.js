@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form} from "react-bootstrap";
-import { getAllTest } from "../../services";
+import { postRisk } from "../../services/riskService";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
@@ -16,25 +16,76 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
 
 export const AddRisk = () => { 
-  const [title, setTitle] = useState('');
+
+  const [riskTitle, setRiskTitle] = useState('');
   const [description, setDescription] = useState('');
-  //const [searchvul, setSearchvul] = useState('');
+  const [impact, setImpact] = useState('');
+  const [likelihood, setLikelihood] = useState('');
+  const [rating, setRating] = useState('');
+  const [category, setCategory] = useState('');
+  const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
-
+  //const [searchvul, setSearchvul] = useState('');
   const history =useHistory();
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
 
+  
+
+ 
+ 
+  const goToVulDashboard =()=>{
+    history.push({
+      pathname: VULDASHBOARD,
+ 
+    });
+  }
+  
   const onDone =()=>{
-  history.push({
-     pathname: RISKDASHBOARD,
+   
 
+  var requestDto = {
+   title: riskTitle,
+   impact: impact,
+   likelihood:likelihood,
+   rating:rating,
+   category:category,
+   Description:description
+ };
+ console.log("ddddd", requestDto)
+ postRisk(requestDto)
+   .then((result) => {
+    
+     goToVulDashboard();
+   })
+   .catch((err) => {
+     console.log(err);
+     
    });
   }  
+
+   
+  const onAdd = (event) => {
+  if(riskTitle){
+      try {
+        //do db call or API endpoint axios call here and return the promise.
+        setMessage("New Risk was successfully added to the list.")
+        onDone();
+      }catch (error) {
+        console.error("Erro while retrieving the next question", error);
+      }
+    }else if (!riskTitle){
+      setMessage("The title of risk is requiried for Add!")
+    }
+  }
+
 
   const onCancel =()=>{
     history.push({
@@ -105,7 +156,7 @@ export const AddRisk = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +199,7 @@ export const AddRisk = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -189,27 +240,27 @@ export const AddRisk = () => {
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" onChange={(e) => setRiskTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
+                  <Form.Label className="Label">impact <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)} >
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
+                  <Form.Label className="Label">rating <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
+                  <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
@@ -219,7 +270,7 @@ export const AddRisk = () => {
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right">
+                  <Form.Select className="Frame-right" value={category} onChange={(e) => setCategory(e.target.value)}>
                     <option>Governance</option>
                     <option>Technical</option>
                     <option>Operational</option>

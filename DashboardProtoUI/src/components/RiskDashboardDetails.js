@@ -6,9 +6,10 @@ import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
+import {ADDRISK, EDITRISK} from "../navigation/constants";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
+import { getAllRisks } from "../services/riskService";
 
 export const RiskDashboardDetails = () => {
 
@@ -28,7 +29,18 @@ export const RiskDashboardDetails = () => {
     
        });
       } 
-
+      useEffect(() => {
+    
+        const storedUser = localStorage.getItem("storedUser");   
+        const parsedUser = JSON.parse(storedUser);
+        console.log("parsed user dashboard", parsedUser);
+        getAllRisks()
+        .then((result) => {
+            console.log("Threats", result)
+            setRisk(result);
+        })
+   
+    }, []); 
     return (
     <>     
         <div className="asset-menu-buttons">
