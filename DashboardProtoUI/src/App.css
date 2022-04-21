@@ -758,9 +758,25 @@ border-radius: 7px;
   letter-spacing: normal;
   text-align: left;
   color: #2e2e2e;
-
+  cursor: pointer;
 }
   
+.filter_dropdown {
+  min-width: 250px;
+}
+
+.filter_dropdown li {
+  color: black;
+  padding: 1px 16px;
+  text-decoration: none;
+  display: block;
+  cursor: pointer;
+}
+
+.filter_dropdown li:hover {
+  background-color: #f1f1f1
+}
+
 /* .Assets {
   width: 278px;
   height: 71px;

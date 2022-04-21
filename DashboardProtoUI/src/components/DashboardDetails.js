@@ -97,14 +97,7 @@ export const DashboardDetails = () => {
 
   return (
     <>
-      <div className="asset-menu-buttons">
-        <button className="Button-Icon-Manage"> Manage</button>
-
-        <button className="Button-Icon-Filter" onClick={startFilter}>
-          <img src={filter_blue} alt="" /> Filter
-        </button>
-
-        {filterbox ? (
+      {filterbox ? (
           <div>
             <div className="Filter-pop-up-background">
               <div className="Filter-fullbox">
@@ -125,7 +118,7 @@ export const DashboardDetails = () => {
                     <span className="filter_label"> Asset Category</span>
                   </div>
 
-                  <Dropdown className="filter_selection">
+                  <Dropdown >
                     <Dropdown.Toggle
                       className="filter_selected"
                       id="dropdown-basic"
@@ -134,7 +127,7 @@ export const DashboardDetails = () => {
                       {sel.selAssetCat}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="filter_dropdown" >
                       <li
                         onClick={() =>
                           setSel((prev) => ({ ...prev, selAssetCat:"All" }))
@@ -201,7 +194,7 @@ export const DashboardDetails = () => {
                       {sel.selConfi}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="filter_dropdown">
                       <li
                         onClick={() =>
                           setSel((prev) => ({ ...prev, selConfi: "All" }))
@@ -246,7 +239,7 @@ export const DashboardDetails = () => {
                       {sel.selInt}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="filter_dropdown">
                       <li onClick={() =>
                           setSel((prev) => ({ ...prev, selInt: "All" }))}>All</li>
                       <li onClick={() => setSel((prev) => ({ ...prev, selInt: "H" }))}>High</li>
@@ -270,7 +263,7 @@ export const DashboardDetails = () => {
                       {sel.selAva}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="filter_dropdown">
                       <li onClick={() => setSel((prev) => ({ ...prev, selAva: "All" }))}>All</li>
                       <li onClick={() => setSel((prev) => ({ ...prev, selAva: "H" }))}>High</li>
                       <li onClick={() => setSel((prev) => ({ ...prev, selAva: "M" }))}>
@@ -293,7 +286,7 @@ export const DashboardDetails = () => {
                       {sel.selRat}
                     </Dropdown.Toggle>
 
-                    <Dropdown.Menu>
+                    <Dropdown.Menu className="filter_dropdown">
                       <li onClick={() => setSel((prev) => ({ ...prev, selRat: "All" }))}>All</li>
                       <li onClick={() => setSel((prev) => ({ ...prev, selRat: "H" }))}>High</li>
                       <li onClick={() => setSel((prev) => ({ ...prev, selRat: "M" }))}>
@@ -317,6 +310,22 @@ export const DashboardDetails = () => {
             </div>
           </div>
         ) : null}
+
+
+
+
+
+
+
+
+      <div className="asset-menu-buttons">
+        <button className="Button-Icon-Manage"> Manage</button>
+
+        <button className="Button-Icon-Filter" onClick={startFilter}>
+          <img src={filter_blue} alt="" /> Filter
+        </button>
+
+        
       </div>
 
       <div className="table-border-blue scrollable">
