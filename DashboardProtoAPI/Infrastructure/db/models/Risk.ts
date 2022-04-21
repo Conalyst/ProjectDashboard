@@ -59,15 +59,15 @@ module.exports = (sequelize: any, DataTypes:any) => {
     } ,
     impact:{
       type:DataTypes.STRING,
-      allowNull:false
+      allowNull:true
     } ,
     likelihood: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true
     } ,
     rating: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true
     },
     updatedAt: {
       type: DataTypes.DATE,
