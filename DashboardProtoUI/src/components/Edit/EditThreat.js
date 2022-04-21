@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { THREATSDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { THREATSDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
@@ -28,7 +28,9 @@ export const EditThreat = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: THREATSDASHBOARD,
@@ -43,7 +45,9 @@ export const EditThreat = () => {
 
    });
   }  
-
+  const onCancel =()=>{
+   
+    }  
   
 
   /*const onAddAsset = () =>{
@@ -87,7 +91,7 @@ export const EditThreat = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -130,7 +134,7 @@ export const EditThreat = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">

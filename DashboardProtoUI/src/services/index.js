@@ -4,3 +4,4 @@ export {getAllAssets} from './assetsService';
 export {getAssetsByCompanyId} from './assetsService';
 export {getAssetsById} from './assetsService';
 export {postAsset} from './assetsService';
+export {postRisk} from './riskService';

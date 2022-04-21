@@ -21,27 +21,18 @@ import VulDashboardHistory from "./VulDashboardHistory";
 
 export const VulDashboard = () => { 
   const [tests, setTests] = useState(null);
-
-/*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
+  function useAsync(asyncFn, onSuccess) {
+    useEffect(() => {
+      let isActive = true;
+      asyncFn().then(data => {
+        if (isActive) onSuccess(data);
+      });
+      return () => { isActive = false };
+    }, [asyncFn, onSuccess]);
+  }
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -49,7 +40,7 @@ export const VulDashboard = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -92,7 +83,7 @@ export const VulDashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">

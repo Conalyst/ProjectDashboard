@@ -43,7 +43,7 @@ import {
     ADDRISK,
     EDITRISK,
     TEST
-} from "./CONSTANTS";
+} from "./constants";
 
 export const RouterConfig = (props) => {
     return (
@@ -111,6 +111,7 @@ export const RouterConfig = (props) => {
             <Route path="*">
                 <NotFound />
             </Route>
+         
         </Switch>
     );
 };

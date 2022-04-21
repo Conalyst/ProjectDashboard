@@ -55,16 +55,28 @@ import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./co
 
   export const postAsset = (asset) => {
     return new Promise((resolve, reject) => {
+      const storedUser = localStorage.getItem("storedUser");
+    
+      const parsedUser = JSON.parse(storedUser);
+      console.log("token in service", parsedUser.token)
+      console.log("in service post asset ", asset)
       try {
-        axios       
-        .post(POST_ASSET(),asset)
-        .then(res => {
-            resolve(res.data);
+        console.log("hello here ",asset.availability)
+        axios
+        .post(POST_ASSET(),
+        {
+         title: asset.title,
+         categoryId: asset.categoryId,
+          description: asset.description,
+          confidentiality:asset.confidentiality,
+          integrity:asset.integrity,
+          availability:"asset.availability",
+          rating:asset.rating 
+        }) 
+        .then(res=>{
+          console.log("new connect", res)
         })
-        .catch((err) => {
-          console.log("postasset > axios err=", err);
-          reject("Error in postasset axios!");
-        });
+        console.log("inservoce ", Headers)
       } catch (error) {
         console.error("in addAsset > postAsset, Err===", error);
         reject(SYSTEM_ERROR);

@@ -18,5 +18,8 @@ export const GET_ALL_THREATS = ()=>BASE_ADDRESS()+'/v2/threats';
 export const GET_THREAT_BY_ID = (threatId)=>BASE_ADDRESS()+'/v2/threat?threatId=${threatId}';
 export const POST_THREAT = ()=>BASE_ADDRESS()+'/v2/threats';
 
+export const POST_RISK = ()=>BASE_ADDRESS()+'/v2/risks';
+export const GET_RISK_BY_ID = (riskId)=>BASE_ADDRESS()+'/v2/threat?riskId=${riskId}';
+export const GET_ALL_RISKS = ()=>BASE_ADDRESS()+'/v2/risks';
 
 export const RECOMMENDATIONS = ()=>BASE_ADDRESS()+'/v2/dashboard/rec';

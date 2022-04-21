@@ -14,7 +14,7 @@ assetRouter.get("/:id", (req, res) => {
   assetApi.getAssetsById(req, res);    
 })
 
-assetRouter.post("/",passport.authenticate("jwt", { session: false }), (req, res) =>{
+assetRouter.post("/", (req, res) =>{
     assetApi.create(req, res)
 })
 

@@ -18,7 +18,9 @@ import vendor_icon from '../images/icons/vendor_icon.png';
 
 export const Settings = () => { 
   const [tests, setTests] = useState(null);
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
 /*    useEffect(() => {
         return new Promise((resolve, reject) => {
           try {
@@ -46,7 +48,7 @@ export const Settings = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -89,7 +91,7 @@ export const Settings = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item sidenav-active">
