@@ -66,6 +66,14 @@ export const EditRec = () => {
     { value: 'R10', label:'R10'},
   ];
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
   /*const onAddAsset = () =>{
  
     if (!assetTitle) {
@@ -195,11 +203,12 @@ export const EditRec = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-left">Associated Risks <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-left"
+                  <Select className="Frame-left-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
                 </div>

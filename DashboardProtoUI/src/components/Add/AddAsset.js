@@ -111,6 +111,47 @@ export const AddAsset = () => {
     { value: 'V10', label:'V10'},
   ];
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
+  /*const onAddAsset = () =>{
+ 
+    if (!assetTitle) {
+      setErrors("An asset title is needed!");
+    } else {
+      var requestDto = {
+        title: assetTitle,
+        description:description,
+         categoryId: 2
+      };
+      postAsset(requestDto)
+        .then((result) => {
+          setAssetTitle("");
+          setDescription("")
+          // getCommentByRestaurant(restaurantId).then((result) => {
+          //   setCommentsListData(result);
+          // });
+          setErrors("This asset created successfully !");
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status == 404) {
+            setErrors("No comment found!");
+          } else {
+            if (err.response.status == 400) {
+              setErrors("restaurantId is not valid!");
+            } else {
+              setErrors("Unknow error!");
+            }
+          }
+        });
+    }
+    }*/
 
   return (
     <div className="db-site-container">
@@ -255,11 +296,12 @@ export const AddAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>
