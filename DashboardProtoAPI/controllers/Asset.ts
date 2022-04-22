@@ -23,7 +23,19 @@ export class AssetApi{
       let asset = await this._assetRepository.GetAssetById(assetId);
       return  res.status(200).json(asset);
     };
+ 
+   
 
+      //static Asset
+      async getStaticAssets(req: express.Request, res: express.Response){
+        let numberAsset = await this._assetRepository.GetTotal();
+        let highAsset = await this._assetRepository.GetHigh();
+        let mediumAsset = await this._assetRepository.GetMedium();
+        let lowAsset = await this._assetRepository.GetLow();
+        return  res.status(200).json({
+          "static":{highAsset,numberAsset,mediumAsset,lowAsset}});
+      };
+     
 
      //endpoint create Asset
      async create(req: express.Request, res: express.Response){

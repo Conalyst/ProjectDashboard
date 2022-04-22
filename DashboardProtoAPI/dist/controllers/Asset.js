@@ -34,6 +34,19 @@ class AssetApi {
         });
     }
     ;
+    //static Asset
+    getStaticAssets(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numberAsset = yield this._assetRepository.GetTotal();
+            let highAsset = yield this._assetRepository.GetHigh();
+            let mediumAsset = yield this._assetRepository.GetMedium();
+            let lowAsset = yield this._assetRepository.GetLow();
+            return res.status(200).json({
+                "static": { highAsset, numberAsset, mediumAsset, lowAsset }
+            });
+        });
+    }
+    ;
     //endpoint create Asset
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

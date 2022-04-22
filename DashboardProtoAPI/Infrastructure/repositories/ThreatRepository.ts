@@ -1,7 +1,7 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 // import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
 // import {AssetEntity} from '../db/models/Asset'
-
+import sequelize from "sequelize";
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
 const Threat = require("../db/models")
@@ -39,4 +39,53 @@ export class ThreatRepository {
   public async delete(model: Model<typeof Threat>, idThreat:number){
     return model.destroy();
   }
+
+  public async GetTotal(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total_Threat'],
+     
+      ]
+    });
+    
+  }
+
+  public async GetHigh(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
+     
+      ],
+      where: {rating: 'H'}
+    });
+    
+  }
+
+  public async GetMedium(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
+     
+      ],
+      where: {rating: 'M'}
+    });
+    
+  }
+
+  public async GetLow(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
+     
+      ],
+      where: {rating: 'L'}
+    });
+    
+  }
+  
+
 }

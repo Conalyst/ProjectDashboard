@@ -76,11 +76,20 @@ export const AddVul = () => {
         //do db call or API endpoint axios call here and return the promise.
         setMessage("New vulnerability was successfully added to the list.")
         onDone();
+        history.push({
+          pathname: DASHBOARD,
+     
+           });
+       
       }catch (error) {
         console.error("Erro while retrieving the next question", error);
       }
     }else{
       setMessage("The title of vulnerability is requiried for Add!")
+      history.push({
+        pathname: ADDVUL,
+        
+      });
     }
   }
 

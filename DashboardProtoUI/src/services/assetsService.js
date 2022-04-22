@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./constants";
+import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_ASSETS } from "./constants";
   
   export const getAllAssets = () => {
     return new Promise((resolve, reject) => {
@@ -83,3 +83,24 @@ import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./co
       }
     });
   };
+
+  export const getStaticAssets = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        // do an SDK, DB call or API endpoint axios call here and return the promise.
+        axios
+        .get(GET_STATIC_ASSETS())
+        .then((res) => {
+            console.log("res...", res.data)
+           resolve(res.data);
+        })
+        .catch((err) => {
+          reject("Error in getTotalssets axios!");
+        });
+      } catch (error) {
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  
