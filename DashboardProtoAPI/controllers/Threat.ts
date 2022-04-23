@@ -23,17 +23,27 @@ export class ThreatApi{
       return  res.status(200).json(threat);
     };
 
-    //static Asset
+    //static Asset and Agents
     async getStaticThreats(req: express.Request, res: express.Response){
        
       let numberThreat = await this._threatRepository.GetTotal();
       let highThreat = await this._threatRepository.GetHigh();
       let mediumThreat = await this._threatRepository.GetMedium();
       let lowThreat = await this._threatRepository.GetLow();
+      let AgentsRating = await this._threatRepository.GetAgentByHighRating();
+      let AgentsImpact = await this._threatRepository.GetAgentByHighImpact();
+      let AgentsLikelihood = await this._threatRepository.GetAgentByHighLikelihood();
       return  res.status(200).json({
-        "static":{ numberThreat,highThreat,mediumThreat,lowThreat}});
+        "static":{ numberThreat,highThreat,mediumThreat,lowThreat},
+         "Agents":{
+          "AgentsRating":AgentsRating,
+          "AgentsImpact":AgentsImpact,
+          "AgentsLikelihood":AgentsLikelihood
+  
+         }
+        });
     };   
-     
+ 
     async create(req: express.Request, res: express.Response){
         
       const { title} = req.body;

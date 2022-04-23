@@ -78,8 +78,7 @@ export const AddAsset = () => {
         
      });
     }  
-
-
+  
   const onAdd =()=>{
     if (assetTitle === ""){
       setMessage("we need title")
@@ -110,7 +109,7 @@ export const AddAsset = () => {
     { value: 'V9', label: 'V9' },
     { value: 'V10', label:'V10'},
   ];
-
+ 
 
   return (
     <div className="db-site-container">

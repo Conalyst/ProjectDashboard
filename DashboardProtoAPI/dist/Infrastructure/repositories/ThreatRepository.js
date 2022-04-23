@@ -65,13 +65,46 @@ class ThreatRepository {
             });
         });
     }
+    GetAgentByHighRating(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { rating: 'High' }
+            });
+        });
+    }
+    GetAgentByHighImpact(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { impact: 'High' }
+            });
+        });
+    }
+    GetAgentByHighLikelihood(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { likelihood: 'High' }
+            });
+        });
+    }
     GetHigh(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Threat.findAll({
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Threat'],
                 ],
-                where: { rating: 'H' }
+                where: { rating: 'High' }
             });
         });
     }
@@ -81,7 +114,7 @@ class ThreatRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Threat'],
                 ],
-                where: { rating: 'M' }
+                where: { rating: 'Medium' }
             });
         });
     }
@@ -91,7 +124,7 @@ class ThreatRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Threat'],
                 ],
-                where: { rating: 'L' }
+                where: { rating: 'Low' }
             });
         });
     }

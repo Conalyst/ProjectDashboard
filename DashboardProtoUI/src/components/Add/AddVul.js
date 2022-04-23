@@ -36,14 +36,14 @@ export const AddVul = () => {
   const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
   const goToVulDashboard =()=>{
+    
+  }
+  
+  const onDone =()=>{
     history.push({
       pathname: VULDASHBOARD,
  
     });
-  }
-  
-  const onDone =()=>{
-   
 
   var requestDto = {
    title: vulTitle,
@@ -56,7 +56,7 @@ export const AddVul = () => {
  postVulnerability(requestDto)
    .then((result) => {
     
-     goToVulDashboard();
+     setVulTitle("")
    })
    .catch((err) => {
      console.log(err);
@@ -77,7 +77,7 @@ export const AddVul = () => {
         setMessage("New vulnerability was successfully added to the list.")
         onDone();
         history.push({
-          pathname: DASHBOARD,
+          pathname: VULDASHBOARD,
      
            });
        

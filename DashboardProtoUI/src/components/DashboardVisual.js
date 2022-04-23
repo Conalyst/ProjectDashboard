@@ -45,6 +45,7 @@ export const DashboardVisual = () => {
             <p>High<br/>{highAssets}</p>
             <p>Medium<br/>{mediumAssets}</p>
             <p>Low<br/>{lowAssets}</p>
+            
         </div>
             <table className="visual-rating">
                 <tr>

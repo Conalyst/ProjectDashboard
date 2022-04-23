@@ -89,10 +89,10 @@ export const AddThreat = () => {
   } else{
     setMessage("New threat was successfully added to the list.")
     onDone();
-  history.push({
-   pathname: DASHBOARD,
+    history.push({
+    pathname: THREATSDASHBOARD,
 
-    });
+      });
  }
   }  
 

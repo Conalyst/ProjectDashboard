@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { ADDRISK, RISKDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
@@ -41,15 +41,13 @@ export const AddRisk = () => {
 
  
  
-  const goToVulDashboard =()=>{
-    history.push({
-      pathname: VULDASHBOARD,
- 
-    });
-  }
+  
   
   const onDone =()=>{
-   
+    history.push({
+      pathname: RISKDASHBOARD,
+ 
+    });
 
   var requestDto = {
    title: riskTitle,
@@ -62,8 +60,7 @@ export const AddRisk = () => {
  console.log("ddddd", requestDto)
  postRisk(requestDto)
    .then((result) => {
-    
-     goToVulDashboard();
+    setRiskTitle("")
    })
    .catch((err) => {
      console.log(err);
@@ -79,7 +76,7 @@ export const AddRisk = () => {
         setMessage("New Risk was successfully added to the list.")
         onDone();
         history.push({
-          pathname: DASHBOARD,
+          pathname: RISKDASHBOARD,
        
            });
       }catch (error) {
@@ -259,7 +256,7 @@ export const AddRisk = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">rating <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label" >rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
@@ -302,7 +299,7 @@ export const AddRisk = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

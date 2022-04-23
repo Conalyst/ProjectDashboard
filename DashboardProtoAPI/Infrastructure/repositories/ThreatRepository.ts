@@ -1,7 +1,8 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 // import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
 // import {AssetEntity} from '../db/models/Asset'
-import sequelize from "sequelize";
+ import sequelize from "sequelize";
+//import {Sequelize} from "sequelize";
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
 const Threat = require("../db/models")
@@ -50,15 +51,50 @@ export class ThreatRepository {
     });
     
   }
+  public async GetAgentByHighRating(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+       
+     
+      ],
+      where: {rating: 'High'}
+    });
+    
+  }
 
+  public async GetAgentByHighImpact(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+      ],
+      where: {impact: 'High'}
+    });
+    
+  }
+
+  public async GetAgentByHighLikelihood(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+     
+      ],
+      where: {likelihood: 'High'}
+    });
+    
+  }
   public async GetHigh(model: Model<typeof Threat>) {
+    
     return db.Threat.findAll({
       attributes: [
       
         [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
      
       ],
-      where: {rating: 'H'}
+      where: {rating: 'High'}
     });
     
   }
@@ -70,7 +106,7 @@ export class ThreatRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
      
       ],
-      where: {rating: 'M'}
+      where: {rating: 'Medium'}
     });
     
   }
@@ -82,7 +118,7 @@ export class ThreatRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
      
       ],
-      where: {rating: 'L'}
+      where: {rating: 'Low'}
     });
     
   }

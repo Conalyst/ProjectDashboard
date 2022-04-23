@@ -34,15 +34,23 @@ class ThreatApi {
         });
     }
     ;
-    //static Asset
+    //static Asset and Agents
     getStaticThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let numberThreat = yield this._threatRepository.GetTotal();
             let highThreat = yield this._threatRepository.GetHigh();
             let mediumThreat = yield this._threatRepository.GetMedium();
             let lowThreat = yield this._threatRepository.GetLow();
+            let AgentsRating = yield this._threatRepository.GetAgentByHighRating();
+            let AgentsImpact = yield this._threatRepository.GetAgentByHighImpact();
+            let AgentsLikelihood = yield this._threatRepository.GetAgentByHighLikelihood();
             return res.status(200).json({
-                "static": { numberThreat, highThreat, mediumThreat, lowThreat }
+                "static": { numberThreat, highThreat, mediumThreat, lowThreat },
+                "Agents": {
+                    "AgentsRating": AgentsRating,
+                    "AgentsImpact": AgentsImpact,
+                    "AgentsLikelihood": AgentsLikelihood
+                }
             });
         });
     }
