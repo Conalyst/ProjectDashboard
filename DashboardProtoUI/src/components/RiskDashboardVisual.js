@@ -7,7 +7,7 @@ export const RiskDashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Risks Ratings</p>
-            <p>Total<br/>82</p>
+            <p className="orange-total">Total<br/>82</p>
             <p>High<br/>20</p>
             <p>Medium<br/>15</p>
             <p>Low<br/>42</p>
