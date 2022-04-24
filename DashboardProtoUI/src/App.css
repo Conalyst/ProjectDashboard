@@ -459,12 +459,518 @@ table.visual-rating {
 td.stack-bars-summary {
   padding-left: 42px;
   width: 40%;
+  vertical-align: top;
 }
 
 td.bar-charts-summary {
   padding-right: 26px;
   width: 60%;
+  vertical-align: top;
+  font-family: 'Inter', 'Roboto', sans-serif;
+  color: rgba(46, 46, 46, 0.75);
+  font-size: 12px;
+  font-weight: 500;
 }
+
+td.bar-charts-summary > span {
+  color: #2e2e2e;
+  font-size: 18px;
+}
+
+.stack-bar-h {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.stack-bar-h > div {
+  background: #f1f1f1;
+  margin: 10px 0 27px 85px;
+  padding: 5px;
+  width: 225px;
+  height: 53px;
+  border-radius: 6px;
+}
+
+
+.visual-rating-threat { 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 17px 45px;
+  width: 100%;
+}
+
+.Overall-Rating-threat {
+  width: 115px;
+  height: 21px;
+  margin: 49px 279px 18px 55px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Impact-threat {
+  width: 57px;
+  height: 21px;
+  margin: 49px 16.9px 18px 140px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Likelihood-threat{
+  width: 83px;
+  height: 21px;
+  margin: 49px 230px 18px 135px;
+  font-family: Roboto;
+  font-size: 18px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.stack-bars-summary-threat {
+  padding-left: 42px;
+  width: 40%;
+  vertical-align: top;
+}
+
+.Top-3-threat-agents-with-High-Overall-ratings {
+  width: 219px;
+  height: 38px;
+  margin: 28px 160px 16px 53px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Top-3-threat-agents-with-High-Impact {
+  width: 223px;
+  height: 38px;
+  margin: 28px 135px 16px 163px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Top-3-threat-agents-with-High-Likelihood {
+  width: 219px;
+  height: 38px;
+  margin: 24px 86px 20px 143px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Group-1359 {
+  width: 218px;
+  height: 53px;
+  margin: 0 0 0 7.8px;
+  padding: 3px 4.5px 3.7px 52px;
+}
+
+
+.orange-total{
+  color: #e98226 !important;
+}
+
+.Color {
+  width: 225px;
+  height: 53px;
+  margin: 0 0.8px 0 0;
+  padding: 3px 103.9px 14px 5.8px;
+  background-color: #f1f1f1;
+}
+
+
+.V-T-Color {
+  width: 225px;
+  height: 53px;
+  margin: 0 0.8px 0 0;
+  padding: 0px 103.9px 14px 0px;
+  background-color: #f1f1f1;
+}
+
+.Dark-Blue-Color {
+  width: 115.3px;
+  height: 36px;
+  padding: 0 0px 0 6.8px;
+  background-color: #09375f;
+}
+
+.Light-Blue-Color {
+  width: 24.2px;
+  height: 36px;
+  margin: 0 33.4px 2px 57.2px;
+  background-color: #126dba;
+}
+
+.Grey-Color {
+  width: 135.5px;
+  height: 36px;
+  margin: 0 0 2px 24.9px;
+  background-color: #72b7f2;
+}
+.span-H {
+  width: 4.2px;
+  height: 8.3px;
+  margin: 2px 57.2px 0 0;
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.83;
+  letter-spacing: -0.18px;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.span-M {
+  width: 5.1px;
+  height: 8.3px;
+  margin: 2px 8.5px 0 0;
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.83;
+  letter-spacing: -0.18px;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.span-L {
+  width: 3.2px;
+  height: 8.3px;
+  margin: 2px 39.3px 0 13.4px;
+  font-family: Roboto;
+  font-size: 10px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.83;
+  letter-spacing: -0.18px;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.Top-3-threat {
+  width: 219px;
+  height: 38px;
+  margin: 13px 160px 31px 53px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Rectangle-1407-Mal {
+  width: 83px;
+  height: 31px;
+  margin: 31px 278px 14px 53px;
+  padding: 6px 10px 6px 2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1407 {
+  width: 83px;
+  height: 31px;
+  margin: 31px 296px 14px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1408-Fin {
+  width: 130px;
+  height: 31px;
+  margin: 31px 176px 14px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1407-Ph {
+  width: 83px;
+  height: 31px;
+  margin: 13px 296px 14px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1409-Service{
+  width: 153px;
+  height: 31px;
+  margin: 15px 162px 0 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-6 {
+  width: 1174px;
+  height: 575px;
+  flex-grow: 0;
+  margin: 17px 26px 0 24px;
+  padding: 30.3px 32px 54px;
+  box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
+  border: solid 3px #f1f1f1;
+  background-color: #fff;
+}
+
+.Rectangle-1409 {
+  width: 153px;
+  height: 31px;
+  margin: 13px 226px 2px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1410 {
+  width: 82px;
+  height: 31px;
+  margin: 16px 278px 14px 161px;
+  padding: 6px 10px 6px 2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1411 {
+  width: 83px;
+  height: 31px;
+  margin: 14px 275px 14px 163px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1412 {
+  width: 153px;
+  height: 31px;
+  margin: 13px 205px 2px 163px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1413 {
+  width: 130px;
+  height: 31px;
+  margin: 16px 176px 14px 143px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1414 {
+  width: 169px;
+  height: 31px;
+  margin: 15px 136px 13px 143px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Rectangle-1415 {
+  width: 143px;
+  height: 31px;
+  margin: 15px 162px 0 143px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+.Phishing {
+  width: 63px;
+  height: 19px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Malware {
+  width: 62px;
+  height: 19px;
+  margin: 0 0 0 8px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Rectangle-1408 {
+  width: 169px;
+  height: 31px;
+  margin: 14px 210px 14px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+
+/*.Rectangle-1407 {
+  width: 83px;
+  height: 31px;
+ 
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+.Phishing {
+  width: 63px;
+  height: 19px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+.Rectangle-1408 {
+  width: 169px;
+  height: 31px;
+ 
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+.Rectangle-1410 {
+  width: 82px;
+  height: 31px;
+ 
+  padding: 6px 10px 6px 2px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+.Rectangle-1413 {
+  width: 129px;
+  height: 31px;
+ 
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}*/
+
+.Lost-or-stolen-device {
+  width: 149px;
+  height: 19px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+.Financial-Fraud {
+  width: 109px;
+  height: 19px;
+  font-family: Roboto;
+  font-size: 16px;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: left;
+  color: #2e2e2e;
+}
+
+/*.Rectangle-1409 {
+  width: 153px;
+  height: 31px;
+  margin: 13px 226px 2px 53px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}
+.Rectangle-1412 {
+  width: 153px;
+  height: 31px;
+  margin: 13px 205px 2px 163px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+  background-color: #f1f1f1;
+}*/
 
 /* ================ DETAILS ================ */
 
@@ -604,7 +1110,6 @@ background: #FFFFFF;*/
 /*box-shadow: 0px 16px 20px rgba(46, 46, 46, 0.15);
 border-radius: 7px;
 }
-
 .Filter-Main-2 {
   width: 320px;
   height: 619px;
@@ -616,7 +1121,6 @@ border-radius: 7px;
   border: solid 1px #145b93;
   background-color: #f1f1f1;
 }
-
 .Filters {
   display: flex;
   flex-direction: row;
@@ -640,13 +1144,11 @@ border-radius: 7px;
   margin: 5.9px 0 17.9px 34.7px;
   color:solid #2e2e2e;
 }
-
 .filter_catergory_frame {
   width: 278px;
   height: 71px;
   margin: 46px 16px 40px 1px;
 }
-
 .filter_label {
   width: 96px;
   height: 16px;
@@ -677,26 +1179,22 @@ border-radius: 7px;
   height: 71px;
   margin: 46px 16px 40px 1px;
 }
-
 .Confidentiality {
   width: 278px;
   height: 71px;
   margin: 8px 16px 40px 1px;
 }
-
 .Integrity {
   width: 279px;
   height: 71px;
   margin: 40px 16px 40px 0;
 }
-
 .Availability {
   width: 278px;
   height: 71px;
   margin: 40px 16px 45px 1px;
   padding: 26px 0 0;
 }
-
 .Button-Filter {
   width: 100px;
   height: 36px;
@@ -720,7 +1218,6 @@ border-radius: 7px;
   color: white;
   border: #145b93;
 }
-
 .Rectangle-1363 {
   width: 318px;
   height: 58px;
@@ -729,7 +1226,6 @@ border-radius: 7px;
   border: solid 1px #145b93;
   background-color: #f1f1f1;
 }
-
 .data_input {
   width: 88px;
   height: 16px;
@@ -745,11 +1241,9 @@ border-radius: 7px;
   text-align: left;
   color: #2e2e2e;
 }
-
 li {
   list-style: none;
 }
-
 .Filter-Main-3 {
   width: 278px;
   height: 403px;
@@ -760,14 +1254,12 @@ li {
   border: solid 1px #145b93;
   background-color: #f1f1f1;
 }
-
 .SubMenuAssetAll {
   display: flex;
   width: 278px;
   height: 403px;
   flex-grow: 0;
 }
-
 .Rectangle-979 {
   width: 278px;
   height: 45px;
@@ -776,7 +1268,6 @@ li {
   border: solid 1px #f9f9f9;
   background-color: #f1f1f1;
 }
-
 .Rectangle-935 {
   width: 275px;
   height: 48px;
@@ -784,7 +1275,6 @@ li {
   border: solid 1px #f1f1f1;
   background-color: #f9f9f9;
 }
-
 .Button-Primary-Done {
   display: flex;
   width: 100px;
@@ -801,7 +1291,6 @@ li {
   background-color: #0d518b;
   color: #fff;
 }
-
 .Network-Data-Center {
   width: 142px;
   height: 16px;
@@ -882,7 +1371,6 @@ li {
   margin: 17px 65px 7px 19px;
   padding: 0 0 118px;
 }
-
 .Color {
   width: 225px;
   height: 53px;
@@ -896,14 +1384,12 @@ li {
   margin: 0 0 2px;
   background-color: #09375f;
 }
-
 .blue {
   width: 59px;
   height: 36px;
   margin: 0 20px 2px 0;
   background-color: #126dba;
 }
-
 .grey {
   width: 46px;
   height: 36px;
@@ -952,7 +1438,6 @@ li {
   border-radius: 5px;
   background-color: #f1f1f1;
 }
-
 .Frame-form {
   width: 376px;
   height: 48px;
@@ -961,7 +1446,6 @@ li {
   border: solid 1px #2e2e2e;
   background-color: #fff;
 }
-
 .Frame-description {
   width: 376px;
   height: 100px;
@@ -969,12 +1453,9 @@ li {
   margin: 1px 0 70px 324px;
   padding: 0 0 77px;
 }
-
-
 .label {
   margin-top: 5px;
 }
-
 */
 
 .Manage-listAdd {
@@ -1050,7 +1531,6 @@ li {
   border-radius: 4px;
   background-color: #0d518b;
   }
-
   .button-done {
     align-self: stretch;
     flex-grow: 1;
@@ -1103,6 +1583,24 @@ li {
     height: 48px;
     margin: 4px 0 10px 0;
     margin-left:20%;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+  }
+
+  .Frame-right-multiselect {
+    width: 80%;
+    margin: 4px 0 10px 0;
+    margin-left:20%;
+    margin-right: 20%;
+    border-radius: 4px;
+    border: solid 1px #2e2e2e;
+    background-color: #fff;
+  }
+
+  .Frame-left-multiselect {
+    width: 80%;
+    margin: 4px 0 10px 0;
     border-radius: 4px;
     border: solid 1px #2e2e2e;
     background-color: #fff;
@@ -1168,23 +1666,6 @@ li {
     margin: 4px 0 10px 0;
     margin-left:20%;
     margin-right: 20%;
-    border-radius: 4px;
-    border: solid 1px #2e2e2e;
-    background-color: #fff;
-  }
-  .Frame-right-multiselect {
-    width: 80%;
-    margin: 4px 0 10px 0;
-    margin-left:20%;
-    margin-right: 20%;
-    border-radius: 4px;
-    border: solid 1px #2e2e2e;
-    background-color: #fff;
-  }
-
-  .Frame-left-multiselect {
-    width: 80%;
-    margin: 4px 0 10px 0;
     border-radius: 4px;
     border: solid 1px #2e2e2e;
     background-color: #fff;
@@ -1301,14 +1782,13 @@ li {
     color: #145b93;
   }
 
-  .V-T-Color {
+  /*.V-T-Color {
     width: 225px;
     height: 53px;
     margin: 0 0.8px 0 0;
     padding: 3px 103.9px 14px 5.8px;
     background-color: #f1f1f1;
   }
-
   .Dark-Blue-Color {
     width: 115.3px;
     height: 36px;
@@ -1321,14 +1801,12 @@ li {
     margin: 0 33.4px 2px 57.2px;
     background-color: #126dba;
   }
-
   .Grey-Color {
     width: 76.5px;
     height: 36px;
     margin: 0 0 2px 9.9px;
     background-color: #72b7f2;
   }
-
   .Top-3-threat {
     width: 219px;
     height: 38px;
@@ -1343,7 +1821,6 @@ li {
     text-align: left;
     color: #2e2e2e;
   }
-
   .Rectangle-1407 {
     width: 83px;
     height: 31px;
@@ -1353,7 +1830,6 @@ li {
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     background-color: #f1f1f1;
   }
-
   .Rectangle-6 {
     width: 1174px;
     height: 575px;
@@ -1364,7 +1840,6 @@ li {
     border: solid 3px #f1f1f1;
     background-color: #fff;
   }
-
   .Rectangle-1409 {
     width: 153px;
     height: 31px;
@@ -1397,7 +1872,7 @@ li {
     border-radius: 6px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
     background-color: #f1f1f1;
-  }
+  }*/
 
 
 /* ========== Info Button ========== */
@@ -1877,18 +2352,3 @@ li {
   box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
   background-color: #fff;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
