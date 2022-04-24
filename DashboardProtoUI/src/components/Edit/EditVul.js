@@ -66,6 +66,14 @@ export const EditVul = () => {
     { value: 'T10', label:'T10'},
   ];
 
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
   /*const onAddAsset = () =>{
  
     if (!assetTitle) {
@@ -241,11 +249,12 @@ export const EditVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Threats <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>

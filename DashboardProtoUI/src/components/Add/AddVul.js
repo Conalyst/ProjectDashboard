@@ -112,8 +112,49 @@ export const AddVul = () => {
     { value: 'T9', label: 'T9' },
     { value: 'T10', label:'T10'},
   ];
-   
-       
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
+
+  /*const onAddAsset = () =>{
+ 
+    if (!assetTitle) {
+      setErrors("An asset title is needed!");
+    } else {
+      var requestDto = {
+        title: assetTitle,
+        description:description,
+         categoryId: 2
+      };
+      postAsset(requestDto)
+        .then((result) => {
+          setAssetTitle("");
+          setDescription("")
+          // getCommentByRestaurant(restaurantId).then((result) => {
+          //   setCommentsListData(result);
+          // });
+          setErrors("This asset created successfully !");
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status == 404) {
+            setErrors("No comment found!");
+          } else {
+            if (err.response.status == 400) {
+              setErrors("restaurantId is not valid!");
+            } else {
+              setErrors("Unknow error!");
+            }
+          }
+        });
+    }
+    }*/
+
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -246,11 +287,12 @@ export const AddVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Threats <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>
