@@ -41,7 +41,7 @@ export const DashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Asset Ratings</p>
-            <p>Total<br/>{totalAssets}</p>
+            <p className="orange-total">Total<br/>{totalAssets}</p>
             <p>High<br/>{highAssets}</p>
             <p>Medium<br/>{mediumAssets}</p>
             <p>Low<br/>{lowAssets}</p>

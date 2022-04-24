@@ -52,74 +52,110 @@ export const ThreatsDashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Threats Ratings</p>
-            <p>Total<br/>{totalThreats}</p>
+            <p className="orange-total">Total<br/>{totalThreats}</p>
             <p>High<br/>{highThreats}</p>
             <p>Medium<br/>{mediumThreats}</p>
             <p>Low<br/>{lowThreats}</p>
         </div>
-            <table className="visual-rating">
-                <tr>
-                    <td className="stack-bars-summary">
-                        Confidentiality
-                    </td>
-                    <td className="bar-charts-summary">
-                        Availability
-                    </td>
-                </tr>
-            </table>
-
-         
-
-           {/* {threats.map((threat) => ( */}
-           <table className="visual-rating">
-          
-                <td className="stack-bars-summary">
-               
-                      <div className="stack-bar-h">
-                      Top 3 threat agents with high Rating 
-                    overallratings:
-                      {agentsRating.map((agent) => (
-                        
-                          <tr className="cr-text">
-                      <td>{agent.agent}
-                      
-                      </td>
-                      </tr>
-                      ) )}
-                      </div>
-                 </td>
-                
-                 <td className="stack-bars-summary">
-                 <div className="stack-bar-h">
-                      Top 3 threat agents with high Impact :
-                      {agentsImpact.map((agent) => (
-                          <tr className="cr-text">
-                      <td>{agent.agent}</td>
-                      </tr>
-                      ) )}
-                      </div>
-                 </td>
-                
-                 <td className="stack-bars-summary">
-                 <div className="stack-bar-h">
-                      Top 3 threat agents with high Likelihood :
-                      {agentsLikelihood.map((agent) => (
-                          <tr className="cr-text">
-                      <td>{agent.agent}</td>
-                      </tr>
-                      ) )}
-                      </div>
-                  </td>
-        
-     
-            </table>
-                   
-        <div className="injury-level1">
-                <span className="dark_blue"></span>
-                <span className="blue"></span>
-                <span class="grey"></span>
-        </div>
             
+        <div className="row g-2 visual-rating-threat">
+            <div className=" col-4">
+                <div className="Overall-Rating-threat">
+                    Overall Rating
+                </div>
+                <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <span className="span-H">
+                    H
+                </span>
+                <span className="span-M">
+                    M
+                </span>
+                <span className="span-L">
+                    L
+                </span></div></div>    
+                <div className="Top-3-threat-agents-with-High-Overall-ratings">
+                     Top 3 threat agents with High Overall ratings:
+                </div>
+                {agentsRating.map((agent) => (
+                        
+                     
+               
+                  <div className="Rectangle-1407">
+                  
+                  <span className="Phishing">
+                        
+                  {agent.agent}
+                  </span>
+                </div>
+            
+                 
+                    ) )}
+                  
+                
+            </div>
+            <div className="col-4">
+                <div className="Overall-Rating-threat">
+                    Impact
+                </div>
+                <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-M">
+                         M
+                    </span>
+                    <span className="span-L">
+                         L
+                    </span>
+                </div>
+            </div>    
+                <div className="Top-3-threat-agents-with-High-Overall-ratings">
+                    Top 3 threat agents with High Impact:
+                  
+                </div>
+                {agentsImpact.map((agent) => (
+                <div div className="Rectangle-1407-Mal">
+               
+                    <span className="Malware">
+                    {agent.agent}
+                    </span>
+                </div>
+                   ) )}
+                 
+               
+            </div>
+            <div className="col-4">
+                <div className="Overall-Rating-threat">
+                    Likelihood
+                </div>
+                <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-M">
+                         M
+                    </span>
+                    <span className="span-L">
+                         L
+                    </span>
+                     </div>
+                </div>                
+                <div className="Top-3-threat-agents-with-High-Overall-ratings">
+                    Top 3 threat agents with High Likelihood:
+                </div>
+                {agentsLikelihood.map((agent) => (
+                <div className="Rectangle-1408-Fin">
+                    <span className="Financial-Fraud">
+                    {agent.agent}
+                    </span>
+                </div>
+                    ) )}
+            </div>
+        </div>         
+
     </>
     );
 };

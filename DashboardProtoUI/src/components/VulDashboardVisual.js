@@ -42,7 +42,7 @@ export const VulDashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Vulnerability Ratings</p>
-            <p>Total<br/>{totalVulnerabilities}</p>
+            <p className="orange-total">Total<br/>{totalVulnerabilities}</p>
             <p>High<br/>{highVulnerabilities}</p>
             <p>Medium<br/>{mediumVulnerabilities}</p>
             <p>Low<br/>{lowVulnerabilities}</p>
