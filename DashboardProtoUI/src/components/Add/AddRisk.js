@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
 
 
@@ -41,15 +41,9 @@ export const AddRisk = () => {
 
  
  
-  const goToVulDashboard =()=>{
-    history.push({
-      pathname: VULDASHBOARD,
- 
-    });
-  }
+  
   
   const onDone =()=>{
-   
 
   var requestDto = {
    title: riskTitle,
@@ -62,8 +56,7 @@ export const AddRisk = () => {
  console.log("ddddd", requestDto)
  postRisk(requestDto)
    .then((result) => {
-    
-     goToVulDashboard();
+    setRiskTitle("")
    })
    .catch((err) => {
      console.log(err);
@@ -72,17 +65,25 @@ export const AddRisk = () => {
   }  
 
    
-  const onAdd = (event) => {
+  const onAdd = (e) => {
   if(riskTitle){
-      try {
+  
         //do db call or API endpoint axios call here and return the promise.
         setMessage("New Risk was successfully added to the list.")
         onDone();
-      }catch (error) {
-        console.error("Erro while retrieving the next question", error);
-      }
+        e.preventdefault();
+        history.push({
+          pathname: RISKDASHBOARD,
+       
+           });
+   
     }else if (!riskTitle){
       setMessage("The title of risk is requiried for Add!")
+      e.preventdefault();
+      history.push({
+        pathname: ADDRISK,
+     
+         });
     }
   }
 
@@ -115,6 +116,8 @@ export const AddRisk = () => {
     { value: 'VA0', label:'A10'},
   ];
 
+
+
   const customStyles = {
     control: base => ({
       ...base,
@@ -122,41 +125,6 @@ export const AddRisk = () => {
       minHeight: 48
     })
   };
-
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
-
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -259,7 +227,7 @@ export const AddRisk = () => {
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">rating <span className="optional">Optional</span></Form.Label>
+                  <Form.Label className="Label" >rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
@@ -303,7 +271,7 @@ export const AddRisk = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -313,8 +281,8 @@ export const AddRisk = () => {
                   <h5 className="modal-title Asset-Added" id="exampleModalLabel"> Risk Added</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="New-asset-was-successfully-added-to-the-list">New risk was successfully added to the list.</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

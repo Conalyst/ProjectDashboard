@@ -16,14 +16,15 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, RECDASHBOARD } from "../../navigation/constants";
+import { ADDREC, DASHBOARD, RECDASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
 
 
 
 export const AddRec = () => { 
-  const [title, setTitle] = useState('');
+  const [recTitle, setRecitle] = useState('');
   const [description, setDescription] = useState('');
+  const [message, setMessage] = useState("");
   //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
 
@@ -31,11 +32,21 @@ export const AddRec = () => {
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
-  const onDone =()=>{
-  history.push({
+  const onDone =(e)=>{
+    if (recTitle === ""){
+      setMessage("The title of Recommendation is requiried for Add!")
+      history.push({
+        pathname: ADDREC
+        
+      });
+    } else{
+      setMessage("New Recommendation was successfully added to the list")
+      
+    history.push({
      pathname: RECDASHBOARD,
 
-   });
+      });
+   }
   }  
 
   const onCancel =()=>{
@@ -66,6 +77,7 @@ export const AddRec = () => {
     { value: 'R10', label:'R10'},
   ];
 
+     
   const customStyles = {
     control: base => ({
       ...base,
@@ -73,41 +85,6 @@ export const AddRec = () => {
       minHeight: 48
     })
   };
-
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
-
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -199,7 +176,7 @@ export const AddRec = () => {
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" onChange={(e) => setRecitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-left">Associated Risk <span className="optional">Optional</span></Form.Label>
@@ -230,7 +207,7 @@ export const AddRec = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onDone()}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -240,8 +217,8 @@ export const AddRec = () => {
                   <h5 className="modal-title Asset-Added" id="exampleModalLabel">Recommendations Added</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="New-asset-was-successfully-added-to-the-list">New recommendation was successfully added to the list.</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

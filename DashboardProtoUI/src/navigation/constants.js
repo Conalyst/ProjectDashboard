@@ -1,4 +1,3 @@
-
 export const LOGIN = '/';
 export const DASHBOARD = "/asset";
 export const RECDASHBOARD = "/rec";
@@ -19,4 +18,3 @@ export const EDITVUL = "/editvul";
 export const ADDRISK = "/addrisk";
 export const EDITRISK = "/editrisk";
 export const TEST = '/test';
- 

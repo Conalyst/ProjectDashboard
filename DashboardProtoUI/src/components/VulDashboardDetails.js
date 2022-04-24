@@ -6,7 +6,7 @@ import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import {ADDVUL, EDITVUL} from "../navigation/constants";
+import {ADDVUL, EDITVUL} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 //import ManageButton from "./ManageButton";
@@ -15,7 +15,9 @@ import { getAllVulnerabilities } from "../services/vulnerabilityService";
 export const VulDashboardDetails = () => {
 
     const [vulnerabilities, setVulnerabilities] = useState(vul_data);
-
+    const storedUser = localStorage.getItem("storedUser");
+    const parsedUser = JSON.parse(storedUser);
+    const isAdmin = parsedUser.role;
     const history =useHistory();
     const onAddVul =()=>{
     history.push({
@@ -44,7 +46,7 @@ export const VulDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage" onClick={onAddVul}>Add Vul</button>  
+        {(isAdmin === "Admin") && (<button className="Button-Icon-Manage" onClick={onAddVul}>Add Vul</button>  )}
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -61,9 +63,11 @@ export const VulDashboardDetails = () => {
                     <th>Impact</th>
                     <th>Likelihood</th>
                     <th>Rating</th>
+                    {(isAdmin === "Admin") && (
                     <th>
                       <img  src={pen_white} alt =""/>
                     </th>
+                    )}
                 </tr>
             </thead>
             <tbody>
@@ -81,7 +85,7 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
                     <td>
-                      <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> 
+                    {(isAdmin === "Admin") && (  <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> )}
                 </td>
                 </tr>
             ) )}

@@ -6,7 +6,7 @@ import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDRISK, EDITRISK} from "../navigation/constants";
+import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 import { getAllRisks } from "../services/riskService";
@@ -14,7 +14,9 @@ import { getAllRisks } from "../services/riskService";
 export const RiskDashboardDetails = () => {
 
     const [risks, setRisk] = useState(risk_data);
-
+    const storedUser = localStorage.getItem("storedUser");
+    const parsedUser = JSON.parse(storedUser);
+    const isAdmin = parsedUser.role;
     const history =useHistory();
     const onManageList =()=>{
     history.push({
@@ -44,7 +46,7 @@ export const RiskDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-          <button className="Button-Icon-Manage" onClick={onManageList}> Add Risk</button>  
+        {(isAdmin === "Admin") && (<button className="Button-Icon-Manage" onClick={onManageList}> Add Risk</button> )} 
           <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -62,9 +64,11 @@ export const RiskDashboardDetails = () => {
                     <th>Impact</th>
                     <th>Rating</th>
                     <th>Action</th>
+                    {(isAdmin === "Admin") && (
                     <th>
                      <img  src={pen_white} alt =""/>
                     </th>
+                    )}
                 </tr>
             </thead>
             <tbody>
@@ -84,7 +88,7 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.action}</td>
                     <td>
                     <td>
-                     <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> 
+                    {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> )}
                 </td>            
                 </td>
                 </tr>
