@@ -2,7 +2,7 @@
     "development": {
         "username": "hadjira",
         "password": "hadjira2022",
-        "database": "dashboardDBV2022",
+        "database": "dashboarddb",
         "host": "127.0.0.1",
         "dialect": "postgres"
     },
