@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/constants";
+import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
 
 
@@ -39,8 +39,8 @@ export const AddAsset = () => {
   console.log("login user ", parsedUser)
   const history =useHistory();
  
-  const onDone =()=>{
- 
+  const onDone =(e)=>{
+    e.preventdefault();
      var requestDto = {
        title: assetTitle,
        categoryId: 1,
@@ -96,7 +96,13 @@ export const AddAsset = () => {
       });
    }
   }  
+  const onOk =()=>{
 
+    history.push({
+       pathname: DASHBOARD,
+        
+     });
+    }  
   const options = [
     { value: 'V1', label: 'V1' },
     { value: 'V2', label: 'V2' },
@@ -278,7 +284,7 @@ export const AddAsset = () => {
                   <div className="modal-body">
                   
                     <p className="New-asset-was-successfully-added-to-the-list"  > {message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

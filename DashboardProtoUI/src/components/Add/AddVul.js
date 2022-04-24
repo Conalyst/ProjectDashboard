@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
 
 
@@ -64,7 +64,8 @@ export const AddVul = () => {
    });
   }  
 
-  const onCancel =()=>{
+  const onCancel =(e)=>{
+    e.preventdefault();
     history.push({
        pathname: VULDASHBOARD,
   
