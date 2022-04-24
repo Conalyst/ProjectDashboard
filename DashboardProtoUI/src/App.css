@@ -503,7 +503,7 @@ td.bar-charts-summary > span {
 .Overall-Rating-threat {
   width: 115px;
   height: 21px;
-  margin: 49px 279px 18px 45px;
+  margin: 49px 279px 18px 50px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -518,7 +518,7 @@ td.bar-charts-summary > span {
 .Impact-threat {
   width: 57px;
   height: 21px;
-  margin: 49px 16.9px 18px 156px;
+  margin: 49px 16.9px 18px 140px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -603,6 +603,7 @@ td.bar-charts-summary > span {
   padding: 3px 4.5px 3.7px 52px;
 }
 
+
 .orange-total{
   color: #e98226 !important;
 }
@@ -615,13 +616,15 @@ td.bar-charts-summary > span {
   background-color: #f1f1f1;
 }
 
+
 .V-T-Color {
   width: 225px;
   height: 53px;
   margin: 0 0.8px 0 0;
-  padding: 3px 103.9px 14px 5.8px;
+  padding: 0px 103.9px 14px 5.8px;
   background-color: #f1f1f1;
 }
+
 
 .Dark-Blue-Color {
   width: 115.3px;
@@ -637,7 +640,7 @@ td.bar-charts-summary > span {
 }
 
 .Grey-Color {
-  width: 76.5px;
+  width: 144.5px;
   height: 36px;
   margin: 0 0 2px 9.9px;
   background-color: #72b7f2;

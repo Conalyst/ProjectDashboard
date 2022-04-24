@@ -48,7 +48,7 @@ export const ThreatsDashboardVisual = () => {
                 </div>
             </div>
             <div className="col-4">
-                <div className="Impact-threat">
+                <div className="Overall-Rating-threat">
                     Impact
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
@@ -64,27 +64,27 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                 </div>
             </div>    
-                <div className="Top-3-threat-agents-with-High-Impact">
+                <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                 </div>
-                <div className="Rectangle-1410">
+                <div className="Rectangle-1407">
                     <span className="Malware">
                         Malware
                     </span>
                 </div>
-                <div className="Rectangle-1411">
+                <div className="Rectangle-1408">
                     <span className="Phishing">
                         Phishing
                     </span>
                 </div>
-                <div className="Rectangle-1412">
+                <div className="Rectangle-1409">
                     <span className="Phishing">
                         Document sharing
                     </span>
                 </div>
             </div>
             <div className="col-4">
-                <div className="Likelihood-threat">
+                <div className="Overall-Rating-threat">
                     Likelihood
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
@@ -100,20 +100,20 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                      </div>
                 </div>                
-                <div className="Top-3-threat-agents-with-High-Likelihood">
+                <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
-                <div className="Rectangle-1413">
+                <div className="Rectangle-1408">
                     <span className="Financial-Fraud">
                         Financial Fraud
                     </span>
                 </div>
-                <div className="Rectangle-1414">
+                <div className="Rectangle-1408">
                     <span className="Phishing">
                         Lost or stolen device
                     </span>
                 </div>
-                <div className="Rectangle-1415">
+                <div className="Rectangle-1409">
                     <span className="Phishing">
                         Denial of service
                     </span>
