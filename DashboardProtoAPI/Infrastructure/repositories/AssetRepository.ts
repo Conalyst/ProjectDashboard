@@ -10,13 +10,15 @@ export class AssetRepository {
     public async Get(){
         let assets  = await db.Asset.findAll({
             include: [
-                      {model:db.AssetCategory, attributes: ['id', 'name']}, 
-                      {
-                        model: db.Vulnerability,
-                        include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
-                        attributes: ['id','category','title', 'description']
-                      }
-                     ]
+                      // {model:db.AssetCategory, attributes: ['id', 'name']}, 
+                      // {
+                      //   model: db.Vulnerability,
+                      //   include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
+                      //   attributes: ['id','category','title', 'description']
+                      // }
+                     ],
+                     order: [['rating', 'ASC']],
+                     attributes: ['id', 'rating']
         });
         return assets;
     }   

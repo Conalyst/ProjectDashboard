@@ -4,6 +4,9 @@ import { BaseRepository } from "../contracts/BaseRepository"
 
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
+import {Sequelize} from "sequelize";
+
+
 const Threat = require("../db/models")
 
 export class ThreatRepository {
@@ -39,4 +42,16 @@ export class ThreatRepository {
   public async delete(model: Model<typeof Threat>, idThreat:number){
     return model.destroy();
   }
+
+  public async GetByHighImpact(id:number){
+    const threat = db.Threat.findAll({
+      attributes: [
+        
+        [Sequelize.fn('DISTINCT', Sequelize.col('agent')), 'agent'],
+        "impact"
+      ],
+        where: {impact: 'H'},
+    })
+    return threat;    
+  }   
 }

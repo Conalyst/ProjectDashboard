@@ -11,7 +11,8 @@ export class ThreatApi{
     }
     
     async getAllThreats(req: express.Request, res: express.Response){
-      let threatList = await this._threatRepository.Get();
+      // let threatList = await this._threatRepository.Get();
+      let threatList = await this._threatRepository.GetByHighImpact();
       // console.log("Helllllo")
       return  res.status(200).json(threatList);
     };
@@ -88,5 +89,9 @@ async delete(req: express.Request, res: express.Response){
     getDtoFromRequest(req: express.Request){
         
       return new ThreatDto(req.body.id, req.body.category,req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
+  }
+
+  async getTopThree(req: express.Request, res: express.Response) {
+
   }
 }
