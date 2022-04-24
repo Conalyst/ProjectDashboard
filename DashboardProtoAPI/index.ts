@@ -15,14 +15,15 @@ const origin = {
  app.use(express.json());
  app.use(express.urlencoded({ extended: true }));
  app.use('/api/v2', routes)
- app.use(express.static(path.resolve("__dirname, '../DashboardProtoUI/build")));
+//  app.use(express.static(path.resolve("__dirname, '../DashboardProtoUI/build")));
+app.use(express.static(path.resolve("__dirname, 'build")));
 
- app.get("/api/v2/", (req,res) => {
-  //  res.send("Welcome...")
-   res.sendFile(path.join(__dirname+'../../DashboardProtoUI/build/index.html'));
- })
- app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname+'../../DashboardProtoUI/build/index.html'));
+//  app.get("/api/v2/", (req,res) => {
+//   //  res.send("Welcome...")
+//    res.sendFile(path.join(__dirname+'../../DashboardProtoUI/build/index.html'));
+//  })
+ app.get('/*', (req, res) => {
+  res.sendFile(path.join(__dirname,'build', 'index.html'));
 });
 const port = process.env.PORT || 5000;
  db.sequelize
