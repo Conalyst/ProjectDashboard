@@ -63,9 +63,9 @@ export const AddAsset = () => {
            //setErrors("No comment found!");
          } else {
            if (err.response.status == 400) {
-            // setErrors("restaurantId is not valid!");
+             
            } else {
-             //setErrors("Unknow error!");
+            
            }
          }
        });
