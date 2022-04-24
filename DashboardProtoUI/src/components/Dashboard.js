@@ -92,7 +92,7 @@ export const Dashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">User Name</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
