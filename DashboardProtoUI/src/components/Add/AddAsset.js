@@ -40,7 +40,7 @@ export const AddAsset = () => {
   const history =useHistory();
  
   const onDone =(e)=>{
-    e.preventdefault();
+   
      var requestDto = {
        title: assetTitle,
        categoryId: 1,
@@ -81,10 +81,11 @@ export const AddAsset = () => {
      });
     }  
   
-  const onAdd =()=>{
-  
+  const onAdd =(e)=>{
+   
     if (assetTitle === ""){
       setMessage("The title of Asset is requiried for Add!")
+      e.preventdefault();
       history.push({
         pathname: ADDASSET,
         
@@ -92,6 +93,7 @@ export const AddAsset = () => {
     } else{
       setMessage("New asset was successfully added to the list")
       onDone();
+      e.preventdefault();
     history.push({
      pathname: DASHBOARD,
 
@@ -275,7 +277,7 @@ export const AddAsset = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

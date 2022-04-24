@@ -43,12 +43,7 @@ export const AddRisk = () => {
  
   
   
-  const onDone =(e)=>{
-    e.preventdefault();
-    history.push({
-      pathname: RISKDASHBOARD,
- 
-    });
+  const onDone =()=>{
 
   var requestDto = {
    title: riskTitle,
@@ -70,21 +65,21 @@ export const AddRisk = () => {
   }  
 
    
-  const onAdd = (event) => {
+  const onAdd = (e) => {
   if(riskTitle){
-      try {
+  
         //do db call or API endpoint axios call here and return the promise.
         setMessage("New Risk was successfully added to the list.")
         onDone();
+        e.preventdefault();
         history.push({
           pathname: RISKDASHBOARD,
        
            });
-      }catch (error) {
-        console.error("Erro while retrieving the next question", error);
-      }
+   
     }else if (!riskTitle){
       setMessage("The title of risk is requiried for Add!")
+      e.preventdefault();
       history.push({
         pathname: ADDRISK,
      
@@ -267,7 +262,7 @@ export const AddRisk = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -37,12 +37,7 @@ export const AddThreat = () => {
   const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
 
-  const onDone =(e)=>{
-    e.preventdefault();
-  history.push({
-     pathname: THREATSDASHBOARD,
-
-   });
+  const onDone =()=>{
 
    var requestDto = {
     title: threatTitle,
@@ -80,9 +75,10 @@ export const AddThreat = () => {
     }  
 
 
-  const onAdd =()=>{
+  const onAdd =(e)=>{
    if (threatTitle === ""){
     setMessage("The title of threat is requiried for Add!")
+    e.preventdefault();
     history.push({
       pathname: ADDTHREAT,
       
@@ -90,6 +86,7 @@ export const AddThreat = () => {
   } else{
     setMessage("New threat was successfully added to the list.")
     onDone();
+    e.preventdefault();
     history.push({
     pathname: THREATSDASHBOARD,
 
@@ -242,7 +239,7 @@ export const AddThreat = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

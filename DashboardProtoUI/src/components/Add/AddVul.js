@@ -39,12 +39,7 @@ export const AddVul = () => {
     
   }
   
-  const onDone =(e)=>{
-    e.preventdefault();
-    history.push({
-      pathname: VULDASHBOARD,
- 
-    });
+  const onDone =()=>{
 
   var requestDto = {
    title: vulTitle,
@@ -72,12 +67,13 @@ export const AddVul = () => {
   
      });
     }  
-  const onAdd = (event) => {
+  const onAdd = (e) => {
   if(vulTitle){
       try {
         //do db call or API endpoint axios call here and return the promise.
         setMessage("New vulnerability was successfully added to the list.")
         onDone();
+        e.preventdefault();
         history.push({
           pathname: VULDASHBOARD,
      
@@ -88,6 +84,7 @@ export const AddVul = () => {
       }
     }else{
       setMessage("The title of vulnerability is requiried for Add!")
+      e.preventdefault();
       history.push({
         pathname: ADDVUL,
         
@@ -258,7 +255,7 @@ export const AddVul = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
