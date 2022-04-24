@@ -39,7 +39,8 @@ export const AddVul = () => {
     
   }
   
-  const onDone =()=>{
+  const onDone =(e)=>{
+    e.preventdefault();
     history.push({
       pathname: VULDASHBOARD,
  
@@ -93,7 +94,12 @@ export const AddVul = () => {
       });
     }
   }
-
+  const onOk =()=>{
+    history.push({
+       pathname: VULDASHBOARD,
+  
+     });
+    } 
   const options = [
     { value: 'T1', label: 'T1' },
     { value: 'T2', label: 'T2' },
@@ -263,7 +269,7 @@ export const AddVul = () => {
                   </div>
                   <div className="modal-body">
                     <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

@@ -81,12 +81,11 @@ export const AddAsset = () => {
   
   const onAdd =()=>{
     if (assetTitle === ""){
-      setMessage("we need title")
+      setMessage("The title of Asset is requiried for Add!")
       history.push({
         pathname: ADDASSET,
         
       });
-  console.log("we need title ")
     } else{
       setMessage("New asset was successfully added to the list")
       onDone();

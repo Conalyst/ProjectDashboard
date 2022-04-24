@@ -121,39 +121,6 @@ export const AddRisk = () => {
     { value: 'VA0', label:'A10'},
   ];
 
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
 
   return (
     <div className="db-site-container">
@@ -310,8 +277,8 @@ export const AddRisk = () => {
                   <h5 className="modal-title Asset-Added" id="exampleModalLabel"> Risk Added</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="New-asset-was-successfully-added-to-the-list">New risk was successfully added to the list.</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

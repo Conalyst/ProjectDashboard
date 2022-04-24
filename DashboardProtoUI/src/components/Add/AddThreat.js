@@ -82,7 +82,7 @@ export const AddThreat = () => {
 
   const onAdd =()=>{
    if (threatTitle === ""){
-    setMessage("we need title")
+    setMessage("The title of threat is requiried for Add!")
     history.push({
       pathname: ADDTHREAT,
       
@@ -96,7 +96,12 @@ export const AddThreat = () => {
       });
  }
   }  
-
+  const onOk =()=>{
+    history.push({
+       pathname: THREATSDASHBOARD,
+  
+     });
+    } 
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -248,7 +253,7 @@ export const AddThreat = () => {
                   </div>
                   <div className="modal-body">
                     <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>
