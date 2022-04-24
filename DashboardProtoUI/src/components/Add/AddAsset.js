@@ -54,6 +54,8 @@ export const AddAsset = () => {
        .then((result) => {
          setAssetTitle("");
          setDescription("")
+         console.log("frrrrr",result)
+     
        })
        .catch((err) => {
          console.log(err);
@@ -80,6 +82,7 @@ export const AddAsset = () => {
     }  
   
   const onAdd =()=>{
+  
     if (assetTitle === ""){
       setMessage("The title of Asset is requiried for Add!")
       history.push({
@@ -95,9 +98,10 @@ export const AddAsset = () => {
       });
    }
   }  
-  const onOk =()=>{
-
+  const onOk =(e)=>{
+   
     history.push({
+      
        pathname: DASHBOARD,
         
      });

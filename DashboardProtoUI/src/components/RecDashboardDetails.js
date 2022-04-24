@@ -11,7 +11,9 @@ import {useHistory} from 'react-router-dom'
 export const RecDashboardDetails = () => {   
 
     const [recommendations, setRecommendationa] = useState(rec_data);
-
+    const storedUser = localStorage.getItem("storedUser");
+    const parsedUser = JSON.parse(storedUser);
+    const isAdmin = parsedUser.role;
     const history =useHistory();
     const onAddRec =()=>{
     history.push({
@@ -30,7 +32,7 @@ export const RecDashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">
-        <button className="Button-Icon-Manage" onClick={onAddRec}> Add Rec</button>  
+        {(isAdmin === "Admin") && ( <button className="Button-Icon-Manage" onClick={onAddRec}> Add Rec</button> )} 
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -42,9 +44,11 @@ export const RecDashboardDetails = () => {
                     <th>Description</th>
                     <th>Safeguard</th>
                     <th>Risk IDs</th>
+                    {(isAdmin === "Admin") && (
                     <th>
                         <img  src={pen_white} alt =""/>
                     </th>
+                    )}
                 </tr>
             </thead>
             <tbody>
@@ -57,7 +61,7 @@ export const RecDashboardDetails = () => {
                     <td>{recommendation.risks_ids}</td>
                     <td>
                     <td>
-                     <button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button> 
+                    {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button> )}
                     </td>             
                     </td>
                 </tr>

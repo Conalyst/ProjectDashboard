@@ -23,8 +23,8 @@ export const DashboardDetails = () => {
 
   const [assets, setAssets] = useState([]);
   const storedUser = localStorage.getItem("storedUser");
-  
   const parsedUser = JSON.parse(storedUser);
+  const isAdmin = parsedUser.role;
     const history =useHistory();
     const onAddAsset =()=>{
     history.push({
@@ -38,22 +38,7 @@ export const DashboardDetails = () => {
      });
     } 
 
-    // useEffect(() => {
-    //     const storedUser = localStorage.getItem("storedUser");   
-    //     const parsedUser = JSON.parse(storedUser);
-    //     console.log("parsed user dashboard", parsedUser);
-    //     getAllAssets()
-    //     .then((result) => {
-    //         // console.log('under dashboard details', result.data);
-    //         // console.log("result", result.data[0])
-    //         // console.log("asset", result.data[0].Asset)
-    //         // console.log("asset-category", result.data[0].Asset.AssetCategory)
-    //         // console.log("Vuln", result.data[0].Asset.Vulnerabilities)
-    //         // console.log("threats", result.data[0].Asset.Vulnerabilities[0].Threats)
-    //         console.log("assets", result[0])
-    //         setAssets(result);
-    //     })
-    //   }, []);
+  
 
     useEffect(() => {
       console.log("in detail")
@@ -82,7 +67,7 @@ export const DashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">          
-          <button className="Button-Icon-AddAsset-modal" onClick={onAddAsset}> Add Asset</button>  
+        {(isAdmin === "Admin") && (<button className="Button-Icon-AddAsset-modal" onClick={onAddAsset}> Add Asset</button> )}
           <button className="Button-Icon-Filter-modal"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
@@ -100,9 +85,11 @@ export const DashboardDetails = () => {
                     <th>Integrity</th>
                     <th>Availability</th>
                     <th>Rating</th>
+                    {(isAdmin === "Admin") && (
                     <th>
                     <img  src={pen_white} alt =""/>
                     </th>
+                      )}
                 </tr>
             </thead>
             <tbody>
@@ -124,7 +111,7 @@ export const DashboardDetails = () => {
                 <td>{asset.rating}</td>
                 <td>
                 <td>
-                     <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> 
+                {(isAdmin === "Admin") && (  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> )}
                     </td>               
                 </td>
               </tr>
