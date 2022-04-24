@@ -19,7 +19,7 @@ app.use((0, cors_1.default)(origin));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/api/v2', routes_1.default);
-app.use(express_1.default.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
+app.use(express_1.default.static(path.resolve("__dirname, '../DashboardProtoUI/build")));
 app.get("/api/v2/", (req, res) => {
     //  res.send("Welcome...")
     res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));

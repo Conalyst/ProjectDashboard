@@ -2,7 +2,7 @@
   "name": "dashboardprotoui",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:5000/",
+  "proxy": "https://valencia-dashboard.herokuapp.com/",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
@@ -51,5 +51,4 @@
       "last 1 safari version"
     ]
   }
-
 }

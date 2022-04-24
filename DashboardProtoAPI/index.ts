@@ -15,7 +15,7 @@ const origin = {
  app.use(express.json());
  app.use(express.urlencoded({ extended: true }));
  app.use('/api/v2', routes)
- app.use(express.static(path.resolve("__dirname, '../../DashboardProtoUI/build")));
+ app.use(express.static(path.resolve("__dirname, '../DashboardProtoUI/build")));
 
  app.get("/api/v2/", (req,res) => {
   //  res.send("Welcome...")
