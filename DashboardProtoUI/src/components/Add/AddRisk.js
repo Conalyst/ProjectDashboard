@@ -118,7 +118,13 @@ export const AddRisk = () => {
 
 
 
-
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">

@@ -120,7 +120,13 @@ export const AddAsset = () => {
     { value: 'V9', label: 'V9' },
     { value: 'V10', label:'V10'},
   ];
-
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   return (
     <div className="db-site-container">
