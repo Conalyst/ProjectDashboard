@@ -30,7 +30,6 @@ export const AddThreat = () => {
   const [category, setCategory] = useState('');
   const [agent, setAgent] = useState('');
   const [message, setMessage] = useState("");
-  //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const storedUser = localStorage.getItem("storedUser");
   
