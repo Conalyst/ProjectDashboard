@@ -67,12 +67,12 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                 </div>
-                <div className="Rectangle-1407">
+                <div className="Rectangle-1407-Mal">
                     <span className="Malware">
                         Malware
                     </span>
                 </div>
-                <div className="Rectangle-1408">
+                <div className="Rectangle-1407-Ph">
                     <span className="Phishing">
                         Phishing
                     </span>
@@ -103,7 +103,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
-                <div className="Rectangle-1408">
+                <div className="Rectangle-1408-Fin">
                     <span className="Financial-Fraud">
                         Financial Fraud
                     </span>
@@ -113,7 +113,7 @@ export const ThreatsDashboardVisual = () => {
                         Lost or stolen device
                     </span>
                 </div>
-                <div className="Rectangle-1409">
+                <div className="Rectangle-1409-Service">
                     <span className="Phishing">
                         Denial of service
                     </span>
