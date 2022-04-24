@@ -997,6 +997,7 @@ td.bar-charts-summary > span {
   background-color: #145b93;
   color: white;
   border: #145b93;
+  position: absolute;
 }
 
 .Button-Icon-Filter {
@@ -1012,6 +1013,8 @@ td.bar-charts-summary > span {
   border: solid 1px #145b93;
   background-color: #fff;
   color: #145b93;
+  position: absolute;
+  left: 90%
 }
 
 .table-items-tables-table--column-items {
@@ -1765,6 +1768,8 @@ li {
     background-color: #145b93;
     color: white;
     border: #145b93;
+    position: absolute;
+   
   }
 
   .Button-Icon-Filter-modal {
@@ -1780,6 +1785,8 @@ li {
     border: solid 1px #145b93;
     background-color: #fff;
     color: #145b93;
+    position: absolute;
+    left: 90%
   }
 
   /*.V-T-Color {
@@ -2321,6 +2328,7 @@ li {
   background-color: #145b93;
   color: white;
   border: #145b93;
+  position: absolute;
 }
 
 /*With Rating*/
