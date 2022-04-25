@@ -110,7 +110,7 @@ export const VulDashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-        <Tabs defaultActiveKey="visual" id="dashboard" className="mb-3 nav-fill dashboard-main">
+        <Tabs defaultActiveKey="detail" id="dashboard" className="mb-3 nav-fill dashboard-main">
             <Tab eventKey="visual" title="Visual" id="db-tab-visual">
               <VulDashboardVisual/>
             </Tab>
