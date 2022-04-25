@@ -26,7 +26,7 @@ threatRouter.get("/static", (req, res) => {
   threatApi.getStaticThreats(req, res);    
 })
  
-threatRouter.put("/:id" ,passport.authenticate("jwt", { session: false }), (req, res) =>{
+threatRouter.put("/:id" ,(req, res) =>{
     threatApi.update(req, res)
 })
 threatRouter.delete('/:id' ,passport.authenticate("jwt", { session: false }),
