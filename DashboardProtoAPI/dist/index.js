@@ -12,13 +12,13 @@ const routes_1 = __importDefault(require("./routes"));
 // dbInit()
 const path = require('path');
 const app = (0, express_1.default)();
-// const origin = {
-//   origin: '*',
-// }
+const origin = {
+    origin: '*',
+};
 app.use((0, cors_1.default)());
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
-app.use(express_1.default.static(path.join(__dirname + "../../DashboardProtoUI/build")));
+//  app.use(express.static(path.join(__dirname + "../../DashboardProtoUI/build")));
 app.use('/api/v2', routes_1.default);
 // app.use((req, res, next) => {
 //   res.append('Access-Control-Allow-Origin', ['*']);
@@ -26,8 +26,8 @@ app.use('/api/v2', routes_1.default);
 //   res.append('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type');
 //   next();
 // });
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '../DashboardProtoUI/build/index.html'));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
 // });
 const port = process.env.PORT || 5000;
 models_1.default.sequelize

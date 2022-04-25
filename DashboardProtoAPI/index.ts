@@ -8,15 +8,15 @@ import routes from './routes'
 
 const path = require('path');
 const app = express();
-// const origin = {
-//   origin: '*',
-// }
-  app.use(cors())
+const origin = {
+  origin: '*',
+}
+app.use(cors())
  
  app.use(express.json());
  app.use(express.urlencoded({ extended: true }));
 
- app.use(express.static(path.join(__dirname + "../../DashboardProtoUI/build")));
+//  app.use(express.static(path.join(__dirname + "../../DashboardProtoUI/build")));
 
 
 
@@ -28,8 +28,8 @@ app.use('/api/v2', routes)
 //   res.append('Access-Control-Allow-Headers', 'X-Requested-With,Content-Type');
 //   next();
 // });
-// app.get('*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '../DashboardProtoUI/build/index.html'));
+// app.get('/', (req, res) => {
+//   res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
 // });
 const port = process.env.PORT || 5000;
  db.sequelize
