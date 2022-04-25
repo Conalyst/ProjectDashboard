@@ -99,21 +99,22 @@ export const DashboardDetails = () => {
                   <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
               </td>
-                <td>{asset.assetId}</td>
+                 <td>{asset.id}</td>
+              
                 <td>{asset.title}</td>
                 <td>{asset.description}</td>
  
-                <td>{asset.name}</td>
+                <td>{asset.AssetCategory.name}</td>
 
                 <td>{asset.confidentiality}</td>
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
                 <td>{asset.rating}</td>
-                <td>
-                <td>
-                {(isAdmin === "Admin") && (  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> )}
-                    </td>               
-                </td>
+               
+               
+                {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> </td> )}
+                                  
+             
               </tr>
             ) )}
           </tbody>
