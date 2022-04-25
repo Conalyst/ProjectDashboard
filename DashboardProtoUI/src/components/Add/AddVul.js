@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form} from "react-bootstrap";
-import { getAllTest } from "../../services";
+import { postVulnerability } from "../../services/vulnerabilityService";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
@@ -16,41 +16,89 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+ 
+import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+ 
 import Select from 'react-select';
 
 
 
 export const AddVul = () => { 
-  const [title, setTitle] = useState('');
+  const [vulTitle, setVulTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [impact, setImpact] = useState('');
+  const [likelihood, setLikelihood] = useState('');
+  const [rating, setRating] = useState('');
+  const [category, setCategory] = useState('');
+  const [message, setMessage] = useState("");
   //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
-
+  const goToVulDashboard =()=>{
+    
+  }
+  
   const onDone =()=>{
-  history.push({
-     pathname: VULDASHBOARD,
 
+  var requestDto = {
+   title: vulTitle,
+   impact: impact,
+   likelihood:likelihood,
+   rating:rating,
+   category:category,
+   Description:description
+ };
+ postVulnerability(requestDto)
+   .then((result) => {
+    
+     setVulTitle("")
+   })
+   .catch((err) => {
+     console.log(err);
+     
    });
   }  
 
-  const onCancel =()=>{
+  const onCancel =(e)=>{
+    e.preventdefault();
     history.push({
        pathname: VULDASHBOARD,
   
      });
     }  
-
-
+  const onAdd = (e) => {
+  if(vulTitle){
+      try {
+        //do db call or API endpoint axios call here and return the promise.
+        setMessage("New vulnerability was successfully added to the list.")
+        onDone();
+        e.preventdefault();
+        history.push({
+          pathname: VULDASHBOARD,
+     
+           });
+       
+      }catch (error) {
+        console.error("Erro while retrieving the next question", error);
+      }
+    }else{
+      setMessage("The title of vulnerability is requiried for Add!")
+      e.preventdefault();
+      history.push({
+        pathname: ADDVUL,
+        
+      });
+    }
+  }
   const onOk =()=>{
-  history.push({
-     pathname: VULDASHBOARD,
-
-   });
-  }  
-
+    history.push({
+       pathname: VULDASHBOARD,
+  
+     });
+    } 
   const options = [
     { value: 'T1', label: 'T1' },
     { value: 'T2', label: 'T2' },
@@ -63,6 +111,14 @@ export const AddVul = () => {
     { value: 'T9', label: 'T9' },
     { value: 'T10', label:'T10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +161,7 @@ export const AddVul = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +204,7 @@ export const AddVul = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -187,35 +243,28 @@ export const AddVul = () => {
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" onChange={(e) => setVulTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
+                  <Form.Label className="Label">impact <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
+                  <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
                   </Form.Select>
                 </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
-                  </Form.Select>
-                </Form.Group>
+               
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
+                  <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                     <option>Low</option>
                     <option>Medium</option>
                     <option>High</option>
@@ -225,7 +274,7 @@ export const AddVul = () => {
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right">
+                  <Form.Select className="Frame-right" value={category} onChange={(e) => setCategory(e.target.value)}>
                   <option>Accidental</option>
                     <option>Deliberate</option>
                     <option>Natural Hazard</option>
@@ -237,11 +286,12 @@ export const AddVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Threats <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>
@@ -249,7 +299,7 @@ export const AddVul = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -259,8 +309,8 @@ export const AddVul = () => {
                   <h5 className="modal-title Asset-Added" id="exampleModalLabel">Vulnerability Added</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="New-asset-was-successfully-added-to-the-list">New vulnerability was successfully added to the list.</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

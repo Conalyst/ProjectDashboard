@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
@@ -28,7 +28,9 @@ export const EditRisk = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: RISKDASHBOARD,
@@ -63,6 +65,14 @@ export const EditRisk = () => {
     { value: 'A9', label: 'A9' },
     { value: 'VA0', label:'A10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +115,7 @@ export const EditRisk = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +158,7 @@ export const EditRisk = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -231,11 +241,12 @@ export const EditRisk = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Assets <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>

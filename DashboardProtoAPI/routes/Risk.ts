@@ -10,15 +10,17 @@ riskRouter.get("/", (req, res) => {
   riskApi.getAllRisks(req, res);    
 })
 
-riskRouter.get("/:id", (req, res) => {     
-  riskApi.getRiskById(req, res);    
-})
+// riskRouter.get("/:id", (req, res) => {     
+//   riskApi.getRiskById(req, res);    
+// })
 
 riskRouter.post("/", (req, res) =>{
     riskApi.create(req, res)
 })
 
-
+riskRouter.get("/static", (req, res) => {     
+  riskApi.getStaticRisks(req, res);    
+})
 riskRouter.put("/:id", (req, res) =>{
     riskApi.update(req, res)
 })

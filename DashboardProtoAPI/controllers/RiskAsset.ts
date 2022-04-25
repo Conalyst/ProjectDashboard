@@ -52,7 +52,7 @@ export class RiskAssetApi{
   }
 
   async getCalculatedRisk(req: express.Request, res: express.Response){
-    console.log("Risk Id", req.params.id)
+    
     const riskId = req.params.id;
     const asset =  await this._riskAssetRepository.assetTocalcRisk(riskId)
     const vuln =  await this._riskAssetRepository.vulnTocalcRisk(riskId)
@@ -60,7 +60,7 @@ export class RiskAssetApi{
     let highestAssetRating: any;
     let highestVulnRating: any;
     let highestThreatRating: any
-    console.log("asset..", asset.length)
+
     if (asset.length !== 0) {
       highestAssetRating = asset[0]['Asset.rating']
     }
@@ -70,13 +70,11 @@ export class RiskAssetApi{
     if (threat.length !== 0) {
       highestThreatRating = threat[0]['Asset.Vulnerabilities.Threats.rating']
     }    
+   
     const risk = { highestAssetRating, highestVulnRating, highestThreatRating}
     const scores = { 'H': 4, 'M': 3, 'L': 2 }
-    const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating] 
+    const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating]
     risk['score'] = riskScore
-    //  
-    //  console.log("Result...", threat[0])
       return  res.status(200).json(risk);
-  }
-
+    }
 }
