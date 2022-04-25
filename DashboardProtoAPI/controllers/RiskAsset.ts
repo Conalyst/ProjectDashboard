@@ -73,7 +73,6 @@ export class RiskAssetApi{
     const scores = { 'H': 4, 'M': 3, 'L': 2 }
     const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating]
     risk['score'] = riskScore
-    
       return  res.status(200).json(risk);
   }
 
