@@ -33,7 +33,7 @@ export const DashboardDetails = () => {
     return (
     <>     
         <div className="asset-menu-buttons">          
-          <button className="Button-Icon-AddAsset-modal" onClick={onAddAsset}> Add Asset</button>  
+          <button className="Button-Icon-Manage-AddAsset" onClick={onAddAsset}> Add Asset</button>  
           <button className="Button-Icon-Filter-modal"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
