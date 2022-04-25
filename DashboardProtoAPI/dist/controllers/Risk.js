@@ -55,6 +55,21 @@ class RiskApi {
             }
         });
     }
+ 
+    //static Asset
+    getStaticRisks(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numberRisk = yield this._riskRepository.GetTotal();
+            let highRisk = yield this._riskRepository.GetHigh();
+            let mediumRisk = yield this._riskRepository.GetMedium();
+            let lowRisk = yield this._riskRepository.GetLow();
+            return res.status(200).json({
+                "static": { numberRisk, highRisk, mediumRisk, lowRisk }
+            });
+        });
+    }
+    ;
+ 
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;

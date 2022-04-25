@@ -19,8 +19,10 @@ class ThreatApi {
     }
     getAllThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+ 
             // let threatList = await this._threatRepository.Get();
             let threatList = yield this._threatRepository.GetByHighImpact();
+ 
             // console.log("Helllllo")
             return res.status(200).json(threatList);
         });
@@ -28,13 +30,37 @@ class ThreatApi {
     ;
     getThreatById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let threatId = req.params.id;
-            console.log(threatId);
+ 
+            let threatId = req.body.id;
+      
             let threat = yield this._threatRepository.GetById(threatId);
             return res.status(200).json(threat);
         });
     }
     ;
+ 
+    //static Asset and Agents
+    getStaticThreats(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numberThreat = yield this._threatRepository.GetTotal();
+            let highThreat = yield this._threatRepository.GetHigh();
+            let mediumThreat = yield this._threatRepository.GetMedium();
+            let lowThreat = yield this._threatRepository.GetLow();
+            let AgentsRating = yield this._threatRepository.GetAgentByHighRating();
+            let AgentsImpact = yield this._threatRepository.GetAgentByHighImpact();
+            let AgentsLikelihood = yield this._threatRepository.GetAgentByHighLikelihood();
+            return res.status(200).json({
+                "static": { numberThreat, highThreat, mediumThreat, lowThreat },
+                "Agents": {
+                    "AgentsRating": AgentsRating,
+                    "AgentsImpact": AgentsImpact,
+                    "AgentsLikelihood": AgentsLikelihood
+                }
+            });
+        });
+    }
+    ;
+ 
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title } = req.body;
@@ -98,9 +124,11 @@ class ThreatApi {
     getDtoFromRequest(req) {
         return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
     }
+ 
     getTopThree(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
         });
     }
+ 
 }
 exports.ThreatApi = ThreatApi;

@@ -18,7 +18,9 @@ import vendor_icon from '../images/icons/vendor_icon.png';
 
 export const MainDashboard = () => { 
   const [tests, setTests] = useState(null);
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
 /*    useEffect(() => {
         return new Promise((resolve, reject) => {
           try {
@@ -46,7 +48,7 @@ export const MainDashboard = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item sidenav-active">
@@ -60,27 +62,27 @@ export const MainDashboard = () => {
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./vul">
+                <a className="sidenav-link" href="/vul">
                   <img className="sidenav-icon" src={vulnerabilities} alt =""/>Vulnerabilities
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./threat">
+                <a className="sidenav-link" href="/threat">
                   <img className="sidenav-icon" src={threats} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
-                <a className="sidenav-link" href="./asset">
+                <a className="sidenav-link" href="/asset">
                   <img className="sidenav-icon" src={assets} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./rec">
+                <a className="sidenav-link" href="/rec">
                   <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
                 </a>
               </li>
               <li className="sidenav-item">
-                <a className="sidenav-link" href="./report">
+                <a className="sidenav-link" href="/report">
                   <img className="sidenav-icon" src={reports} alt =""/>Reports
                 </a>
               </li>
@@ -89,7 +91,7 @@ export const MainDashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">

@@ -18,7 +18,9 @@ export const ThreatsDashboardDetails = () => {
     //const [threats, setThreats] = useState(thr_data);
      
     const [assets, setAssets] = useState([]);
-
+    const storedUser = localStorage.getItem("storedUser");
+    const parsedUser = JSON.parse(storedUser);
+    const isAdmin = parsedUser.role;
    
       const history =useHistory();
       const onAddThreat =()=>{
@@ -52,7 +54,7 @@ export const ThreatsDashboardDetails = () => {
       return (
       <>     
           <div className="asset-menu-buttons">
-            <button className="Button-Icon-Manage-Threat" onClick={onAddThreat}> Add Threat</button>  
+          {(isAdmin === "Admin") && (<button className="Button-Icon-Manage-Threat" onClick={onAddThreat}> Add Threat</button> )} 
             <button className="Button-Icon-Filter"> <img  src={filter_blue} alt =""/> Filter</button>
           </div> 
         <div className="table-border-blue scrollable">
@@ -70,9 +72,11 @@ export const ThreatsDashboardDetails = () => {
                     <th>Impact</th>
                     <th>Likelihood</th>
                     <th>Rating</th>
+                    {(isAdmin === "Admin") && (
                     <th>
                       <img  src={pen_white} alt =""/>
                     </th>
+                    )}
                 </tr>
             </thead>
             <tbody>
@@ -92,7 +96,7 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.likelihood}</td>
                     <td>{threat.rating}</td>
                      <td>
-                     <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> 
+                     {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> )}
                 </td>
                 </tr>
             ) )}

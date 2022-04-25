@@ -1,7 +1,8 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 // import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
 // import {AssetEntity} from '../db/models/Asset'
-
+ import sequelize from "sequelize";
+//import {Sequelize} from "sequelize";
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
 import {Sequelize} from "sequelize";
@@ -43,6 +44,7 @@ export class ThreatRepository {
     return model.destroy();
   }
 
+ 
   public async GetByHighImpact(id:number){
     const threat = db.Threat.findAll({
       attributes: [
@@ -54,4 +56,88 @@ export class ThreatRepository {
     })
     return threat;    
   }   
+ 
+  public async GetTotal(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total_Threat'],
+     
+      ]
+    });
+    
+  }
+  public async GetAgentByHighRating(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+       
+     
+      ],
+      where: {rating: 'High'}
+    });
+    
+  }
+
+  public async GetAgentByHighImpact(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+      ],
+      where: {impact: 'High'}
+    });
+    
+  }
+
+  public async GetAgentByHighLikelihood(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      limit: 3,
+      attributes: [
+        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+     
+      ],
+      where: {likelihood: 'High'}
+    });
+    
+  }
+  public async GetHigh(model: Model<typeof Threat>) {
+    
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
+     
+      ],
+      where: {rating: 'High'}
+    });
+    
+  }
+
+  public async GetMedium(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
+     
+      ],
+      where: {rating: 'Medium'}
+    });
+    
+  }
+
+  public async GetLow(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
+     
+      ],
+      where: {rating: 'Low'}
+    });
+    
+  }
+  
+ 
 }

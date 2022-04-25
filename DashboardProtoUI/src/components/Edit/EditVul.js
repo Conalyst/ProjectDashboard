@@ -28,7 +28,9 @@ export const EditVul = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: VULDASHBOARD,
@@ -63,6 +65,14 @@ export const EditVul = () => {
     { value: 'T9', label: 'T9' },
     { value: 'T10', label:'T10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +115,7 @@ export const EditVul = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +158,7 @@ export const EditVul = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -239,11 +249,12 @@ export const EditVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Threats <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>
