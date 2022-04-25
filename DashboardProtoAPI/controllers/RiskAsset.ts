@@ -29,7 +29,7 @@ export class RiskAssetApi{
  
       const alreadyExists = await this._riskAssetRepository.GetByRisksAssetIds(riskId, assetId)     
       .catch(
-        (err) => {
+        (err: any) => {
             console.log("Error: ", err);
         }
       );
@@ -57,9 +57,19 @@ export class RiskAssetApi{
     const asset =  await this._riskAssetRepository.assetTocalcRisk(riskId)
     const vuln =  await this._riskAssetRepository.vulnTocalcRisk(riskId)
     const threat =  await this._riskAssetRepository.threatTocalcRisk(riskId)
-    const highestAssetRating = asset[0]['Asset.rating']
-    const highestVulnRating = vuln[0]['Asset.Vulnerabilities.rating']
-    const highestThreatRating = threat[0]['Asset.Vulnerabilities.Threats.rating']
+    let highestAssetRating: any;
+    let highestVulnRating: any;
+    let highestThreatRating: any
+    console.log("asset..", asset.length)
+    if (asset.length !== 0) {
+      highestAssetRating = asset[0]['Asset.rating']
+    }
+    if (vuln.length !== 0) {
+      highestVulnRating = vuln[0]['Asset.Vulnerabilities.rating']
+    }
+    if (threat.length !== 0) {
+      highestThreatRating = threat[0]['Asset.Vulnerabilities.Threats.rating']
+    }    
     const risk = { highestAssetRating, highestVulnRating, highestThreatRating}
     const scores = { 'H': 4, 'M': 3, 'L': 2 }
     const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating] 
