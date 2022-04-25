@@ -68,7 +68,7 @@ export const DashboardDetails = () => {
     <>     
         <div className="asset-menu-buttons">          
         {(isAdmin === "Admin") && (<button className="Button-Icon-Manage-AddAsset" onClick={onAddAsset}> Add Asset</button> )}
-          <button className="Button-Icon-Filter-modal"> <img  src={filter_blue} alt =""/> Filter</button>
+          <button className="Button-Icon-Filter-Addasset"> <img  src={filter_blue} alt =""/> Filter</button>
         </div> 
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
