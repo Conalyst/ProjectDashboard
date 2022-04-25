@@ -4,8 +4,8 @@
     "install": "npm --prefix DashboardProtoAPI install DashboardProtoAPI && npm --prefix DashboardProtoUI install DashboardProtoUI",
     "dev:backend": "npm install --prefix DashboardProtoAPI start",
     "dev:frontend": "npm install --prefix DashboardProtoUI start",
-    "sequelize": "npm run --prefix DashboardProtoAPI sequelize",
-    "sequelize-cli": "npm run --prefix DashboardProtoAPI sequelize-cli",
+    "sequelize": "npm install --prefix DashboardProtoAPI sequelize && npm run --prefix DashboardProtoAPI sequelize",
+    "sequelize-cli": "npm install -g --prefix DashboardProtoAPI sequelize-cli && npm run --prefix DashboardProtoAPI sequelize-cli",
     "start": "npm start --prefix DashboardProtoAPI"
   }
 }
