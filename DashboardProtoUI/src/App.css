@@ -633,7 +633,7 @@ td.bar-charts-summary > span {
   .Filter-pop-up-background{
     position: absolute;
     width: 1440px; 
-    height: 733px; 
+    height: 800px; 
     left: 0px; 
     top: 0px;
     background-color:rgba(46, 46, 46, 0.25);
@@ -710,7 +710,7 @@ td.bar-charts-summary > span {
   margin-top: 6px;
 }
 .filter_label {
-  width: 96px;
+  width: 278px;
   height: 16px;
   flex-grow: 0;
   margin: 0 182px 10px 0;
