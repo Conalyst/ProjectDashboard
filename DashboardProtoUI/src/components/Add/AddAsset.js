@@ -38,7 +38,7 @@ export const AddAsset = () => {
     
   const parsedUser = JSON.parse(storedUser);
   
-  console.log("login user ", parsedUser)
+ 
   const history =useHistory();
  
   const onDone =(e)=>{
