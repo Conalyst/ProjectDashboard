@@ -11,5 +11,6 @@ export const toEntity = (assetDto: AssetDto) => {
     assetEntity.integrity = assetDto.integrity;
     assetEntity.availability = assetDto.availability;
     assetEntity.rating = assetDto.rating;
+    assetEntity.indexRating = assetDto.indexRating;
     return assetEntity;
 }

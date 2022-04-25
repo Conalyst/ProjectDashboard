@@ -14,6 +14,7 @@ interface AssetAttributes {
   integrity: string;
   availability: string;
   rating: string;
+  indexRating: number;
   createdAt: Date;
   updatedAt: Date | null;
 }
@@ -29,6 +30,7 @@ module.exports = (sequelize: any, DataTypes:any) => {
     public integrity!: string;
     public availability!: string;
     public rating!: string;
+    public indexRating!: number;
     public createdAt!: Date;
     public updatedAt!: Date | null;
 
@@ -79,6 +81,10 @@ module.exports = (sequelize: any, DataTypes:any) => {
     } ,
     rating: {
       type: DataTypes.STRING,
+      allowNull: false,
+    },
+    indexRating: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     updatedAt: {

@@ -55,6 +55,7 @@ class RiskApi {
             }
         });
     }
+ 
     //static Asset
     getStaticRisks(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -68,6 +69,7 @@ class RiskApi {
         });
     }
     ;
+ 
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const id = req.params.id;

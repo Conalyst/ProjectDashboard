@@ -13,10 +13,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreatRepository = void 0;
+ 
+const models_1 = __importDefault(require("../db/models"));
+const sequelize_1 = require("sequelize");
+ 
 // import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
 // import {AssetEntity} from '../db/models/Asset'
 const sequelize_1 = __importDefault(require("sequelize"));
 const models_1 = __importDefault(require("../db/models"));
+ 
 const Threat = require("../db/models");
 class ThreatRepository {
     constructor() {
@@ -56,6 +61,18 @@ class ThreatRepository {
             return model.destroy();
         });
     }
+ 
+    GetByHighImpact(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const threat = models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.Sequelize.fn('DISTINCT', sequelize_1.Sequelize.col('agent')), 'agent'],
+                    "impact"
+                ],
+                where: { impact: 'H' },
+            });
+            return threat;
+ 
     GetTotal(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Threat.findAll({
@@ -126,6 +143,7 @@ class ThreatRepository {
                 ],
                 where: { rating: 'Low' }
             });
+ 
         });
     }
 }

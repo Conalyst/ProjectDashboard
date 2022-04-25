@@ -60,5 +60,32 @@ class RiskAssetApi {
     getDtoFromRequest(req) {
         return new RiskAssetDto_1.RiskAssetDto(req.body.id, req.body.assetId, req.body.assetId, new Date());
     }
+ 
+    getCalculatedRisk(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const riskId = req.params.id;
+            const asset = yield this._riskAssetRepository.assetTocalcRisk(riskId);
+            const vuln = yield this._riskAssetRepository.vulnTocalcRisk(riskId);
+            const threat = yield this._riskAssetRepository.threatTocalcRisk(riskId);
+            let highestAssetRating;
+            let highestVulnRating;
+            let highestThreatRating;
+            if (asset.length !== 0) {
+                highestAssetRating = asset[0]['Asset.rating'];
+            }
+            if (vuln.length !== 0) {
+                highestVulnRating = vuln[0]['Asset.Vulnerabilities.rating'];
+            }
+            if (threat.length !== 0) {
+                highestThreatRating = threat[0]['Asset.Vulnerabilities.Threats.rating'];
+            }
+            const risk = { highestAssetRating, highestVulnRating, highestThreatRating };
+            const scores = { 'H': 4, 'M': 3, 'L': 2 };
+            const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating];
+            risk['score'] = riskScore;
+            return res.status(200).json(risk);
+        });
+    }
+
 }
 exports.RiskAssetApi = RiskAssetApi;

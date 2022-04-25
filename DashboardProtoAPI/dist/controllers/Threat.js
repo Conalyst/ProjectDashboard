@@ -19,7 +19,10 @@ class ThreatApi {
     }
     getAllThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let threatList = yield this._threatRepository.Get();
+ 
+            // let threatList = await this._threatRepository.Get();
+            let threatList = yield this._threatRepository.GetByHighImpact();
+ 
             // console.log("Helllllo")
             return res.status(200).json(threatList);
         });
@@ -27,13 +30,15 @@ class ThreatApi {
     ;
     getThreatById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+ 
             let threatId = req.body.id;
-            console.log("hhhhhh", threatId);
+      
             let threat = yield this._threatRepository.GetById(threatId);
             return res.status(200).json(threat);
         });
     }
     ;
+ 
     //static Asset and Agents
     getStaticThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -55,6 +60,7 @@ class ThreatApi {
         });
     }
     ;
+ 
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { title } = req.body;
@@ -116,7 +122,23 @@ class ThreatApi {
     }
     //#region private methods
     getDtoFromRequest(req) {
-        return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
+        let ratingThreat;
+        if (req.body.rating == "H") {
+            ratingThreat = 3;
+        }
+        else if (req.body.rating == "M") {
+            ratingThreat = 2;
+        }
+        else if (req.body.rating == "L") {
+            ratingThreat = 1;
+        }
+        return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, ratingThreat, new Date());
     }
+ 
+    getTopThree(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
+    }
+ 
 }
 exports.ThreatApi = ThreatApi;

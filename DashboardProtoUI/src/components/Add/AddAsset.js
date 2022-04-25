@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
+ 
 import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/CONSTANTS";
+ 
 import Select from 'react-select';
 
 
@@ -36,7 +38,7 @@ export const AddAsset = () => {
     
   const parsedUser = JSON.parse(storedUser);
   
-  console.log("login user ", parsedUser)
+ 
   const history =useHistory();
  
   const onDone =(e)=>{

@@ -81,4 +81,6 @@ export class RiskApi{
         
       return new RiskDto(req.body.id, req.body.category, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
   }
+
+
 }
