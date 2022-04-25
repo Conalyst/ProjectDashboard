@@ -1,6 +1,7 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
+import sequelize from "sequelize";
 const Asset = require("../db/models")
 
 export class AssetRepository {
@@ -75,4 +76,53 @@ export class AssetRepository {
     public async delete(model: Model<typeof Asset>, idAsset:number){
       return model.destroy();
     }
+
+    
+    public async GetTotal(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'total_Asset'],
+       
+        ]
+      });
+      
+    }
+
+    public async GetHigh(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {rating: 'High'}
+      });
+      
+    }
+
+    public async GetMedium(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {rating: 'Medium'}
+      });
+      
+    }
+
+    public async GetLow(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {rating: 'Low'}
+      });
+      
+    }
+    
 }

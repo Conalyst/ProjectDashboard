@@ -111,6 +111,7 @@ export const RouterConfig = (props) => {
             <Route path="*">
                 <NotFound />
             </Route>
+         
         </Switch>
     );
 };

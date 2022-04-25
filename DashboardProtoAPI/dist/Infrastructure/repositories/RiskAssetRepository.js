@@ -47,6 +47,7 @@ class RiskAssetRepository {
             return models_1.default.RiskAsset.create(model['dataValues']);
         });
     }
+ 
     assetTocalcRisk(riskId) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = models_1.default.RiskAsset.findAll({
@@ -94,5 +95,6 @@ class RiskAssetRepository {
             return result;
         });
     }
+ 
 }
 exports.RiskAssetRepository = RiskAssetRepository;

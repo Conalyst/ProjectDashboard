@@ -14,7 +14,9 @@ const Threat_1 = __importDefault(require("./Threat"));
 const VulnerabilityThreat_1 = __importDefault(require("./VulnerabilityThreat"));
 const Risk_1 = __importDefault(require("./Risk"));
 const RiskAsset_1 = __importDefault(require("./RiskAsset"));
+ 
 const RiskCalculate_1 = __importDefault(require("./RiskCalculate"));
+ 
 const router = (0, express_1.Router)();
 router.use('/assets', asset_1.default);
 router.use('/assets/company', CompanyAssets_1.default);
@@ -28,5 +30,7 @@ router.use('/threats', Threat_1.default);
 router.use('/vulnerability-threat', VulnerabilityThreat_1.default);
 router.use('/risks', Risk_1.default);
 router.use('/risk-asset', RiskAsset_1.default);
+ 
 router.use('/riskcalc', RiskCalculate_1.default);
+ 
 exports.default = router;

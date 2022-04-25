@@ -14,6 +14,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AssetRepository = void 0;
 const models_1 = __importDefault(require("../db/models"));
+const sequelize_1 = __importDefault(require("sequelize"));
 const Asset = require("../db/models");
 class AssetRepository {
     constructor() {
@@ -92,6 +93,45 @@ class AssetRepository {
     delete(model, idAsset) {
         return __awaiter(this, void 0, void 0, function* () {
             return model.destroy();
+        });
+    }
+    GetTotal(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'total_Asset'],
+                ]
+            });
+        });
+    }
+    GetHigh(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
+                ],
+                where: { rating: 'High' }
+            });
+        });
+    }
+    GetMedium(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Asset'],
+                ],
+                where: { rating: 'Medium' }
+            });
+        });
+    }
+    GetLow(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Asset'],
+                ],
+                where: { rating: 'Low' }
+            });
         });
     }
 }
