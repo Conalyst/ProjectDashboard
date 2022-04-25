@@ -19,9 +19,9 @@ app.use((0, cors_1.default)(origin));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
 app.use(express_1.default.static(path.join(__dirname + "../../DashboardProtoUI/build")));
-app.get('\*', (req, res) => {
-    res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
-});
+//  app.get('\*', (req, res) => {
+//   res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
+// });
 app.use('/api/v2', routes_1.default);
 const port = process.env.PORT || 5000;
 models_1.default.sequelize
