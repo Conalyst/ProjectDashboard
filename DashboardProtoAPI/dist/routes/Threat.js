@@ -8,10 +8,10 @@ const threatRouter = (0, express_1.Router)();
 threatRouter.get("/", (req, res) => {
     threatApi.getAllThreats(req, res);
 });
-threatRouter.get("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
+threatRouter.get("/:id", (req, res) => {
     threatApi.getThreatById(req, res);
 });
-threatRouter.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+threatRouter.post("/", (req, res) => {
     threatApi.create(req, res);
 });
 threatRouter.put("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {

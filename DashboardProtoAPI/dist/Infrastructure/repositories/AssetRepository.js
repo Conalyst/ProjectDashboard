@@ -18,19 +18,34 @@ const Asset = require("../db/models");
 class AssetRepository {
     constructor() {
     }
+    GetAssets() {
+        return __awaiter(this, void 0, void 0, function* () {
+            let assets = yield models_1.default.Asset.findAll({
+                include: [
+                    { model: models_1.default.AssetCategory, attributes: ['id', 'name'] },
+                    {
+                        model: models_1.default.Vulnerability,
+                        include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                        attributes: ['id', 'category', 'title', 'description']
+                    }
+                ]
+            });
+            return assets;
+        });
+    }
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
             let assets = yield models_1.default.Asset.findAll({
                 include: [
-                // {model:db.AssetCategory, attributes: ['id', 'name']}, 
-                // {
-                //   model: db.Vulnerability,
-                //   include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
-                //   attributes: ['id','category','title', 'description']
-                // }
+                    { model: models_1.default.AssetCategory, attributes: ['id', 'name'] },
+                    {
+                        model: models_1.default.Vulnerability,
+                        include: [{ model: models_1.default.Threat, attributes: ['id', 'category', 'agent', 'title', 'description'] }],
+                        attributes: ['id', 'category', 'title', 'description']
+                    }
                 ],
-                order: [['rating', 'ASC']],
-                attributes: ['id', 'rating']
+                //  order: [['rating', 'ASC']],
+                //  attributes: ['id', 'rating']
             });
             return assets;
         });
