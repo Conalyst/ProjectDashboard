@@ -18,9 +18,9 @@ const origin = {
 
  app.use(express.static(path.join(__dirname + "../../DashboardProtoUI/build")));
 
-//  app.get('\*', (req, res) => {
-//   res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
-// });
+ app.get('\*', (req, res) => {
+  res.sendFile(path.join(__dirname + '../../DashboardProtoUI/build/index.html'));
+});
 
 app.use('/api/v2', routes)
 const port = process.env.PORT || 5000;
