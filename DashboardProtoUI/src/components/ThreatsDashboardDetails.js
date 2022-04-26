@@ -95,9 +95,9 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.impact}</td>
                     <td>{threat.likelihood}</td>
                     <td>{threat.rating}</td>
-                     <td>
-                     {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> )}
-                </td>
+                  
+                     {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> </td>)}
+                
                 </tr>
             ) )}
             </tbody>
