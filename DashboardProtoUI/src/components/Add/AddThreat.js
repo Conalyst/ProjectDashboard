@@ -197,25 +197,25 @@ export const AddThreat = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)} >
-                  <option value="L">Low</option>
-                  <option value="M">Medium</option>
-                  <option value="H">High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
-                  <option value="L">Low</option>
-                  <option value="M">Medium</option>
-                  <option value="H">High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                  <option value="L">Low</option>
-                  <option value="M">Medium</option>
-                  <option value="H">High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>

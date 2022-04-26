@@ -216,9 +216,9 @@ export const EditRec = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Safeguard</Form.Label>
                   <Form.Select className="Frame-right">
-                  <option value="L">Low</option>
-                  <option value="M">Medium</option>
-                  <option value="H">High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
