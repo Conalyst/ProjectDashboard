@@ -2,11 +2,15 @@ import express from 'express'
 import  { RiskAssetRepository } from '../Infrastructure/repositories/RiskAssetRepository'
 import { RiskAssetDto } from '../domain/dtos/RiskAssetDto'
 import {toEntity} from '../application/mappers/RiskAssetMapper'
+// import  {RiskRepository } from '../Infrastructure/repositories/RiskRepository'
+import { RiskApi } from './Risk'
+// import {toEntity} from '../application/mappers/RiskMapper'
 
 export class RiskAssetApi{
     private _riskAssetRepository:any;
     constructor(){
         this._riskAssetRepository = new RiskAssetRepository();
+      
     }
 
     async getByRiskId(req: express.Request, res: express.Response){
@@ -37,7 +41,11 @@ export class RiskAssetApi{
       if (alreadyExists) {
         return res.status(409).json({ message: "this Risk-Asset already exist!" });
       } else {
-        const riskAssetDto = this.getDtoFromRequest(req);       
+        const riskAssetDto = this.getDtoFromRequest(req);    
+        const risk = this.getCalculatedRisk(riskId)  
+        // riskAssetDto. 
+        const riskApi = new RiskApi();
+        const riskRating = riskApi.updateRating(riskId, risk)
         let createdRiskAsset = await this._riskAssetRepository.Create(toEntity(riskAssetDto))       
         if(createdRiskAsset) {
             return res.status(201).json(createdRiskAsset);
@@ -51,15 +59,16 @@ export class RiskAssetApi{
     return new RiskAssetDto(req.body.id,req.body.assetId,req.body.assetId, new Date());
   }
 
-  async getCalculatedRisk(req: express.Request, res: express.Response){
-    
-    const riskId = req.params.id;
+  // async getCalculatedRisk(req: express.Request, res: express.Response){
+  async getCalculatedRisk(riskId: any){ 
+    // const riskId = riskId;
     const asset =  await this._riskAssetRepository.assetTocalcRisk(riskId)
     const vuln =  await this._riskAssetRepository.vulnTocalcRisk(riskId)
     const threat =  await this._riskAssetRepository.threatTocalcRisk(riskId)
     let highestAssetRating: any;
     let highestVulnRating: any;
-    let highestThreatRating: any
+    let highestThreatRating: any;
+    let riskAcceptance: any;
 
     if (asset.length !== 0) {
       highestAssetRating = asset[0]['Asset.rating']
@@ -75,6 +84,19 @@ export class RiskAssetApi{
     const scores = { 'H': 4, 'M': 3, 'L': 2 }
     const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating]
     risk['score'] = riskScore
-      return  res.status(200).json(risk);
-    }
+    if (risk['score'] >= 1 && risk['score'] <= 4)
+      riskAcceptance = 'VL'
+    else if (risk['score'] >= 4 && risk['score'] <= 12)
+      riskAcceptance = 'L'
+    else if (risk['score'] >= 15 && risk['score'] <= 32)
+      riskAcceptance = 'M'
+    else if (risk['score'] >= 36 && risk['score'] <= 75)
+      riskAcceptance = 'H'
+    else if (risk['score'] >= 80 && risk['score'] <= 125)
+      riskAcceptance = 'VH'
+    risk['riskAcceptance'] = riskAcceptance
+    // return  res.status(200).json(risk);
+    return risk['riskAcceptance'];
+  }
+
 }
