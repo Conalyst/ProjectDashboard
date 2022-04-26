@@ -6,14 +6,14 @@ import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDRISK, EDITRISK} from "../navigation/constants";
+import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 import { getAllRisks } from "../services/riskService";
 
 export const RiskDashboardDetails = () => {
 
-    const [risks, setRisk] = useState(risk_data);
+    const [risks, setRisk] = useState([]);
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;
@@ -38,7 +38,7 @@ export const RiskDashboardDetails = () => {
         console.log("parsed user dashboard", parsedUser);
         getAllRisks()
         .then((result) => {
-            console.log("Threats", result)
+            console.log("Risks", result)
             setRisk(result);
         })
    
@@ -63,7 +63,6 @@ export const RiskDashboardDetails = () => {
                     <th>Likelihood</th>
                     <th>Impact</th>
                     <th>Rating</th>
-                    <th>Action</th>
                     {(isAdmin === "Admin") && (
                     <th>
                      <img  src={pen_white} alt =""/>
@@ -85,7 +84,6 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.likelihood}</td>
                     <td>{risk.impact}</td>
                     <td>{risk.rating}</td>
-                    <td>{risk.action}</td>
                     <td>
                     <td>
                     {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> )}

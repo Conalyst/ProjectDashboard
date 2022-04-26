@@ -10,7 +10,7 @@ import pen_black from '../images/icons/pen_black.png';
 //import { pullCompanyAssets } from "../services/companyAssetsService";
 import { getAllAssets } from "../services/assetsService";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, EDITASSET } from "../navigation/constants";
+import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
@@ -37,8 +37,6 @@ export const DashboardDetails = () => {
        pathname: EDITASSET,
      });
     } 
-
-  
 
     useEffect(() => {
       console.log("in detail")
