@@ -27,24 +27,26 @@ export const ThreatsDashboardVisual = () => {
                 </span>
                 <span className="span-L">
                     L
-                </span></div></div>    
+                </span></div></div>   
+                <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
                 </div>
                 <div className="Rectangle-1407">
-                    <span className="Phishing">
+                    <span className="text-thr ">
                         Phishing
                     </span>
                 </div>
-                <div className="Rectangle-1408">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Lost or stolen device
                     </span>
                 </div>
-                <div className="Rectangle-1409">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr">
                         Document sharing
                     </span>
+                </div>
                 </div>
             </div>
             <div className="col-4">
@@ -64,23 +66,25 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                 </div>
             </div>    
+            <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                 </div>
-                <div className="Rectangle-1407-Mal">
-                    <span className="Malware">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Malware
                     </span>
                 </div>
-                <div className="Rectangle-1407-Ph">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Phishing
                     </span>
                 </div>
-                <div className="Rectangle-1409">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Document sharing
                     </span>
+                </div>
                 </div>
             </div>
             <div className="col-4">
@@ -99,24 +103,26 @@ export const ThreatsDashboardVisual = () => {
                          L
                     </span>
                      </div>
-                </div>                
+                </div>   
+                <div className="grey-threat">             
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
-                <div className="Rectangle-1408-Fin">
-                    <span className="Financial-Fraud">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Financial Fraud
                     </span>
                 </div>
-                <div className="Rectangle-1408">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Lost or stolen device
                     </span>
                 </div>
-                <div className="Rectangle-1409-Service">
-                    <span className="Phishing">
+                <div className="Rectangle-1407">
+                    <span className="text-thr ">
                         Denial of service
                     </span>
+                </div>
                 </div>
             </div>
         </div>         

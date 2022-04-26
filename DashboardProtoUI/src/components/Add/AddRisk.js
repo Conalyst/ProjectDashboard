@@ -202,25 +202,25 @@ export const AddRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option value="L">Low</option>
+                  <option value="M">Medium</option>
+                  <option value="H">High</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option value="L">Low</option>
+                  <option value="M">Medium</option>
+                   <option value="H">High</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option value="L">Low</option>
+                  <option value="M">Medium</option>
+                  <option value="H">High</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
