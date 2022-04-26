@@ -10,6 +10,14 @@ export const VulDashboardVisual = () => {
     const [highVulnerabilities, setHighVulnerabilities] = useState(null);
     const [mediumVulnerabilities, setMediumVulnerabilities] = useState(null);
     const [lowVulnerabilities, setLowVulnerabilities] = useState(null);
+
+    const [highVulnerabilityImpact, setHighVulnerabilityImpact] = useState(null);
+    const [mediumVulnerabilityImpact, setMediumVulnerabilityImpact] = useState(null);
+    const [lowVulnerabilityImpact, setLowVulnerabilityImpact] = useState(null);
+
+    const [highVulnerabilityLikelihood, setHighVulnerabilityLikelihood] = useState(null);
+    const [mediumVulnerabilityLikelihood, setMediumVulnerabilityLikelihood] = useState(null);
+    const [lowVulnerabilityLikelihood, setLowVulnerabilityLikelihood] = useState(null);
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -24,6 +32,14 @@ export const VulDashboardVisual = () => {
               setHighVulnerabilities(res.static.highVulnerability[0].high_Vulnerability)
               setMediumVulnerabilities(res.static.mediumVulnerability[0].mediun_Vulnerability)
               setLowVulnerabilities(res.static.lowVulnerability[0].low_Vulnerability)
+
+              setHighVulnerabilityImpact(res.visual.highVulnerabilityImpact[0].high_Vulnerability)
+              setMediumVulnerabilityImpact(res.visual.mediumVulnerabilityImpact[0].mediun_Vulnerability)
+              setLowVulnerabilityImpact(res.visual.lowVulnerabilityImpact[0].low_Vulnerability)
+
+              setHighVulnerabilityLikelihood(res.visual.highVulnerabilityLikelihood[0].high_Vulnerability)
+              setMediumVulnerabilityLikelihood(res.visual.mediumVulnerabilityLikelihood[0].mediun_Vulnerability)
+              setLowVulnerabilityLikelihood(res.visual.lowVulnerabilityLikelihood[0].low_Vulnerability)
                
             })
               .catch((err) => {
@@ -52,15 +68,43 @@ export const VulDashboardVisual = () => {
                 <td className="stack-bars-summary">
                     <div className="stack-bar-h">
                         Impact
-                        <div>
+                        {/* <div>
                             <SummaryStackedChart data={vulData.impact} />                            
-                        </div>
+                        </div> */}
+                        <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"  ><div className="Light-Blue-Color"  ><div className="Grey-Color"  ></div></div></div>
+                    <span className="span-H"  >
+                         H({highVulnerabilityImpact})
+                    </span>
+                    <span className="span-M">
+                         M({mediumVulnerabilityImpact})
+                    </span>
+                    <span className="span-L">
+                         L({lowVulnerabilityImpact})
+                    </span>
+                </div>
+            </div>  
+
                     </div>
                     <div className="stack-bar-h">
                         Likelihood
-                        <div>
+                        {/* <div>
                             <SummaryStackedChart data={vulData.likelihood} />                            
-                        </div>
+                        </div> */}
+
+<div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"  ><div className="Light-Blue-Color"  ><div className="Grey-Color"  ></div></div></div>
+                    <span className="span-H"  >
+                         H({highVulnerabilityLikelihood})
+                    </span>
+                    <span className="span-M">
+                         M({mediumVulnerabilityLikelihood})
+                    </span>
+                    <span className="span-L">
+                         L({lowVulnerabilityLikelihood})
+                    </span>
+                </div>
+            </div>  
                     </div>
                 </td>
                 <td className="bar-charts-summary">

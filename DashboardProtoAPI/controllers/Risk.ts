@@ -36,7 +36,8 @@ export class RiskApi{
         return res.status(409).json({ message: "this Risk already exist!" });
       } else {
         const riskDto = this.getDtoFromRequest(req); 
-        let createdRisk = await this._riskRepository.Create(toEntity(riskDto))       
+        let createdRisk = await this._riskRepository.Create(toEntity(riskDto)) 
+              
         if(createdRisk){
             return res.status(201).json(createdRisk);
         }else{

@@ -49,8 +49,28 @@ class AssetApi {
             let highAsset = yield this._assetRepository.GetHigh();
             let mediumAsset = yield this._assetRepository.GetMedium();
             let lowAsset = yield this._assetRepository.GetLow();
+            let highAssetConfidentiality = yield this._assetRepository.GetHighConfidentiality();
+            let mediumAssetConfidentiality = yield this._assetRepository.GetMediumConfidentiality();
+            let lowAssetConfidentiality = yield this._assetRepository.GetLowConfidentiality();
+            let highAssetIntegrity = yield this._assetRepository.GetHighIntegrity();
+            let mediumAssetIntegrity = yield this._assetRepository.GetMediumIntegrity();
+            let lowAssetIntegrity = yield this._assetRepository.GetLowIntegrity();
+            let highAssetAvailability = yield this._assetRepository.GetHighAvailability();
+            let mediumAssetAvailability = yield this._assetRepository.GetMediumAvailability();
+            let lowAssetAvailability = yield this._assetRepository.GetLowAvailability();
             return res.status(200).json({
-                "static": { highAsset, numberAsset, mediumAsset, lowAsset }
+                "static": { highAsset, numberAsset, mediumAsset, lowAsset },
+                "visual": {
+                    "highAssetConfidentiality": highAssetConfidentiality,
+                    "mediumAssetConfidentiality": mediumAssetConfidentiality,
+                    "lowAssetConfidentiality": lowAssetConfidentiality,
+                    "highAssetIntegrity": highAssetIntegrity,
+                    "mediumAssetIntegrity": mediumAssetIntegrity,
+                    "lowAssetIntegrity": lowAssetIntegrity,
+                    "highAssetAvailability": highAssetAvailability,
+                    "mediumAssetAvailability": mediumAssetAvailability,
+                    "lowAssetAvailability": lowAssetAvailability
+                }
             });
         });
     }

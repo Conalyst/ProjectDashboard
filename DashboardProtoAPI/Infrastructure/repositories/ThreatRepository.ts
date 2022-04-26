@@ -88,6 +88,7 @@ export class ThreatRepository {
     });
     
   }
+  
 
   public async GetAgentByHighLikelihood(model: Model<typeof Threat>) {
     return db.Threat.findAll({
@@ -137,5 +138,82 @@ export class ThreatRepository {
     
   }
   
+
+
+  //
+
+  public async GetHighImpact(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
+     
+      ],
+      where: {impact: 'H'}
+    });
+    
+  }
+
+  public async GetMediumImpact(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
+     
+      ],
+      where: {impact: 'M'}
+    });
+    
+  }
+
+  public async GetLowImpact(model: Model<typeof Threat>) {
+    return db.Threat.findAll({
+      attributes: [
+      
+        [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
+     
+      ],
+      where: {impact: 'L'}
+    });
+    
+  }
+//Likelihood
+
+
+public async GetHighLikelihood(model: Model<typeof Threat>) {
+  return db.Threat.findAll({
+    attributes: [
+    
+      [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
+   
+    ],
+    where: {likelihood: 'H'}
+  });
+  
+}
+
+public async GetMediumLikelihood(model: Model<typeof Threat>) {
+  return db.Threat.findAll({
+    attributes: [
+    
+      [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
+   
+    ],
+    where: {likelihood: 'M'}
+  });
+  
+}
+
+public async GetLowLikelihood(model: Model<typeof Threat>) {
+  return db.Threat.findAll({
+    attributes: [
+    
+      [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
+   
+    ],
+    where: {likelihood: 'L'}
+  });
+  
+}
  
 }

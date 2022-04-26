@@ -26,6 +26,7 @@ threatRouter.get("/static", (req, res) => {
   threatApi.getStaticThreats(req, res);    
 })
  
+
 threatRouter.put("/:id" ,(req, res) =>{
     threatApi.update(req, res)
 })

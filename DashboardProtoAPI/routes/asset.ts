@@ -13,8 +13,8 @@ assetRouter.get("/", (req, res) => {
 assetRouter.get("/static", (req, res) => {     
   assetApi.getStaticAssets(req, res);    
 })
- 
 
+ 
 assetRouter.get("/:id", (req, res) => {     
   assetApi.getAssetsById(req, res);    
 })
