@@ -59,11 +59,10 @@ export const RecDashboardDetails = () => {
                     <td>{recommendation.description}</td>
                     <td>{recommendation.safeguard}</td>
                     <td>{recommendation.risks_ids}</td>
-                    <td>
-                    <td>
-                    {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button> )}
-                    </td>             
-                    </td>
+                    
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button>  </td>   )}
+                             
+
                 </tr>
             ) )}
             </tbody>
