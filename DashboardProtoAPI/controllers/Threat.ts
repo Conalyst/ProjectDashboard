@@ -40,6 +40,12 @@ export class ThreatApi{
       let AgentsRating = await this._threatRepository.GetAgentByHighRating();
       let AgentsImpact = await this._threatRepository.GetAgentByHighImpact();
       let AgentsLikelihood = await this._threatRepository.GetAgentByHighLikelihood();
+      let highThreatImpact = await this._threatRepository.GetHighImpact();
+      let mediumThreatImpact = await this._threatRepository.GetMediumImpact();
+      let lowThreatImpact = await this._threatRepository.GetLowImpact();
+      let highThreatLikelihood = await this._threatRepository.GetHighLikelihood();
+      let mediumThreatLikelihood = await this._threatRepository.GetMediumLikelihood();
+      let lowThreatLikelihood = await this._threatRepository.GetLowLikelihood();
       console.log("@@@@@@@@@",numberThreat)
       return  res.status(200).json({
         "static":{ numberThreat,highThreat,mediumThreat,lowThreat},
@@ -48,10 +54,20 @@ export class ThreatApi{
           "AgentsImpact":AgentsImpact,
           "AgentsLikelihood":AgentsLikelihood
   
-         }
+         },
+         "visual":{ 
+          "highThreatLikelihood": highThreatLikelihood,
+          "mediumThreatLikelihood": mediumThreatLikelihood,
+          "lowThreatLikelihood":lowThreatLikelihood,
+          "highThreatImpact":highThreatImpact,
+          "mediumThreatImpact":mediumThreatImpact,
+          "lowThreatImpact":lowThreatImpact
+        }
         });
     };   
  
+
+  
     async create(req: express.Request, res: express.Response){
         
       const { title} = req.body;
@@ -70,7 +86,7 @@ export class ThreatApi{
         if(createdThreat){
             return res.status(201).json(createdThreat);
         }else{
-            return res.status(400).send("The vulnerability could not be created. Please check the provided data.")
+            return res.status(400).send("The threat could not be created. Please check the provided data.")
         }
       }
       

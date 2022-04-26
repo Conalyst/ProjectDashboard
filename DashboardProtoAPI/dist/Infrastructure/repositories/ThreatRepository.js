@@ -136,5 +136,67 @@ class ThreatRepository {
             });
         });
     }
+    //
+    GetHighImpact(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Threat'],
+                ],
+                where: { impact: 'H' }
+            });
+        });
+    }
+    GetMediumImpact(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Threat'],
+                ],
+                where: { impact: 'M' }
+            });
+        });
+    }
+    GetLowImpact(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Threat'],
+                ],
+                where: { impact: 'L' }
+            });
+        });
+    }
+    //Likelihood
+    GetHighLikelihood(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Threat'],
+                ],
+                where: { likelihood: 'H' }
+            });
+        });
+    }
+    GetMediumLikelihood(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Threat'],
+                ],
+                where: { likelihood: 'M' }
+            });
+        });
+    }
+    GetLowLikelihood(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Threat'],
+                ],
+                where: { likelihood: 'L' }
+            });
+        });
+    }
 }
 exports.ThreatRepository = ThreatRepository;

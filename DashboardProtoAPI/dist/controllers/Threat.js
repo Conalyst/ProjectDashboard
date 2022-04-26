@@ -54,6 +54,12 @@ class ThreatApi {
             let AgentsRating = yield this._threatRepository.GetAgentByHighRating();
             let AgentsImpact = yield this._threatRepository.GetAgentByHighImpact();
             let AgentsLikelihood = yield this._threatRepository.GetAgentByHighLikelihood();
+            let highThreatImpact = yield this._threatRepository.GetHighImpact();
+            let mediumThreatImpact = yield this._threatRepository.GetMediumImpact();
+            let lowThreatImpact = yield this._threatRepository.GetLowImpact();
+            let highThreatLikelihood = yield this._threatRepository.GetHighLikelihood();
+            let mediumThreatLikelihood = yield this._threatRepository.GetMediumLikelihood();
+            let lowThreatLikelihood = yield this._threatRepository.GetLowLikelihood();
             console.log("@@@@@@@@@", numberThreat);
             return res.status(200).json({
                 "static": { numberThreat, highThreat, mediumThreat, lowThreat },
@@ -61,6 +67,14 @@ class ThreatApi {
                     "AgentsRating": AgentsRating,
                     "AgentsImpact": AgentsImpact,
                     "AgentsLikelihood": AgentsLikelihood
+                },
+                "visual": {
+                    "highThreatLikelihood": highThreatLikelihood,
+                    "mediumThreatLikelihood": mediumThreatLikelihood,
+                    "lowThreatLikelihood": lowThreatLikelihood,
+                    "highThreatImpact": highThreatImpact,
+                    "mediumThreatImpact": mediumThreatImpact,
+                    "lowThreatImpact": lowThreatImpact
                 }
             });
         });
@@ -83,7 +97,7 @@ class ThreatApi {
                     return res.status(201).json(createdThreat);
                 }
                 else {
-                    return res.status(400).send("The vulnerability could not be created. Please check the provided data.");
+                    return res.status(400).send("The threat could not be created. Please check the provided data.");
                 }
             }
         });

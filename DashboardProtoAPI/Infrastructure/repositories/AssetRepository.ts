@@ -96,7 +96,7 @@ export class AssetRepository {
           [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
        
         ],
-        where: {rating: 'High'}
+        where: {rating: 'H'}
       });
       
     }
@@ -108,7 +108,7 @@ export class AssetRepository {
           [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
        
         ],
-        where: {rating: 'Medium'}
+        where: {rating: 'M'}
       });
       
     }
@@ -120,9 +120,119 @@ export class AssetRepository {
           [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
        
         ],
-        where: {rating: 'Low'}
+        where: {rating: 'L'}
       });
       
     }
-    
+
+
+    public async GetHighConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {confidentiality: 'H'}
+      });
+      
+    }
+
+    public async GetMediumConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {confidentiality: 'M'}
+      });
+      
+    }
+
+    public async GetLowConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {confidentiality: 'L'}
+      });
+      
+    }
+
+    public async GetHighIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {integrity: 'H'}
+      });
+      
+    }
+
+    public async GetMediumIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {integrity: 'M'}
+      });
+      
+    }
+
+    public async GetLowIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {integrity: 'L'}
+      });
+      
+    }
+
+    //Availability
+
+    public async GetHighAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {availability: 'H'}
+      });
+      
+    }
+
+    public async GetMediumAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {availability: 'M'}
+      });
+      
+    }
+
+    public async GetLowAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {availability: 'L'}
+      });
+      
+    }
 }

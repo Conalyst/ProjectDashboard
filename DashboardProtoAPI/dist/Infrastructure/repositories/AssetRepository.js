@@ -110,7 +110,7 @@ class AssetRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
                 ],
-                where: { rating: 'High' }
+                where: { rating: 'H' }
             });
         });
     }
@@ -120,7 +120,7 @@ class AssetRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Asset'],
                 ],
-                where: { rating: 'Medium' }
+                where: { rating: 'M' }
             });
         });
     }
@@ -130,7 +130,98 @@ class AssetRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Asset'],
                 ],
-                where: { rating: 'Low' }
+                where: { rating: 'L' }
+            });
+        });
+    }
+    GetHighConfidentiality(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
+                ],
+                where: { confidentiality: 'H' }
+            });
+        });
+    }
+    GetMediumConfidentiality(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Asset'],
+                ],
+                where: { confidentiality: 'M' }
+            });
+        });
+    }
+    GetLowConfidentiality(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Asset'],
+                ],
+                where: { confidentiality: 'L' }
+            });
+        });
+    }
+    GetHighIntegrity(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
+                ],
+                where: { integrity: 'H' }
+            });
+        });
+    }
+    GetMediumIntegrity(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Asset'],
+                ],
+                where: { integrity: 'M' }
+            });
+        });
+    }
+    GetLowIntegrity(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Asset'],
+                ],
+                where: { integrity: 'L' }
+            });
+        });
+    }
+    //Availability
+    GetHighAvailability(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
+                ],
+                where: { availability: 'H' }
+            });
+        });
+    }
+    GetMediumAvailability(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Asset'],
+                ],
+                where: { availability: 'M' }
+            });
+        });
+    }
+    GetLowAvailability(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Asset'],
+                ],
+                where: { availability: 'L' }
             });
         });
     }

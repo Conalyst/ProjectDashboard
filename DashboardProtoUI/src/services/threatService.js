@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT,GET_STATIC_THREATS,GET_AGENTS_BY_HIGH } from "./constants";
+import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT,GET_STATIC_THREATS,GET_AGENTS_BY_HIGH, GET_STATIC_THREATS_IMPACT } from "./constants";
   
   export const getAllThreats = () => {
     return new Promise((resolve, reject) => {
@@ -57,6 +57,10 @@ import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT,GET_STATIC_THREATS,GET_A
     });
   };
 
+  
+
+
+       
   export const getStaticThreats = () => {
     return new Promise((resolve, reject) => {
       try {
