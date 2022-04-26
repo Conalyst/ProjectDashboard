@@ -17,7 +17,7 @@ import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
  
-import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/constants";
  
 import Select from 'react-select';
 

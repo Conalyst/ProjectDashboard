@@ -20,9 +20,7 @@ export class ThreatRepository {
       return threats;
     }  
 
-    public async GetById(id:number){
-      return db.Threat.findByPk(id);    
-    }   
+  
     
     async GetByTitle(title: string){
 
@@ -52,7 +50,7 @@ export class ThreatRepository {
         [Sequelize.fn('DISTINCT', Sequelize.col('agent')), 'agent'],
         "impact"
       ],
-        where: {impact: 'H'},
+        where: {impact: 'High'},
     })
     return threat;    
   }   

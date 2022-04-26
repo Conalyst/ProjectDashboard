@@ -60,7 +60,6 @@ class RiskAssetApi {
     getDtoFromRequest(req) {
         return new RiskAssetDto_1.RiskAssetDto(req.body.id, req.body.assetId, req.body.assetId, new Date());
     }
- 
     getCalculatedRisk(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const riskId = req.params.id;
@@ -86,6 +85,5 @@ class RiskAssetApi {
             return res.status(200).json(risk);
         });
     }
-
 }
 exports.RiskAssetApi = RiskAssetApi;

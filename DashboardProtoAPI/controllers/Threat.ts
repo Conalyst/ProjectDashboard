@@ -9,8 +9,14 @@ export class ThreatApi{
     constructor(){    
         this._threatRepository = new ThreatRepository();
     }
-    
     async getAllThreats(req: express.Request, res: express.Response){
+      // let threatList = await this._threatRepository.Get();
+      let threatList = await this._threatRepository.Get();
+      // console.log("Helllllo")
+      return  res.status(200).json(threatList);
+    };
+    
+    async getAllThreatsByImpact(req: express.Request, res: express.Response){
       // let threatList = await this._threatRepository.Get();
       let threatList = await this._threatRepository.GetByHighImpact();
       // console.log("Helllllo")
@@ -34,6 +40,7 @@ export class ThreatApi{
       let AgentsRating = await this._threatRepository.GetAgentByHighRating();
       let AgentsImpact = await this._threatRepository.GetAgentByHighImpact();
       let AgentsLikelihood = await this._threatRepository.GetAgentByHighLikelihood();
+      console.log("@@@@@@@@@",numberThreat)
       return  res.status(200).json({
         "static":{ numberThreat,highThreat,mediumThreat,lowThreat},
          "Agents":{
@@ -111,12 +118,12 @@ async delete(req: express.Request, res: express.Response){
     //#region private methods
     getDtoFromRequest(req: express.Request){
       let ratingThreat ;
-      if (req.body.rating == "H")    {
+      if (req.body.rating == "High")    {
             
         ratingThreat= 3;
-     }  else if (req.body.rating == "M"){
+     }  else if (req.body.rating == "Medium"){
       ratingThreat  = 2;
-     } else if (req.body.rating == "L"){
+     } else if (req.body.rating == "Low"){
       ratingThreat= 1;
      }   
       return new ThreatDto(req.body.id, req.body.category,req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating,ratingThreat, new Date());

@@ -14,16 +14,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RiskRepository = void 0;
 const models_1 = __importDefault(require("../db/models"));
- 
 const sequelize_1 = __importDefault(require("sequelize"));
- 
 const Risk = require("../db/models");
 class RiskRepository {
     constructor() {
     }
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
- 
             let risks = yield models_1.default.Risk.findAll({
             // include: [{model: db.}]
             // include: [
@@ -34,7 +31,6 @@ class RiskRepository {
             //             }
             //          ]
             });
- 
             return risks;
         });
     }
@@ -61,7 +57,6 @@ class RiskRepository {
             return models_1.default.Risk.update(model['dataValues'], { where: { id: `${id}` } });
         });
     }
- 
     GetTotal(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Risk.findAll({
@@ -101,6 +96,5 @@ class RiskRepository {
             });
         });
     }
- 
 }
 exports.RiskRepository = RiskRepository;

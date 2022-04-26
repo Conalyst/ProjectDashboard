@@ -52,12 +52,10 @@ module.exports = (sequelize, DataTypes) => {
             type: DataTypes.STRING,
             allowNull: false,
         },
- 
         indexRating: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
- 
         updatedAt: {
             type: DataTypes.DATE,
             allowNull: false,
