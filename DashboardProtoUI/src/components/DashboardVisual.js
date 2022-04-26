@@ -16,7 +16,7 @@ export const DashboardVisual = () => {
         const parsedUser = JSON.parse(storedUser);
        
         return new Promise((resolve, reject) => {
-          try {
+        /*  try {
             // do db call or API endpoint axios call here and return the promise.
             getStaticAssets()
             .then((res) => {
@@ -34,7 +34,7 @@ export const DashboardVisual = () => {
           } catch (error) {
             console.error("getAllAssets error!==", error);
             reject("getAllAssets error!");
-          }
+          } */
         });
       }, []);
     return (

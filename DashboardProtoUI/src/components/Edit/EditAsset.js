@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -15,8 +15,11 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import info_black from '../../images/icons/info_icon.png';
+import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { DASHBOARD } from "../../navigation/CONSTANTS";
+import Info from "../Info";
 import Select from 'react-select';
 
 
@@ -193,7 +196,42 @@ export const EditAsset = () => {
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                   
-            <div className="Rectangle-grey-box-long">
+            <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+              <thead>
+                <tr className="row-item-master-01 cr-button__text">
+                    <th>
+                    <img  src={info_white} alt =""/>
+                    </th>
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Confidentiality</th>
+                    <th>Integrity</th>
+                    <th>Availability</th>
+                    <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="cr-text-edit">
+                <td>
+                <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                  <Info/>
+                </td>
+                <td>3</td>
+                <td>R003</td>
+                <td>Risk of targeted attack intended to steal data from Third-Party Assessors<br/>
+                There is a risk of intrusion and data exfiltration by motivated and capable attackers.
+                </td>
+                <td>1</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Medium</td>
+                <td>L</td>
+              </tr>
+            </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
