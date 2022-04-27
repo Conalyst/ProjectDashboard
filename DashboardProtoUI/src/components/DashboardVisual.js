@@ -1,9 +1,25 @@
 import React,{useEffect,useState} from "react";
-import * as crossfilter from "crossfilter2";
-import SummaryBarChart from './db-visuals/SummaryBarChart';
-import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-import { assetData } from "./db-visuals/visuals-data";
+import Chart from "react-google-charts";
 import { getStaticAssets } from "../services/assetsService";
+
+export const data = [
+    ["Group", "H", "M", "L"],
+    ["Data", 15, 43, 25],
+    ["Network", 30, 24, 12],
+    ["Personnel", 21, 32, 15],
+    ["Software", 10, 43, 30],
+    ["Intangible", 41, 30, 19]
+  ];
+  
+export const options = {
+    chartArea: { width: "75%" },
+    colors: ["#09375f", "#126dba", "#72b7f2"],
+    hAxis: {
+    },
+    vAxis: {
+        minValue: 0
+    }
+};
 
 export const DashboardVisual = () => {
     const [totalAssets, setTotalAssets] = useState(null);
@@ -63,78 +79,69 @@ export const DashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Asset Ratings</p>
-            <p className="orange-total">Total<br/>{totalAssets}</p>
-            <p>High<br/>{highAssets}</p>
-            <p>Medium<br/>{mediumAssets}</p>
-            <p>Low<br/>{lowAssets}</p>
-            
+            <p className="orange-total">Total<br/>82</p>
+            <p>High<br/>20</p>
+            <p>Medium<br/>15</p>
+            <p>Low<br/>42</p>
         </div>
-            <table className="visual-rating">
-                <tr>
-                    <td className="stack-bars-summary">
-                        <div className="stack-bar-h">
-                            Confidentiality
-                            {/* <div>
-                                <SummaryStackedChart data={assetData.confi} />                            
-                            </div> */}
-                            <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                <span className="span-H">
-                    H({highAssetConfidentiality})
-                </span>
-                <span className="span-M">
-                    M({mediumAssetConfidentiality})
-                </span>
-                <span className="span-L">
-                    L({lowAssetConfidentiality})
-                </span></div></div>  
+        <table className="visual-rating">
+            <tr>
+                <td className="stack-bars-summary">
+                    <div className="stack-bar-h">
+                        Confidentiality
+                        <div className="V-T-Color">
+                            <div className="Dark-Blue-Color">
+                            <div className="Light-Blue-Color">
+                            <div className="Grey-Color">
+                            </div></div></div>
+                            <div className="label-span-s">
+                                <span className="value-span-s span-H-s">H</span>
+                                <span className="value-span-s span-M-s">M</span>
+                                <span className="value-span-s span-L-s">L</span>
+                            </div>
                         </div>
-                        <div className="stack-bar-h">
-                            Integrity
-                            {/* <div>
-                                <SummaryStackedChart data={assetData.integrity} />                            
-                            </div> */}
-                            <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                <span className="span-H">
-                    H({highAssetIntegrity})
-                </span>
-                <span className="span-M">
-                    M({mediumAssetIntegrity})
-                </span>
-                <span className="span-L">
-                    L({lowAssetIntegrity})
-                </span></div></div> 
+                    </div>
+                    <div className="stack-bar-h">
+                        Integrity
+                        <div className="V-T-Color">
+                            <div className="Dark-Blue-Color">
+                            <div className="Light-Blue-Color">
+                            <div className="Grey-Color">
+                            </div></div></div>
+                            <div className="label-span-s">
+                                <span className="value-span-s span-H-s">H</span>
+                                <span className="value-span-s span-M-s">M</span>
+                                <span className="value-span-s span-L-s">L</span>
+                            </div>
                         </div>
-                        <div className="stack-bar-h">
-                            Availability
-                            {/* <div>
-                                <SummaryStackedChart data={assetData.avail} />                            
-                            </div> */}
-                                     <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                <span className="span-H">
-                    H({highAssetAvailability})
-                </span>
-                <span className="span-M">
-                    M({mediumAssetAvailability})
-                </span>
-                <span className="span-L">
-                    L({lowAssetAvailability})
-                </span></div></div> 
+                    </div>
+                    <div className="stack-bar-h">
+                        Availability
+                        <div className="V-T-Color">
+                            <div className="Dark-Blue-Color">
+                            <div className="Light-Blue-Color">
+                            <div className="Grey-Color">
+                            </div></div></div>
+                            <div className="label-span-s">
+                                <span className="value-span-s span-H-s">H</span>
+                                <span className="value-span-s span-M-s">M</span>
+                                <span className="value-span-s span-L-s">L</span>
+                            </div>
                         </div>
-                    </td>
+                    </div>
+                </td>
                 <td className="bar-charts-summary">
                     <span>All Categories</span><br/>
-                    <SummaryBarChart data={assetData.summary} />
+                    <Chart
+                        chartType="ColumnChart"
+                        width="100%"
+                        height="300px"
+                        data={data}
+                        options={options}
+                    />
                 </td>
                 </tr>
             </table>
-        {/* <div className="injury-level1">
-                <span className="dark_blue"></span>
-                <span className="blue"></span>
-                <span class="grey"></span>
-            </div> */}
             
     </>
     );
