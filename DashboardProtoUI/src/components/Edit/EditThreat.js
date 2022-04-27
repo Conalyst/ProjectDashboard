@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -15,8 +15,11 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import info_black from '../../images/icons/info_icon.png';
+import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
 import { THREATSDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import Info from "../Info";
 import Select from 'react-select';
 
 
@@ -28,7 +31,9 @@ export const EditThreat = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: THREATSDASHBOARD,
@@ -43,11 +48,12 @@ export const EditThreat = () => {
 
    });
   }  
-
+ 
   const onCancel =()=>{
-
-  }  
-
+   
+    }  
+  
+ 
   /*const onAddAsset = () =>{
  
     if (!assetTitle) {
@@ -89,7 +95,7 @@ export const EditThreat = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -132,7 +138,7 @@ export const EditThreat = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -167,7 +173,40 @@ export const EditThreat = () => {
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                      
-            <div className="Rectangle-grey-box">
+              <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+                <thead>
+                  <tr className="row-item-master-01 cr-button__text">
+                    <th>
+                    <img  src={info_white} alt =""/>
+                    </th>
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Agent</th>
+                    <th>Impact</th>
+                    <th>Likelihood</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="cr-text-edit">
+                  <td>
+                    <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                    <Info/>
+                  </td>
+                  <td>1</td>
+                  <td>Accidental viewing of confidential information</td>
+                  <td>A ORG employee having access to user information breaches confidentiality by viewing information.</td>
+                  <td>Accidental</td>
+                  <td>Accident</td>
+                  <td>M</td>
+                  <td>H</td>
+                  <td>H</td>
+                </tr>
+              </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
@@ -178,25 +217,25 @@ export const EditThreat = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>

@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT } from "./constants";
+import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT,GET_STATIC_THREATS,GET_AGENTS_BY_HIGH, GET_STATIC_THREATS_IMPACT } from "./constants";
   
   export const getAllThreats = () => {
     return new Promise((resolve, reject) => {
@@ -52,6 +52,48 @@ import { GET_ALL_THREATS, GET_THREAT_BY_ID, POST_THREAT } from "./constants";
         });
       } catch (error) {
         console.error("in addThreat > postThreat, Err===", error);
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  
+
+
+       
+  export const getStaticThreats = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        // do an SDK, DB call or API endpoint axios call here and return the promise.
+        axios
+        .get(GET_STATIC_THREATS())
+        .then((res) => {
+            console.log("res...", res.data)
+           resolve(res.data);
+        })
+        .catch((err) => {
+          reject("Error in getTotalthreats axios!");
+        });
+      } catch (error) {
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  export const getAgents = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        // do an SDK, DB call or API endpoint axios call here and return the promise.
+        axios
+        .get(GET_AGENTS_BY_HIGH())
+        .then((res) => {
+            console.log("res...", res.data)
+           resolve(res.data);
+        })
+        .catch((err) => {
+          reject("Error in getTotalthreats axios!");
+        });
+      } catch (error) {
         reject(SYSTEM_ERROR);
       }
     });

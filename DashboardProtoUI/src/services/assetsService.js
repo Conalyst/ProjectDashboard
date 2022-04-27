@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./constants";
+import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_ASSETS } from "./constants";
   
   export const getAllAssets = () => {
     return new Promise((resolve, reject) => {
@@ -55,19 +55,52 @@ import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET } from "./co
 
   export const postAsset = (asset) => {
     return new Promise((resolve, reject) => {
+      const storedUser = localStorage.getItem("storedUser");
+    
+      const parsedUser = JSON.parse(storedUser);
+      console.log("token in service", parsedUser.token)
+      console.log("in service post asset ", asset)
       try {
-        axios       
-        .post(POST_ASSET(),asset)
-        .then(res => {
-            resolve(res.data);
+        console.log("hello here ",asset.availability)
+        axios
+        .post(POST_ASSET(),
+        {
+         title: asset.title,
+         categoryId: asset.categoryId,
+          description: asset.description,
+          confidentiality:asset.confidentiality,
+          integrity:asset.integrity,
+          availability:"asset.availability",
+          rating:asset.rating 
+        }) 
+        .then(res=>{
+          console.log("new connect", res)
         })
-        .catch((err) => {
-          console.log("postasset > axios err=", err);
-          reject("Error in postasset axios!");
-        });
+        console.log("inservoce ", Headers)
       } catch (error) {
         console.error("in addAsset > postAsset, Err===", error);
         reject(SYSTEM_ERROR);
       }
     });
   };
+
+  export const getStaticAssets = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        // do an SDK, DB call or API endpoint axios call here and return the promise.
+        axios
+        .get(GET_STATIC_ASSETS())
+        .then((res) => {
+            console.log("res...", res.data)
+           resolve(res.data);
+        })
+        .catch((err) => {
+          reject("Error in getTotalssets axios!");
+        });
+      } catch (error) {
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  

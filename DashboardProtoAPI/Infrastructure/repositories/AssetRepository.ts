@@ -1,12 +1,26 @@
 import { BaseRepository } from "../contracts/BaseRepository"
 import { Model } from "sequelize-typescript";
 import db from '../db/models'
+import sequelize from "sequelize";
 const Asset = require("../db/models")
 
 export class AssetRepository {
     constructor(){
          
     }
+    public async GetAssets(){
+      let assets  = await db.Asset.findAll({
+          include: [
+                    {model:db.AssetCategory, attributes: ['id', 'name']}, 
+                    {
+                      model: db.Vulnerability,
+                      include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
+                      attributes: ['id','category','title', 'description']
+                    }
+                   ]
+      });
+      return assets;
+  }   
     public async Get(){
         let assets  = await db.Asset.findAll({
             include: [
@@ -16,7 +30,9 @@ export class AssetRepository {
                         include: [{model: db.Threat, attributes: ['id','category', 'agent','title', 'description']}],
                         attributes: ['id','category','title', 'description']
                       }
-                     ]
+                     ],
+                    //  order: [['rating', 'ASC']],
+                    //  attributes: ['id', 'rating']
         });
         return assets;
     }   
@@ -59,5 +75,164 @@ export class AssetRepository {
     }
     public async delete(model: Model<typeof Asset>, idAsset:number){
       return model.destroy();
+    }
+
+    
+    public async GetTotal(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'total_Asset'],
+       
+        ]
+      });
+      
+    }
+
+    public async GetHigh(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {rating: 'H'}
+      });
+      
+    }
+
+    public async GetMedium(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {rating: 'M'}
+      });
+      
+    }
+
+    public async GetLow(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {rating: 'L'}
+      });
+      
+    }
+
+
+    public async GetHighConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {confidentiality: 'H'}
+      });
+      
+    }
+
+    public async GetMediumConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {confidentiality: 'M'}
+      });
+      
+    }
+
+    public async GetLowConfidentiality(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {confidentiality: 'L'}
+      });
+      
+    }
+
+    public async GetHighIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {integrity: 'H'}
+      });
+      
+    }
+
+    public async GetMediumIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {integrity: 'M'}
+      });
+      
+    }
+
+    public async GetLowIntegrity(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {integrity: 'L'}
+      });
+      
+    }
+
+    //Availability
+
+    public async GetHighAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
+       
+        ],
+        where: {availability: 'H'}
+      });
+      
+    }
+
+    public async GetMediumAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Asset'],
+       
+        ],
+        where: {availability: 'M'}
+      });
+      
+    }
+
+    public async GetLowAvailability(model: Model<typeof Asset>) {
+      return db.Asset.findAll({
+        attributes: [
+        
+          [sequelize.fn('COUNT', sequelize.col('id')), 'low_Asset'],
+       
+        ],
+        where: {availability: 'L'}
+      });
+      
     }
 }

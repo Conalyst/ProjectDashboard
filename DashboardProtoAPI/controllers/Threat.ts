@@ -9,20 +9,65 @@ export class ThreatApi{
     constructor(){    
         this._threatRepository = new ThreatRepository();
     }
-    
     async getAllThreats(req: express.Request, res: express.Response){
+      // let threatList = await this._threatRepository.Get();
       let threatList = await this._threatRepository.Get();
+      // console.log("Helllllo")
+      return  res.status(200).json(threatList);
+    };
+    
+    async getAllThreatsByImpact(req: express.Request, res: express.Response){
+      // let threatList = await this._threatRepository.Get();
+      let threatList = await this._threatRepository.GetByHighImpact();
       // console.log("Helllllo")
       return  res.status(200).json(threatList);
     };
 
     async getThreatById(req: express.Request, res: express.Response){
-      let threatId = req.params.id;
-      console.log(threatId)
+      let threatId = req.body.id;
+      console.log("hhhhhh",threatId)
       let threat = await this._threatRepository.GetById(threatId);
       return  res.status(200).json(threat);
     };
 
+    //static Asset and Agents
+    async getStaticThreats(req: express.Request, res: express.Response){
+       
+      let numberThreat = await this._threatRepository.GetTotal();
+      let highThreat = await this._threatRepository.GetHigh();
+      let mediumThreat = await this._threatRepository.GetMedium();
+      let lowThreat = await this._threatRepository.GetLow();
+      let AgentsRating = await this._threatRepository.GetAgentByHighRating();
+      let AgentsImpact = await this._threatRepository.GetAgentByHighImpact();
+      let AgentsLikelihood = await this._threatRepository.GetAgentByHighLikelihood();
+      let highThreatImpact = await this._threatRepository.GetHighImpact();
+      let mediumThreatImpact = await this._threatRepository.GetMediumImpact();
+      let lowThreatImpact = await this._threatRepository.GetLowImpact();
+      let highThreatLikelihood = await this._threatRepository.GetHighLikelihood();
+      let mediumThreatLikelihood = await this._threatRepository.GetMediumLikelihood();
+      let lowThreatLikelihood = await this._threatRepository.GetLowLikelihood();
+      console.log("@@@@@@@@@",numberThreat)
+      return  res.status(200).json({
+        "static":{ numberThreat,highThreat,mediumThreat,lowThreat},
+         "Agents":{
+          "AgentsRating":AgentsRating,
+          "AgentsImpact":AgentsImpact,
+          "AgentsLikelihood":AgentsLikelihood
+  
+         },
+         "visual":{ 
+          "highThreatLikelihood": highThreatLikelihood,
+          "mediumThreatLikelihood": mediumThreatLikelihood,
+          "lowThreatLikelihood":lowThreatLikelihood,
+          "highThreatImpact":highThreatImpact,
+          "mediumThreatImpact":mediumThreatImpact,
+          "lowThreatImpact":lowThreatImpact
+        }
+        });
+    };   
+ 
+
+  
     async create(req: express.Request, res: express.Response){
         
       const { title} = req.body;
@@ -41,7 +86,7 @@ export class ThreatApi{
         if(createdThreat){
             return res.status(201).json(createdThreat);
         }else{
-            return res.status(400).send("The vulnerability could not be created. Please check the provided data.")
+            return res.status(400).send("The threat could not be created. Please check the provided data.")
         }
       }
       
@@ -84,9 +129,23 @@ async delete(req: express.Request, res: express.Response){
       return res.status(404).send("This threat does not exist.")
   }
 }
+
+ 
     //#region private methods
     getDtoFromRequest(req: express.Request){
-        
-      return new ThreatDto(req.body.id, req.body.category,req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
+      let ratingThreat ;
+      if (req.body.rating == "High")    {
+            
+        ratingThreat= 3;
+     }  else if (req.body.rating == "Medium"){
+      ratingThreat  = 2;
+     } else if (req.body.rating == "Low"){
+      ratingThreat= 1;
+     }   
+      return new ThreatDto(req.body.id, req.body.category,req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating,ratingThreat, new Date());
+  }
+
+  async getTopThree(req: express.Request, res: express.Response) {
+
   }
 }

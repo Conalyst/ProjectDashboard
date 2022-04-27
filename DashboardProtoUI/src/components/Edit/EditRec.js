@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { RECDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { RECDASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
 
 
@@ -28,7 +28,9 @@ export const EditRec = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: RECDASHBOARD,
@@ -63,6 +65,14 @@ export const EditRec = () => {
     { value: 'R9', label: 'R9' },
     { value: 'R10', label:'R10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +115,7 @@ export const EditRec = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +158,7 @@ export const EditRec = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -183,7 +193,27 @@ export const EditRec = () => {
                 </span>
                 <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>            
-            <div className="Rectangle-grey-box">
+              <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+                <thead>
+                  <tr className="row-item-master-01 cr-button__text">
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Safeguard</th>
+                    <th>Risk IDs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="cr-text-edit">                  
+                  <td>1</td>
+                  <td>Retire SiteScrape</td>
+                  <td>While SiteScape can be considered to be ORG&apos;s most critical business application, it is also a legacy application that has not been supported or patched in five years. Penetration testing revealed a number of technical vulnerabilities that leaves sensitive data stored within the application exposed. These vulnerabilities will continue to persist until ORG moves to a modern or cloud-based solution.</td>
+                  <td>L</td>
+                  <td>R1, R3, R5</td>
+                </tr>
+              </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
@@ -193,11 +223,12 @@ export const EditRec = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-left">Associated Risks <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-left"
+                  <Select className="Frame-left-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
                 </div>
@@ -205,9 +236,9 @@ export const EditRec = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Safeguard</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

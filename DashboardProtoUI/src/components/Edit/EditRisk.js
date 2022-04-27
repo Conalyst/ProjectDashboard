@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -15,8 +15,11 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import info_black from '../../images/icons/info_icon.png';
+import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
 import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import Info from "../Info";
 import Select from 'react-select';
 
 
@@ -28,7 +31,9 @@ export const EditRisk = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: RISKDASHBOARD,
@@ -63,6 +68,14 @@ export const EditRisk = () => {
     { value: 'A9', label: 'A9' },
     { value: 'VA0', label:'A10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +118,7 @@ export const EditRisk = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +161,7 @@ export const EditRisk = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -182,8 +195,41 @@ export const EditRisk = () => {
                 Edit Risk
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
-              </div>                              
-            <div className="Rectangle-grey-box">
+            </div>                              
+          <div className="Rectangle-grey-box-long edit-box">
+            <Table size="sm" class="table-items-tables-table--column-items">
+              <thead>
+                <tr className="row-item-master-01 cr-button__text">
+                  <th>
+                    <img src={info_white} alt =""/>
+                  </th>
+                  <th>IDs</th>
+                  <th>Category</th>
+                  <th>Title</th>
+                  <th>Description</th>
+                  <th>Likelihood</th>
+                  <th>Impact</th>
+                  <th>Rating</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="cr-text-edit">
+                  <td>
+                    <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                    <Info/>
+                  </td>
+                  <td>1</td>
+                  <td>Personal</td>
+                  <td>Lack of personnel clearance requirements and process for trusted personal</td>
+                  <td>While ORG conducts a one-time background security check at during employee hiring processes, no formal process exists for staff to obtain Reliability Status (up to Protected B information) or Secret security (for Classified information) clearance prior to obtaining trusted or privileged access to ORG data. </td>
+                  <td>H</td>
+                  <td>M</td>
+                  <td>H</td>
+                  <td>Y</td>
+                </tr>
+              </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
@@ -194,25 +240,25 @@ export const EditRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
@@ -231,11 +277,12 @@ export const EditRisk = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Assets <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -15,8 +15,11 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import info_black from '../../images/icons/info_icon.png';
+import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
-import { DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { DASHBOARD } from "../../navigation/CONSTANTS";
+import Info from "../Info";
 import Select from 'react-select';
 
 
@@ -28,7 +31,9 @@ export const EditAsset = () => {
   const [selectedOption, setSelectedOption] = useState(null);
 
   const history =useHistory();
-
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
   const onDone =()=>{
   history.push({
      pathname: DASHBOARD,
@@ -63,6 +68,14 @@ export const EditAsset = () => {
     { value: 'V9', label: 'V9' },
     { value: 'V10', label:'V10'},
   ];
+
+  const customStyles = {
+    control: base => ({
+      ...base,
+      height: 48,
+      minHeight: 48
+    })
+  };
 
   /*const onAddAsset = () =>{
  
@@ -105,7 +118,7 @@ export const EditAsset = () => {
               data-mdb-accordion="true">
             <div className="company-info">
               <img id="company-icon" src={company_icon} alt="Company Logo" draggable="false"/>
-              <p className="user-label">Company Name</p>
+              <p className="user-label">{parsedUser.CompanyName}</p>
             </div>
             <ul className="sidenav-menu">
               <li className="sidenav-item">
@@ -148,7 +161,7 @@ export const EditAsset = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false"/>
-            <span className="user-label">Alex Toma</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">
@@ -183,7 +196,42 @@ export const EditAsset = () => {
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                   
-            <div className="Rectangle-grey-box-long">
+            <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+              <thead>
+                <tr className="row-item-master-01 cr-button__text">
+                    <th>
+                    <img  src={info_white} alt =""/>
+                    </th>
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Confidentiality</th>
+                    <th>Integrity</th>
+                    <th>Availability</th>
+                    <th>Rating</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="cr-text-edit">
+                <td>
+                <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                  <Info/>
+                </td>
+                <td>3</td>
+                <td>R003</td>
+                <td>Risk of targeted attack intended to steal data from Third-Party Assessors<br/>
+                There is a risk of intrusion and data exfiltration by motivated and capable attackers.
+                </td>
+                <td>1</td>
+                <td>High</td>
+                <td>Medium</td>
+                <td>Medium</td>
+                <td>L</td>
+              </tr>
+            </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
@@ -194,33 +242,33 @@ export const EditAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
@@ -241,11 +289,12 @@ export const EditAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
-                  <Select className="Frame-right"
+                  <Select className="Frame-right-multiselect"
                     isMulti
                     defaultValue={selectedOption}
                     onChange={setSelectedOption}
                     options={options}
+                    styles={customStyles}
                    />
                 </Form.Group>
               </div>
