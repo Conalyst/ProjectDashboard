@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -15,8 +15,11 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import info_black from '../../images/icons/info_icon.png';
+import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
 import { VULDASHBOARD } from "../../navigation/constants";
+import Info from "../Info";
 import Select from 'react-select';
 
 
@@ -191,7 +194,38 @@ export const EditVul = () => {
               </span>
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>            
-            <div className="Rectangle-grey-box-long">
+            <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+                <thead>
+                  <tr className="row-item-master-01 cr-button__text">
+                    <th>
+                    <img  src={info_white} alt =""/>
+                    </th>
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Impact</th>
+                    <th>Likelihood</th>
+                    <th>Rating</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="cr-text-edit">
+                  <td>
+                    <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                    <Info/>
+                  </td>
+                  <td>1</td>
+                  <td>Lack of personnel clearance requirements and process for trusted personal</td>
+                  <td>While ORG conducts a one-time background security check at during employee hiring processes, no formal process exists for staff to obtain Reliability Status (up to Protected B information) or Secret security (for Classified information) clearance prior to obtaining trusted or privileged access to ORG data. </td>
+                  <td>Personal</td>
+                  <td>M</td>
+                  <td>H</td>
+                  <td>H</td>
+                </tr>
+              </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">

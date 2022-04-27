@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Button, InputGroup, Form} from "react-bootstrap";
+import {Button, InputGroup, Form, Table} from "react-bootstrap";
 import { getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { RECDASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+import { RECDASHBOARD } from "../../navigation/constants";
 import Select from 'react-select';
 
 
@@ -191,7 +191,27 @@ export const EditRec = () => {
                 </span>
                 <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>            
-            <div className="Rectangle-grey-box">
+            <div className="Rectangle-grey-box-long edit-box">
+              <Table size="sm" class="table-items-tables-table--column-items">
+                <thead>
+                  <tr className="row-item-master-01 cr-button__text">
+                    <th>IDs</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Safeguard</th>
+                    <th>Risk IDs</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="cr-text-edit">                  
+                  <td>1</td>
+                  <td>Retire SiteScrape</td>
+                  <td>While SiteScape can be considered to be ORG&apos;s most critical business application, it is also a legacy application that has not been supported or patched in five years. Penetration testing revealed a number of technical vulnerabilities that leaves sensitive data stored within the application exposed. These vulnerabilities will continue to persist until ORG moves to a modern or cloud-based solution.</td>
+                  <td>L</td>
+                  <td>R1, R3, R5</td>
+                </tr>
+              </tbody>
+            </Table>
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">

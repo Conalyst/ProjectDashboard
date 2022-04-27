@@ -1107,22 +1107,9 @@ td.bar-charts-summary > span {
   border: solid 0.8px #145b93;
 }
 
-.table-edit {
-  width: 100%;
-  height: 152px;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  margin: 135px 100.1px 0 40px;
-  padding: 0;
-  border: solid 0.8px #145b93;
-}
-
 .cr-text-edit {
   text-align: center;
-  height: 152px;
-  background-color: white;
+  background: white;
 }
 
 .table-item-01 {
@@ -1153,6 +1140,7 @@ td.bar-charts-summary > span {
 
 .row-item-master-01 {
   align-items: center;
+  vertical-align: middle;
   padding: 8.2px 0;
   box-shadow: inset 0 -1px 0 0 #e6e7e9;
   background-color: #145b93;
@@ -2475,6 +2463,12 @@ li {
   padding: 20px 28px 17px 29px;
   border-radius: 5px;
   background-color: #f1f1f1;
+}
+
+.Rectangle-grey-box-long.edit-box {
+  overflow-x: hidden;
+  overflow-y: auto;
+  flex-grow: 0;
 }
 
 .Manage-listAdd-long {
