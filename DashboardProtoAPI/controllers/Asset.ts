@@ -16,6 +16,12 @@ export class AssetApi{
       console.log("Helllllo")
       return  res.status(200).json(assetList);
     };
+    async getAssets(req: express.Request, res: express.Response){
+      let assetList = await this._assetRepository.Get();
+      console.log("Helllllo")
+      return  res.status(200).json(assetList);
+    };
+    
 
     async getAssetsById(req: express.Request, res: express.Response){
       let assetId = req.params.id;
@@ -32,14 +38,37 @@ export class AssetApi{
         let highAsset = await this._assetRepository.GetHigh();
         let mediumAsset = await this._assetRepository.GetMedium();
         let lowAsset = await this._assetRepository.GetLow();
+        let highAssetConfidentiality = await this._assetRepository.GetHighConfidentiality();
+        let mediumAssetConfidentiality = await this._assetRepository.GetMediumConfidentiality();
+        let lowAssetConfidentiality = await this._assetRepository.GetLowConfidentiality();
+        let highAssetIntegrity = await this._assetRepository.GetHighIntegrity();
+        let mediumAssetIntegrity = await this._assetRepository.GetMediumIntegrity();
+        let lowAssetIntegrity = await this._assetRepository.GetLowIntegrity();
+        let highAssetAvailability = await this._assetRepository.GetHighAvailability();
+        let mediumAssetAvailability = await this._assetRepository.GetMediumAvailability();
+        let lowAssetAvailability = await this._assetRepository.GetLowAvailability();
         return  res.status(200).json({
-          "static":{highAsset,numberAsset,mediumAsset,lowAsset}});
+          "static":{highAsset,numberAsset,mediumAsset,lowAsset},
+        "visual":{
+          "highAssetConfidentiality":highAssetConfidentiality,
+          "mediumAssetConfidentiality":mediumAssetConfidentiality,
+          "lowAssetConfidentiality":lowAssetConfidentiality,
+          "highAssetIntegrity":highAssetIntegrity,
+          "mediumAssetIntegrity":mediumAssetIntegrity,
+          "lowAssetIntegrity":lowAssetIntegrity,
+          "highAssetAvailability":highAssetAvailability,
+          "mediumAssetAvailability":mediumAssetAvailability,
+          "lowAssetAvailability":lowAssetAvailability
+
+        }});
       };
      
+ 
+
 
      //endpoint create Asset
      async create(req: express.Request, res: express.Response){
-        
+     
       const { title} = req.body;     
       const alreadyExistsAsset = await this._assetRepository.GetByTitle(title)
       .catch(
@@ -50,9 +79,12 @@ export class AssetApi{
 
       if (alreadyExistsAsset) {
         return res.status(409).json({ message: "this Asset already exist!" });
+        
       } else {
-        const assetDto = this.getDtoFromRequest(req);       
-        let createdAsset = await this._assetRepository.Create(toEntity(assetDto))       
+       
+        const assetDto = this.getDtoFromRequest(req);      
+        let createdAsset = await this._assetRepository.Create(toEntity(assetDto)) 
+       
         if(createdAsset) {
             return res.status(201).json(createdAsset);
         } else {
@@ -73,7 +105,8 @@ export class AssetApi{
     );
 
     if (exists) {
-      const assetDto = this.getDtoFromRequest(req);      
+      const assetDto = this.getDtoFromRequest(req);
+     
       let updatedAsset = await this._assetRepository.Update(toEntity(assetDto), id)
     
       if(updatedAsset){
@@ -106,8 +139,18 @@ async delete(req: express.Request, res: express.Response){
   }
 }
     //#region private methods
-  getDtoFromRequest(req: express.Request){        
-    return new AssetDto(req.body.id, req.body.categoryId,req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, new Date());
+  getDtoFromRequest(req: express.Request){  
+    let ratingAsset ;
+    if (req.body.rating == "High")    {
+          
+      ratingAsset= 3;
+   }  else if (req.body.rating == "Medium"){
+     ratingAsset  = 2;
+   } else if (req.body.rating == "Low"){
+     ratingAsset= 1;
+   }   
+       
+    return new AssetDto(req.body.id, req.body.categoryId,req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating,ratingAsset, new Date());
   }
  
   //#endregion

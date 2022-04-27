@@ -21,7 +21,16 @@ class RiskRepository {
     }
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let risks = yield models_1.default.Risk.findAll();
+            let risks = yield models_1.default.Risk.findAll({
+            // include: [{model: db.}]
+            // include: [
+            //             { model: db.Asset, 
+            //                include: { model: db.Vulnerability, attributes: ["id", "title"], through: {attributes: []},
+            //                include: {model: db.Threat, attributes: ["id", "title"], through: {attributes: []}}
+            //                }, through: {attributes: []}
+            //             }
+            //          ]
+            });
             return risks;
         });
     }

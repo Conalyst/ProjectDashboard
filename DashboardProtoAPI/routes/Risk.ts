@@ -25,4 +25,5 @@ riskRouter.put("/:id", (req, res) =>{
     riskApi.update(req, res)
 })
 
+
 export default riskRouter;

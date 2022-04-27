@@ -10,6 +10,17 @@ export const DashboardVisual = () => {
     const [highAssets, setHighAssets] = useState(null);
     const [mediumAssets, setMediumAssets] = useState(null);
     const [lowAssets, setLowAssets] = useState(null);
+
+    const [highAssetConfidentiality, setHighAssetConfidentiality] = useState(null);
+    const [mediumAssetConfidentiality, setMediumAssetConfidentiality] = useState(null);
+    const [lowAssetConfidentiality, setLowAssetConfidentiality] = useState(null);
+    const [highAssetIntegrity, setHighAssetIntegrity] = useState(null);
+    const [mediumAssetIntegrity, setMediumAssetIntegrity] = useState(null);
+    const [lowAssetIntegrity, setLowAssetIntegrity] = useState(null);
+
+    const [highAssetAvailability, setHighAssetAvailability] = useState(null);
+    const [mediumAssetAvailability, setMediumAssetAvailability] = useState(null);
+    const [lowAssetAvailability, setLowAssetAvailability] = useState(null);
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -24,6 +35,17 @@ export const DashboardVisual = () => {
               setHighAssets(res.static.highAsset[0].high_Asset)
               setMediumAssets(res.static.mediumAsset[0].mediun_Asset)
               setLowAssets(res.static.lowAsset[0].low_Asset)
+              setHighAssetAvailability(res.visual.highAssetAvailability[0].high_Asset)
+              setHighAssetConfidentiality(res.visual.highAssetConfidentiality[0].high_Asset)
+              setHighAssetIntegrity(res.visual.highAssetIntegrity[0].high_Asset)
+
+              setMediumAssetAvailability(res.visual.mediumAssetAvailability[0].mediun_Asset)
+              setMediumAssetConfidentiality(res.visual.mediumAssetConfidentiality[0].mediun_Asset)
+              setMediumAssetIntegrity(res.visual.mediumAssetIntegrity[0].mediun_Asset)
+
+              setLowAssetAvailability(res.visual.lowAssetAvailability[0].low_Asset)
+              setLowAssetConfidentiality(res.visual.lowAssetConfidentiality[0].low_Asset)
+              setLowAssetIntegrity(res.visual.lowAssetIntegrity[0].low_Asset)
                
             })
               .catch((err) => {
@@ -52,21 +74,54 @@ export const DashboardVisual = () => {
                     <td className="stack-bars-summary">
                         <div className="stack-bar-h">
                             Confidentiality
-                            <div>
+                            {/* <div>
                                 <SummaryStackedChart data={assetData.confi} />                            
-                            </div>
+                            </div> */}
+                            <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <span className="span-H">
+                    H({highAssetConfidentiality})
+                </span>
+                <span className="span-M">
+                    M({mediumAssetConfidentiality})
+                </span>
+                <span className="span-L">
+                    L({lowAssetConfidentiality})
+                </span></div></div>  
                         </div>
                         <div className="stack-bar-h">
                             Integrity
-                            <div>
+                            {/* <div>
                                 <SummaryStackedChart data={assetData.integrity} />                            
-                            </div>
+                            </div> */}
+                            <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <span className="span-H">
+                    H({highAssetIntegrity})
+                </span>
+                <span className="span-M">
+                    M({mediumAssetIntegrity})
+                </span>
+                <span className="span-L">
+                    L({lowAssetIntegrity})
+                </span></div></div> 
                         </div>
                         <div className="stack-bar-h">
                             Availability
-                            <div>
+                            {/* <div>
                                 <SummaryStackedChart data={assetData.avail} />                            
-                            </div>
+                            </div> */}
+                                     <div className="Group-1359"><div className="V-T-Color">
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <span className="span-H">
+                    H({highAssetAvailability})
+                </span>
+                <span className="span-M">
+                    M({mediumAssetAvailability})
+                </span>
+                <span className="span-L">
+                    L({lowAssetAvailability})
+                </span></div></div> 
                         </div>
                     </td>
                 <td className="bar-charts-summary">

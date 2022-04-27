@@ -9,6 +9,7 @@ import threatRouter from './Threat'
 import vulnerabilityThreatRouter from './VulnerabilityThreat'
 import riskRouter from './Risk'
 import riskAssetRouter from './RiskAsset'
+import riskCalculateRouter from './RiskCalculate'
 
 const router = Router()
 
@@ -24,5 +25,6 @@ router.use('/threats', threatRouter)
 router.use('/vulnerability-threat', vulnerabilityThreatRouter)
 router.use('/risks', riskRouter)
 router.use('/risk-asset', riskAssetRouter)
+router.use('/riskcalc', riskCalculateRouter)
 
 export default router;

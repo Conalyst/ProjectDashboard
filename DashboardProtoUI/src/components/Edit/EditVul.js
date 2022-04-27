@@ -238,33 +238,33 @@ export const EditVul = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>

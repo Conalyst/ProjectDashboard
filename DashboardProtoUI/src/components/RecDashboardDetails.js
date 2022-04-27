@@ -4,7 +4,7 @@ import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import { ADDREC, EDITREC } from "../navigation/CONSTANTS";
+import { ADDREC, EDITREC } from "../navigation/constants";
 import {useHistory} from 'react-router-dom'
 
  
@@ -59,11 +59,10 @@ export const RecDashboardDetails = () => {
                     <td>{recommendation.description}</td>
                     <td>{recommendation.safeguard}</td>
                     <td>{recommendation.risks_ids}</td>
-                    <td>
-                    <td>
-                    {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button> )}
-                    </td>             
-                    </td>
+                    
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button>  </td>   )}
+                             
+
                 </tr>
             ) )}
             </tbody>

@@ -9,7 +9,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"L",
       availability:"L",
-      rating:"L",      
+      rating:"L",  
+      indexRating:"1",    
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -20,7 +21,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"M",
       availability:"H",
-      rating:"L",      
+      rating:"M",  
+      indexRating:"2",    
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -31,7 +33,8 @@ module.exports = {
       confidentiality:"M",
       integrity:"L",
       availability:"L",
-      rating:"H",      
+      rating:"H", 
+      indexRating:"3",     
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -42,7 +45,8 @@ module.exports = {
       confidentiality:"H",
       integrity:"L",
       availability:"M",
-      rating:"L",      
+      rating:"M", 
+      indexRating:"2",     
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -53,7 +57,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"M",
       availability:"H",
-      rating:"L",      
+      rating:"H", 
+      indexRating:"3",     
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -64,7 +69,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"L",
       availability:"L",
-      rating:"L",      
+      rating:"L",    
+      indexRating:"1",  
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -75,7 +81,8 @@ module.exports = {
       confidentiality:"M",
       integrity:"L",
       availability:"L",
-      rating:"M",      
+      rating:"M",  
+      indexRating:"2",    
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -86,7 +93,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"H",
       availability:"L",
-      rating:"L",      
+      rating:"L",     
+      indexRating:"1", 
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -97,7 +105,8 @@ module.exports = {
       confidentiality:"L",
       integrity:"L",
       availability:"L",
-      rating:"L",            
+      rating:"L",    
+      indexRating:"1",        
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { ADDREC, DASHBOARD, RECDASHBOARD } from "../../navigation/CONSTANTS";
+ 
+import { ADDREC, DASHBOARD, RECDASHBOARD } from "../../navigation/constants";
+ 
 import Select from 'react-select';
 
 
@@ -193,9 +195,9 @@ export const AddRec = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Safeguard</Form.Label>
                   <Form.Select className="Frame-right">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

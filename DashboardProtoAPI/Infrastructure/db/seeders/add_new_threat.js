@@ -10,6 +10,7 @@ module.exports = {
       impact:"M",
       likelihood:"H",
       rating:"L",   
+      indexRating: 1, 
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -20,7 +21,8 @@ module.exports = {
       description:"There is a risk of multiple system outage, because of the system dependencies due to cyberattack. ",
       impact:"M",
       likelihood:"L",
-      rating:"L",   
+      rating:"H", 
+      indexRating: 3,   
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -32,6 +34,7 @@ module.exports = {
       impact:"H",
       likelihood:"M",
       rating:"L",   
+      indexRating: 1, 
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -42,7 +45,8 @@ module.exports = {
       description:"An adversary gains administrative access to CLIENT NAME's system(s) and disables their function or encrypts key data, then demands payment to restore services. ",  
       impact:"L",
       likelihood:"M",
-      rating:"L",   
+      rating:"M",  
+      indexRating: 2,  
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -55,6 +59,7 @@ module.exports = {
       impact:"M",
       likelihood:"H",
       rating:"L",   
+      indexRating: 1, 
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -65,7 +70,8 @@ module.exports = {
       description:"A hacker (cybercriminal) successfully exploits technical vulnerabilities in CLIENT NAME's network or devices to gain unauthorized access to CLIENT NAME's systems or services, sensitive information, or escalate privileges in order to gain further privileged access. ",
       impact:"H",
       likelihood:"M",
-      rating:"L",   
+      rating:"H",   
+      indexRating: 3, 
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -76,7 +82,8 @@ module.exports = {
       description:"A CLIENT NAME employee with privileged or administrative access abuses, modify or destroy large volumes of data or formulas, or lock users out of systems or bring entire systems offline.  ",
       impact:"L",
       likelihood:"L",
-      rating:"L",   
+      rating:"L",  
+      indexRating: 1,  
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -87,7 +94,8 @@ module.exports = {
       description:"Malware is successfully delivered to CLIENT NAME's systems which results in system outage, data exfiltration or performance problem.  ",
       impact:"H",
       likelihood:"H",
-      rating:"L",   
+      rating:"M",  
+      indexRating: 2,  
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
@@ -98,7 +106,8 @@ module.exports = {
       description:"A large number of automated processes make requests to CLIENT NAME's web services simultaneously, overwhelming the web server or the on-premises back-end systems, causing failures or making performance unacceptable. ",
       impact:"M",
       likelihood:"M",
-      rating:"L",   
+      rating:"M",  
+      indexRating: 2,  
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});

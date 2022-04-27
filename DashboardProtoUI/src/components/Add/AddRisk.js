@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/CONSTANTS";
+ 
+import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/constants";
+ 
 import Select from 'react-select';
 
 
@@ -221,25 +223,25 @@ export const AddRisk = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)} >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label" >rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
