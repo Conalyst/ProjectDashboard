@@ -10,15 +10,18 @@ export const data = [
     ["Intangible", 41, 30, 19]
   ];
   
-  export const options = {
+export const options = {
     chartArea: { width: "75%" },
     colors: ["#09375f", "#126dba", "#72b7f2"],
     hAxis: {
     },
     vAxis: {
         minValue: 0
+    },
+    bar: {
+        groupWidth: 64
     }
-  };
+};
 
 export const DashboardVisual = () => {
     return (
@@ -79,15 +82,15 @@ export const DashboardVisual = () => {
                 <td className="bar-charts-summary">
                     <span>All Categories</span><br/>
                     <Chart
-      chartType="ColumnChart"
-      width="100%"
-      height="300px"
-      data={data}
-      options={options}
-    />
+                        chartType="ColumnChart"
+                        width="100%"
+                        height="300px"
+                        data={data}
+                        options={options}
+                    />
                 </td>
-                </tr>
-            </table>            
+            </tr>
+        </table>            
     </>
     );
 };
