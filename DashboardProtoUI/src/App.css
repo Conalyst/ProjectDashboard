@@ -2477,3 +2477,156 @@ li {
   box-shadow: 0 16px 20px 0 rgba(46, 46, 46, 0.15);
   background-color: #fff;
 }
+
+.Heat-map {
+  width: 352.4px;
+  height: 348.2px;
+  flex-grow: 0;
+  margin: 18px 57.6px 0 16px;
+  padding: 5px 11.8px 0 0;
+}
+
+.Impact-level {
+  width: 16px;
+  height: 44px;
+  margin: 124px 13px 130.2px 0;
+  transform: rotate(-90deg);
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.Level {
+  width: 20.2px;
+  height: 297px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 103px;
+  margin: 0 24.8px 1.2px 13px;
+  padding: 0;
+}
+
+.H {
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.M {
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.L {
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.Level-bottom {
+  width: 266.7px;
+  height: 30.3px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 103px;
+  margin: 1.2px 0 14.7px ;
+  padding: 0;
+}
+
+.Likelihood-r {
+  width: 65px;
+  height: 16px;
+  margin: 30.2px 106.7px 0 119.8px;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.L-b{
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.M {
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}
+
+.H {
+  width: 20.2px;
+  height: 30.3px;
+  flex-grow: 0;
+  font-family: Roboto;
+  font-size: 12.9px;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  color: #2e2e2e;
+}

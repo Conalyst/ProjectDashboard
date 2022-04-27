@@ -20,7 +20,7 @@ export const RiskDashboardVisual = () => {
       };
     return (
     <>
-        <div class="asset-rating">
+        <div className="asset-rating">
             <p>Risks Ratings</p>
             <p className="orange-total">Total<br/>82</p>
             <p>High<br/>20</p>
@@ -37,6 +37,15 @@ export const RiskDashboardVisual = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
+        <div className=""><div className="Impact-level">
+  Impact
+</div></div><div className="Level"><span className="H">
+  H
+</span><span className="M">
+  M
+</span><span className="M">
+  L
+</span></div>
         <div>
           <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
           <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
@@ -72,9 +81,21 @@ export const RiskDashboardVisual = () => {
           <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
           <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
         </div>
+        
     </div>
+    <div className="Level-bottom"><span className="H">
+  H
+</span><span className="M">
+  M
+</span><span className="M">
+  L
+</span></div>
+               <div className="Likelihood-r">
+  Likelihood
+</div>
       
                </div>
+               
             <div className="col-4">
                 <div className="Overall-Rating-threat">
                     Impact
