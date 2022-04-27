@@ -14,14 +14,15 @@ import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
-//import ManageModal from "./ManageModal";
-// import axios from "axios";
 import { pullCompanyAssets } from "../services/companyAssetsService";
-//import { getAllAssets } from "../services/assetsService";
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { asset as assetAtom} from '../recoil/atom'
 
 export const DashboardDetails = () => {
-
+  
+  const [asset, setAsset] = useRecoilState(assetAtom);
   const [assets, setAssets] = useState([]);
+
   const storedUser = localStorage.getItem("storedUser");
   const parsedUser = JSON.parse(storedUser);
   const isAdmin = parsedUser.role;
@@ -32,13 +33,12 @@ export const DashboardDetails = () => {
      });
     }  
 
-    const onEditAsset =()=>{
-    history.push({
-       pathname: EDITASSET,
-     });
+    const onEditAsset =(asset)=>{    
+      setAsset(asset) 
+      history.push({
+        pathname: EDITASSET,
+      });
     } 
-
-  
 
     useEffect(() => {
       console.log("in detail")
@@ -103,8 +103,8 @@ export const DashboardDetails = () => {
               
                 <td>{asset.title}</td>
                 <td>{asset.description}</td>
- 
                 <td>{asset.AssetCategory.name}</td>
+                <td>{asset.name}</td>
 
                 <td>{asset.confidentiality}</td>
                 <td>{asset.integrity}</td>

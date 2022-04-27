@@ -134,6 +134,7 @@ class ThreatRepository {
                 ],
                 where: { rating: 'Low' }
             });
+<<<<<<< HEAD
         });
     }
     //
@@ -196,6 +197,8 @@ class ThreatRepository {
                 ],
                 where: { likelihood: 'L' }
             });
+=======
+>>>>>>> d4e68ad31532fde80b83e1a637974ddf3a357c40
         });
     }
 }

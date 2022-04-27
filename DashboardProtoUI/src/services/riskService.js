@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_RISKS, GET_RISK_BY_ID, POST_RISK,GET_STATIC_RISKS } from "./constants";
+import { GET_ALL_RISKS, GET_RISK_BY_ID, POST_RISK, GET_STATIC_RISKS } from "./constants";
   
   export const getAllRisks = () => {
     return new Promise((resolve, reject) => {

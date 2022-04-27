@@ -89,6 +89,20 @@ export class AssetRepository {
       
     }
 
+    public async getStatsForBar() {
+      return db.Asset.findAll({
+        attributes: [
+          'categoryId', 
+          [sequelize.fn('COUNT', sequelize.col('rating')), 'count'],
+          'rating'
+        ],
+        group: ["categoryId", 'rating'],
+        raw: true,
+
+      });
+
+    }
+
     public async GetHigh(model: Model<typeof Asset>) {
       return db.Asset.findAll({
         attributes: [
@@ -235,4 +249,11 @@ export class AssetRepository {
       });
       
     }
+    public async getAssetCategoryByName(id:number) {
+      return db.AssetCategory.findByPk(id);
+    
+    }
 }
+
+
+

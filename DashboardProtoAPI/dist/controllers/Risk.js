@@ -95,5 +95,23 @@ class RiskApi {
     getDtoFromRequest(req) {
         return new RiskDto_1.RiskDto(req.body.id, req.body.category, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
     }
+    updateRating(riskId, rating) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const id = riskId;
+            const exists = yield this._riskRepository.GetById(id)
+                .catch((err) => {
+                console.log("Error: ", err);
+            });
+            if (exists) {
+                exists.rating = rating;
+                exists.UpdatedAt = new Date();
+                let updatedRating = yield this._riskRepository.Update(exists);
+                if (updatedRating) {
+                    return updatedRating;
+                }
+            }
+            return null;
+        });
+    }
 }
 exports.RiskApi = RiskApi;

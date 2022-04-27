@@ -83,5 +83,20 @@ export class RiskApi{
       return new RiskDto(req.body.id, req.body.category, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
   }
 
-
+  async updateRating(riskId: any, rating: any){ 
+    const id = riskId;
+    const exists = await this._riskRepository.GetById(id)
+    .catch((err) => {
+        console.log("Error: ", err);
+    });
+    if (exists) {
+      exists.rating = rating;
+      exists.UpdatedAt = new Date();     
+      let updatedRating = await this._riskRepository.Update(exists)    
+      if(updatedRating){
+        return updatedRating
+      }
+    }
+    return null;
+  }
 }

@@ -1,6 +1,10 @@
 import React,{useEffect,useState} from "react";
 import Chart from "react-google-charts";
-import { getStaticAssets } from "../services/assetsService";
+import * as crossfilter from "crossfilter2";
+import SummaryBarChart from './db-visuals/SummaryBarChart';
+import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
+import { assetData, data } from "./db-visuals/visuals-data";
+import { getStaticAssets, getStatsForBarChart } from "../services/assetsService";
 
 export const data = [
     ["Group", "H", "M", "L"],
@@ -40,6 +44,8 @@ export const DashboardVisual = () => {
     const [highAssetAvailability, setHighAssetAvailability] = useState(null);
     const [mediumAssetAvailability, setMediumAssetAvailability] = useState(null);
     const [lowAssetAvailability, setLowAssetAvailability] = useState(null);
+    const [barData, setBarData] = useState([]);
+
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -77,7 +83,31 @@ export const DashboardVisual = () => {
             reject("getAllAssets error!");
           } */
         });
+        
       }, []);
+
+      useEffect(() => {
+       
+        return new Promise((resolve, reject) => {
+          try {
+            // do db call or API endpoint axios call here and return the promise.
+            getStatsForBarChart()
+            .then((res) => {
+               setBarData(res)               
+            })
+              .catch((err) => {
+                console.log("getAllAssets > err=", err);
+               
+                reject("Request error!");
+              });
+          } catch (error) {
+            console.error("getAllAssets error!==", error);
+            reject("getAllAssets error!");
+          }
+        });
+        
+      }, []);
+
     return (
     <>
         <div class="asset-rating">
@@ -142,6 +172,7 @@ export const DashboardVisual = () => {
                         data={data}
                         options={options}
                     />
+                    <SummaryBarChart data={barData} />
                 </td>
                 </tr>
             </table>

@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_ASSETS } from "./constants";
+import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_ASSETS, GET_STATS_BARCHART } from "./constants";
   
   export const getAllAssets = () => {
     return new Promise((resolve, reject) => {
@@ -90,6 +90,25 @@ import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_
         // do an SDK, DB call or API endpoint axios call here and return the promise.
         axios
         .get(GET_STATIC_ASSETS())
+        .then((res) => {
+            console.log("res...", res.data)
+           resolve(res.data);
+        })
+        .catch((err) => {
+          reject("Error in getTotalssets axios!");
+        });
+      } catch (error) {
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  export const getStatsForBarChart = () => {
+    return new Promise((resolve, reject) => {
+      try {
+        // do an SDK, DB call or API endpoint axios call here and return the promise.
+        axios
+        .get(GET_STATS_BARCHART())
         .then((res) => {
             console.log("res...", res.data)
            resolve(res.data);

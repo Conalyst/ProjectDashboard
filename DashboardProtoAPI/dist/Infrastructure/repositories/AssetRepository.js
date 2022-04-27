@@ -104,6 +104,19 @@ class AssetRepository {
             });
         });
     }
+    getStatsForBar() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Asset.findAll({
+                attributes: [
+                    'categoryId',
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('rating')), 'count'],
+                    'rating'
+                ],
+                group: ["categoryId", 'rating'],
+                raw: true,
+            });
+        });
+    }
     GetHigh(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Asset.findAll({
@@ -223,6 +236,11 @@ class AssetRepository {
                 ],
                 where: { availability: 'L' }
             });
+        });
+    }
+    getAssetCategoryByName(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.AssetCategory.findByPk(id);
         });
     }
 }

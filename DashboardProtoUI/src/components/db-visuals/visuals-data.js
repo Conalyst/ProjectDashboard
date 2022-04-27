@@ -9,7 +9,9 @@ export const assetData = {
     "integrity": [{"h": 50, "m": 40, "l": 30}],
     "avail": [{"h": 50, "m": 40, "l": 30}]
 };
-
+export const data = [
+    {"group":"Network & Data Centre","L":0,"H":"1","M":"1"},{"group":"Technical","L":"1","H":"1","M":0},{"group":"Software","L":"1","H":0,"M":"1"},{"group":"Security","L":0,"H":0,"M":"1"},{"group":"Intangible","L":"1","H":0,"M":0},{"group":"Personal","L":"1","H":0,"M":0}
+]
 export const vulData = {
     "summary": [
         { "group": "Technical",   "h": 3, "m": 5, "l": 9 },

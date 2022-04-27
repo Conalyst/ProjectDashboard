@@ -150,5 +150,60 @@ class AssetApi {
         }
         return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, ratingAsset, new Date());
     }
+    getStatsForBarChart(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let assets = yield this._assetRepository.getStatsForBar();
+            const category = yield this._assetRepository.getAssetCategoryByName(assets[0].categoryId);
+            let stats = [{ "categoryId": assets[0].categoryId, "Group": category.name }];
+            let flag;
+            for (let asset of assets) {
+                const category = yield this._assetRepository.getAssetCategoryByName(asset.categoryId);
+                for (let stat of stats) {
+                    if (stat["categoryId"] === asset.categoryId) {
+                        stat[asset.rating] = parseInt(asset.count);
+                        flag = true;
+                        break;
+                    }
+                    else {
+                        flag = false;
+                    }
+                }
+                if (!flag) {
+                    let temp = {};
+                    temp["categoryId"] = asset.categoryId;
+                    temp["Group"] = category.name;
+                    temp[asset.rating] = parseInt(asset.count);
+                    stats.push(temp);
+                }
+            }
+            let result = [];
+            for (let stat of stats) {
+                let tempStat = {};
+                tempStat["group"] = stat.Group;
+                if (stat.hasOwnProperty("L")) {
+                    tempStat["L"] = stat["L"];
+                }
+                else {
+                    tempStat["L"] = 0;
+                }
+                if (stat.hasOwnProperty("H")) {
+                    tempStat["H"] = stat["H"];
+                }
+                else {
+                    tempStat["H"] = 0;
+                }
+                if (stat.hasOwnProperty("M")) {
+                    tempStat["M"] = stat["M"];
+                }
+                else {
+                    tempStat["M"] = 0;
+                }
+                result.push(tempStat);
+            }
+            // console.log("stats..", )
+            return res.status(200).json(result);
+        });
+    }
+    ;
 }
 exports.AssetApi = AssetApi;

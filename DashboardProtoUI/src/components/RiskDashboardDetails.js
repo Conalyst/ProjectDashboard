@@ -13,7 +13,7 @@ import { getAllRisks } from "../services/riskService";
 
 export const RiskDashboardDetails = () => {
 
-    const [risks, setRisk] = useState(risk_data);
+    const [risks, setRisk] = useState([]);
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;
@@ -38,7 +38,7 @@ export const RiskDashboardDetails = () => {
         console.log("parsed user dashboard", parsedUser);
         getAllRisks()
         .then((result) => {
-            console.log("Threats", result)
+            console.log("Risks", result)
             setRisk(result);
         })
    
@@ -63,7 +63,6 @@ export const RiskDashboardDetails = () => {
                     <th>Likelihood</th>
                     <th>Impact</th>
                     <th>Rating</th>
-                    <th>Action</th>
                     {(isAdmin === "Admin") && (
                     <th>
                      <img  src={pen_white} alt =""/>
