@@ -45,7 +45,7 @@ export const DashboardDetails = () => {
       const storedUser = localStorage.getItem("storedUser");   
       const parsedUser = JSON.parse(storedUser);
       return new Promise((resolve, reject) => {
-        try {
+   /*     try {
           // do db call or API endpoint axios call here and return the promise.
           getAllAssets()
           .then((res) => {
@@ -61,9 +61,9 @@ export const DashboardDetails = () => {
         } catch (error) {
           console.error("getAllAssets error!==", error);
           reject("getAllAssets error!");
-        }
+        } */
       });
-    }, []);
+    }, []); 
     return (
     <>     
         <div className="asset-menu-buttons">          
