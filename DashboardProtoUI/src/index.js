@@ -5,13 +5,16 @@ import store from './store';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { RecoilRoot} from 'recoil'
 
 ReactDOM.render(
-  <Provider store={store}>
+  // <Provider store={store}>
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
-  </Provider>,
+    <RecoilRoot>
+      <App />
+    </RecoilRoot>
+  </React.StrictMode>,
+  // </Provider>,
   document.getElementById('root')
 );
 

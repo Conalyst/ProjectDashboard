@@ -18,20 +18,95 @@ import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
 import { DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
 import Select from 'react-select';
-
-
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { asset as assetAtom} from '../../recoil/atom'
+import { getAllVulnerabilities } from "../../services/vulnerabilityService";
 
 export const EditAsset = () => { 
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  //const [searchvul, setSearchvul] = useState('');
+  const [asset, setAsset] = useRecoilState(assetAtom);
+  const [assetTitle, setAssetTitle] = useState(asset.title);
+  const [description, setDescription] = useState(asset.description);
+  const [availibility, setAvailibility] = useState(asset.availability);
+  const [integrity, setIntegrity] = useState(asset.integrity);
+  const [confidentiality, setConfidentiality] = useState(asset.confidentiality);
+  const [category, setCategory] = useState(asset.categoryId);
+  const [rating, setRating] = useState(asset.rating);
+  const [message, setMessage] = useState("");
+ 
   const [selectedOption, setSelectedOption] = useState(null);
+  const [vuln, setVuln] = useState([])
 
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
+
+  useEffect(() => {
+    console.log("in detail")
+    const storedUser = localStorage.getItem("storedUser");   
+    const parsedUser = JSON.parse(storedUser);
+    return new Promise((resolve, reject) => {
+      try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllVulnerabilities()
+        .then((res) => {
+          console.log("in detail", res)
+          setVuln(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllVulnerabilities > err=", err);
+            setVuln([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      }
+    });
+  }, []);
+
   const onDone =()=>{
+    // if (!assetTitle) {
+    //   setErrors("An asset title is needed!");
+    // } else {
+      const requestDto = {
+        title: assetTitle,
+        categoryId: category,
+        description:description,
+        confidentiality:confidentiality,
+        integrity:integrity,
+        availibility:availibility,
+        rating:rating
+       };
+       console.log("Edit Dto...", requestDto)
+      
+    //   postAsset(requestDto)
+    //     .then((result) => {
+    //       setAssetTitle("");
+    //       setDescription("")
+    //       // getCommentByRestaurant(restaurantId).then((result) => {
+    //       //   setCommentsListData(result);
+    //       // });
+    //       setErrors("This asset created successfully !");
+    //     })
+    //     .catch((err) => {
+    //       console.log(err);
+    //       if (err.response.status == 404) {
+    //         setErrors("No comment found!");
+    //       } else {
+    //         if (err.response.status == 400) {
+    //           setErrors("restaurantId is not valid!");
+    //         } else {
+    //           setErrors("Unknow error!");
+    //         }
+    //       }
+        //  });
+     
+    
+    
+
+
   history.push({
      pathname: DASHBOARD,
 
@@ -53,18 +128,26 @@ export const EditAsset = () => {
    });
   }  
 
-  const options = [
-    { value: 'V1', label: 'V1' },
-    { value: 'V2', label: 'V2' },
-    { value: 'V3', label: 'V3' },
-    { value: 'V4', label: 'V4' },
-    { value: 'V5', label: 'V5' },
-    { value: 'V6', label: 'V6' },
-    { value: 'V7', label: 'V7' },
-    { value: 'V8', label: 'V8' },
-    { value: 'V9', label: 'V9' },
-    { value: 'V10', label:'V10'},
-  ];
+  const options = []
+  const vulns = asset.Vulnerabilities
+  vulns.map(val => {
+    options.push({value: val.id, label: val.title})
+  })
+
+  // const selected = []
+  // const vulns = asset.Vulnerabilities
+  // vulns.map(vuln => {
+  //   console.log("vuln id", vuln.id)
+  //   selected.push(vuln.id)
+  // })
+  // setSelectedOption(selected)
+ 
+  const handleChangeCategory = (e) => {
+    const index = e.target.selectedIndex;
+    const el = e.target.childNodes[index]
+    const option =  el.getAttribute('value');  
+    setCategory(option)
+  }
 
   const customStyles = {
     control: base => ({
@@ -74,39 +157,10 @@ export const EditAsset = () => {
     })
   };
 
-  /*const onAddAsset = () =>{
+  console.log("asset avail...", asset)
+  
  
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
+ 
 
   return (
     <div className="db-site-container">
@@ -199,55 +253,56 @@ export const EditAsset = () => {
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" value={asset.title} onChange={(e) => setAssetTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <Form.Select className="Frame-left" value={asset.availability}>
+                    <option value='L'>L</option>
+                    <option value='M'>M</option>
+                    <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <Form.Select className="Frame-left" value={asset.integrity}>
+                  <option value='L'>L</option>
+                    <option value='M'>M</option>
+                    <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <Form.Select className="Frame-left" value={asset.confidentiality}>
+                  <option value='L'>L</option>
+                    <option value='M'>M</option>
+                    <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left">
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <Form.Select className="Frame-left" value={asset.rating}>
+                  <option value='L'>L</option>
+                    <option value='M'>M</option>
+                    <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right">
-                    <option>Personnel</option>
-                    <option>Data</option>
-                    <option>Network and Data Center</option>
-                    <option>Software</option>
-                    <option>Intangible</option>
+                  <Form.Select className="Frame-right" value={asset.categoryId} onChange={(e) => handleChangeCategory(e)}>
+                    <option value='1'>Software</option>
+                    <option value='2'>Network & Data Centre</option>
+                    <option value='3'>Technical</option>
+                    <option value='4'>Security</option>
+                    <option value='5'>Personal</option>
+                    <option value='6'>Intangible</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc-manage" as="textarea"  name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage" as="textarea" value={asset.description}  name="detail" onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
@@ -257,6 +312,7 @@ export const EditAsset = () => {
                     onChange={setSelectedOption}
                     options={options}
                     styles={customStyles}
+                    // value={selectedOption}
                    />
                 </Form.Group>
               </div>
@@ -284,7 +340,7 @@ export const EditAsset = () => {
                 </div>
               </div>
             </div>           
-            <Button className="Button-Icon-AddAsset-modal" type="submit" onClick={() =>onDone()}>
+            <Button className="Button-Icon-AddAsset-modal" type="submit"  onClick={() =>onDone()}>
               Done
             </Button>
             </div>

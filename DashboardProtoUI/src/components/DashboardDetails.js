@@ -14,14 +14,15 @@ import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
-//import ManageModal from "./ManageModal";
-// import axios from "axios";
 import { pullCompanyAssets } from "../services/companyAssetsService";
-//import { getAllAssets } from "../services/assetsService";
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { asset as assetAtom} from '../recoil/atom'
 
 export const DashboardDetails = () => {
-
+  
+  const [asset, setAsset] = useRecoilState(assetAtom);
   const [assets, setAssets] = useState([]);
+
   const storedUser = localStorage.getItem("storedUser");
   const parsedUser = JSON.parse(storedUser);
   const isAdmin = parsedUser.role;
@@ -32,10 +33,11 @@ export const DashboardDetails = () => {
      });
     }  
 
-    const onEditAsset =()=>{
-    history.push({
-       pathname: EDITASSET,
-     });
+    const onEditAsset =(asset)=>{    
+      setAsset(asset) 
+      history.push({
+        pathname: EDITASSET,
+      });
     } 
 
     useEffect(() => {
@@ -100,7 +102,7 @@ export const DashboardDetails = () => {
                 <td>{asset.assetId}</td>
                 <td>{asset.title}</td>
                 <td>{asset.description}</td>
- 
+                <td>{asset.AssetCategory.name}</td>
                 <td>{asset.name}</td>
 
                 <td>{asset.confidentiality}</td>
@@ -109,7 +111,7 @@ export const DashboardDetails = () => {
                 <td>{asset.rating}</td>
                 <td>
                 <td>
-                {(isAdmin === "Admin") && (  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> )}
+                {(isAdmin === "Admin") && (  <button className="pen-button" onClick={() => onEditAsset(asset)}><img src={pen_black} alt={asset.id}/></button> )}
                     </td>               
                 </td>
               </tr>
