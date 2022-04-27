@@ -5,7 +5,10 @@ import { getStaticThreats, getAgents } from "../services/threatService";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
 
+ 
 export const ThreatsDashboardVisual = () => {
+
+   
 
    
 
@@ -32,19 +35,21 @@ export const ThreatsDashboardVisual = () => {
             // do db call or API endpoint axios call here and return the promise.
             getStaticThreats()
             .then((res) => {
-              setTotalThreats(res.static.numberThreat[0].total_Threat);
-              setHighThreats(res.static.highThreat[0].high_Threat)
-              setMediumThreats(res.static.mediumThreat[0].mediun_Threat)
-              setLowThreats(res.static.lowThreat[0].low_Threat)
-              setAgentsRating(res.Agents.AgentsRating)
-              setAgentsImpact(res.Agents.AgentsImpact)
-              setAgentsLikelihood(res.Agents.AgentsLikelihood)
-              setHighThreatsImpact(res.visual.highThreatImpact[0].high_Threat)
-              setLowThreatsImpact(res.visual.lowThreatImpact[0].low_Threat)
-              setMediumThreatsImpact(res.visual.mediumThreatImpact[0].mediun_Threat)
-              setHighThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
-              setMediumThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
-              setLowThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
+                setTotalThreats(res.static.numberThreat[0].total_Threat);
+                setHighThreats(res.static.highThreat[0].high_Threat)
+                setMediumThreats(res.static.mediumThreat[0].mediun_Threat)
+                setLowThreats(res.static.lowThreat[0].low_Threat)
+                setAgentsRating(res.Agents.AgentsRating)
+                setAgentsImpact(res.Agents.AgentsImpact)
+                setAgentsLikelihood(res.Agents.AgentsLikelihood)
+                setHighThreatsImpact(res.visual.highThreatImpact[0].high_Threat)
+                setLowThreatsImpact(res.visual.lowThreatImpact[0].low_Threat)
+                setMediumThreatsImpact(res.visual.mediumThreatImpact[0].mediun_Threat)
+                setHighThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
+                setMediumThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
+                setLowThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
+
+               
              
             })
               .catch((err) => {
@@ -79,17 +84,14 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Group-1359"><div className="V-T-Color">
                 <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                 <span className="span-H">
-                    H({highThreats})
+                H({highThreats})
                 </span>
                 <span className="span-M">
-                    M({mediumThreats})
+                M({mediumThreats})
                 </span>
                 <span className="span-L">
- 
                     L({lowThreats})
-                </span>
-               </div></div>    
-    
+                </span></div></div>    
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
                 </div>
@@ -97,8 +99,9 @@ export const ThreatsDashboardVisual = () => {
                         
                      
                
-                        <div className="Rectangle-1407">
-                        <span className="text-thr ">
+                  <div className="Rectangle-1407">
+                  
+                  <span className="Phishing">
                         
                   {agent.agent}
                   </span>
@@ -106,7 +109,7 @@ export const ThreatsDashboardVisual = () => {
             
                  
                     ) )}
-                 </div> 
+                  
                 
             </div>
             <div className="col-4">
@@ -114,8 +117,8 @@ export const ThreatsDashboardVisual = () => {
                     Impact
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"  ><div className="Light-Blue-Color"  ><div className="Grey-Color"  ></div></div></div>
-                    <span className="span-H"  >
+                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                    <span className="span-H">
                          H({highThreatsImpact})
                     </span>
                     <span className="span-M">
@@ -126,19 +129,19 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                 </div>
             </div>    
-            <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                   
                 </div>
                 {agentsImpact.map((agent) => (
-                <div className="Rectangle-1407">
-                <span className="text-thr ">
+                <div div className="Rectangle-1407-Mal">
+               
+                    <span className="Malware">
                     {agent.agent}
                     </span>
                 </div>
                    ) )}
-                 </div>
+                 
                
             </div>
             <div className="col-4">
@@ -157,19 +160,17 @@ export const ThreatsDashboardVisual = () => {
                          L({lowThreatsLikelihood})
                     </span>
                      </div>
-                </div>       
-                <div className="grey-threat">         
+                </div>                
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
                 {agentsLikelihood.map((agent) => (
-                <div className="Rectangle-1407">
-                <span className="text-thr ">
+                <div className="Rectangle-1408-Fin">
+                    <span className="Financial-Fraud">
                     {agent.agent}
                     </span>
                 </div>
                     ) )}
-                </div>
             </div>
         </div>         
 

@@ -142,13 +142,13 @@ class ThreatApi {
     //#region private methods
     getDtoFromRequest(req) {
         let ratingThreat;
-        if (req.body.rating == "High") {
+        if (req.body.rating == "H") {
             ratingThreat = 3;
         }
-        else if (req.body.rating == "Medium") {
+        else if (req.body.rating == "M") {
             ratingThreat = 2;
         }
-        else if (req.body.rating == "Low") {
+        else if (req.body.rating == "L") {
             ratingThreat = 1;
         }
         return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, ratingThreat, new Date());
