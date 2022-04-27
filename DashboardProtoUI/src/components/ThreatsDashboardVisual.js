@@ -7,11 +7,7 @@ import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
 
  
 export const ThreatsDashboardVisual = () => {
-
-   
-
-   
-
+ 
     const [totalThreats, setTotalThreats] = useState(null);
     const [highThreats, setHighThreats] = useState(null);
     const [mediumThreats, setMediumThreats] = useState(null);
@@ -81,6 +77,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Overall Rating
                 </div>
+ 
                 <div className="Group-1359"><div className="V-T-Color">
                 <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                 <span className="span-H">
@@ -92,6 +89,7 @@ export const ThreatsDashboardVisual = () => {
                 <span className="span-L">
                     L({lowThreats})
                 </span></div></div>    
+ 
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
                 </div>
@@ -116,6 +114,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Impact
                 </div>
+ 
                 <div className="Group-1359"><div className="V-T-Color">
                 <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
@@ -129,6 +128,7 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                 </div>
             </div>    
+ 
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                   
@@ -148,6 +148,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Likelihood
                 </div>
+ 
                 <div className="Group-1359"><div className="V-T-Color">
                 <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
@@ -161,6 +162,7 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                      </div>
                 </div>                
+ 
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>

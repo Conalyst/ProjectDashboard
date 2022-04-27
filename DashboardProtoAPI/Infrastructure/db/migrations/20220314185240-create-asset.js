@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      asset_categoryId: {
+      categoryId: {
         type: Sequelize.INTEGER
       },
       title: {
@@ -16,6 +16,18 @@ module.exports = {
       },
       description: {
         type: Sequelize.TEXT
+      },
+      confidentiality: {
+        type: Sequelize.STRING
+      },
+      integrity: {
+        type: Sequelize.STRING
+      },
+      availability: {
+        type: Sequelize.STRING
+      },
+      rating: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,

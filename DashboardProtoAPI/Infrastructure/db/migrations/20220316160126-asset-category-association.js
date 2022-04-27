@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     queryInterface.addConstraint('assets', {
-      fields: ['asset_categoryId'],
+      fields: ['categoryId'],
       type: 'foreign key',
       name: 'asset_category_association',
       references: {
