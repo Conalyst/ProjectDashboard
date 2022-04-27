@@ -18,6 +18,9 @@ export const options = {
     },
     vAxis: {
         minValue: 0
+    },
+    bar: {
+        groupWidth: 64
     }
 };
 

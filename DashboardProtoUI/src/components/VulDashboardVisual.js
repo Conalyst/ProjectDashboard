@@ -1,9 +1,27 @@
-import React,{useEffect,useState} from "react";
-import * as crossfilter from "crossfilter2";
-import SummaryBarChart from './db-visuals/SummaryBarChart';
-import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-import { vulData, vulImpactData, vulLikeliData } from "./db-visuals/visuals-data";
+import React, { useEffect, useState } from "react";
+import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
+
+export const data = [
+    ["Group", "H", "M", "L"],
+    ["Technical", 3, 5, 9],
+    ["Operational", 3, 10, 8],
+    ["Personnel", 2, 7, 5]
+  ];
+  
+export const options = {
+    chartArea: { width: "75%" },
+    colors: ["#09375f", "#126dba", "#72b7f2"],
+    hAxis: {},
+    vAxis: {
+        minValue: 0,
+        ticks: [5, 10]
+    },
+    bar: {
+        groupWidth: 64
+    }
+};
+
 export const VulDashboardVisual = () => {
 
     const [totalVulnerabilities, setTotalVulnerabilities] = useState(null);
@@ -68,56 +86,45 @@ export const VulDashboardVisual = () => {
                 <td className="stack-bars-summary">
                     <div className="stack-bar-h">
                         Impact
-                        {/* <div>
-                            <SummaryStackedChart data={vulData.impact} />                            
-                        </div> */}
-                        <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"  ><div className="Light-Blue-Color"  ><div className="Grey-Color"  ></div></div></div>
-                    <span className="span-H"  >
-                         H({highVulnerabilityImpact})
-                    </span>
-                    <span className="span-M">
-                         M({mediumVulnerabilityImpact})
-                    </span>
-                    <span className="span-L">
-                         L({lowVulnerabilityImpact})
-                    </span>
-                </div>
-            </div>  
-
+                        <div className="V-T-Color">
+                            <div className="Dark-Blue-Color">
+                            <div className="Light-Blue-Color">
+                            <div className="Grey-Color">
+                            </div></div></div>
+                            <div className="label-span-s">
+                                <span className="value-span-s span-H-s">H({highVulnerabilityImpact})</span>
+                                <span className="value-span-s span-M-s">M({mediumVulnerabilityImpact})</span>
+                                <span className="value-span-s span-L-s">L({lowVulnerabilityImpact})</span>
+                            </div>
+                        </div>
                     </div>
                     <div className="stack-bar-h">
                         Likelihood
-                        {/* <div>
-                            <SummaryStackedChart data={vulData.likelihood} />                            
-                        </div> */}
-
-<div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"  ><div className="Light-Blue-Color"  ><div className="Grey-Color"  ></div></div></div>
-                    <span className="span-H"  >
-                         H({highVulnerabilityLikelihood})
-                    </span>
-                    <span className="span-M">
-                         M({mediumVulnerabilityLikelihood})
-                    </span>
-                    <span className="span-L">
-                         L({lowVulnerabilityLikelihood})
-                    </span>
-                </div>
-            </div>  
+                        <div className="V-T-Color">
+                            <div className="Dark-Blue-Color">
+                            <div className="Light-Blue-Color">
+                            <div className="Grey-Color">
+                            </div></div></div>
+                            <div className="label-span-s">
+                                <span className="value-span-s span-H-s">H({highVulnerabilityLikelihood})</span>
+                                <span className="value-span-s span-M-s">M({mediumVulnerabilityLikelihood})</span>
+                                <span className="value-span-s span-L-s">L({lowVulnerabilityLikelihood})</span>
+                            </div>
+                        </div>
                     </div>
                 </td>
                 <td className="bar-charts-summary">
                     <span>All Categories</span><br/>
-                    <SummaryBarChart data={vulData.summary} />
+                    <Chart
+                        chartType="ColumnChart"
+                        width="100%"
+                        height="300px"
+                        data={data}
+                        options={options}
+                    />
                 </td>
             </tr>
         </table>
-        {/* <div className="injury-level1">
-                <span className="dark_blue"></span>
-                <span className="blue"></span>
-                <span class="grey"></span>
-            </div> */}
     </>
     );
 };
