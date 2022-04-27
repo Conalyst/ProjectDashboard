@@ -56,7 +56,6 @@ export const AddAsset = () => {
        .then((result) => {
          setAssetTitle("");
          setDescription("")
-         console.log("frrrrr",result)
      
        })
        .catch((err) => {
