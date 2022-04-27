@@ -141,12 +141,12 @@ async delete(req: express.Request, res: express.Response){
     //#region private methods
   getDtoFromRequest(req: express.Request){  
     let ratingAsset ;
-    if (req.body.rating == "High")    {
+    if (req.body.rating == "H")    {
           
       ratingAsset= 3;
-   }  else if (req.body.rating == "Medium"){
+   }  else if (req.body.rating == "M"){
      ratingAsset  = 2;
-   } else if (req.body.rating == "Low"){
+   } else if (req.body.rating == "L"){
      ratingAsset= 1;
    }   
        

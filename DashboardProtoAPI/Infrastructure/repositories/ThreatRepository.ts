@@ -50,7 +50,7 @@ export class ThreatRepository {
         [Sequelize.fn('DISTINCT', Sequelize.col('agent')), 'agent'],
         "impact"
       ],
-        where: {impact: 'High'},
+        where: {impact: 'H'},
     })
     return threat;    
   }   
@@ -73,7 +73,7 @@ export class ThreatRepository {
        
      
       ],
-      where: {rating: 'High'}
+      where: {rating: 'H'}
     });
     
   }
@@ -84,7 +84,7 @@ export class ThreatRepository {
       attributes: [
         [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
       ],
-      where: {impact: 'High'}
+      where: {impact: 'H'}
     });
     
   }
@@ -97,7 +97,7 @@ export class ThreatRepository {
         [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
      
       ],
-      where: {likelihood: 'High'}
+      where: {likelihood: 'H'}
     });
     
   }
@@ -109,7 +109,7 @@ export class ThreatRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'high_Threat'],
      
       ],
-      where: {rating: 'High'}
+      where: {rating: 'H'}
     });
     
   }
@@ -121,7 +121,7 @@ export class ThreatRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Threat'],
      
       ],
-      where: {rating: 'Medium'}
+      where: {rating: 'M'}
     });
     
   }
@@ -133,7 +133,7 @@ export class ThreatRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'low_Threat'],
      
       ],
-      where: {rating: 'Low'}
+      where: {rating: 'L'}
     });
     
   }
