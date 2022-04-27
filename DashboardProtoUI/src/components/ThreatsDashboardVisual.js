@@ -17,17 +17,19 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Overall Rating
                 </div>
-                <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                <span className="span-H">
-                    H
-                </span>
-                <span className="span-M">
-                    M
-                </span>
-                <span className="span-L">
-                    L
-                </span></div></div>   
+                <div className="Group-1359">
+                    <div className="V-T-Color">
+                        <div className="Dark-Blue-Color">
+                        <div className="Light-Blue-Color">
+                        <div className="Grey-Color">
+                        </div></div></div>
+                        <div className="label-span-s">
+                            <span className="value-span-s span-H-s">H</span>
+                            <span className="value-span-s span-M-s">M</span>
+                            <span className="value-span-s span-L-s">L</span>
+                        </div>
+                    </div>
+                    </div>   
                 <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -53,19 +55,19 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Impact
                 </div>
-                <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                    <span className="span-H">
-                         H
-                    </span>
-                    <span className="span-M">
-                         M
-                    </span>
-                    <span className="span-L">
-                         L
-                    </span>
-                </div>
-            </div>    
+                <div className="Group-1359">
+                    <div className="V-T-Color">
+                        <div className="Dark-Blue-Color">
+                        <div className="Light-Blue-Color">
+                        <div className="Grey-Color">
+                        </div></div></div>
+                        <div className="label-span-s">
+                            <span className="value-span-s span-H-s">H</span>
+                            <span className="value-span-s span-M-s">M</span>
+                            <span className="value-span-s span-L-s">L</span>
+                        </div>
+                    </div>
+                </div>    
             <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
@@ -91,18 +93,18 @@ export const ThreatsDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Likelihood
                 </div>
-                <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                    <span className="span-H">
-                         H
-                    </span>
-                    <span className="span-M">
-                         M
-                    </span>
-                    <span className="span-L">
-                         L
-                    </span>
-                     </div>
+                <div className="Group-1359">
+                    <div className="V-T-Color">
+                        <div className="Dark-Blue-Color">
+                        <div className="Light-Blue-Color">
+                        <div className="Grey-Color">
+                        </div></div></div>
+                        <div className="label-span-s">
+                            <span className="value-span-s span-H-s">H</span>
+                            <span className="value-span-s span-M-s">M</span>
+                            <span className="value-span-s span-L-s">L</span>
+                        </div>
+                    </div>
                 </div>   
                 <div className="grey-threat">             
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
