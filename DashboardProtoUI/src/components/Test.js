@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react"; 
 import { useHistory ,useLocation} from "react-router-dom";
 import { getAllTest } from "../services";
-import { LOGIN } from "../navigation/constants"; 
+import { LOGIN } from "../navigation/CONSTANTS"
+
 
 export const Test = () => {
 
