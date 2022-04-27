@@ -86,11 +86,9 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.impact}</td>
                     <td>{risk.rating}</td>
                     <td>{risk.action}</td>
-                    <td>
-                    <td>
-                    {(isAdmin === "Admin") && (<button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> )}
-                </td>            
-                </td>
+                    
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> </td> )}
+              
                 </tr>
             ) )}
             </tbody>

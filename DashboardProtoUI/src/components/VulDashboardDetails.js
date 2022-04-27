@@ -84,9 +84,9 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.impact}</td>
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
-                    <td>
-                    {(isAdmin === "Admin") && (  <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button> )}
-                </td>
+                    
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button>  </td> )}
+              
                 </tr>
             ) )}
             </tbody>
