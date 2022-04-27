@@ -72,7 +72,7 @@ class RiskRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Risk'],
                 ],
-                where: { rating: 'High' }
+                where: { rating: 'H' }
             });
         });
     }
@@ -82,7 +82,7 @@ class RiskRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Risk'],
                 ],
-                where: { rating: 'Medium' }
+                where: { rating: 'M' }
             });
         });
     }
@@ -92,7 +92,7 @@ class RiskRepository {
                 attributes: [
                     [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Risk'],
                 ],
-                where: { rating: 'Low' }
+                where: { rating: 'L' }
             });
         });
     }

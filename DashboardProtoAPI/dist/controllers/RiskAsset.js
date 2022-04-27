@@ -88,7 +88,7 @@ class RiskAssetApi {
                 highestThreatRating = threat[0]['Asset.Vulnerabilities.Threats.rating'];
             }
             const risk = { highestAssetRating, highestVulnRating, highestThreatRating };
-            const scores = { 'H': 4, 'M': 3, 'L': 2 };
+            const scores = { 'VH': 5, 'H': 4, 'M': 3, 'L': 2, 'VL': 1 };
             const riskScore = scores[risk.highestAssetRating] * scores[risk.highestVulnRating] * scores[risk.highestThreatRating];
             risk['score'] = riskScore;
             if (risk['score'] >= 1 && risk['score'] <= 4)

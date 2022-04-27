@@ -51,7 +51,7 @@ export const AddAsset = () => {
        availibility:availibility,
        rating:rating
      };
-     console.log("confi", confidentiality )
+     console.log("selected option", selectedOption)
     //  postAsset(requestDto)
     //    .then((result) => {
     //      setAssetTitle("");

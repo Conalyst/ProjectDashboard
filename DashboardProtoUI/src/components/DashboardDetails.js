@@ -45,7 +45,7 @@ export const DashboardDetails = () => {
       const storedUser = localStorage.getItem("storedUser");   
       const parsedUser = JSON.parse(storedUser);
       return new Promise((resolve, reject) => {
-   /*     try {
+       try {
           // do db call or API endpoint axios call here and return the promise.
           getAllAssets()
           .then((res) => {
@@ -61,7 +61,7 @@ export const DashboardDetails = () => {
         } catch (error) {
           console.error("getAllAssets error!==", error);
           reject("getAllAssets error!");
-        } */
+        } 
       });
     }, []); 
     return (
@@ -112,7 +112,7 @@ export const DashboardDetails = () => {
                 <td>{asset.rating}</td>
                
                
-                {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> </td> )}
+                {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={() => onEditAsset(asset)}><img src={pen_black} alt =""/></button> </td> )}
                                   
              
               </tr>

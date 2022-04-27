@@ -19,7 +19,6 @@ class ThreatApi {
     }
     getAllThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-<<<<<<< HEAD
             // let threatList = await this._threatRepository.Get();
             let threatList = yield this._threatRepository.Get();
             // console.log("Helllllo")
@@ -29,8 +28,6 @@ class ThreatApi {
     ;
     getAllThreatsByImpact(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-=======
->>>>>>> d4e68ad31532fde80b83e1a637974ddf3a357c40
             // let threatList = await this._threatRepository.Get();
             let threatList = yield this._threatRepository.GetByHighImpact();
             // console.log("Helllllo")
@@ -41,7 +38,6 @@ class ThreatApi {
     getThreatById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let threatId = req.body.id;
-            console.log("hhhhhh", threatId);
             let threat = yield this._threatRepository.GetById(threatId);
             return res.status(200).json(threat);
         });
@@ -63,7 +59,6 @@ class ThreatApi {
             let highThreatLikelihood = yield this._threatRepository.GetHighLikelihood();
             let mediumThreatLikelihood = yield this._threatRepository.GetMediumLikelihood();
             let lowThreatLikelihood = yield this._threatRepository.GetLowLikelihood();
-            console.log("@@@@@@@@@", numberThreat);
             return res.status(200).json({
                 "static": { numberThreat, highThreat, mediumThreat, lowThreat },
                 "Agents": {
@@ -145,13 +140,13 @@ class ThreatApi {
     //#region private methods
     getDtoFromRequest(req) {
         let ratingThreat;
-        if (req.body.rating == "High") {
+        if (req.body.rating == "H") {
             ratingThreat = 3;
         }
-        else if (req.body.rating == "Medium") {
+        else if (req.body.rating == "M") {
             ratingThreat = 2;
         }
-        else if (req.body.rating == "Low") {
+        else if (req.body.rating == "L") {
             ratingThreat = 1;
         }
         return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, ratingThreat, new Date());

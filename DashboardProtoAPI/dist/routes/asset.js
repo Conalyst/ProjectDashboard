@@ -20,8 +20,10 @@ assetRouter.get("/:id", (req, res) => {
 assetRouter.post("/", (req, res) => {
     assetApi.create(req, res);
 });
-assetRouter.put("/:id", passport.authenticate("jwt", { session: false }), (req, res) => {
+assetRouter.put("/:id", (req, res) => {
     assetApi.update(req, res);
 });
-assetRouter.delete('/:id', passport.authenticate("jwt", { session: false }), (req, res) => assetApi.delete(req, res));
+assetRouter.delete('/:id', (req, res) => {
+    assetApi.delete(req, res);
+});
 exports.default = assetRouter;

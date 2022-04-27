@@ -8,6 +8,7 @@ export const GET_ASSET_BY_COMPANY_ID = (companyId)=>BASE_ADDRESS()+'/v2/dashboar
 export const GET_ALL_ASSETS = ()=>BASE_ADDRESS()+'/v2/assets';
 export const GET_ASSET_BY_ID = (assetId)=>BASE_ADDRESS()+'/v2/dashboard/asset?assetId=${assetId}';
 export const POST_ASSET= () => `${BASE_ADDRESS()}/v2/assets`
+export const PUT_ASSET= (id) => `${BASE_ADDRESS()}/v2/assets/${id}`
 export const GET_STATIC_ASSETS= () => `${BASE_ADDRESS()}/v2/assets/static`
 export const GET_STATS_BARCHART= () => `${BASE_ADDRESS()}/v2/assets/bar-stats`
 

@@ -3,7 +3,7 @@ import Chart from "react-google-charts";
 import * as crossfilter from "crossfilter2";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-import { assetData, data } from "./db-visuals/visuals-data";
+import { assetData } from "./db-visuals/visuals-data";
 import { getStaticAssets, getStatsForBarChart } from "../services/assetsService";
 
 export const data = [
@@ -52,7 +52,7 @@ export const DashboardVisual = () => {
         const parsedUser = JSON.parse(storedUser);
        
         return new Promise((resolve, reject) => {
-        /*  try {
+          try {
             // do db call or API endpoint axios call here and return the promise.
             getStaticAssets()
             .then((res) => {
@@ -81,7 +81,7 @@ export const DashboardVisual = () => {
           } catch (error) {
             console.error("getAllAssets error!==", error);
             reject("getAllAssets error!");
-          } */
+          } 
         });
         
       }, []);
@@ -172,7 +172,7 @@ export const DashboardVisual = () => {
                         data={data}
                         options={options}
                     />
-                    <SummaryBarChart data={barData} />
+                    {/* <SummaryBarChart data={barData} /> */}
                 </td>
                 </tr>
             </table>

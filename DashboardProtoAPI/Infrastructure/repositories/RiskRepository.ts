@@ -68,7 +68,7 @@ export class RiskRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'high_Risk'],
      
       ],
-      where: {rating: 'High'}
+      where: {rating: 'H'}
     });
     
   }
@@ -80,7 +80,7 @@ export class RiskRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'mediun_Risk'],
      
       ],
-      where: {rating: 'Medium'}
+      where: {rating: 'M'}
     });
     
   }
@@ -92,7 +92,7 @@ export class RiskRepository {
         [sequelize.fn('COUNT', sequelize.col('id')), 'low_Risk'],
      
       ],
-      where: {rating: 'Low'}
+      where: {rating: 'L'}
     });
     
   }

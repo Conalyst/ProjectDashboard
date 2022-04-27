@@ -24,6 +24,7 @@ import Select from 'react-select';
 import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { asset as assetAtom} from '../../recoil/atom'
 import { getAllVulnerabilities } from "../../services/vulnerabilityService";
+import { putAsset } from "../../services";
 
 export const EditAsset = () => { 
   const [asset, setAsset] = useRecoilState(assetAtom);
@@ -35,9 +36,9 @@ export const EditAsset = () => {
   const [category, setCategory] = useState(asset.categoryId);
   const [rating, setRating] = useState(asset.rating);
   const [message, setMessage] = useState("");
- 
+  const [errors, setErrors] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
-  const [vuln, setVuln] = useState([])
+  const [vulnerability, setVulnerability] = useState([])
 
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
@@ -54,12 +55,12 @@ export const EditAsset = () => {
         getAllVulnerabilities()
         .then((res) => {
           console.log("in detail", res)
-          setVuln(res);
+          setVulnerability(res);
           resolve(res);
         })
           .catch((err) => {
             console.log("getAllVulnerabilities > err=", err);
-            setVuln([]); 
+            setVulnerability([]); 
             reject("Request error!");
           });
       } catch (error) {
@@ -69,11 +70,10 @@ export const EditAsset = () => {
     });
   }, []);
 
-  const onDone =()=>{
-    // if (!assetTitle) {
-    //   setErrors("An asset title is needed!");
-    // } else {
+  const onDone = () => {
+  
       const requestDto = {
+        id: asset.id,
         title: assetTitle,
         categoryId: category,
         description:description,
@@ -83,37 +83,33 @@ export const EditAsset = () => {
         rating:rating
        };
        console.log("Edit Dto...", requestDto)
-      
-    //   postAsset(requestDto)
-    //     .then((result) => {
-    //       setAssetTitle("");
-    //       setDescription("")
-    //       // getCommentByRestaurant(restaurantId).then((result) => {
-    //       //   setCommentsListData(result);
-    //       // });
-    //       setErrors("This asset created successfully !");
-    //     })
-    //     .catch((err) => {
-    //       console.log(err);
-    //       if (err.response.status == 404) {
-    //         setErrors("No comment found!");
-    //       } else {
-    //         if (err.response.status == 400) {
-    //           setErrors("restaurantId is not valid!");
-    //         } else {
-    //           setErrors("Unknow error!");
-    //         }
-    //       }
-        //  });
-     
-    
-    
+      if (!assetTitle) {
+        setErrors("An asset title is needed!");
+      } else {
+        putAsset(requestDto)
+          .then((result) => {
+            setAssetTitle("");
+            setDescription("")
+            setMessage("This asset updated successfully !");
+          })
+          .catch((err) => {
+            console.log(err);
+            if (err.response.status == 404) {
+              setErrors("No comment found!");
+            } else {
+              if (err.response.status == 400) {
+                setErrors("restaurantId is not valid!");
+              } else {
+                setErrors("Unknow error!");
+              }
+            }
+          });
+        }
 
+    history.push({
+      pathname: DASHBOARD,
 
-  history.push({
-     pathname: DASHBOARD,
-
-   });
+    });
   }  
 
   const onCancel =()=>{
@@ -131,18 +127,20 @@ export const EditAsset = () => {
    });
   }  
 
-  const options = []
-  const vulns = asset.Vulnerabilities
-  vulns.map(val => {
-    options.push({value: val.id, label: val.title})
-  })
-
   // const selected = []
-  // const vulns = asset.Vulnerabilities
-  // vulns.map(vuln => {
+  // const vulnSelect = asset.Vulnerabilities
+  // vulnSelect.map(vuln => {
   //   console.log("vuln id", vuln.id)
   //   selected.push(vuln.id)
   // })
+
+  const options = []
+  const vulns = asset.Vulnerabilities
+  vulns.map(val => {
+      options.push({value: val.id, label: val.title})
+  })
+
+
   // setSelectedOption(selected)
  
   const handleChangeCategory = (e) => {
@@ -159,11 +157,6 @@ export const EditAsset = () => {
       minHeight: 48
     })
   };
-
-  console.log("asset avail...", asset)
-  
- 
- 
 
   return (
     <div className="db-site-container">
@@ -251,7 +244,7 @@ export const EditAsset = () => {
               <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>                   
             <div className="Rectangle-grey-box-long edit-box">
-              <Table size="sm" class="table-items-tables-table--column-items">
+           {   <Table size="sm" class="table-items-tables-table--column-items">
               <thead>
                 <tr className="row-item-master-01 cr-button__text">
                     <th>
@@ -273,29 +266,27 @@ export const EditAsset = () => {
                 <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                   <Info/>
                 </td>
-                <td>3</td>
-                <td>R003</td>
-                <td>Risk of targeted attack intended to steal data from Third-Party Assessors<br/>
-                There is a risk of intrusion and data exfiltration by motivated and capable attackers.
-                </td>
-                <td>1</td>
-                <td>High</td>
-                <td>Medium</td>
-                <td>Medium</td>
-                <td>L</td>
+                <td>{asset.id}</td>
+                <td>{assetTitle}</td>
+                <td>{description}</td>
+                <td>{category}</td>
+                <td>{availibility}</td>
+                <td>{integrity}</td>
+                <td>{confidentiality}</td>
+                <td>{rating}</td>
               </tr>
             </tbody>
-            </Table>
+            </Table>  }
             <Form>
             <div className="row g-2">
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" value={asset.title} onChange={(e) => setAssetTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" value={assetTitle} onChange={(e) => setAssetTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={asset.availability}>
+                  <Form.Select className="Frame-left" value={availibility} onChange={(e) => setAvailibility(e.target.value)}>
                     <option value='L'>L</option>
                     <option value='M'>M</option>
                     <option value='H'>H</option>
@@ -303,7 +294,7 @@ export const EditAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={asset.integrity}>
+                  <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
                   <option value='L'>L</option>
                     <option value='M'>M</option>
                     <option value='H'>H</option>
@@ -311,7 +302,7 @@ export const EditAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={asset.confidentiality}>
+                  <Form.Select className="Frame-left" value={confidentiality} onChange={(e) => setConfidentiality(e.target.value)}>
                   <option value='L'>L</option>
                     <option value='M'>M</option>
                     <option value='H'>H</option>
@@ -319,7 +310,7 @@ export const EditAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={asset.rating}>
+                  <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                   <option value='L'>L</option>
                     <option value='M'>M</option>
                     <option value='H'>H</option>
@@ -329,7 +320,7 @@ export const EditAsset = () => {
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right" value={asset.categoryId} onChange={(e) => handleChangeCategory(e)}>
+                  <Form.Select className="Frame-right" value={category} onChange={(e) => handleChangeCategory(e)}>
                     <option value='1'>Software</option>
                     <option value='2'>Network & Data Centre</option>
                     <option value='3'>Technical</option>
@@ -340,7 +331,7 @@ export const EditAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                   <Form.Label className="Label-right">Description</Form.Label>
-                  <Form.Control className="Frame-desc-manage" as="textarea" value={asset.description}  name="detail" onChange={(e) => setDescription(e.target.value)}/>
+                  <Form.Control className="Frame-desc-manage" as="textarea" value={description}  name="detail" onChange={(e) => setDescription(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Associated Vulnerabilities <span className="optional">Optional</span></Form.Label>
@@ -350,7 +341,7 @@ export const EditAsset = () => {
                     onChange={setSelectedOption}
                     options={options}
                     styles={customStyles}
-                    // value={selectedOption}
+                    // value={selected}
                    />
                 </Form.Group>
               </div>
@@ -381,6 +372,7 @@ export const EditAsset = () => {
             <Button className="Button-Icon-AddAsset-modal" type="submit"  onClick={() =>onDone()}>
               Done
             </Button>
+       
             </div>
           </div>
         </div>

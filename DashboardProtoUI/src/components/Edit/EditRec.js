@@ -16,11 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
-<<<<<<< HEAD
-import { RECDASHBOARD } from "../../navigation/CONSTANTS";
-=======
 import { RECDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
->>>>>>> d4e68ad31532fde80b83e1a637974ddf3a357c40
 import Select from 'react-select';
 
 

@@ -20,7 +20,6 @@ class AssetApi {
     getAllAssets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let assetList = yield this._assetRepository.Get();
-            console.log("Helllllo");
             return res.status(200).json(assetList);
         });
     }
@@ -28,7 +27,6 @@ class AssetApi {
     getAssets(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let assetList = yield this._assetRepository.Get();
-            console.log("Helllllo");
             return res.status(200).json(assetList);
         });
     }
@@ -139,13 +137,13 @@ class AssetApi {
     //#region private methods
     getDtoFromRequest(req) {
         let ratingAsset;
-        if (req.body.rating == "High") {
+        if (req.body.rating == "H") {
             ratingAsset = 3;
         }
-        else if (req.body.rating == "Medium") {
+        else if (req.body.rating == "M") {
             ratingAsset = 2;
         }
-        else if (req.body.rating == "Low") {
+        else if (req.body.rating == "L") {
             ratingAsset = 1;
         }
         return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, ratingAsset, new Date());

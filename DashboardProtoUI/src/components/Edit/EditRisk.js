@@ -19,10 +19,7 @@ import info_black from '../../images/icons/info_icon.png';
 import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
 import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
-<<<<<<< HEAD
 import Info from "../Info";
-=======
->>>>>>> d4e68ad31532fde80b83e1a637974ddf3a357c40
 import Select from 'react-select';
 
 
