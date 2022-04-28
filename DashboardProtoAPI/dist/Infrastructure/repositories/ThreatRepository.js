@@ -13,7 +13,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ThreatRepository = void 0;
+// import  {CompanyAssetEntity as Asset}  from "../db/models/ComanyAsset"
+// import {AssetEntity} from '../db/models/Asset'
+const sequelize_1 = __importDefault(require("sequelize"));
 const models_1 = __importDefault(require("../db/models"));
+const sequelize_2 = require("sequelize");
 const Threat = require("../db/models");
 class ThreatRepository {
     constructor() {
@@ -22,11 +26,6 @@ class ThreatRepository {
         return __awaiter(this, void 0, void 0, function* () {
             let threats = yield models_1.default.Threat.findAll();
             return threats;
-        });
-    }
-    GetById(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return models_1.default.Threat.findByPk(id);
         });
     }
     GetByTitle(title) {
@@ -51,6 +50,90 @@ class ThreatRepository {
     delete(model, idThreat) {
         return __awaiter(this, void 0, void 0, function* () {
             return model.destroy();
+        });
+    }
+    GetByHighImpact(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const threat = models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_2.Sequelize.fn('DISTINCT', sequelize_2.Sequelize.col('agent')), 'agent'],
+                    "impact"
+                ],
+                where: { impact: 'High' },
+            });
+            return threat;
+        });
+    }
+    GetTotal(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'total_Threat'],
+                ]
+            });
+        });
+    }
+    GetAgentByHighRating(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { rating: 'High' }
+            });
+        });
+    }
+    GetAgentByHighImpact(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { impact: 'High' }
+            });
+        });
+    }
+    GetAgentByHighLikelihood(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                limit: 3,
+                attributes: [
+                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                ],
+                where: { likelihood: 'High' }
+            });
+        });
+    }
+    GetHigh(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Threat'],
+                ],
+                where: { rating: 'High' }
+            });
+        });
+    }
+    GetMedium(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Threat'],
+                ],
+                where: { rating: 'Medium' }
+            });
+        });
+    }
+    GetLow(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Threat.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Threat'],
+                ],
+                where: { rating: 'Low' }
+            });
         });
     }
 }

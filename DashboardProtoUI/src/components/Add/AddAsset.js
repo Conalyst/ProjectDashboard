@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
+ 
 import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/constants";
+ 
 import Select from 'react-select';
 
 
@@ -36,11 +38,11 @@ export const AddAsset = () => {
     
   const parsedUser = JSON.parse(storedUser);
   
-  console.log("login user ", parsedUser)
+ 
   const history =useHistory();
  
-  const onDone =()=>{
- 
+  const onDone =(e)=>{
+   
      var requestDto = {
        title: assetTitle,
        categoryId: 1,
@@ -54,6 +56,8 @@ export const AddAsset = () => {
        .then((result) => {
          setAssetTitle("");
          setDescription("")
+         console.log("frrrrr",result)
+     
        })
        .catch((err) => {
          console.log(err);
@@ -61,9 +65,9 @@ export const AddAsset = () => {
            //setErrors("No comment found!");
          } else {
            if (err.response.status == 400) {
-            // setErrors("restaurantId is not valid!");
+             
            } else {
-             //setErrors("Unknow error!");
+            
            }
          }
        });
@@ -78,26 +82,34 @@ export const AddAsset = () => {
         
      });
     }  
-
-
-  const onAdd =()=>{
+  
+  const onAdd =(e)=>{
+   
     if (assetTitle === ""){
-      setMessage("we need title")
+      setMessage("The title of Asset is requiried for Add!")
+      e.preventdefault();
       history.push({
         pathname: ADDASSET,
         
       });
-  console.log("we need title ")
     } else{
       setMessage("New asset was successfully added to the list")
       onDone();
+      e.preventdefault();
     history.push({
      pathname: DASHBOARD,
 
       });
    }
   }  
-
+  const onOk =(e)=>{
+   
+    history.push({
+      
+       pathname: DASHBOARD,
+        
+     });
+    }  
   const options = [
     { value: 'V1', label: 'V1' },
     { value: 'V2', label: 'V2' },
@@ -110,7 +122,6 @@ export const AddAsset = () => {
     { value: 'V9', label: 'V9' },
     { value: 'V10', label:'V10'},
   ];
-
   const customStyles = {
     control: base => ({
       ...base,
@@ -118,40 +129,6 @@ export const AddAsset = () => {
       minHeight: 48
     })
   };
-
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
 
   return (
     <div className="db-site-container">
@@ -249,33 +226,33 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={availibility} onChange={(e) => setAvailibility(e.target.value)} >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={confidentiality} onChange={(e) => setConfidentiality(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
@@ -309,7 +286,7 @@ export const AddAsset = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -321,7 +298,7 @@ export const AddAsset = () => {
                   <div className="modal-body">
                   
                     <p className="New-asset-was-successfully-added-to-the-list"  > {message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

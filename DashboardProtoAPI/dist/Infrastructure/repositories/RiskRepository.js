@@ -14,13 +14,23 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RiskRepository = void 0;
 const models_1 = __importDefault(require("../db/models"));
+const sequelize_1 = __importDefault(require("sequelize"));
 const Risk = require("../db/models");
 class RiskRepository {
     constructor() {
     }
     Get() {
         return __awaiter(this, void 0, void 0, function* () {
-            let risks = yield models_1.default.Risk.findAll();
+            let risks = yield models_1.default.Risk.findAll({
+            // include: [{model: db.}]
+            // include: [
+            //             { model: db.Asset, 
+            //                include: { model: db.Vulnerability, attributes: ["id", "title"], through: {attributes: []},
+            //                include: {model: db.Threat, attributes: ["id", "title"], through: {attributes: []}}
+            //                }, through: {attributes: []}
+            //             }
+            //          ]
+            });
             return risks;
         });
     }
@@ -45,6 +55,45 @@ class RiskRepository {
     Update(model, id) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Risk.update(model['dataValues'], { where: { id: `${id}` } });
+        });
+    }
+    GetTotal(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Risk.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'total_Risk'],
+                ]
+            });
+        });
+    }
+    GetHigh(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Risk.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Risk'],
+                ],
+                where: { rating: 'High' }
+            });
+        });
+    }
+    GetMedium(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Risk.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'mediun_Risk'],
+                ],
+                where: { rating: 'Medium' }
+            });
+        });
+    }
+    GetLow(model) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return models_1.default.Risk.findAll({
+                attributes: [
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'low_Risk'],
+                ],
+                where: { rating: 'Low' }
+            });
         });
     }
 }

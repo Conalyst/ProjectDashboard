@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
+ 
 import { ADDTHREAT, THREATSDASHBOARD, DASHBOARD } from "../../navigation/constants";
+
 import Select from 'react-select';
 
 
@@ -30,7 +32,6 @@ export const AddThreat = () => {
   const [category, setCategory] = useState('');
   const [agent, setAgent] = useState('');
   const [message, setMessage] = useState("");
-  //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const storedUser = localStorage.getItem("storedUser");
   
@@ -38,10 +39,6 @@ export const AddThreat = () => {
   const history =useHistory();
 
   const onDone =()=>{
-  history.push({
-     pathname: THREATSDASHBOARD,
-
-   });
 
    var requestDto = {
     title: threatTitle,
@@ -52,6 +49,7 @@ export const AddThreat = () => {
     Description:description,
     agent:agent
   };
+  console.log("######",requestDto)
   postThreat(requestDto)
     .then((result) => {
       setThreatTitle("");
@@ -79,9 +77,10 @@ export const AddThreat = () => {
     }  
 
 
-  const onAdd =()=>{
+  const onAdd =(e)=>{
    if (threatTitle === ""){
-    setMessage("we need title")
+    setMessage("The title of threat is requiried for Add!")
+    e.preventdefault();
     history.push({
       pathname: ADDTHREAT,
       
@@ -89,13 +88,19 @@ export const AddThreat = () => {
   } else{
     setMessage("New threat was successfully added to the list.")
     onDone();
-  history.push({
-   pathname: DASHBOARD,
+    e.preventdefault();
+    history.push({
+    pathname: THREATSDASHBOARD,
 
-    });
+      });
  }
   }  
-
+  const onOk =()=>{
+    history.push({
+       pathname: THREATSDASHBOARD,
+  
+     });
+    } 
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -192,25 +197,25 @@ export const AddThreat = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)} >
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
@@ -236,7 +241,7 @@ export const AddThreat = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -247,7 +252,7 @@ export const AddThreat = () => {
                   </div>
                   <div className="modal-body">
                     <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

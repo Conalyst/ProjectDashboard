@@ -19,7 +19,17 @@ class ThreatApi {
     }
     getAllThreats(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            // let threatList = await this._threatRepository.Get();
             let threatList = yield this._threatRepository.Get();
+            // console.log("Helllllo")
+            return res.status(200).json(threatList);
+        });
+    }
+    ;
+    getAllThreatsByImpact(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // let threatList = await this._threatRepository.Get();
+            let threatList = yield this._threatRepository.GetByHighImpact();
             // console.log("Helllllo")
             return res.status(200).json(threatList);
         });
@@ -27,10 +37,32 @@ class ThreatApi {
     ;
     getThreatById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let threatId = req.params.id;
-            console.log(threatId);
+            let threatId = req.body.id;
+            console.log("hhhhhh", threatId);
             let threat = yield this._threatRepository.GetById(threatId);
             return res.status(200).json(threat);
+        });
+    }
+    ;
+    //static Asset and Agents
+    getStaticThreats(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numberThreat = yield this._threatRepository.GetTotal();
+            let highThreat = yield this._threatRepository.GetHigh();
+            let mediumThreat = yield this._threatRepository.GetMedium();
+            let lowThreat = yield this._threatRepository.GetLow();
+            let AgentsRating = yield this._threatRepository.GetAgentByHighRating();
+            let AgentsImpact = yield this._threatRepository.GetAgentByHighImpact();
+            let AgentsLikelihood = yield this._threatRepository.GetAgentByHighLikelihood();
+            console.log("@@@@@@@@@", numberThreat);
+            return res.status(200).json({
+                "static": { numberThreat, highThreat, mediumThreat, lowThreat },
+                "Agents": {
+                    "AgentsRating": AgentsRating,
+                    "AgentsImpact": AgentsImpact,
+                    "AgentsLikelihood": AgentsLikelihood
+                }
+            });
         });
     }
     ;
@@ -95,7 +127,21 @@ class ThreatApi {
     }
     //#region private methods
     getDtoFromRequest(req) {
-        return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
+        let ratingThreat;
+        if (req.body.rating == "High") {
+            ratingThreat = 3;
+        }
+        else if (req.body.rating == "Medium") {
+            ratingThreat = 2;
+        }
+        else if (req.body.rating == "Low") {
+            ratingThreat = 1;
+        }
+        return new ThreatDto_1.ThreatDto(req.body.id, req.body.category, req.body.agent, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, ratingThreat, new Date());
+    }
+    getTopThree(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+        });
     }
 }
 exports.ThreatApi = ThreatApi;

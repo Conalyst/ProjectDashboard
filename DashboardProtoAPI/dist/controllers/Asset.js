@@ -25,12 +25,33 @@ class AssetApi {
         });
     }
     ;
+    getAssets(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let assetList = yield this._assetRepository.Get();
+            console.log("Helllllo");
+            return res.status(200).json(assetList);
+        });
+    }
+    ;
     getAssetsById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let assetId = req.params.id;
             console.log(assetId);
             let asset = yield this._assetRepository.GetAssetById(assetId);
             return res.status(200).json(asset);
+        });
+    }
+    ;
+    //static Asset
+    getStaticAssets(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let numberAsset = yield this._assetRepository.GetTotal();
+            let highAsset = yield this._assetRepository.GetHigh();
+            let mediumAsset = yield this._assetRepository.GetMedium();
+            let lowAsset = yield this._assetRepository.GetLow();
+            return res.status(200).json({
+                "static": { highAsset, numberAsset, mediumAsset, lowAsset }
+            });
         });
     }
     ;
@@ -97,7 +118,17 @@ class AssetApi {
     }
     //#region private methods
     getDtoFromRequest(req) {
-        return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, new Date());
+        let ratingAsset;
+        if (req.body.rating == "High") {
+            ratingAsset = 3;
+        }
+        else if (req.body.rating == "Medium") {
+            ratingAsset = 2;
+        }
+        else if (req.body.rating == "Low") {
+            ratingAsset = 1;
+        }
+        return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, ratingAsset, new Date());
     }
 }
 exports.AssetApi = AssetApi;

@@ -16,7 +16,9 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
+ 
 import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/constants";
+ 
 import Select from 'react-select';
 
 
@@ -36,14 +38,10 @@ export const AddVul = () => {
   const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
   const goToVulDashboard =()=>{
-    history.push({
-      pathname: VULDASHBOARD,
- 
-    });
+    
   }
   
   const onDone =()=>{
-   
 
   var requestDto = {
    title: vulTitle,
@@ -56,7 +54,7 @@ export const AddVul = () => {
  postVulnerability(requestDto)
    .then((result) => {
     
-     goToVulDashboard();
+     setVulTitle("")
    })
    .catch((err) => {
      console.log(err);
@@ -64,26 +62,43 @@ export const AddVul = () => {
    });
   }  
 
-  const onCancel =()=>{
+  const onCancel =(e)=>{
+    e.preventdefault();
     history.push({
        pathname: VULDASHBOARD,
   
      });
     }  
-  const onAdd = (event) => {
+  const onAdd = (e) => {
   if(vulTitle){
       try {
         //do db call or API endpoint axios call here and return the promise.
         setMessage("New vulnerability was successfully added to the list.")
         onDone();
+        e.preventdefault();
+        history.push({
+          pathname: VULDASHBOARD,
+     
+           });
+       
       }catch (error) {
         console.error("Erro while retrieving the next question", error);
       }
     }else{
       setMessage("The title of vulnerability is requiried for Add!")
+      e.preventdefault();
+      history.push({
+        pathname: ADDVUL,
+        
+      });
     }
   }
-
+  const onOk =()=>{
+    history.push({
+       pathname: VULDASHBOARD,
+  
+     });
+    } 
   const options = [
     { value: 'T1', label: 'T1' },
     { value: 'T2', label: 'T2' },
@@ -233,26 +248,26 @@ export const AddVul = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">impact <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={impact} onChange={(e) => setImpact(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <option>Low</option>
-                    <option>Medium</option>
-                    <option>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
@@ -284,7 +299,7 @@ export const AddVul = () => {
           </Form>
         </div>
         <div className="test">
-          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() =>onAdd()}>
+          <Button type="button" className="btn btn-primary Button-Icon-done" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={(e) =>onAdd(e)}>
            Done
           </Button>
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -295,7 +310,7 @@ export const AddVul = () => {
                   </div>
                   <div className="modal-body">
                     <p className="New-asset-was-successfully-added-to-the-list">{message}</p>
-                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onDone()}>OK</Button>
+                    <Button type="button" data-bs-dismiss="modal" aria-label="Close" className="Button-Primary-Added" onClick={() =>onOk()}>OK</Button>
                   </div>              
                 </div>
               </div>

@@ -45,7 +45,16 @@ export class RiskApi{
       }
       
   }
-
+     //static Asset
+     async getStaticRisks(req: express.Request, res: express.Response){
+       
+      let numberRisk = await this._riskRepository.GetTotal();
+      let highRisk = await this._riskRepository.GetHigh();
+      let mediumRisk = await this._riskRepository.GetMedium();
+      let lowRisk = await this._riskRepository.GetLow();
+      return  res.status(200).json({
+        "static":{ numberRisk,highRisk,mediumRisk,lowRisk}});
+    };  
   async update(req: express.Request, res: express.Response){ 
     const id = req.params.id;
     const exists = await this._riskRepository.GetById(id)
@@ -72,4 +81,6 @@ export class RiskApi{
         
       return new RiskDto(req.body.id, req.body.category, req.body.title, req.body.description, req.body.impact, req.body.likelihood, req.body.rating, new Date());
   }
+
+
 }

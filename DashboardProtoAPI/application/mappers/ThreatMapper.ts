@@ -11,5 +11,6 @@ export const toEntity = (ThreatDto: ThreatDto) => {
     threatEntity.impact = ThreatDto.impact;
     threatEntity.likelihood = ThreatDto.likelihood;
     threatEntity.rating = ThreatDto.rating;
+    threatEntity.indexRating = ThreatDto.indexRating;
     return threatEntity;
 }

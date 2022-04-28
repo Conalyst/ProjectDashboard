@@ -34,10 +34,10 @@ export const DashboardDetails = () => {
   });
 
   const storedUser = localStorage.getItem("storedUser");
-
   const parsedUser = JSON.parse(storedUser);
-  const history = useHistory();
-  const onAddAsset = () => {
+  const isAdmin = parsedUser.role;
+    const history =useHistory();
+    const onAddAsset =()=>{
     history.push({
       pathname: ADDASSET,
     });
@@ -45,18 +45,20 @@ export const DashboardDetails = () => {
 
   const onEditAsset = () => {
     history.push({
-      pathname: EDITASSET,
-    });
-  };
+       pathname: EDITASSET,
+     });
+    } 
 
-  useEffect(() => {
-    console.log("in detail");
-    const storedUser = localStorage.getItem("storedUser");
-    const parsedUser = JSON.parse(storedUser);
-    return new Promise((resolve, reject) => {
-      try {
-        // do db call or API endpoint axios call here and return the promise.
-        getAllAssets()
+  
+
+    useEffect(() => {
+      console.log("in detail")
+      const storedUser = localStorage.getItem("storedUser");   
+      const parsedUser = JSON.parse(storedUser);
+      return new Promise((resolve, reject) => {
+        try {
+          // do db call or API endpoint axios call here and return the promise.
+          getAllAssets()
           .then((res) => {
             console.log("in detail", res);
             setAssets(res);
@@ -466,13 +468,11 @@ export const DashboardDetails = () => {
                 <td>{asset.integrity}</td>
                 <td>{asset.availability}</td>
                 <td>{asset.rating}</td>
-                <td>
-                  <td>
-                    <button className="pen-button" onClick={onEditAsset}>
-                      <img src={pen_black} alt="" />
-                    </button>
-                  </td>
-                </td>
+               
+               
+                {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> </td> )}
+                                  
+             
               </tr>
             ))}
           </tbody>

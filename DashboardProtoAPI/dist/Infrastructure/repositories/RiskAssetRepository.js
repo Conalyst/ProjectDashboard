@@ -47,5 +47,52 @@ class RiskAssetRepository {
             return models_1.default.RiskAsset.create(model['dataValues']);
         });
     }
+    assetTocalcRisk(riskId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = models_1.default.RiskAsset.findAll({
+                where: { riskId: `${riskId}` },
+                include: { model: models_1.default.Asset, attributes: ['id', 'rating'] },
+                attributes: ['id'],
+                order: [[models_1.default.Asset, 'indexRating', 'DESC']],
+                raw: true
+            });
+            return result;
+        });
+    }
+    vulnTocalcRisk(riskId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = models_1.default.RiskAsset.findAll({
+                where: { riskId: `${riskId}` },
+                include: [
+                    { model: models_1.default.Asset, attributes: ['id', 'rating'], include: [
+                            { model: models_1.default.Vulnerability, attributes: ['id', 'rating', 'indexRating'], through: { attributes: [] } }
+                        ]
+                    },
+                ],
+                attributes: ["id"],
+                order: [[models_1.default.Asset, { model: models_1.default.Vulnerability }, 'indexRating', 'DESC']],
+                raw: true
+            });
+            return result;
+        });
+    }
+    threatTocalcRisk(riskId) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const result = models_1.default.RiskAsset.findAll({
+                where: { riskId: `${riskId}` },
+                include: [
+                    { model: models_1.default.Asset, attributes: ['id', 'rating'], include: [
+                            { model: models_1.default.Vulnerability, attributes: ['id', 'rating'], through: { attributes: [] },
+                                include: [{ model: models_1.default.Threat, attributes: ['id', 'rating', 'indexRating'], through: { attributes: [] } }] }
+                        ]
+                    },
+                ],
+                attributes: ["id"],
+                order: [[models_1.default.Asset, models_1.default.Vulnerability, { model: models_1.default.Threat }, 'indexRating', 'DESC']],
+                raw: true
+            });
+            return result;
+        });
+    }
 }
 exports.RiskAssetRepository = RiskAssetRepository;
