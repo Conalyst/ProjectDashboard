@@ -778,11 +778,17 @@ td.bar-charts-summary > span {
 .Rectangle-1407 {
   width: 100%;
   height: 31px;
-  margin: 31px 0px 14px 53px;
+  margin: 18px 0px 14px 53px;
   padding: 6px 10px;
 }
 
-/*.Rectangle-1408-Fin {
+/*.Rectangle-1407 {
+  width: 100%;
+  height: 31px;
+  margin: 31px 0px 14px 53px;
+  padding: 6px 10px;
+}
+.Rectangle-1408-Fin {
   width: 130px;
   height: 31px;
   margin: 31px 176px 14px 53px;
