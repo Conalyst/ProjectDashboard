@@ -95,27 +95,28 @@ export const DashboardDetails = () => {
             <tbody>
                 {assets.map((asset) => (
                 <tr className="cr-text">
-                  <td>
-                  <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
-                    <Info/>
-              </td>
-                 <td>{asset.id}</td>
-              
-                <td>{asset.title}</td>
-                <td>{asset.description}</td>
-                <td>{asset.AssetCategory.name}</td>
-                <td>{asset.name}</td>
+                <td>
+                <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
+                  <Info/>
+            </td>
+               <td>{asset.id}</td>
+            
+              <td>{asset.title}</td>
+              <td>{asset.description}</td>
 
-                <td>{asset.confidentiality}</td>
-                <td>{asset.integrity}</td>
-                <td>{asset.availability}</td>
-                <td>{asset.rating}</td>
-               
-               
-                {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={() => onEditAsset(asset)}><img src={pen_black} alt =""/></button> </td> )}
-                                  
+              <td>{asset.AssetCategory.name}</td>
+
+              <td>{asset.confidentiality}</td>
+              <td>{asset.integrity}</td>
+              <td>{asset.availability}</td>
+              <td>{asset.rating}</td>
              
-              </tr>
+             
+              {(isAdmin === "Admin") && ( <td>  <button className="pen-button" onClick={() => onEditAsset(asset)}><img src={pen_black} alt =""/></button> </td> )}
+                                
+           
+            </tr>
+
             ) )}
           </tbody>
         </Table>   
@@ -124,3 +125,4 @@ export const DashboardDetails = () => {
     );
 };
 export default DashboardDetails;
+

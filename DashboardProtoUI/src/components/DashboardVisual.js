@@ -1,8 +1,6 @@
 import React,{useEffect,useState} from "react";
 import * as crossfilter from "crossfilter2";
-import SummaryBarChart from './db-visuals/SummaryBarChart';
 import Chart from "react-google-charts";
-import * as crossfilter from "crossfilter2";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
 import { assetData } from "./db-visuals/visuals-data";
