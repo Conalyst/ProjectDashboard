@@ -24,26 +24,7 @@ export const ThreatsDashboard = () => {
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
-/*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
+
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
