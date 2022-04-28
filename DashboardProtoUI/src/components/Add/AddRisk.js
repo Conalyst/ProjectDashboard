@@ -17,7 +17,7 @@ import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
  
-import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/constants";
+import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/CONSTANTS";
  
 import Select from 'react-select';
 

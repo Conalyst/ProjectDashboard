@@ -43,7 +43,7 @@ import {
     ADDRISK,
     EDITRISK,
     TEST
-} from "./constants";
+} from "./CONSTANTS";
 
 export const RouterConfig = (props) => {
     return (

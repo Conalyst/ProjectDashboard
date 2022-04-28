@@ -10,7 +10,7 @@ import pen_black from '../images/icons/pen_black.png';
 //import { pullCompanyAssets } from "../services/companyAssetsService";
 import { getAllAssets } from "../services/assetsService";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, EDITASSET } from "../navigation/constants";
+import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
@@ -45,7 +45,7 @@ export const DashboardDetails = () => {
       const storedUser = localStorage.getItem("storedUser");   
       const parsedUser = JSON.parse(storedUser);
       return new Promise((resolve, reject) => {
-   /*     try {
+       try {
           // do db call or API endpoint axios call here and return the promise.
           getAllAssets()
           .then((res) => {
@@ -61,7 +61,7 @@ export const DashboardDetails = () => {
         } catch (error) {
           console.error("getAllAssets error!==", error);
           reject("getAllAssets error!");
-        } */
+        } 
       });
     }, []); 
     return (

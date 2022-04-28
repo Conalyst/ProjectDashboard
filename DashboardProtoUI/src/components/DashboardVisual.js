@@ -1,5 +1,9 @@
 import React,{useEffect,useState} from "react";
+import * as crossfilter from "crossfilter2";
+import SummaryBarChart from './db-visuals/SummaryBarChart';
 import Chart from "react-google-charts";
+import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
+import { assetData } from "./db-visuals/visuals-data";
 import { getStaticAssets } from "../services/assetsService";
 
 export const data = [
@@ -24,6 +28,7 @@ export const options = {
     }
 };
 
+
 export const DashboardVisual = () => {
     const [totalAssets, setTotalAssets] = useState(null);
     const [highAssets, setHighAssets] = useState(null);
@@ -46,7 +51,7 @@ export const DashboardVisual = () => {
         const parsedUser = JSON.parse(storedUser);
        
         return new Promise((resolve, reject) => {
-        /*  try {
+          try {
             // do db call or API endpoint axios call here and return the promise.
             getStaticAssets()
             .then((res) => {
@@ -75,65 +80,68 @@ export const DashboardVisual = () => {
           } catch (error) {
             console.error("getAllAssets error!==", error);
             reject("getAllAssets error!");
-          } */
+          }
         });
       }, []);
     return (
     <>
         <div class="asset-rating">
             <p>Asset Ratings</p>
-            <p className="orange-total">Total<br/>82</p>
-            <p>High<br/>20</p>
-            <p>Medium<br/>15</p>
-            <p>Low<br/>42</p>
+            <p className="orange-total">Total<br/>{totalAssets}</p>
+            <p>High<br/>{highAssets}</p>
+            <p>Medium<br/>{mediumAssets}</p>
+            <p>Low<br/>{lowAssets}</p>
+            
         </div>
-        <table className="visual-rating">
-            <tr>
-                <td className="stack-bars-summary">
+            <table className="visual-rating">
+                 <tr>
+
+
+                 <td className="stack-bars-summary">
                     <div className="stack-bar-h">
-                        Confidentiality
+                    Confidentiality
                         <div className="V-T-Color">
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
                             <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H</span>
-                                <span className="value-span-s span-M-s">M</span>
-                                <span className="value-span-s span-L-s">L</span>
+                                <span className="value-span-s span-H-s">H({highAssetConfidentiality})</span>
+                                <span className="value-span-s span-M-s">M({mediumAssetConfidentiality})</span>
+                                <span className="value-span-s span-L-s">L({lowAssetConfidentiality})</span>
                             </div>
                         </div>
                     </div>
                     <div className="stack-bar-h">
-                        Integrity
+                    Integrity
                         <div className="V-T-Color">
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
                             <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H</span>
-                                <span className="value-span-s span-M-s">M</span>
-                                <span className="value-span-s span-L-s">L</span>
+                                <span className="value-span-s span-H-s">H({highAssetIntegrity})</span>
+                                <span className="value-span-s span-M-s">M({mediumAssetIntegrity})</span>
+                                <span className="value-span-s span-L-s">L({lowAssetIntegrity})</span>
                             </div>
                         </div>
                     </div>
                     <div className="stack-bar-h">
-                        Availability
+                    Availability
                         <div className="V-T-Color">
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
                             <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H</span>
-                                <span className="value-span-s span-M-s">M</span>
-                                <span className="value-span-s span-L-s">L</span>
+                                <span className="value-span-s span-H-s">H({highAssetAvailability})</span>
+                                <span className="value-span-s span-M-s">M({mediumAssetAvailability})</span>
+                                <span className="value-span-s span-L-s">L({lowAssetAvailability})</span>
                             </div>
                         </div>
                     </div>
                 </td>
-                <td className="bar-charts-summary">
+                    <td className="bar-charts-summary">
                     <span>All Categories</span><br/>
                     <Chart
                         chartType="ColumnChart"
@@ -145,6 +153,7 @@ export const DashboardVisual = () => {
                 </td>
                 </tr>
             </table>
+        
             
     </>
     );

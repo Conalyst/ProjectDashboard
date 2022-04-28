@@ -139,13 +139,13 @@ class AssetApi {
     //#region private methods
     getDtoFromRequest(req) {
         let ratingAsset;
-        if (req.body.rating == "High") {
+        if (req.body.rating == "H") {
             ratingAsset = 3;
         }
-        else if (req.body.rating == "Medium") {
+        else if (req.body.rating == "M") {
             ratingAsset = 2;
         }
-        else if (req.body.rating == "Low") {
+        else if (req.body.rating == "L") {
             ratingAsset = 1;
         }
         return new AssetDto_1.AssetDto(req.body.id, req.body.categoryId, req.body.title, req.body.description, req.body.confidentiality, req.body.integrity, req.body.availability, req.body.rating, ratingAsset, new Date());
