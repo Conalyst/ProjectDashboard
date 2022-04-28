@@ -10,10 +10,12 @@ import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 import { getAllRisks } from "../services/riskService";
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { risk as riskAtom} from '../recoil/atom' 
 
 export const RiskDashboardDetails = () => {
-
-    const [risks, setRisk] = useState([]);
+    
+    const [risks, setRisk] = useRecoilState(riskAtom);
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;

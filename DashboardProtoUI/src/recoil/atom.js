@@ -6,6 +6,11 @@ export const asset = atom({
   default: {},
 })
 
+export const risk = atom({
+  key: "risk",
+  default: [],
+})
+
 export const vuln = atom({
   key: "vuln",
   default: [],

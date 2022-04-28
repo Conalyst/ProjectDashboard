@@ -17,13 +17,16 @@ import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
 import { ADDRISK, RISKDASHBOARD, VULDASHBOARD,DASHBOARD } from "../../navigation/CONSTANTS";
- 
 import Select from 'react-select';
-
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { risk as riskAtom} from '../../recoil/atom'
+import { getAllAssets } from "../../services";
 
 
 export const AddRisk = () => { 
 
+  const [risk, setRisk] = useRecoilState(riskAtom);
+  const [assets, setAssets] = useState([]);
   const [riskTitle, setRiskTitle] = useState('');
   const [description, setDescription] = useState('');
   const [impact, setImpact] = useState('');
@@ -34,35 +37,56 @@ export const AddRisk = () => {
   const [selectedOption, setSelectedOption] = useState(null);
   //const [searchvul, setSearchvul] = useState('');
   const history =useHistory();
-  const storedUser = localStorage.getItem("storedUser");
-  
+  const storedUser = localStorage.getItem("storedUser"); 
   const parsedUser = JSON.parse(storedUser);
 
   
 
- 
- 
-  
-  
-  const onDone =()=>{
 
-  var requestDto = {
-   title: riskTitle,
-   impact: impact,
-   likelihood:likelihood,
-   rating:rating,
-   category:category,
-   Description:description
- };
- console.log("ddddd", requestDto)
- postRisk(requestDto)
-   .then((result) => {
-    setRiskTitle("")
-   })
-   .catch((err) => {
-     console.log(err);
-     
-   });
+  useEffect(() => {
+    console.log("in detail")
+    const storedUser = localStorage.getItem("storedUser");   
+    const parsedUser = JSON.parse(storedUser);
+    return new Promise((resolve, reject) => {
+     try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllAssets()
+        .then((res) => {
+          console.log("in detail", res)
+          setAssets(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllAssets > err=", err);
+            setAssets([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      } 
+    });
+  }, []); 
+
+  const onDone =()=>{
+    console.log("Asset...", selectedOption)
+    var requestDto = {
+    title: riskTitle,
+    impact: impact,
+    likelihood:likelihood,
+    rating:rating,
+    category:category,
+    Description:description
+  };
+  console.log("ddddd", requestDto)
+  // postRisk(requestDto)
+  //   .then((result) => {
+  //     setRiskTitle("")
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+      
+  //  });
   }  
 
    
@@ -104,20 +128,11 @@ export const AddRisk = () => {
    });
   }  
 
-  const options = [
-    { value: 'A1', label: 'A1' },
-    { value: 'A2', label: 'A2' },
-    { value: 'A3', label: 'A3' },
-    { value: 'A4', label: 'A4' },
-    { value: 'A5', label: 'A5' },
-    { value: 'A6', label: 'A6' },
-    { value: 'A7', label: 'A7' },
-    { value: 'A8', label: 'A8' },
-    { value: 'A9', label: 'A9' },
-    { value: 'VA0', label:'A10'},
-  ];
-
-
+  const options = []
+  assets.map(asset => {
+    options.push({ value: asset.id , label: asset.title },)
+  })
+  
 
   const customStyles = {
     control: base => ({

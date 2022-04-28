@@ -46,9 +46,7 @@ export const EditAsset = () => {
   const parsedUser = JSON.parse(storedUser);
 
   useEffect(() => {
-    console.log("in detail")
-    const storedUser = localStorage.getItem("storedUser");   
-    const parsedUser = JSON.parse(storedUser);
+
     return new Promise((resolve, reject) => {
       try {
         // do db call or API endpoint axios call here and return the promise.

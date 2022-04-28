@@ -15,7 +15,9 @@ import search from '../../images/icons/search_icon.png';
 import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
+import { getAllVulnerabilities } from "../../services/vulnerabilityService";
 import {useHistory} from 'react-router-dom'
+ 
 import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/CONSTANTS";
  
 import Select from 'react-select';
@@ -33,12 +35,42 @@ export const AddAsset = () => {
   const [category, setCategory] = useState("");
   const [rating, setRating] = useState("");
   const [message, setMessage] = useState("");
+  const [vulnerability, setVulnerability] = useState([])
   const storedUser = localStorage.getItem("storedUser");
     
   const parsedUser = JSON.parse(storedUser);
   
  
   const history =useHistory();
+
+  useEffect(() => {
+
+    return new Promise((resolve, reject) => {
+      try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllVulnerabilities()
+        .then((res) => {
+          console.log("in detail", res)
+          setVulnerability(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllVulnerabilities > err=", err);
+            setVulnerability([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      }
+    });
+  }, []);
+
+  const options = []
+  const vulns = vulnerability
+  vulns.map(val => {
+      options.push({value: val.id, label: val.title})
+  })
  
   const onDone =(e)=>{
    
@@ -51,26 +83,24 @@ export const AddAsset = () => {
        availibility:availibility,
        rating:rating
      };
-     console.log("selected option", selectedOption)
-    //  postAsset(requestDto)
-    //    .then((result) => {
-    //      setAssetTitle("");
-    //      setDescription("")
-    //      console.log("frrrrr",result)
+     postAsset(requestDto)
+       .then((result) => {
+         setAssetTitle("");
+         setDescription("")
      
-    //    })
-    //    .catch((err) => {
-    //      console.log(err);
-    //      if (err.response.status == 404) {
-    //        //setErrors("No comment found!");
-    //      } else {
-    //        if (err.response.status == 400) {
+       })
+       .catch((err) => {
+         console.log(err);
+         if (err.response.status == 404) {
+           //setErrors("No comment found!");
+         } else {
+           if (err.response.status == 400) {
              
-    //        } else {
+           } else {
             
-    //        }
-    //      }
-    //    });
+           }
+         }
+       });
    
 }
    
@@ -110,18 +140,7 @@ export const AddAsset = () => {
         
      });
     }  
-  const options = [
-    { value: 'V1', label: 'V1' },
-    { value: 'V2', label: 'V2' },
-    { value: 'V3', label: 'V3' },
-    { value: 'V4', label: 'V4' },
-    { value: 'V5', label: 'V5' },
-    { value: 'V6', label: 'V6' },
-    { value: 'V7', label: 'V7' },
-    { value: 'V8', label: 'V8' },
-    { value: 'V9', label: 'V9' },
-    { value: 'V10', label:'V10'},
-  ];
+
   const customStyles = {
     control: base => ({
       ...base,
@@ -225,34 +244,36 @@ export const AddAsset = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={availibility} onChange={(e) => setAvailibility(e.target.value)} > 
-                    <option value='L'>Low</option>
-                    <option value='M'>Medium</option>
-                    <option value='H'>High</option>
+                  <Form.Select className="Frame-left" value={availibility} onChange={(e) => setAvailibility(e.target.value)} >
+ 
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
+ 
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
-                    <option value='L'>Low</option>
-                    <option value='M'>Medium</option>
-                    <option value='H'>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={confidentiality} onChange={(e) => setConfidentiality(e.target.value)}>
-                    <option value='L'>Low</option>
-                    <option value='M'>Medium</option>
-                    <option value='H'>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                    <option value='L'>Low</option>
-                    <option value='M'>Medium</option>
-                    <option value='H'>High</option>
+                  <option >L</option>
+                  <option>M</option>
+                  <option >H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
