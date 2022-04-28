@@ -501,9 +501,18 @@ td.bar-charts-summary > span {
 .visual-rating-threat { 
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 17px 45px;
+  align-items: flex-start;
+  margin-top: 35px;
+  padding: 0 42px;
   width: 100%;
+}
+
+.visual-rating-threat > div > div:not(:first-child) {
+  margin-left: 8px;
+}
+
+.visual-rating-threat .Group-1359 {
+  padding: 0;
 }
 
 .visual-rating-risk { 
@@ -514,10 +523,10 @@ td.bar-charts-summary > span {
   width: 100%;
 }
 
-.Overall-Rating-threat {
+.threat-summary-label {
   width: 115px;
   height: 21px;
-  margin: 49px 279px 18px 55px;
+  margin-bottom: 22px;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 500;
@@ -568,7 +577,7 @@ td.bar-charts-summary > span {
 .Top-3-threat-agents-with-High-Overall-ratings {
   width: 219px;
   height: 38px;
-  margin: 28px 160px 16px 53px;
+  margin-bottom: 16px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 600;
@@ -712,7 +721,9 @@ td.bar-charts-summary > span {
 }
 
 .grey-threat {  
-  margin: 31px 53px 14px 0px;
+  margin-top: 31px;
+  padding: 6px;
+  width: 225px;
   border-radius: 6px;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
   background-color: #f1f1f1;
@@ -721,7 +732,6 @@ td.bar-charts-summary > span {
 .Top-3-threat {
   width: 219px;
   height: 38px;
-  margin: 13px 160px 31px 53px;
   font-family: Roboto;
   font-size: 16px;
   font-weight: 500;
@@ -754,9 +764,8 @@ td.bar-charts-summary > span {
 }*/
 
 .Rectangle-1407 {
-  width: 100%;
+  width: auto;
   height: 31px;
-  margin: 16px 0px 14px 53px;
   padding: 6px 10px;
 }
 
@@ -2449,7 +2458,7 @@ li {
   background-color: #f1f1f1;
 }
 
-.Rectangle-grey-box-long.edit-box {
+.Rectangle-grey-box-modal.edit-box, .Rectangle-grey-box-long.edit-box {
   overflow-x: hidden;
   overflow-y: auto;
   flex-grow: 0;

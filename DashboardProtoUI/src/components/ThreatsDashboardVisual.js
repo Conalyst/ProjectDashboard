@@ -14,7 +14,7 @@ export const ThreatsDashboardVisual = () => {
         </div>
         <div className="row g-2 visual-rating-threat">
             <div className=" col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                     Overall Rating
                 </div>
                 <div className="Group-1359">
@@ -52,7 +52,7 @@ export const ThreatsDashboardVisual = () => {
                 </div>
             </div>
             <div className="col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                     Impact
                 </div>
                 <div className="Group-1359">
@@ -90,7 +90,7 @@ export const ThreatsDashboardVisual = () => {
                 </div>
             </div>
             <div className="col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                     Likelihood
                 </div>
                 <div className="Group-1359">
