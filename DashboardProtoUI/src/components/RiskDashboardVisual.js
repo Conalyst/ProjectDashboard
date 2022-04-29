@@ -2,6 +2,7 @@ import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { Chart } from "react-google-charts";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const RiskDashboardVisual = () => {
 
@@ -101,7 +102,16 @@ export const RiskDashboardVisual = () => {
                     Impact
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <HSBar
+          showTextDown       
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 22, description: "L", color:"#72b7f2" }
+          ]}
+        />
+               {/* <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
                          H
                     </span>
@@ -110,14 +120,23 @@ export const RiskDashboardVisual = () => {
                     </span>
                     <span className="span-L">
                          L
-                    </span>
-                </div>
+                    </span>*/}
+    </div>
             </div>   
             <div className="Overall-Rating-threat">
                     Likelihood
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <HSBar
+          showTextDown       
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 1, description: "M", color: "#126dba" },
+            { value: 2, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                 {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
                          H
                     </span>
@@ -126,7 +145,7 @@ export const RiskDashboardVisual = () => {
                     </span>
                     <span className="span-L">
                          L
-                    </span>
+                    </span>*/}
                      </div>
                 </div>    
            </div>
