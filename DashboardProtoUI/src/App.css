@@ -1183,6 +1183,7 @@ td.bar-charts-summary > span {
     left: 0px; 
     top: 0px;
     background-color:rgba(46, 46, 46, 0.25);
+    z-index: 5;
   }
   
   .Filter-fullbox{
