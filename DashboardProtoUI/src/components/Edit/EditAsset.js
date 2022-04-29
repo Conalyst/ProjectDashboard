@@ -42,7 +42,6 @@ export const EditAsset = () => {
 
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
-  
   const parsedUser = JSON.parse(storedUser);
 
   useEffect(() => {
@@ -112,9 +111,6 @@ export const EditAsset = () => {
         console.log(err);
       });
     e.preventDefault()
-    history.push({
-      pathname: DASHBOARD,
-    });
   }
 
   const onCancel =()=>{
@@ -122,7 +118,7 @@ export const EditAsset = () => {
        pathname: DASHBOARD,
   
      });
-    }  
+  }  
 
 
   const onOk =()=>{

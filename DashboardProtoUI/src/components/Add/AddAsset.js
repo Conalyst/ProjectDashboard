@@ -37,7 +37,7 @@ export const AddAsset = () => {
   const [message, setMessage] = useState("");
   const [vulnerability, setVulnerability] = useState([])
   const storedUser = localStorage.getItem("storedUser");
-    
+  const [assetId, setAssetId] = useState("")
   const parsedUser = JSON.parse(storedUser);
   
  
@@ -73,7 +73,7 @@ export const AddAsset = () => {
   })
  
   const onDone =(e)=>{
-    let assetId;
+    // let assetId;
   
      var requestDto = {
        title: assetTitle,
@@ -84,22 +84,26 @@ export const AddAsset = () => {
        availability:availability,
        rating:rating
      };
+     
      postAsset(requestDto)
        .then((res) => {
          setAssetTitle("");
          setDescription("")    
+        //  console.log("after post request", res.data.id, res.data["id"])
+          postAssetVuln(selectedOption[0].value, res.data["id"])
+          .then((res) => {
+              console.log("post asset vuln data", res)
+          })
+          .catch((err) => {
+            console.log("Post Asset vuln Error", err);
+          });
        })
        .catch((err) => {
          console.log("Post Asset Error", err);
        });
   
-       postAssetVuln(selectedOption[0].value)
-       .then((res) => {
-          console.log("post asset vuln data", res)
-       })
-       .catch((err) => {
-         console.log("Post Asset vuln Error", err);
-       });
+       console.log("selected Vuln", selectedOption[0].value)
+
  
 }
    
@@ -132,11 +136,9 @@ export const AddAsset = () => {
   }  
   const onOk =(e)=>{
    
-    history.push({
-      
-       pathname: DASHBOARD,
-        
-     });
+    history.push({     
+       pathname: DASHBOARD,        
+    });
     }  
 
   const customStyles = {
@@ -277,7 +279,7 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
                   <Form.Select className="Frame-right" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option>Personnel</option>
+                    <option >Personnel</option>
                     <option>Data</option>
                     <option>Network and Data</option>
                     <option>Software</option>

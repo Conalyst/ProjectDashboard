@@ -14,8 +14,8 @@ import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { risk as riskAtom} from '../recoil/atom' 
 
 export const RiskDashboardDetails = () => {
-    
-    const [risks, setRisk] = useRecoilState(riskAtom);
+    const [risk, setRisk] = useRecoilState(riskAtom)
+    const [risks, setRisks] = useState([])  
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;
@@ -27,21 +27,22 @@ export const RiskDashboardDetails = () => {
      });
     } 
     
-    const onEditRisk =()=>{
+    const onEditRisk =(risk)=>{
+       setRisk(risk)
       history.push({
          pathname: EDITRISK,
     
        });
       } 
+
       useEffect(() => {
-    
         const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
         console.log("parsed user dashboard", parsedUser);
         getAllRisks()
         .then((result) => {
             console.log("Risks", result)
-            setRisk(result);
+            setRisks(result);
         })
    
     }, []); 
@@ -88,7 +89,7 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.rating}</td>
                     <td>{risk.action}</td>
                     
-                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> </td> )}
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={() => onEditRisk(risk)}><img src={pen_black} alt =""/></button> </td> )}
               
                 </tr>
             ) )}
