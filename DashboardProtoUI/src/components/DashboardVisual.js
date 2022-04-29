@@ -7,7 +7,7 @@ import { assetData } from "./db-visuals/visuals-data";
 import { getStaticAssets } from "../services/assetsService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const ldata = [
+export const data = [
     ["Group", "H", "M", "L"],
     ["Data", 15, 43, 25],
     ["Network", 30, 24, 12],
@@ -180,7 +180,7 @@ export const DashboardVisual = () => {
                         chartType="ColumnChart"
                         width="100%"
                         height="300px"
-                        data={ldata}
+                        data={data}
                         options={options}
                     />
                 </td>
