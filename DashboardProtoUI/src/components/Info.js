@@ -16,7 +16,7 @@ const Info = () => {
   return (
     <>              
     <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div className="modal-dialog modal-dialog-centered">
+    <div className="modal-dialog modal-dialog-centered modal-lg">
       <div className="modal-content Rectangle-accordion-content">
         <div className="modal-header Rectangle-accordion-header">
           <thead>
