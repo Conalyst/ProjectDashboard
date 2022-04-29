@@ -2,6 +2,7 @@ import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { Chart } from "react-google-charts";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const RiskDashboardVisual = () => {
 
@@ -100,6 +101,7 @@ export const RiskDashboardVisual = () => {
                 <div className="Overall-Rating-threat">
                     Impact
                 </div>
+<<<<<<< HEAD
                 <div className="Group-1359">
                     <div className="V-T-Color">
                         <div className="Dark-Blue-Color">
@@ -129,6 +131,55 @@ export const RiskDashboardVisual = () => {
                         </div>
                     </div>
                 </div>
+=======
+                <div className="Group-1359"><div className="V-T-Color">
+                <HSBar
+          showTextDown       
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 22, description: "L", color:"#72b7f2" }
+          ]}
+        />
+               {/* <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-M">
+                         M
+                    </span>
+                    <span className="span-L">
+                         L
+                    </span>*/}
+    </div>
+            </div>   
+            <div className="Overall-Rating-threat">
+                    Likelihood
+                </div>
+                <div className="Group-1359"><div className="V-T-Color">
+                <HSBar
+          showTextDown       
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 1, description: "M", color: "#126dba" },
+            { value: 2, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                 {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-M">
+                         M
+                    </span>
+                    <span className="span-L">
+                         L
+                    </span>*/}
+                     </div>
+                </div>    
+>>>>>>> f5f2ab7 (Stacked bar charts for Risk Analysis)
            </div>
             <div className="col-4">
                 <div className="Group-300006272">
