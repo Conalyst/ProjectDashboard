@@ -5,6 +5,7 @@ import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
+import cancel_icon from "../images/icons/cancel_icon.png";
 import info_white from '../images/icons/outline_info_white.png';
 import {ADDRISK, EDITRISK} from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
