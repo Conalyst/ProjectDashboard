@@ -4,6 +4,7 @@ import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { getStaticThreats, getAgents } from "../services/threatService";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
  
 export const ThreatsDashboardVisual = () => {
@@ -82,15 +83,28 @@ export const ThreatsDashboardVisual = () => {
                      Overall Rating
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
+                <HSBar
+          showTextDown
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 1, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 4, description: "L", color:"#72b7f2" }
+          ]}
+
+        
+        />
+                            {/*<div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
                             <div className="label-span-s">
                                 <span className="value-span-s span-H-s">H({highThreats})</span>
                                 <span className="value-span-s span-M-s">M({mediumThreats})</span>
-                                <span className="value-span-s span-L-s">L({lowThreats})</span>
-                            </div>
+    <span className="value-span-s span-L-s">L({lowThreats})</span>
+                            </div>*/}
                         </div>
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -117,7 +131,18 @@ export const ThreatsDashboardVisual = () => {
                     Impact
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
+                <HSBar
+           showTextDown
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 80, description: "H", color: "#09375f" },
+            { value: 40, description: "M", color: "#126dba" },
+            { value: 12, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                           {/* <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
@@ -125,7 +150,7 @@ export const ThreatsDashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highThreatsImpact})</span>
                                 <span className="value-span-s span-M-s">M({mediumThreatsImpact})</span>
                                 <span className="value-span-s span-L-s">L({lowThreatsImpact})</span>
-                            </div>
+                </div>*/}
                         </div>   
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
@@ -147,7 +172,16 @@ export const ThreatsDashboardVisual = () => {
                     Likelihood
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
+                <HSBar
+          showTextDown       
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 22, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                           {/* <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
@@ -155,7 +189,7 @@ export const ThreatsDashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highThreatsLikelihood})</span>
                                 <span className="value-span-s span-M-s">M({mediumThreatsLikelihood})</span>
                                 <span className="value-span-s span-L-s">L({lowThreatsLikelihood})</span>
-                            </div>
+        </div>*/}
                         </div>                
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
