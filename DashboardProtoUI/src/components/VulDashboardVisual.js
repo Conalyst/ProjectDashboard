@@ -3,7 +3,7 @@ import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const data = [
+export const ldata = [
     ["Group", "H", "M", "L"],
     ["Technical", 3, 5, 9],
     ["Operational", 3, 10, 8],
@@ -143,7 +143,7 @@ export const VulDashboardVisual = () => {
                         chartType="ColumnChart"
                         width="100%"
                         height="300px"
-                        data={data}
+                        data={ldata}
                         options={options}
                     />
                 </td>
