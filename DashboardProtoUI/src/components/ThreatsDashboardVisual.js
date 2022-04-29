@@ -1,6 +1,7 @@
 import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const ThreatsDashboardVisual = () => {
     return (
@@ -18,14 +19,27 @@ export const ThreatsDashboardVisual = () => {
                     Overall Rating
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 1, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 4, description: "L", color:"#72b7f2" }
+          ]}
+
+        
+        />
+               {/*} <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
                 <span className="span-H">
                     H
                 </span>
-                <span className="span-M">
+                <span className="span-H">
                     M
                 </span>
-                <span className="span-L">
+                <span className="span-H">
                     L
                 </span></div></div>   
                 <div className="grey-threat">
@@ -54,14 +68,25 @@ export const ThreatsDashboardVisual = () => {
                     Impact
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 80, description: "H", color: "#09375f" },
+            { value: 40, description: "M", color: "#126dba" },
+            { value: 12, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
                     <span className="span-H">
                          H
                     </span>
-                    <span className="span-M">
+                    <span className="span-H">
                          M
                     </span>
-                    <span className="span-L">
+                    <span className="span-H">
                          L
                     </span>
                 </div>
@@ -92,14 +117,25 @@ export const ThreatsDashboardVisual = () => {
                     Likelihood
                 </div>
                 <div className="Group-1359"><div className="V-T-Color">
-                <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 50, description: "M", color: "#126dba" },
+            { value: 22, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
                     <span className="span-H">
                          H
                     </span>
-                    <span className="span-M">
+                    <span className="span-H">
                          M
                     </span>
-                    <span className="span-L">
+                    <span className="span-H">
                          L
                     </span>
                      </div>
