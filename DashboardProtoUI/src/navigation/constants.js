@@ -1,5 +1,5 @@
 export const LOGIN = '/';
-export const DASHBOARD = "/asset";
+export const DASHBOARD = "/dashboard";
 export const RECDASHBOARD = "/rec";
 export const VULDASHBOARD = "/vul";
 export const THREATSDASHBOARD = "/threat";
