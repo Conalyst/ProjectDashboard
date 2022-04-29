@@ -13,8 +13,6 @@ exports.RiskAssetApi = void 0;
 const RiskAssetRepository_1 = require("../Infrastructure/repositories/RiskAssetRepository");
 const RiskAssetDto_1 = require("../domain/dtos/RiskAssetDto");
 const RiskAssetMapper_1 = require("../application/mappers/RiskAssetMapper");
-// import  {RiskRepository } from '../Infrastructure/repositories/RiskRepository'
-const Risk_1 = require("./Risk");
 // import {toEntity} from '../application/mappers/RiskMapper'
 class RiskAssetApi {
     constructor() {
@@ -50,12 +48,12 @@ class RiskAssetApi {
             }
             else {
                 const riskAssetDto = this.getDtoFromRequest(req);
-                const risk = this.getCalculatedRiskForUpdateRating(riskId);
-                // riskAssetDto. 
-                const riskApi = new Risk_1.RiskApi();
-                const riskRating = riskApi.updateRating(riskId, risk);
                 let createdRiskAsset = yield this._riskAssetRepository.Create((0, RiskAssetMapper_1.toEntity)(riskAssetDto));
                 if (createdRiskAsset) {
+                    // const risk = this.getCalculatedRiskForUpdateRating(riskId)  
+                    // console.log("Risk....", risk)
+                    // const riskApi = new RiskApi();
+                    // const riskRating = await riskApi.updateRating(riskId, risk)
                     return res.status(201).json(createdRiskAsset);
                 }
                 else {
@@ -65,7 +63,7 @@ class RiskAssetApi {
         });
     }
     getDtoFromRequest(req) {
-        return new RiskAssetDto_1.RiskAssetDto(req.body.id, req.body.assetId, req.body.assetId, new Date());
+        return new RiskAssetDto_1.RiskAssetDto(req.body.id, req.body.riskId, req.body.assetId, new Date());
     }
     getCalculatedRiskForUpdateRating(id) {
         return __awaiter(this, void 0, void 0, function* () {

@@ -72,7 +72,7 @@ export const DashboardVisual = () => {
               setLowAssetAvailability(res.visual.lowAssetAvailability[0].low_Asset)
               setLowAssetConfidentiality(res.visual.lowAssetConfidentiality[0].low_Asset)
               setLowAssetIntegrity(res.visual.lowAssetIntegrity[0].low_Asset)
-               
+               console.log("in stactic asset ", res)
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
@@ -92,9 +92,16 @@ export const DashboardVisual = () => {
         return new Promise((resolve, reject) => {
           try {
             // do db call or API endpoint axios call here and return the promise.
-            getStatsForBarChart()
+            getStatsForBarChart() 
             .then((res) => {
-               setBarData(res)               
+                const result = [];
+                result.push(["Group", "H", "M", "L"])
+                for(let data of res){
+                    result.push([data.group, data.H, data.M, data.L])
+                }
+                console.log("Result.......", result)
+                setBarData(result)         
+
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
@@ -172,11 +179,11 @@ export const DashboardVisual = () => {
                     <Chart
                         chartType="ColumnChart"
                         width="100%"
-                        height="300px"
-                        data={data}
+                        height="500px"
+                        data={barData}
                         options={options}
                     />
-                    {/* <SummaryBarChart data={barData} /> */}
+
                 </td>
                 </tr>
             </table>

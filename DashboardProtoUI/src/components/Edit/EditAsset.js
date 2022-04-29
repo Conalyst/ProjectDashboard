@@ -42,7 +42,6 @@ export const EditAsset = () => {
 
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
-  
   const parsedUser = JSON.parse(storedUser);
 
   useEffect(() => {
@@ -80,7 +79,7 @@ export const EditAsset = () => {
         availibility:availibility,
         rating:rating
        };
-
+      
       if (!assetTitle) {
         setErrors("An asset title is needed!");
       } else {
@@ -111,10 +110,8 @@ export const EditAsset = () => {
       .catch((err) => {
         console.log(err);
       });
+
     e.preventDefault()
-    history.push({
-      pathname: DASHBOARD,
-    });
   }
 
   const onCancel =()=>{
@@ -122,7 +119,7 @@ export const EditAsset = () => {
        pathname: DASHBOARD,
   
      });
-    }  
+  }  
 
 
   const onOk =()=>{

@@ -1,8 +1,10 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
 import { GET_ALL_ASSETS, COMPANYASSETS, GET_ASSET_BY_ID, POST_ASSET, GET_STATIC_ASSETS, GET_STATS_BARCHART, PUT_ASSET, POST_ASSET_VULN , DELETE_ASSET} from "./constants";
-  
-let assetId;
+// import { atom, useRecoilState, useRecoilValue } from 'recoil'
+// import { assetId as assetIdAtom} from '../recoil/atom'
+// const [assetId, setAssetId] = useRecoilState(assetIdAtom)
+
   export const getAllAssets = () => {
     
     return new Promise((resolve, reject) => {
@@ -74,7 +76,8 @@ let assetId;
           console.log("add new asset", res.data)
           const data = res.data
           console.log("add new asset id", data.id)
-          assetId = data.id
+            // setAssetId(data.id)
+            resolve(res);
         })
       } catch (error) {
         console.error("in addAsset > postAsset, Err===", error);
@@ -83,7 +86,8 @@ let assetId;
     });
   };
 
-  export const postAssetVuln = (vulnId) => {
+  export const postAssetVuln = (vulnId, assetId) => {
+    // console.log("New asset id and vuln id..", assetId, vulnId)
     return new Promise((resolve, reject) => {
       try {
         axios

@@ -57,6 +57,11 @@ class RiskRepository {
             return models_1.default.Risk.update(model['dataValues'], { where: { id: `${id}` } });
         });
     }
+    delete(model, idRisk) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return model.destroy();
+        });
+    }
     GetTotal(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Risk.findAll({

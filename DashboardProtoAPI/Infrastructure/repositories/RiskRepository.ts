@@ -49,7 +49,10 @@ export class RiskRepository {
       return db.Risk.update(model['dataValues'], {where: {id: `${id}`}});
   }
 
- 
+  public async delete(model: Model<typeof Risk>, idRisk:number){
+    return model.destroy();
+  }
+
   public async GetTotal(model: Model<typeof Risk>) {
     return db.Risk.findAll({
       attributes: [

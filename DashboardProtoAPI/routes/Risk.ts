@@ -21,5 +21,8 @@ riskRouter.put("/:id", (req, res) =>{
     riskApi.update(req, res)
 })
 
+riskRouter.delete('/:id' ,(req, res) => {
+  riskApi.delete(req, res)
+})
 
 export default riskRouter;

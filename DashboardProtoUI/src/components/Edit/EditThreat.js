@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form, Table} from "react-bootstrap";
-import { getAllTest } from "../../services";
+import { deleteThreat, getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
@@ -32,7 +32,7 @@ export const EditThreat = () => {
   const [description, setDescription] = useState('');
   //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const [message, setMessage] = useState()
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
   
@@ -60,39 +60,18 @@ export const EditThreat = () => {
     }  
   
  
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
+  const onDelete = (e) => {
+    deleteThreat(threats.id)
+      .then((result) => {
+        setMessage("This Threat has been successfully deleted !");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    e.preventDefault()
+  }
+
+
 
   return (
     <div className="db-site-container">
@@ -267,7 +246,7 @@ export const EditThreat = () => {
           </Form>
         </div>
           <div className="asset-menu-buttons">
-            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <Button type="button"  onClick={() =>onDelete()}className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Delete
             </Button>
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -278,7 +257,7 @@ export const EditThreat = () => {
                   </div>
                   <div className="modal-body">
                     <p className="Remove-asset-message">Your selected threat will be removed from the list.<br></br>
-                    You can restore it within 15 days from History.</p>
+                    </p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
                   <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>

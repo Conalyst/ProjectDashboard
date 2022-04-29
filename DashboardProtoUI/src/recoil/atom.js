@@ -1,5 +1,9 @@
 import { atom } from 'recoil' 
 
+export const assetId = atom({
+  key: "assetId",
+  default: "",
+})
 
 export const asset = atom({
   key: "asset",
@@ -20,4 +24,5 @@ export const threats = atom({
   key: "threats",
   default: [],
 })
+
 

@@ -21,6 +21,7 @@ import Select from 'react-select';
 import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { risk as riskAtom} from '../../recoil/atom'
 import { getAllAssets } from "../../services";
+import { postRiskAsset } from "../../services";
 
 
 export const AddRisk = () => { 
@@ -68,7 +69,7 @@ export const AddRisk = () => {
     });
   }, []); 
 
-  const onDone =()=>{
+  const onDone = () => {
     console.log("Asset...", selectedOption)
     var requestDto = {
     title: riskTitle,
@@ -77,11 +78,19 @@ export const AddRisk = () => {
     rating:rating,
     category:category,
     description:description
-  };
-  console.log("ddddd", requestDto)
+   };
+  
   postRisk(requestDto)
-    .then((result) => {
+    .then((res) => {
       setRiskTitle("")
+      console.log(" Risk id.......", res["id"], selectedOption[0].value)
+      postRiskAsset(res["id"], selectedOption[0].value )
+      .then((res) => {
+          console.log("post risk asset  data", res)
+      })
+      .catch((err) => {
+        console.log("Post risk asset Error", err);
+      });
     })
     .catch((err) => {
       console.log(err);
