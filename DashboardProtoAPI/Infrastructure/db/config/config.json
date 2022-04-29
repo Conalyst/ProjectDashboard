@@ -1,8 +1,8 @@
 {
   "development": {
-    "username": "hadjira",
-    "password": "hadjira2022",
-    "database": "dashboardDBV22",
+    "username": "labber",
+    "password": "labber",
+    "database": "dashboard_db",
     "host": "127.0.0.1",
     "dialect": "postgres"
   },
