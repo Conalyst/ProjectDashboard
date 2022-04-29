@@ -24,10 +24,15 @@ import Select from 'react-select';
 import { getAllThreats } from "../../services/threatService";
 import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { vulnerabilities as vulnerabilitiesAtom} from '../../recoil/atom' 
+import {putVuln} from '../../services/vulnerabilityService'
 
 export const EditVul = () => { 
-  const [title, setTitle] = useState('');
+  const [vulTitle, setVulTitle] = useState('');
   const [description, setDescription] = useState('');
+  const [impact, setImpact] = useState('');
+  const [likelihood, setLikelihood] = useState('');
+  const [rating, setRating] = useState('');
+  const [category, setCategory] = useState('');
   const [vulnerabilities, setVulnerabilities] = useRecoilState(vulnerabilitiesAtom);
   const [selectedOption, setSelectedOption] = useState(null);
   const [threat, setThreat] = useState([])
@@ -61,7 +66,34 @@ export const EditVul = () => {
     });
   }, []);
 
-  const onDone =()=>{
+  const onDone =(e)=>{
+   
+      var requestDto = {
+        id:vulnerabilities.id,
+        title: vulTitle,
+        impact: impact,
+        likelihood:likelihood,
+        rating:rating,
+        category:category,
+        description:description
+      };
+    
+
+    if (!vulTitle) {
+      setMessage("An Vulnerability title is needed!");
+    } else {
+      putVuln(requestDto)
+        .then((result) => {
+          setVulTitle("");
+          setDescription("")   
+          e.preventDefault()
+          setMessage("This Vulnerability updated successfully !");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+
   history.push({
      pathname: VULDASHBOARD,
 
@@ -230,11 +262,11 @@ export const EditVul = () => {
               <div className="column-form col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Title</Form.Label>
-                  <Form.Control className="Frame-left" type="text" onChange={(e) => setTitle(e.target.value)}/>
+                  <Form.Control className="Frame-left" type="text" value={vulTitle} onChange={(e) => setVulTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" >
+                  <Form.Select className="Frame-left" value={ava}  >
                   <option >L</option>
                   <option>M</option>
                   <option >H</option>

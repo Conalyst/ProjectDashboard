@@ -18,9 +18,8 @@ import { threats as threatsAtom} from '../recoil/atom'
 
 export const ThreatsDashboardDetails = () => {
 
-    const [threats, setThreats] = useRecoilState(threatsAtom);
-     
-    const [assets, setAssets] = useState([]);
+   // const [threats, setThreats] = useRecoilState(threatsAtom);
+    const [threats, setThreats] = useState([])
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;
