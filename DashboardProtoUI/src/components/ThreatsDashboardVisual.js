@@ -1,6 +1,7 @@
 import React from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const ThreatsDashboardVisual = () => {
     return (
@@ -17,6 +18,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Overall Rating
                 </div>
+<<<<<<< HEAD
                 <div className="Group-1359">
                     <div className="V-T-Color">
                         <div className="Dark-Blue-Color">
@@ -30,6 +32,32 @@ export const ThreatsDashboardVisual = () => {
                         </div>
                     </div>
                     </div>   
+=======
+                <div className="Group-1359"><div className="V-T-Color">
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 1, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 4, description: "L", color:"#72b7f2" }
+          ]}
+
+        
+        />
+               {/*} <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+                <span className="span-H">
+                    H
+                </span>
+                <span className="span-H">
+                    M
+                </span>
+                <span className="span-H">
+                    L
+                </span></div></div>   
+>>>>>>> fe78d7c (horizantally stacked bar charts)
                 <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -55,6 +83,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Impact
                 </div>
+<<<<<<< HEAD
                 <div className="Group-1359">
                     <div className="V-T-Color">
                         <div className="Dark-Blue-Color">
@@ -68,6 +97,32 @@ export const ThreatsDashboardVisual = () => {
                         </div>
                     </div>
                 </div>    
+=======
+                <div className="Group-1359"><div className="V-T-Color">
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 80, description: "H", color: "#09375f" },
+            { value: 40, description: "M", color: "#126dba" },
+            { value: 12, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-H">
+                         M
+                    </span>
+                    <span className="span-H">
+                         L
+                    </span>
+                </div>
+            </div>    
+>>>>>>> fe78d7c (horizantally stacked bar charts)
             <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
@@ -93,6 +148,7 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Likelihood
                 </div>
+<<<<<<< HEAD
                 <div className="Group-1359">
                     <div className="V-T-Color">
                         <div className="Dark-Blue-Color">
@@ -105,6 +161,31 @@ export const ThreatsDashboardVisual = () => {
                             <span className="value-span-s span-L-s">L</span>
                         </div>
                     </div>
+=======
+                <div className="Group-1359"><div className="V-T-Color">
+                <HSBar
+          showText
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 8, description: "H", color: "#09375f" },
+            { value: 50, description: "M", color: "#126dba" },
+            { value: 22, description: "L", color:"#72b7f2" }
+          ]}
+        />
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+                    <span className="span-H">
+                         H
+                    </span>
+                    <span className="span-H">
+                         M
+                    </span>
+                    <span className="span-H">
+                         L
+                    </span>
+                     </div>
+>>>>>>> fe78d7c (horizantally stacked bar charts)
                 </div>   
                 <div className="grey-threat">             
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
