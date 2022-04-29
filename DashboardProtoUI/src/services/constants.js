@@ -9,8 +9,11 @@ export const GET_ALL_ASSETS = ()=>BASE_ADDRESS()+'/v2/assets';
 export const GET_ASSET_BY_ID = (assetId)=>BASE_ADDRESS()+'/v2/dashboard/asset?assetId=${assetId}';
 export const POST_ASSET= () => `${BASE_ADDRESS()}/v2/assets`
 export const PUT_ASSET= (id) => `${BASE_ADDRESS()}/v2/assets/${id}`
+export const DELETE_ASSET= (id) => `${BASE_ADDRESS()}/v2/assets/${id}`
 export const GET_STATIC_ASSETS= () => `${BASE_ADDRESS()}/v2/assets/static`
 export const GET_STATS_BARCHART= () => `${BASE_ADDRESS()}/v2/assets/bar-stats`
+
+export const POST_ASSET_VULN= () => `${BASE_ADDRESS()}/v2/asset-vuln`
 
 export const GET_ALL_VULNERABILITIES = ()=>BASE_ADDRESS()+'/v2/vulnerabilities';
 export const GET_VULNERABILITY_BY_ID = (vulnerabilityId)=>BASE_ADDRESS()+'/v2/vulnerability?vunerabilityId=${vulnerabilityId}';

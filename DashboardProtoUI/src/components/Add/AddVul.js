@@ -16,7 +16,7 @@ import notification from '../../images/icons/noti_icon.png';
 import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
- 
+import { getAllThreats } from "../../services/threatService";
 import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
  
 import Select from 'react-select';
@@ -31,12 +31,36 @@ export const AddVul = () => {
   const [rating, setRating] = useState('');
   const [category, setCategory] = useState('');
   const [message, setMessage] = useState("");
-  //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
   const storedUser = localStorage.getItem("storedUser");
-  
+  const [threat, setThreat] = useState([]);
   const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
+
+  useEffect(() => {
+
+    return new Promise((resolve, reject) => {
+      try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllThreats()
+        .then((res) => {
+          console.log("in detail", res)
+          setThreat(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllThreats > err=", err);
+            setThreat([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      }
+    });
+  }, []);
+
+
   const goToVulDashboard =()=>{
     
   }
@@ -49,8 +73,9 @@ export const AddVul = () => {
    likelihood:likelihood,
    rating:rating,
    category:category,
-   Description:description
+   description:description
  };
+
  postVulnerability(requestDto)
    .then((result) => {
     
@@ -99,18 +124,12 @@ export const AddVul = () => {
   
      });
     } 
-  const options = [
-    { value: 'T1', label: 'T1' },
-    { value: 'T2', label: 'T2' },
-    { value: 'T3', label: 'T3' },
-    { value: 'T4', label: 'T4' },
-    { value: 'T5', label: 'T5' },
-    { value: 'T6', label: 'T6' },
-    { value: 'T7', label: 'T7' },
-    { value: 'T8', label: 'T8' },
-    { value: 'T9', label: 'T9' },
-    { value: 'T10', label:'T10'},
-  ];
+
+    const options = []
+    const threats = threat
+    threats.map(val => {
+        options.push({value: val.id, label: val.title})
+    })
 
   const customStyles = {
     control: base => ({

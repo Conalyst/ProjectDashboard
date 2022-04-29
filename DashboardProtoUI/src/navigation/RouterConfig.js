@@ -20,6 +20,7 @@ import AddRisk from "../components/Add/AddRisk";
 import EditRisk from "../components/Edit/EditRisk";
 import AddThreat from "../components/Add/AddThreat";
 import EditThreat from "../components/Edit/EditThreat";
+import Info from "../components/Info";
 import Test from '../components/Test'
 
 import {
@@ -42,7 +43,8 @@ import {
     EDITVUL,
     ADDRISK,
     EDITRISK,
-    TEST
+    TEST,
+    INFO
 } from "./CONSTANTS";
 
 export const RouterConfig = (props) => {
@@ -83,6 +85,9 @@ export const RouterConfig = (props) => {
             </Route >
             <Route exact path={LOGIN} >
                 <Login/>
+            </Route >
+            <Route exact path={INFO} >
+                <Info/>
             </Route >
             <Route exact path={ADDREC} >
                 <AddRec/>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form, Table} from "react-bootstrap";
-import { getAllTest } from "../../services";
+import { deleteAsset, getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
@@ -68,7 +68,7 @@ export const EditAsset = () => {
     });
   }, []);
 
-  const onDone = () => {
+  const onDone = (e) => {
   
       const requestDto = {
         id: asset.id,
@@ -80,35 +80,42 @@ export const EditAsset = () => {
         availibility:availibility,
         rating:rating
        };
-       console.log("Edit Dto...", requestDto)
+
       if (!assetTitle) {
         setErrors("An asset title is needed!");
       } else {
         putAsset(requestDto)
           .then((result) => {
             setAssetTitle("");
-            setDescription("")
+            setDescription("")   
+            e.preventDefault()
             setMessage("This asset updated successfully !");
           })
           .catch((err) => {
             console.log(err);
-            if (err.response.status == 404) {
-              setErrors("No comment found!");
-            } else {
-              if (err.response.status == 400) {
-                setErrors("restaurantId is not valid!");
-              } else {
-                setErrors("Unknow error!");
-              }
-            }
           });
         }
 
+     
     history.push({
       pathname: DASHBOARD,
-
     });
   }  
+
+  const onDelete = (e) => {
+
+      deleteAsset(asset.id)
+      .then((result) => {
+        setMessage("This asset has been successfully !");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    e.preventDefault()
+    history.push({
+      pathname: DASHBOARD,
+    });
+  }
 
   const onCancel =()=>{
     history.push({
@@ -119,10 +126,9 @@ export const EditAsset = () => {
 
 
   const onOk =()=>{
-  history.push({
-     pathname: DASHBOARD,
-
-   });
+    history.push({
+      pathname: DASHBOARD,
+    });
   }  
 
   // const selected = []
@@ -252,9 +258,9 @@ export const EditAsset = () => {
                     <th>Title</th>
                     <th>Description</th>
                     <th>Category</th>
-                    <th>Confidentiality</th>
-                    <th>Integrity</th>
                     <th>Availability</th>
+                    <th>Integrity</th>
+                    <th>Confidentiality</th>
                     <th>Rating</th>
                 </tr>
               </thead>
@@ -267,7 +273,7 @@ export const EditAsset = () => {
                 <td>{asset.id}</td>
                 <td>{assetTitle}</td>
                 <td>{description}</td>
-                <td>{category}</td>
+                <td>{asset.AssetCategory.name}</td>
                 <td>{availibility}</td>
                 <td>{integrity}</td>
                 <td>{confidentiality}</td>
@@ -347,7 +353,7 @@ export const EditAsset = () => {
           </Form>
         </div>
           <div className="asset-menu-buttons">
-            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={() => onDelete()}>
               Delete
             </Button>
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -357,8 +363,7 @@ export const EditAsset = () => {
                     <h5 className="modal-title Asset-Added" id="exampleModalLabel">Remove Assets</h5>
                   </div>
                   <div className="modal-body">
-                    <p className="Remove-asset-message">Your selected asset will be removed from the list.<br></br>
-                    You can restore it within 15 days from History.</p>
+                    <p className="Remove-asset-message">Your selected asset has been be removed </p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
                   <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>
@@ -370,7 +375,24 @@ export const EditAsset = () => {
             <Button className="Button-Icon-AddAsset-modal" type="submit"  onClick={() =>onDone()}>
               Done
             </Button>
-       
+
+            <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div className="modal-dialog modal-dialog-centered">
+                <div className="modal-content Manage-list-delete">
+                  <div className="modal-header Rectangle-header">
+                    <h5 className="modal-title Asset-Added" id="exampleModalLabel">Update Asset</h5>
+                  </div>
+                  <div className="modal-body">
+                    <p className="Remove-asset-message">Your selected asset has been be Updated </p>
+                    <div className="remove-menu-buttons">
+                  <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
+                  <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>      
+
             </div>
           </div>
         </div>

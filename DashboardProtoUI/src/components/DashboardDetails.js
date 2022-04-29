@@ -10,7 +10,7 @@ import pen_black from '../images/icons/pen_black.png';
 //import { pullCompanyAssets } from "../services/companyAssetsService";
 import { getAllAssets } from "../services/assetsService";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
+import { ADDASSET, EDITASSET, INFO } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
@@ -37,6 +37,13 @@ export const DashboardDetails = () => {
       setAsset(asset) 
       history.push({
         pathname: EDITASSET,
+      });
+    } 
+
+    const onInfoAsset =(asset)=>{    
+      setAsset(asset) 
+      history.push({
+        pathname: INFO,
       });
     } 
 
@@ -96,9 +103,10 @@ export const DashboardDetails = () => {
                 {assets.map((asset) => (
                 <tr className="cr-text">
                 <td>
-                <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
-                  <Info/>
-            </td>
+                {/* <button type="button" id={asset.id} className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1" onClick={() => onInfoAsset(asset)}> <img src={info_black} alt =""/></button>  */}
+                <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1" > <img src={info_black} alt =""/></button> 
+                  <Info />
+                </td>
                <td>{asset.id}</td>
             
               <td>{asset.title}</td>

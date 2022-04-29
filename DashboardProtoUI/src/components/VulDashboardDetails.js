@@ -11,10 +11,11 @@ import {useHistory} from 'react-router-dom';
 import Info from "./Info";
 //import ManageButton from "./ManageButton";
 import { getAllVulnerabilities } from "../services/vulnerabilityService";
-
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { vulnerabilities as vulnerabilitiesAtom} from '../recoil/atom' 
+  
 export const VulDashboardDetails = () => {
-
-    const [vulnerabilities, setVulnerabilities] = useState(vul_data);
+    const [vulnerabilities, setVulnerabilities] = useRecoilState(vulnerabilitiesAtom);
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;
@@ -26,11 +27,12 @@ export const VulDashboardDetails = () => {
      });
     }  
 
-    const onEditVul =()=>{
-    history.push({
-       pathname: EDITVUL,
-  
-     });
+    const onEditVul =(vulnerability)=>{
+      setVulnerabilities(vulnerability)
+      history.push({
+        pathname: EDITVUL,
+    
+      });
     }  
     useEffect(() => {
       const storedUser = localStorage.getItem("storedUser");   
@@ -85,7 +87,7 @@ export const VulDashboardDetails = () => {
                     <td>{vulnerability.likelihood}</td>
                     <td>{vulnerability.rating}</td>
                     
-                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditVul}><img src={pen_black} alt =""/></button>  </td> )}
+                    {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={() => onEditVul(vulnerability)}><img src={pen_black} alt =""/></button>  </td> )}
               
                 </tr>
             ) )}

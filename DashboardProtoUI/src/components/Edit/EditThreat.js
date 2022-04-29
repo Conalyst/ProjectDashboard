@@ -21,10 +21,13 @@ import {useHistory} from 'react-router-dom'
 import { THREATSDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
 import Info from "../Info";
 import Select from 'react-select';
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { threats as threatsAtom} from '../../recoil/atom' 
 
 
 
 export const EditThreat = () => { 
+  const [threats, setThreats] = useRecoilState(threatsAtom);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   //const [searchvul, setSearchvul] = useState('');
@@ -50,7 +53,10 @@ export const EditThreat = () => {
   }  
  
   const onCancel =()=>{
+    history.push({
+      pathname: THREATSDASHBOARD,
    
+      });
     }  
   
  
@@ -196,14 +202,14 @@ export const EditThreat = () => {
                     <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
                   </td>
-                  <td>1</td>
-                  <td>Accidental viewing of confidential information</td>
-                  <td>A ORG employee having access to user information breaches confidentiality by viewing information.</td>
-                  <td>Accidental</td>
-                  <td>Accident</td>
-                  <td>M</td>
-                  <td>H</td>
-                  <td>H</td>
+                  <td>{threats.id}</td>
+                  <td>{threats.title}</td>
+                  <td>{threats.description}</td>
+                  <td>{threats.category}</td>
+                  <td>{threats.agent}</td>
+                  <td>{threats.impact}</td>
+                  <td>{threats.likelihood}</td>
+                  <td>{threats.rating}</td>
                 </tr>
               </tbody>
             </Table>

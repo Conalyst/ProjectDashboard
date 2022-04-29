@@ -23,9 +23,9 @@ router.use('/', user_1.default);
 // this is just a test of authorization
 router.use('/tests', Test_1.default);
 router.use('/vulnerabilities', Vulnerability_1.default);
-router.use('/asset-vulnerability', AssetVulnerability_1.default);
+router.use('/asset-vuln', AssetVulnerability_1.default);
 router.use('/threats', Threat_1.default);
-router.use('/vulnerability-threat', VulnerabilityThreat_1.default);
+router.use('/vuln-threat', VulnerabilityThreat_1.default);
 router.use('/risks', Risk_1.default);
 router.use('/risk-asset', RiskAsset_1.default);
 router.use('/riskcalc', RiskCalculate_1.default);

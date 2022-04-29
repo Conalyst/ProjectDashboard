@@ -11,11 +11,14 @@ import pen_black from '../images/icons/pen_black.png';
 import Info from "./Info";
 //import ManageButton from "./ManageButton";
 import { getAllThreats } from "../services/threatService";
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { threats as threatsAtom} from '../recoil/atom' 
+  
 
 
 export const ThreatsDashboardDetails = () => {
 
-    //const [threats, setThreats] = useState(thr_data);
+    const [threats, setThreats] = useRecoilState(threatsAtom);
      
     const [assets, setAssets] = useState([]);
     const storedUser = localStorage.getItem("storedUser");
@@ -38,19 +41,20 @@ export const ThreatsDashboardDetails = () => {
         getAllThreats()
         .then((result) => {
             console.log("Threats", result)
-            setAssets(result);
+            setThreats(result);
         })
    
     }, []); 
 
-      const onEditThreat =()=>{
+      const onEditThreat =(threat)=>{
+        setThreats(threat)
         history.push({
            pathname: EDITTHREAT,
       
          });
         }      
-  
-  
+
+
       return (
       <>     
           <div className="asset-menu-buttons">
@@ -80,8 +84,8 @@ export const ThreatsDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {/* {threats.map((threat) => ( */}
-                  {assets.map((threat) => (
+
+              {threats.map((threat) => (
                 <tr className="cr-text">
                     <td>
                       <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
@@ -96,7 +100,7 @@ export const ThreatsDashboardDetails = () => {
                     <td>{threat.likelihood}</td>
                     <td>{threat.rating}</td>
                   
-                     {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditThreat}><img src={pen_black} alt =""/></button> </td>)}
+                     {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={() => onEditThreat(threat)}><img src={pen_black} alt =""/></button> </td>)}
                 
                 </tr>
             ) )}

@@ -21,19 +21,45 @@ import {useHistory} from 'react-router-dom'
 import { VULDASHBOARD } from "../../navigation/CONSTANTS";
 import Info from "../Info";
 import Select from 'react-select';
-
-
+import { getAllThreats } from "../../services/threatService";
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { vulnerabilities as vulnerabilitiesAtom} from '../../recoil/atom' 
 
 export const EditVul = () => { 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  //const [searchvul, setSearchvul] = useState('');
+  const [vulnerabilities, setVulnerabilities] = useRecoilState(vulnerabilitiesAtom);
   const [selectedOption, setSelectedOption] = useState(null);
-
+  const [threat, setThreat] = useState([])
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
+
+
+  useEffect(() => {
+
+    return new Promise((resolve, reject) => {
+      try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllThreats()
+        .then((res) => {
+          console.log("in detail", res)
+          setThreat(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllThreats > err=", err);
+            setThreat([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      }
+    });
+  }, []);
+
   const onDone =()=>{
   history.push({
      pathname: VULDASHBOARD,
@@ -56,18 +82,11 @@ export const EditVul = () => {
    });
   }  
 
-  const options = [
-    { value: 'T1', label: 'T1' },
-    { value: 'T2', label: 'T2' },
-    { value: 'T3', label: 'T3' },
-    { value: 'T4', label: 'T4' },
-    { value: 'T5', label: 'T5' },
-    { value: 'T6', label: 'T6' },
-    { value: 'T7', label: 'T7' },
-    { value: 'T8', label: 'T8' },
-    { value: 'T9', label: 'T9' },
-    { value: 'T10', label:'T10'},
-  ];
+  const options = []
+  const threats = threat
+  threats.map(val => {
+      options.push({value: val.id, label: val.title})
+  })
 
   const customStyles = {
     control: base => ({
@@ -218,13 +237,12 @@ export const EditVul = () => {
                     <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
                   </td>
-                  <td>1</td>
-                  <td>Lack of personnel clearance requirements and process for trusted personal</td>
-                  <td>While ORG conducts a one-time background security check at during employee hiring processes, no formal process exists for staff to obtain Reliability Status (up to Protected B information) or Secret security (for Classified information) clearance prior to obtaining trusted or privileged access to ORG data. </td>
-                  <td>Personal</td>
-                  <td>M</td>
-                  <td>H</td>
-                  <td>H</td>
+                  <td>{vulnerabilities.id}</td>
+                  <td>{vulnerabilities.title} </td>
+                  <td>{vulnerabilities.description}</td>
+                  <td>{vulnerabilities.impact}</td>
+                  <td>{vulnerabilities.likelihood}</td>
+                  <td>{vulnerabilities.rating}</td>
                 </tr>
               </tbody>
             </Table>

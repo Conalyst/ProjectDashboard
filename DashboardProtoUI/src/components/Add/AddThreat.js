@@ -33,10 +33,14 @@ export const AddThreat = () => {
   const [agent, setAgent] = useState('');
   const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState(null);
+ 
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
   const history =useHistory();
+
+ 
+
 
   const onDone =()=>{
 
@@ -46,7 +50,7 @@ export const AddThreat = () => {
     likelihood:likelihood,
     rating:rating,
     category:category,
-    Description:description,
+    description:description,
     agent:agent
   };
   console.log("######",requestDto)

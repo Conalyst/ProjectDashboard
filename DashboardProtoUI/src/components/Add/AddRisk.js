@@ -76,17 +76,17 @@ export const AddRisk = () => {
     likelihood:likelihood,
     rating:rating,
     category:category,
-    Description:description
+    description:description
   };
   console.log("ddddd", requestDto)
-  // postRisk(requestDto)
-  //   .then((result) => {
-  //     setRiskTitle("")
-  //   })
-  //   .catch((err) => {
-  //     console.log(err);
+  postRisk(requestDto)
+    .then((result) => {
+      setRiskTitle("")
+    })
+    .catch((err) => {
+      console.log(err);
       
-  //  });
+   });
   }  
 
    
@@ -241,18 +241,18 @@ export const AddRisk = () => {
                   <option>M</option>
                   <option >H</option>
                   </Form.Select>
-                </Form.Group>
-                <Form.Group className="mb-3" id="exampleFormControlInput1">
-                  <Form.Label className="Label" >rating <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
+                </Form.Group> 
+                <Form.Group className="mb-3">
+                  <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
                   <option >L</option>
                   <option>M</option>
                   <option >H</option>
                   </Form.Select>
                 </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Label className="Label">likelihood <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={likelihood} onChange={(e) => setLikelihood(e.target.value)}>
+                <Form.Group className="mb-3" id="exampleFormControlInput1">
+                  <Form.Label className="Label" >rating <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
                   <option >L</option>
                   <option>M</option>
                   <option >H</option>

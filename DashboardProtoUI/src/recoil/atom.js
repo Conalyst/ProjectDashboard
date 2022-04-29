@@ -11,13 +11,13 @@ export const risk = atom({
   default: [],
 })
 
-export const vuln = atom({
-  key: "vuln",
+export const vulnerabilities = atom({
+  key: "vulnerabilities",
   default: [],
 })
 
-export const threat = atom({
-  key: "threat",
+export const threats = atom({
+  key: "threats",
   default: [],
 })
 

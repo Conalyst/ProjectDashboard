@@ -17,4 +17,5 @@ export const ADDVUL = "/addvul";
 export const EDITVUL = "/editvul";
 export const ADDRISK = "/addrisk";
 export const EDITRISK = "/editrisk";
+export const INFO = "/info";
 export const TEST = '/test';

@@ -4,13 +4,15 @@ import data from "../data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
-//import ManageModal from "./ManageModal";
 import { ADDASSET, DASHBOARD } from "../navigation/CONSTANTS";
 import {useHistory} from 'react-router-dom'
 import Filter from "./Filter";
+// import { atom, useRecoilState, useRecoilValue } from 'recoil'
+// import { asset as assetAtom} from '../recoil/atom'
 
 const Info = () => {
+  // const [asset, setAsset] = useRecoilState(assetAtom);
+  // console.log("asset", asset)
   return (
     <>              
     <div className="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -33,14 +35,14 @@ const Info = () => {
         <div className="modal-header Rectangle-accordion-title-h">
         <tbody>             
       <tr className="cr-text ">
-        <td className="accordion-title-name-black"> A5.1</td>
-        <td className="accordion-title-name-black">ORG IT Staff</td>
-        <td className="accordion-title-name-black">Risk of Ransomware attack</td>
-        <td className="accordion-title-name-black">Personnel</td>
-        <td className="accordion-title-name-black">H</td>
-        <td className="accordion-title-name-black">H</td>
-        <td className="accordion-title-name-black">L</td>
-        <td className="accordion-title-name-black">H</td>
+        <td className="accordion-title-name-black"> asset.id</td>
+        <td className="accordion-title-name-black">asset.title</td>
+        <td className="accordion-title-name-black">asset.description</td>
+        <td className="accordion-title-name-black">asset.categoryId</td>
+        <td className="accordion-title-name-black">asset.availability</td>
+        <td className="accordion-title-name-black">asset.integrity</td>
+        <td className="accordion-title-name-black">asset.confidentiality</td>
+        <td className="accordion-title-name-black">asset.rating</td>
       </tr>
     </tbody>
   </div>

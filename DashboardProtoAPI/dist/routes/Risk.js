@@ -7,9 +7,6 @@ const riskRouter = (0, express_1.Router)();
 riskRouter.get("/", (req, res) => {
     riskApi.getAllRisks(req, res);
 });
-// riskRouter.get("/:id", (req, res) => {     
-//   riskApi.getRiskById(req, res);    
-// })
 riskRouter.post("/", (req, res) => {
     riskApi.create(req, res);
 });

@@ -17,7 +17,7 @@ import info from '../../images/icons/info_icon.png';
 import vendor_icon from '../../images/icons/vendor_icon.png';
 import { getAllVulnerabilities } from "../../services/vulnerabilityService";
 import {useHistory} from 'react-router-dom'
- 
+import { postAssetVuln } from "../../services"; 
 import { DASHBOARD, ADDASSET, VULDASHBOARD } from "../../navigation/CONSTANTS";
  
 import Select from 'react-select';
@@ -29,7 +29,7 @@ export const AddAsset = () => {
   const [description, setDescription] = useState('');
   //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
-  const [availibility, setAvailibility] = useState("");
+  const [availability, setAvailability] = useState("");
   const [integrity, setIntegrity] = useState("");
   const [confidentiality, setConfidentiality] = useState("");
   const [category, setCategory] = useState("");
@@ -60,7 +60,7 @@ export const AddAsset = () => {
             reject("Request error!");
           });
       } catch (error) {
-        console.error("getAllAssets error!==", error);
+        console.error("getAllVulnerabilities error!==", error);
         reject("getAllAssets error!");
       }
     });
@@ -73,35 +73,34 @@ export const AddAsset = () => {
   })
  
   const onDone =(e)=>{
-   
+    let assetId;
+  
      var requestDto = {
        title: assetTitle,
        categoryId: 1,
        description:description,
        confidentiality:confidentiality,
        integrity:integrity,
-       availibility:availibility,
+       availability:availability,
        rating:rating
      };
      postAsset(requestDto)
-       .then((result) => {
+       .then((res) => {
          setAssetTitle("");
-         setDescription("")
-     
+         setDescription("")    
        })
        .catch((err) => {
-         console.log(err);
-         if (err.response.status == 404) {
-           //setErrors("No comment found!");
-         } else {
-           if (err.response.status == 400) {
-             
-           } else {
-            
-           }
-         }
+         console.log("Post Asset Error", err);
        });
-   
+  
+       postAssetVuln(selectedOption[0].value)
+       .then((res) => {
+          console.log("post asset vuln data", res)
+       })
+       .catch((err) => {
+         console.log("Post Asset vuln Error", err);
+       });
+ 
 }
    
 
@@ -117,18 +116,17 @@ export const AddAsset = () => {
    
     if (assetTitle === ""){
       setMessage("The title of Asset is requiried for Add!")
+       e.preventDefault();
+        history.push({
+          pathname: ADDASSET,
+          
+        });
+    } else{
+      onDone();
+      setMessage("New asset was successfully added to the list")
       e.preventdefault();
       history.push({
-        pathname: ADDASSET,
-        
-      });
-    } else{
-      setMessage("New asset was successfully added to the list")
-      onDone();
-      e.preventdefault();
-    history.push({
-     pathname: DASHBOARD,
-
+        pathname: DASHBOARD,
       });
    }
   }  
@@ -243,37 +241,35 @@ export const AddAsset = () => {
                   <Form.Control className="Frame-left" type="text" onChange={(e) => setAssetTitle(e.target.value)}/>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={availibility} onChange={(e) => setAvailibility(e.target.value)} >
- 
-                  <option >L</option>
-                  <option>M</option>
-                  <option >H</option>
- 
+                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={confidentiality} onChange={(e) => setConfidentiality(e.target.value)}>
+                  <option value='L'>L</option>
+                  <option value='M'>M</option>
+                  <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
-                  <option >L</option>
-                  <option>M</option>
-                  <option >H</option>
+                  <option value='L' >L</option>
+                  <option value='M'>M</option>
+                  <option value='H'>H</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3">
-                  <Form.Label className="Label">Confidentiality <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={confidentiality} onChange={(e) => setConfidentiality(e.target.value)}>
-                  <option >L</option>
-                  <option>M</option>
-                  <option >H</option>
+                  <Form.Label className="Label">Availability <span className="optional">Optional</span></Form.Label>
+                  <Form.Select className="Frame-left" value={availability} onChange={(e) => setAvailability(e.target.value)} >
+                  <option value='L'>L</option>
+                  <option value='M'>M</option>
+                  <option value='H'>H</option> 
                   </Form.Select>
-                </Form.Group>
+                </Form.Group>  
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                  <option >L</option>
-                  <option>M</option>
-                  <option >H</option>
+                  <option value='L' >L</option>
+                  <option value='M'>M</option>
+                  <option value='M'>H</option>
                   </Form.Select>
                 </Form.Group>
                 </div>
