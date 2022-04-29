@@ -35,7 +35,7 @@ export const ThreatsDashboardVisual = () => {
 =======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
-          showText
+          showTextDown
           
          
           id="hsbarExample"
@@ -47,7 +47,7 @@ export const ThreatsDashboardVisual = () => {
 
         
         />
-               {/*} <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+               {/*} <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                 <span className="span-H">
                     H
                 </span>
@@ -56,8 +56,12 @@ export const ThreatsDashboardVisual = () => {
                 </span>
                 <span className="span-H">
                     L
+<<<<<<< HEAD
                 </span></div></div>   
 >>>>>>> fe78d7c (horizantally stacked bar charts)
+=======
+                </span>*/}</div></div>   
+>>>>>>> 045beb0 (Stacked bar charts H/M/L)
                 <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -100,7 +104,7 @@ export const ThreatsDashboardVisual = () => {
 =======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
-          showText
+           showTextDown
           
          
           id="hsbarExample"
@@ -110,7 +114,7 @@ export const ThreatsDashboardVisual = () => {
             { value: 12, description: "L", color:"#72b7f2" }
           ]}
         />
-                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
                          H
                     </span>
@@ -119,7 +123,7 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                     <span className="span-H">
                          L
-                    </span>
+                    </span>*/}
                 </div>
             </div>    
 >>>>>>> fe78d7c (horizantally stacked bar charts)
@@ -164,17 +168,15 @@ export const ThreatsDashboardVisual = () => {
 =======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
-          showText
-          
-         
+          showTextDown       
           id="hsbarExample"
           data={[
             { value: 8, description: "H", color: "#09375f" },
-            { value: 50, description: "M", color: "#126dba" },
+            { value: 5, description: "M", color: "#126dba" },
             { value: 22, description: "L", color:"#72b7f2" }
           ]}
         />
-                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>*/}
+                {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
                     <span className="span-H">
                          H
                     </span>
@@ -183,7 +185,7 @@ export const ThreatsDashboardVisual = () => {
                     </span>
                     <span className="span-H">
                          L
-                    </span>
+                    </span>*/}
                      </div>
 >>>>>>> fe78d7c (horizantally stacked bar charts)
                 </div>   
