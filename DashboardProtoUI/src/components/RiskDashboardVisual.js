@@ -31,7 +31,7 @@ export const RiskDashboardVisual = () => {
         <div className="row g-2 visual-rating-risk">
             <div className=" col-4">
            
-            <div style={{
+            {/*<div style={{
                 display:'flex',
         flexDirection: 'row',
         flex: 1,
@@ -94,8 +94,8 @@ export const RiskDashboardVisual = () => {
                <div className="Likelihood-r">
   Likelihood
 </div>
-      
-               </div>
+      */}
+    </div>
                
             <div className="col-4">
                 <div className="Overall-Rating-threat">
