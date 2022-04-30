@@ -87,6 +87,9 @@ export const DashboardVisual = () => {
         
       }, []);
 
+
+
+
       useEffect(() => {
        
         return new Promise((resolve, reject) => {
@@ -108,6 +111,11 @@ export const DashboardVisual = () => {
         });
         
       }, []);
+
+
+
+
+      
 
     return (
     <>

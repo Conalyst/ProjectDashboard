@@ -5,12 +5,7 @@ import { getStaticThreats, getAgents } from "../services/threatService";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
 
- 
 export const ThreatsDashboardVisual = () => {
-
-   
-
-   
 
     const [totalThreats, setTotalThreats] = useState(null);
     const [highThreats, setHighThreats] = useState(null);
@@ -27,9 +22,9 @@ export const ThreatsDashboardVisual = () => {
     const [agentsLikelihood, setAgentsLikelihood] = useState([]);
     useEffect(() => {
         console.log("in detail")
-        const storedUser = localStorage.getItem("storedUser");   
+        const storedUser = localStorage.getItem("storedUser");
         const parsedUser = JSON.parse(storedUser);
-       
+
         return new Promise((resolve, reject) => {
           try {
             // do db call or API endpoint axios call here and return the promise.
@@ -49,12 +44,10 @@ export const ThreatsDashboardVisual = () => {
                 setMediumThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
                 setLowThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
 
-               
-             
             })
               .catch((err) => {
                 console.log("getAllThreats > err=", err);
-               
+
                 reject("Request error!");
               });
           } catch (error) {
@@ -64,8 +57,6 @@ export const ThreatsDashboardVisual = () => {
         });
       }, []);
 
-       
-  
     return (
     <>
         <div class="asset-rating">
@@ -75,7 +66,7 @@ export const ThreatsDashboardVisual = () => {
             <p>Medium<br/>{mediumThreats}</p>
             <p>Low<br/>{lowThreats}</p>
         </div>
-            
+
         <div className="row g-2 visual-rating-threat">
             <div className=" col-4">
                 <div className="Overall-Rating-threat">
@@ -96,21 +87,17 @@ export const ThreatsDashboardVisual = () => {
                      Top 3 threat agents with High Overall ratings:
                 </div>
                 {agentsRating.map((agent) => (
-                        
-                     
-               
+
                   <div className="Rectangle-1407">
-                  
+
                   <span className="Phishing">
-                        
+
                   {agent.agent}
                   </span>
                 </div>
-            
-                 
+
                     ) )}
-                  
-                
+
             </div>
             <div className="col-4">
                 <div className="Overall-Rating-threat">
@@ -126,21 +113,20 @@ export const ThreatsDashboardVisual = () => {
                                 <span className="value-span-s span-M-s">M({mediumThreatsImpact})</span>
                                 <span className="value-span-s span-L-s">L({lowThreatsImpact})</span>
                             </div>
-                        </div>   
+                        </div>
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
-                  
+
                 </div>
                 {agentsImpact.map((agent) => (
                 <div div className="Rectangle-1407-Mal">
-               
+
                     <span className="Malware">
                     {agent.agent}
                     </span>
                 </div>
                    ) )}
-                 
-               
+
             </div>
             <div className="col-4">
                 <div className="Overall-Rating-threat">
@@ -156,7 +142,7 @@ export const ThreatsDashboardVisual = () => {
                                 <span className="value-span-s span-M-s">M({mediumThreatsLikelihood})</span>
                                 <span className="value-span-s span-L-s">L({lowThreatsLikelihood})</span>
                             </div>
-                        </div>                
+                        </div>
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
@@ -168,7 +154,7 @@ export const ThreatsDashboardVisual = () => {
                 </div>
                     ) )}
             </div>
-        </div>         
+        </div>
 
     </>
     );
