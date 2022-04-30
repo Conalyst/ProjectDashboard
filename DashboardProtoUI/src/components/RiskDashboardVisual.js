@@ -24,7 +24,7 @@ export const RiskDashboardVisual = () => {
 
   return (
     <>
-      <div class="asset-rating">
+      <div className="asset-rating">
         <p>Risks Ratings</p>
         <p className="orange-total">Total<br />82</p>
         <p>High<br />20</p>
@@ -85,7 +85,7 @@ export const RiskDashboardVisual = () => {
         <div className="col-4">
           <div className="Group-300006272">
             <span className="High-Value-Assets-Distributed-per-Risk-Category">
-              High Value Assets Distributed per Risk Category
+              High Value Assets Distibuted per Risk Category
             </span>
           </div>
           <Chart
