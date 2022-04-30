@@ -4,7 +4,7 @@ import thr_data from "../thr_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
-import {ADDTHREAT, EDITTHREAT} from "../navigation/constants";
+import {ADDTHREAT, EDITTHREAT} from "../navigation/CONSTANTS.js";
 import {useHistory} from 'react-router-dom';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';

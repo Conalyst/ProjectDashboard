@@ -4,7 +4,7 @@ import rec_data from "../rec_data.json";
 import filter_blue from '../images/icons/filter_blue.png';
 import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
-import { ADDREC, EDITREC } from "../navigation/constants";
+import { ADDREC, EDITREC } from "../navigation/CONSTANTS.js";
 import {useHistory} from 'react-router-dom'
 
  

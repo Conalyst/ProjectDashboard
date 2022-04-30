@@ -8,7 +8,7 @@ import pen_white from '../images/icons/pen_white.png';
 import pen_black from '../images/icons/pen_black.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, EDITASSET } from "../navigation/constants";
+import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS.js";
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";

@@ -6,7 +6,7 @@ import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
-import { ADDASSET, DASHBOARD } from "../navigation/constants";
+import { ADDASSET, DASHBOARD } from "../navigation/CONSTANTS.js";
 import {useHistory} from 'react-router-dom'
 import Filter from "./Filter";
 
