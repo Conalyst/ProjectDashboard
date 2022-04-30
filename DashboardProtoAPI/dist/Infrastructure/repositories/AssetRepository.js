@@ -121,7 +121,7 @@ class AssetRepository {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Asset.findAll({
                 attributes: [
-                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('rating')), 'high_Asset'],
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'high_Asset'],
                 ],
                 where: { rating: 'H' }
             });

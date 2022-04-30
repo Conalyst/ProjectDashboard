@@ -266,7 +266,7 @@ export const EditVul = () => {
                 </Form.Group>
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Availibility <span className="optional">Optional</span></Form.Label>
-                  <Form.Select className="Frame-left" value={ava}  >
+                  <Form.Select className="Frame-left"   >
                   <option >L</option>
                   <option>M</option>
                   <option >H</option>

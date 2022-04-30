@@ -75,11 +75,13 @@ class ThreatRepository {
     GetAgentByHighRating(model) {
         return __awaiter(this, void 0, void 0, function* () {
             return models_1.default.Threat.findAll({
-                limit: 3,
+                // limit: 3,
                 attributes: [
-                    [sequelize_1.default.fn('DISTINCT', sequelize_1.default.col('agent')), 'agent']
+                    [sequelize_1.default.fn('COUNT', sequelize_1.default.col('id')), 'total_H'],
+                    'agent'
                 ],
-                where: { rating: 'H' }
+                where: { rating: 'H' },
+                group: ['agent']
             });
         });
     }
