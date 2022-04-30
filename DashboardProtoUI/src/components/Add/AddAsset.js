@@ -71,13 +71,20 @@ export const AddAsset = () => {
   vulns.map(val => {
       options.push({value: val.id, label: val.title})
   })
+
+  const handleChangeCategory = (e) => {
+    const index = e.target.selectedIndex;
+    const el = e.target.childNodes[index]
+    const option =  el.getAttribute('value');  
+    setCategory(option)
+  }
  
   const onDone =(e)=>{
     // let assetId;
   
      var requestDto = {
        title: assetTitle,
-       categoryId: 1,
+       categoryId: category,
        description:description,
        confidentiality:confidentiality,
        integrity:integrity,
@@ -269,7 +276,7 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                  <option value='L' >L</option>
+                  <option value='L'>L</option>
                   <option value='M'>M</option>
                   <option value='M'>H</option>
                   </Form.Select>
@@ -278,12 +285,13 @@ export const AddAsset = () => {
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option >Personnel</option>
-                    <option>Data</option>
-                    <option>Network and Data</option>
-                    <option>Software</option>
-                    <option>Intangible</option>
+                  <Form.Select className="Frame-right" value={category} onChange={(e) => handleChangeCategory(e)}>
+                    <option value='1'>Software</option>
+                    <option value='2'>Network & Data Centre</option>
+                    <option value='3'>Technical</option>
+                    <option value='4'>Security</option>
+                    <option value='5'>Personal</option>
+                    <option value='6'>Intangible</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
