@@ -44,6 +44,7 @@ export class ThreatRepository {
  
   public async GetByHighImpact(id:number){
     const threat = db.Threat.findAll({
+ 
       attributes: [
         
         [Sequelize.fn('DISTINCT', Sequelize.col('agent')), 'agent'],
@@ -65,14 +66,18 @@ export class ThreatRepository {
     
   }
   public async GetAgentByHighRating(model: Model<typeof Threat>) {
+    
     return db.Threat.findAll({
-      limit: 3,
+       limit: 3,
       attributes: [
-        [sequelize.fn('DISTINCT', sequelize.col('agent')), 'agent']
+        [sequelize.fn('COUNT', sequelize.col('id')), 'total_H'],
+        'agent'
        
      
       ],
-      where: {rating: 'H'}
+      where: {rating: 'H'},
+      group:['agent']
+     
     });
     
   }

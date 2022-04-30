@@ -107,7 +107,7 @@ export class AssetRepository {
       return db.Asset.findAll({
         attributes: [
         
-          [sequelize.fn('COUNT', sequelize.col('rating')), 'high_Asset'],
+          [sequelize.fn('COUNT', sequelize.col('id')), 'high_Asset'],
        
         ],
         where: {rating: 'H'}

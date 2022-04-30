@@ -15,32 +15,15 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
+import risk_data from "./../risk_data.json";
+ import HeatMap from "./HeatMap";
 
 export const MainDashboard = () => { 
   const [tests, setTests] = useState(null);
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
-/*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
+
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -118,7 +101,8 @@ export const MainDashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
-            
+
+             <HeatMap risk_data={risk_data}/>
         </div>
       </div>
     </div>
