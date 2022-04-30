@@ -15,6 +15,8 @@ import search from '../images/icons/search_icon.png';
 import notification from '../images/icons/noti_icon.png';
 import info from '../images/icons/info_icon.png';
 import vendor_icon from '../images/icons/vendor_icon.png';
+import risk_data from "./../risk_data.json";
+import HeatMap from "./HeatMap";
 
 export const MainDashboard = () => { 
   const [tests, setTests] = useState(null);
@@ -118,6 +120,7 @@ export const MainDashboard = () => {
           </div>
         </div>
         <div className="dashboard-main-wrapper">
+        <HeatMap risk_data={risk_data}/>
             
         </div>
       </div>

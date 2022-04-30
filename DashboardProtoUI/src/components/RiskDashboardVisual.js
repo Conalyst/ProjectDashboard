@@ -4,6 +4,9 @@ import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { getStaticRisks } from "../services/riskService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 import { Chart } from "react-google-charts";
+import risk_data from "./../risk_data.json";
+import HeatMap from "./HeatMap"
+import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const RiskDashboardVisual = () => {
     const [totalRisks, setTotalRisks] = useState(null);
@@ -49,70 +52,7 @@ export const RiskDashboardVisual = () => {
         <div className="row g-2 visual-rating-risk">
             <div className=" col-4">
            
-           {/* <div style={{
-                display:'flex',
-        flexDirection: 'row',
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-      }}>
-        <div className=""><div className="Impact-level">
-  Impact
-</div></div><div className="Level"><span className="H">
-  H
-</span><span className="M">
-  M
-</span><span className="M">
-  L
-</span></div>
-        <div>
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f6be5b'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#39e9ae'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#36bf91'}} />
-        </div>
-        <div>
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f6be5b'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#39e9ae'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#39e9ae'}} />
-        </div>
-        <div>
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f6be5b'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f6be5b'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f6be5b'}} />
-        </div>
-        <div>
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#f8a20e'}} />
-        </div>
-        <div>
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-          <div style={{width: 58, height: 58, marginBottom:3, marginLeft:3, backgroundColor: '#de5656'}} />
-        </div>
-        
-    </div>
-    <div className="Level-bottom"><span className="H">
-       H
-      </span><span className="M">
-        M
-      </span><span className="M">
-         L
-      </span>
-      </div>
-        <div className="Likelihood-r">
-            Likelihood
-    </div>     */} 
+            <HeatMap risk_data={risk_data}/>
                </div>
                
             <div className="col-4">
