@@ -29,6 +29,9 @@ import MainDashboardDetails from "./MainDashboardDetails";
 
 export const MainDashboard = () => {
   // const [tests, setTests] = useState(null);
+  const storedUser = localStorage.getItem("storedUser");
+  
+  const parsedUser = JSON.parse(storedUser);
 
   return (
     <div className="db-site-container">
@@ -47,7 +50,7 @@ export const MainDashboard = () => {
               alt="Company Logo"
               draggable="false"
             />
-            <p className="user-label">Company Name</p>
+            <p className="user-label">{parsedUser.CompanyName}</p>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item sidenav-active">
@@ -97,7 +100,7 @@ export const MainDashboard = () => {
         <div>
           <div className="user-info">
             <img id="user-icon" src={user_icon} alt="User" draggable="false" />
-            <span className="user-label">User Name</span>
+            <span className="user-label">{parsedUser.name}</span>
           </div>
           <ul className="sidenav-menu">
             <li className="sidenav-item">

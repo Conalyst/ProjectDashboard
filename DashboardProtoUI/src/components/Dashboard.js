@@ -24,7 +24,7 @@ export const Dashboard = () => {
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
-  console.log("parsed user", parsedUser);
+  console.log("--------------parsed user", parsedUser);
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
