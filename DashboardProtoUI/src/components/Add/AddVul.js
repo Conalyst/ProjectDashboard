@@ -18,7 +18,7 @@ import vendor_icon from '../../images/icons/vendor_icon.png';
 import {useHistory} from 'react-router-dom'
 import { getAllThreats } from "../../services/threatService";
 import { ADDVUL, DASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
- 
+import { postVulnThreat } from "../../services"; 
 import Select from 'react-select';
 
 
@@ -77,9 +77,16 @@ export const AddVul = () => {
  };
 
  postVulnerability(requestDto)
-   .then((result) => {
-    
+   .then((res) => {    
      setVulTitle("")
+     console.log("@@@@@@@@@@@@", selectedOption[0].value, res.data["id"])
+     postVulnThreat(res.data["id"], selectedOption[0].value)
+     .then((result) => {
+         console.log("post vuln threat data", result.data)
+     })
+     .catch((err) => {
+       console.log("Post Asset vuln Error", err);
+     });
    })
    .catch((err) => {
      console.log(err);

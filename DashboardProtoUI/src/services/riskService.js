@@ -1,6 +1,6 @@
 import { SYSTEM_ERROR } from "../config/CONSTANTS";
 import axios from 'axios'
-import { GET_ALL_RISKS, GET_RISK_BY_ID, POST_RISK, GET_STATIC_RISKS } from "./constants";
+import { GET_ALL_RISKS, GET_RISK_BY_ID, POST_RISK, GET_STATIC_RISKS, DELETE_RISK, POST_RISK_ASSET } from "./constants";
   
   export const getAllRisks = () => {
     return new Promise((resolve, reject) => {
@@ -71,6 +71,40 @@ import { GET_ALL_RISKS, GET_RISK_BY_ID, POST_RISK, GET_STATIC_RISKS } from "./co
           reject("Error in getTotalRisks axios!");
         });
       } catch (error) {
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+  export const deleteRisk = (riskId) => {
+    console.log("Risk id in delete", riskId)
+    return new Promise((resolve, reject) => {
+      try {
+        axios
+        .delete(DELETE_RISK(riskId)) 
+        .then(res => {
+          console.log("new connect", res.data)
+        })
+      } catch (error) {
+        console.error("in deleteRisk > postRisk, Err===", error);
+        reject(SYSTEM_ERROR);
+      }
+    });
+  };
+
+  export const postRiskAsset = (riskId, assetId) => {
+     console.log("New riskId and  asset id ..", riskId, assetId)
+    return new Promise((resolve, reject) => {
+      try {
+        axios
+        .post(POST_RISK_ASSET(), {
+          riskId: riskId,
+          assetId: assetId        
+        }) 
+        .then(res=>{
+          console.log("new connect", res.data)
+        })
+      } catch (error) {
+        console.error("in addRiskAsset > postRiskAsset, Err===", error);
         reject(SYSTEM_ERROR);
       }
     });

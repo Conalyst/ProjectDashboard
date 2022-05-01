@@ -37,7 +37,7 @@ export const AddAsset = () => {
   const [message, setMessage] = useState("");
   const [vulnerability, setVulnerability] = useState([])
   const storedUser = localStorage.getItem("storedUser");
-    
+  const [assetId, setAssetId] = useState("")
   const parsedUser = JSON.parse(storedUser);
   
  
@@ -71,35 +71,46 @@ export const AddAsset = () => {
   vulns.map(val => {
       options.push({value: val.id, label: val.title})
   })
+
+  const handleChangeCategory = (e) => {
+    const index = e.target.selectedIndex;
+    const el = e.target.childNodes[index]
+    const option =  el.getAttribute('value');  
+    setCategory(option)
+  }
  
   const onDone =(e)=>{
-    let assetId;
+    // let assetId;
   
      var requestDto = {
        title: assetTitle,
-       categoryId: 1,
+       categoryId: category,
        description:description,
        confidentiality:confidentiality,
        integrity:integrity,
        availability:availability,
        rating:rating
      };
+     
      postAsset(requestDto)
        .then((res) => {
          setAssetTitle("");
          setDescription("")    
+        //  console.log("after post request", res.data.id, res.data["id"])
+          postAssetVuln(selectedOption[0].value, res.data["id"])
+          .then((res) => {
+              console.log("post asset vuln data", res)
+          })
+          .catch((err) => {
+            console.log("Post Asset vuln Error", err);
+          });
        })
        .catch((err) => {
          console.log("Post Asset Error", err);
        });
   
-       postAssetVuln(selectedOption[0].value)
-       .then((res) => {
-          console.log("post asset vuln data", res)
-       })
-       .catch((err) => {
-         console.log("Post Asset vuln Error", err);
-       });
+       console.log("selected Vuln", selectedOption[0].value)
+
  
 }
    
@@ -132,11 +143,9 @@ export const AddAsset = () => {
   }  
   const onOk =(e)=>{
    
-    history.push({
-      
-       pathname: DASHBOARD,
-        
-     });
+    history.push({     
+       pathname: DASHBOARD,        
+    });
     }  
 
   const customStyles = {
@@ -251,7 +260,7 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
-                  <option value='L' >L</option>
+                  <option value='L'>L</option>
                   <option value='M'>M</option>
                   <option value='H'>H</option>
                   </Form.Select>
@@ -267,7 +276,7 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3">
                   <Form.Label className="Label">Rating <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={rating} onChange={(e) => setRating(e.target.value)}>
-                  <option value='L' >L</option>
+                  <option value='L'>L</option>
                   <option value='M'>M</option>
                   <option value='M'>H</option>
                   </Form.Select>
@@ -276,12 +285,13 @@ export const AddAsset = () => {
                 <div className="col-md">
                 <Form.Group className="mb-3">
                   <Form.Label className="Label-right">Category</Form.Label>
-                  <Form.Select className="Frame-right" value={category} onChange={(e) => setCategory(e.target.value)}>
-                    <option>Personnel</option>
-                    <option>Data</option>
-                    <option>Network and Data</option>
-                    <option>Software</option>
-                    <option>Intangible</option>
+                  <Form.Select className="Frame-right" value={category} onChange={(e) => handleChangeCategory(e)}>
+                    <option value='1'>Software</option>
+                    <option value='2'>Network & Data Centre</option>
+                    <option value='3'>Technical</option>
+                    <option value='4'>Security</option>
+                    <option value='5'>Personal</option>
+                    <option value='6'>Intangible</option>
                   </Form.Select>
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

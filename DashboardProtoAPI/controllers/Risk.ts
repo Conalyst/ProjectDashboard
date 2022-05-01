@@ -99,4 +99,22 @@ export class RiskApi{
     }
     return null;
   }
+
+  async delete(req: express.Request, res: express.Response){
+    let riskId = req.params.id;
+     let existingRisk = await this._riskRepository.GetById(riskId);
+     console.log("Exist..", existingRisk)
+    if (existingRisk){
+    
+      let updatedRisk = await this._riskRepository.delete(existingRisk)
+     
+   
+        return res.status(200).send( `The risk with Id ${riskId} deleted  successfully..!`)
+        
+      
+    } else{
+        return res.status(404).send("This risk does not exist.")
+    }
+  }
+
 }

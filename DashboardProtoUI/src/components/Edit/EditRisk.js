@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Button, InputGroup, Form, Table} from "react-bootstrap";
-import { getAllTest } from "../../services";
+import { deleteRisk, getAllTest } from "../../services";
 import company_icon from '../../images/user/company_icon.png';
 import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
@@ -19,21 +19,59 @@ import info_black from '../../images/icons/info_icon.png';
 import info_white from '../../images/icons/outline_info_white.png';
 import {useHistory} from 'react-router-dom'
 import { RISKDASHBOARD, VULDASHBOARD } from "../../navigation/CONSTANTS";
+import { deleteThreat } from "../../services";
 import Info from "../Info";
 import Select from 'react-select';
-
-
+import { atom, useRecoilState, useRecoilValue } from 'recoil'
+import { risk as riskAtom} from '../../recoil/atom'
+import { getAllAssets } from "../../services";
+  
 
 export const EditRisk = () => { 
+  const [risk, setRisk] = useRecoilState(riskAtom);
+  const [assets, setAssets] = useState([]);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   //const [searchvul, setSearchvul] = useState('');
   const [selectedOption, setSelectedOption] = useState(null);
+  const [message, setMessage] = useState()
 
   const history =useHistory();
   const storedUser = localStorage.getItem("storedUser");
   
   const parsedUser = JSON.parse(storedUser);
+
+
+
+  useEffect(() => {
+
+    return new Promise((resolve, reject) => {
+      try {
+        // do db call or API endpoint axios call here and return the promise.
+        getAllAssets()
+        .then((res) => {
+          console.log("in detail", res)
+          setAssets(res);
+          resolve(res);
+        })
+          .catch((err) => {
+            console.log("getAllAssets > err=", err);
+            setAssets([]); 
+            reject("Request error!");
+          });
+      } catch (error) {
+        console.error("getAllAssets error!==", error);
+        reject("getAllAssets error!");
+      }
+    });
+  }, []);
+
+  const options = []
+  const asset = assets
+  asset.map(val => {
+      options.push({value: val.id, label: val.title})
+  })
+
   const onDone =()=>{
   history.push({
      pathname: RISKDASHBOARD,
@@ -56,18 +94,7 @@ export const EditRisk = () => {
    });
   }  
 
-  const options = [
-    { value: 'A1', label: 'A1' },
-    { value: 'A2', label: 'A2' },
-    { value: 'A3', label: 'A3' },
-    { value: 'A4', label: 'A4' },
-    { value: 'A5', label: 'A5' },
-    { value: 'A6', label: 'A6' },
-    { value: 'A7', label: 'A7' },
-    { value: 'A8', label: 'A8' },
-    { value: 'A9', label: 'A9' },
-    { value: 'VA0', label:'A10'},
-  ];
+
 
   const customStyles = {
     control: base => ({
@@ -77,39 +104,17 @@ export const EditRisk = () => {
     })
   };
 
-  /*const onAddAsset = () =>{
- 
-    if (!assetTitle) {
-      setErrors("An asset title is needed!");
-    } else {
-      var requestDto = {
-        title: assetTitle,
-        description:description,
-         categoryId: 2
-      };
-      postAsset(requestDto)
-        .then((result) => {
-          setAssetTitle("");
-          setDescription("")
-          // getCommentByRestaurant(restaurantId).then((result) => {
-          //   setCommentsListData(result);
-          // });
-          setErrors("This asset created successfully !");
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.status == 404) {
-            setErrors("No comment found!");
-          } else {
-            if (err.response.status == 400) {
-              setErrors("restaurantId is not valid!");
-            } else {
-              setErrors("Unknow error!");
-            }
-          }
-        });
-    }
-    }*/
+  const onDelete = (e) => {
+    deleteRisk(risk.id)
+      .then((result) => {
+        setMessage("This Risk has been successfully deleted !");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    e.preventDefault()
+  }
+
 
   return (
     <div className="db-site-container">
@@ -203,14 +208,13 @@ export const EditRisk = () => {
                   <th>
                     <img src={info_white} alt =""/>
                   </th>
-                  <th>IDs</th>
-                  <th>Category</th>
-                  <th>Title</th>
-                  <th>Description</th>
-                  <th>Likelihood</th>
-                  <th>Impact</th>
-                  <th>Rating</th>
-                  <th>Action</th>
+                  <th>{risk.id}</th>
+                  <th>{risk.category}</th>
+                  <th>{risk.title}</th>
+                  <th>{risk.description}</th>
+                  <th>{risk.likelihood}</th>
+                  <th>{risk.impact}</th>
+                  <th>{risk.rating}</th>
                 </tr>
               </thead>
               <tbody>
@@ -290,7 +294,7 @@ export const EditRisk = () => {
           </Form>
         </div>
           <div className="asset-menu-buttons">
-            <Button type="button" className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <Button type="button" onClick={() =>onDelete()} className="Button-Icon-Filter-modal" data-bs-toggle="modal" data-bs-target="#exampleModal">
               Delete
             </Button>
             <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -301,7 +305,7 @@ export const EditRisk = () => {
                   </div>
                   <div className="modal-body">
                     <p className="Remove-asset-message">Your selected risk will be removed from the list.<br></br>
-                    You can restore it within 15 days from History.</p>
+                    </p>
                     <div className="remove-menu-buttons">
                   <Button type="button"className="Button-Icon-remove-modal" data-bs-dismiss="modal">Cancel</Button>
                   <Button type="button" className="Button-Icon-AddAsset-modal" data-bs-dismiss="modal" aria-label="Close" onClick={() =>onOk()}>OK</Button>

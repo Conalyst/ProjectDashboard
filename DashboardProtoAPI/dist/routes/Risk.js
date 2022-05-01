@@ -16,4 +16,7 @@ riskRouter.get("/static", (req, res) => {
 riskRouter.put("/:id", (req, res) => {
     riskApi.update(req, res);
 });
+riskRouter.delete('/:id', (req, res) => {
+    riskApi.delete(req, res);
+});
 exports.default = riskRouter;

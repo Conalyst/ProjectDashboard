@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
 import HSBar from "react-horizontal-stacked-bar-chart";
+
+
 export const data = [
     ["Group", "H", "M", "L"],
     ["Technical", 3, 5, 9],
@@ -24,10 +26,9 @@ export const options = {
 
 export const VulDashboardVisual = () => {
 
-    const [totalVulnerabilities, setTotalVulnerabilities] = useState(null);
-    const [highVulnerabilities, setHighVulnerabilities] = useState(null);
-    const [mediumVulnerabilities, setMediumVulnerabilities] = useState(null);
-    const [lowVulnerabilities, setLowVulnerabilities] = useState(null);
+    const [data, setData] = useState([]) 
+    const [barData, setBarData] = useState([]);
+    const map = {'0': 0, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
 
     const [highVulnerabilityImpact, setHighVulnerabilityImpact] = useState(null);
     const [mediumVulnerabilityImpact, setMediumVulnerabilityImpact] = useState(null);
@@ -47,6 +48,7 @@ export const VulDashboardVisual = () => {
             // do db call or API endpoint axios call here and return the promise.
             getStaticVulnerability()
             .then((res) => {
+
               setTotalVulnerabilities(res.static.numberVulnerability[0].total_Vulnerability);
               setHighVulnerabilities(res.static.highVulnerability[0].high_Vulnerability)
               setMediumVulnerabilities(res.static.mediumVulnerability[0].mediun_Vulnerability)
@@ -57,7 +59,7 @@ export const VulDashboardVisual = () => {
               setHighVulnerabilityLikelihood(res.visual.highVulnerabilityLikelihood[0].high_Vulnerability)
               setMediumVulnerabilityLikelihood(res.visual.mediumVulnerabilityLikelihood[0].mediun_Vulnerability)
               setLowVulnerabilityLikelihood(res.visual.lowVulnerabilityLikelihood[0].low_Vulnerability)
-               
+      
             })
               .catch((err) => {
                 console.log("getAllVulnerabilities > err=", err);
@@ -71,14 +73,19 @@ export const VulDashboardVisual = () => {
         });
       }, []);
 
+      useEffect(() => {
+        console.log("data@@@@@@@@@@", data)
+        // console.log("data....", data.highAssetConfidentiality, data.mediumAssetConfidentiality, data.lowAssetConfidentiality)
+      }, [data])
+
     return (
     <>
         <div class="asset-rating">
             <p>Vulnerability Ratings</p>
-            <p className="orange-total">Total<br/>{totalVulnerabilities}</p>
-            <p>High<br/>{highVulnerabilities}</p>
-            <p>Medium<br/>{mediumVulnerabilities}</p>
-            <p>Low<br/>{lowVulnerabilities}</p>
+            <p className="orange-total">Total<br/>{data.totalVulnerabilities}</p>
+            <p>High<br/>{data.highVulnerabilities}</p>
+            <p>Medium<br/>{data.mediumVulnerabilities}</p>
+            <p>Low<br/>{data.lowVulnerabilities}</p>
         </div>
         <table className="visual-rating">
             <tr>
@@ -90,9 +97,11 @@ export const VulDashboardVisual = () => {
                      showTextDown
                      id="hsbarExample"
                          data={[
+
                             { value: parseInt(highVulnerabilityImpact) , name: "H" , description :`${highVulnerabilityImpact}`, color: "#09375f" },
                             { value: parseInt(mediumVulnerabilityImpact) , name: "M" , description :`${mediumVulnerabilityImpact}`, color: "#126dba" },
                             { value: parseInt(lowVulnerabilityImpact) , name: "L" , description :`${lowVulnerabilityImpact}`, color:"#72b7f2" }
+
                             ]}
                         />
                         </div>
@@ -104,9 +113,11 @@ export const VulDashboardVisual = () => {
                      showTextDown
                      id="hsbarExample"
                          data={[
+
                             { value: parseInt(highVulnerabilityLikelihood) , name: "H" , description :`${highVulnerabilityLikelihood}`, color: "#09375f" },
                             { value: parseInt(mediumVulnerabilityLikelihood) , name: "M" , description :`${mediumVulnerabilityLikelihood}`, color: "#126dba" },
                             { value: parseInt(lowVulnerabilityLikelihood) , name: "L" , description :`${lowVulnerabilityLikelihood}`, color:"#72b7f2" }
+
                             ]}
                         />
                         </div>

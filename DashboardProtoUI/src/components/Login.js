@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import {Button, Form} from "react-bootstrap";
 import vendor_icon from '../images/icons/vendor_icon.png';
-import { DASHBOARD } from "../navigation/CONSTANTS";
+import { DASHBOARD, MAINDASHBOARD } from "../navigation/CONSTANTS";
 import { postLogin } from "../services/loginService";
 import { login } from '../actions/userActions';
 import axios from "axios";
@@ -17,7 +17,7 @@ export const Login = (props) => {
   const history =useHistory();
   const onLogin =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: MAINDASHBOARD,
 
    });
   }  
@@ -62,7 +62,7 @@ const handleSubmit = e => {
             <div className="login-welcome">
                 <img src={vendor_icon} />
                 <div className="welcome-title">Welcome to Valencia Dashboard</div>
-                <div className="welcome-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div className="welcome-subtitle"></div>
             </div>
             <div className="login-form-container">
               <p>Don&apos;t have an account? <a href="#">Get in touch to get started.</a></p>

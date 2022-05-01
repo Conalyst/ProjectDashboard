@@ -113,5 +113,19 @@ class RiskApi {
             return null;
         });
     }
+    delete(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let riskId = req.params.id;
+            let existingRisk = yield this._riskRepository.GetById(riskId);
+            console.log("Exist..", existingRisk);
+            if (existingRisk) {
+                let updatedRisk = yield this._riskRepository.delete(existingRisk);
+                return res.status(200).send(`The risk with Id ${riskId} deleted  successfully..!`);
+            }
+            else {
+                return res.status(404).send("This risk does not exist.");
+            }
+        });
+    }
 }
 exports.RiskApi = RiskApi;

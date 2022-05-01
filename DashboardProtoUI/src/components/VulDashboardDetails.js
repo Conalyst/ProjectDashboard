@@ -15,7 +15,8 @@ import { atom, useRecoilState, useRecoilValue } from 'recoil'
 import { vulnerabilities as vulnerabilitiesAtom} from '../recoil/atom' 
   
 export const VulDashboardDetails = () => {
-    const [vulnerabilities, setVulnerabilities] = useRecoilState(vulnerabilitiesAtom);
+   // const [vulnerabilities, setVulnerabilities] = useRecoilState(vulnerabilitiesAtom);
+    const [vulnerabilities, setVulnerabilities] = useState([])
     const storedUser = localStorage.getItem("storedUser");
     const parsedUser = JSON.parse(storedUser);
     const isAdmin = parsedUser.role;

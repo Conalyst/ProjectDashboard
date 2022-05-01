@@ -42,13 +42,14 @@ export class RiskAssetApi{
         return res.status(409).json({ message: "this Risk-Asset already exist!" });
       } else {
         const riskAssetDto = this.getDtoFromRequest(req);    
-        const risk = this.getCalculatedRiskForUpdateRating(riskId)  
-        // riskAssetDto. 
-        const riskApi = new RiskApi();
-        const riskRating = riskApi.updateRating(riskId, risk)
+        
         let createdRiskAsset = await this._riskAssetRepository.Create(toEntity(riskAssetDto))       
         if(createdRiskAsset) {
-            return res.status(201).json(createdRiskAsset);
+          // const risk = this.getCalculatedRiskForUpdateRating(riskId)  
+          // console.log("Risk....", risk)
+          // const riskApi = new RiskApi();
+          // const riskRating = await riskApi.updateRating(riskId, risk)
+          return res.status(201).json(createdRiskAsset);
         } else {
             return res.status(400).send("The Risk-Asset could not be created. Please check the provided data.")
         }
@@ -56,7 +57,7 @@ export class RiskAssetApi{
   }
 
   getDtoFromRequest(req: express.Request){        
-    return new RiskAssetDto(req.body.id,req.body.assetId,req.body.assetId, new Date());
+    return new RiskAssetDto(req.body.id,req.body.riskId,req.body.assetId, new Date());
   }
 
    async getCalculatedRiskForUpdateRating(id: any){ 
@@ -95,7 +96,7 @@ export class RiskAssetApi{
       riskAcceptance = 'VH'
     risk['riskAcceptance'] = riskAcceptance
     
-   return risk['riskAcceptance'];
+    return risk['riskAcceptance'];
   }
 
   async getCalculatedRisk(req: express.Request, res: express.Response){
