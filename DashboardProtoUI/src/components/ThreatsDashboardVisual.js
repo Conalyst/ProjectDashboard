@@ -4,7 +4,7 @@ import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { getStaticThreats, getAgents } from "../services/threatService";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-
+import HSBar from "react-horizontal-stacked-bar-chart";
  
 export const ThreatsDashboardVisual = () => {
 
@@ -82,15 +82,15 @@ export const ThreatsDashboardVisual = () => {
                      Overall Rating
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highThreats})</span>
-                                <span className="value-span-s span-M-s">M({mediumThreats})</span>
-                                <span className="value-span-s span-L-s">L({lowThreats})</span>
-                            </div>
+                <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: parseInt(highThreats) , name: "H", description: `${highThreats}`, color: "#09375f" },
+                            { value: parseInt(mediumThreats) , name: "M", description: `${mediumThreats}`, color: "#126dba" },
+                            { value: parseInt(lowThreats) , name: "L", description: `${lowThreats}`, color:"#72b7f2" }
+                            ]}
+                        />
                         </div>
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -101,7 +101,7 @@ export const ThreatsDashboardVisual = () => {
                
                   <div className="Rectangle-1407">
                   
-                  <span className="Phishing">
+                  <span className="text-thr">
                         
                   {agent.agent}
                   </span>
@@ -117,24 +117,24 @@ export const ThreatsDashboardVisual = () => {
                     Impact
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highThreatsImpact})</span>
-                                <span className="value-span-s span-M-s">M({mediumThreatsImpact})</span>
-                                <span className="value-span-s span-L-s">L({lowThreatsImpact})</span>
-                            </div>
+                <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: parseInt(highThreatsImpact) , name: "H", description: `${highThreatsImpact}`, color: "#09375f" },
+                            { value: parseInt(mediumThreatsImpact) , name: "M", description: `${mediumThreatsImpact}`, color: "#126dba" },
+                            { value: parseInt(lowThreatsImpact) , name: "L", description: `${lowThreatsImpact}`, color:"#72b7f2" }
+                            ]}
+                        />
                         </div>   
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
                   
                 </div>
                 {agentsImpact.map((agent) => (
-                <div div className="Rectangle-1407-Mal">
+                <div div className="Rectangle-1407">
                
-                    <span className="Malware">
+                    <span className="text-thr">
                     {agent.agent}
                     </span>
                 </div>
@@ -147,22 +147,22 @@ export const ThreatsDashboardVisual = () => {
                     Likelihood
                 </div>
                 <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highThreatsLikelihood})</span>
-                                <span className="value-span-s span-M-s">M({mediumThreatsLikelihood})</span>
-                                <span className="value-span-s span-L-s">L({lowThreatsLikelihood})</span>
-                            </div>
+                <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: parseInt(highThreatsLikelihood) , name: "H", description: `${highThreatsLikelihood}`, color: "#09375f" },
+                            { value: parseInt(mediumThreatsLikelihood) , name: "M", description: `${mediumThreatsLikelihood}`, color: "#126dba" },
+                            { value: parseInt(lowThreatsLikelihood) , name: "L", description: `${lowThreatsLikelihood}`, color:"#72b7f2" }
+                            ]}
+                        />
                         </div>                
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
                 {agentsLikelihood.map((agent) => (
-                <div className="Rectangle-1408-Fin">
-                    <span className="Financial-Fraud">
+                <div className="Rectangle-1407">
+                    <span className="text-thr">
                     {agent.agent}
                     </span>
                 </div>

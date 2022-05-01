@@ -3,17 +3,11 @@ import * as crossfilter from "crossfilter2";
 import Chart from "react-google-charts";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-import { assetData } from "./db-visuals/visuals-data";
+import { assetData, data } from "./db-visuals/visuals-data";
 import { getStaticAssets, getStatsForBarChart } from "../services/assetsService";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const data = [
-    ["Group", "H", "M", "L"],
-    ["Data", 15, 43, 25],
-    ["Network", 30, 24, 12],
-    ["Personnel", 21, 32, 15],
-    ["Software", 10, 43, 30],
-    ["Intangible", 41, 30, 19]
-  ];
+ 
   
 export const options = {
     chartArea: { width: "75%" },
@@ -46,7 +40,8 @@ export const DashboardVisual = () => {
     const [mediumAssetAvailability, setMediumAssetAvailability] = useState(null);
     const [lowAssetAvailability, setLowAssetAvailability] = useState(null);
     const [barData, setBarData] = useState([]);
-
+ console.log("###############",highAssetConfidentiality,mediumAssetConfidentiality,lowAssetConfidentiality)
+ 
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -72,7 +67,9 @@ export const DashboardVisual = () => {
               setLowAssetAvailability(res.visual.lowAssetAvailability[0].low_Asset)
               setLowAssetConfidentiality(res.visual.lowAssetConfidentiality[0].low_Asset)
               setLowAssetIntegrity(res.visual.lowAssetIntegrity[0].low_Asset)
-               
+               console.log("in stactic asset ", res)
+
+ 
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
@@ -92,9 +89,16 @@ export const DashboardVisual = () => {
         return new Promise((resolve, reject) => {
           try {
             // do db call or API endpoint axios call here and return the promise.
-            getStatsForBarChart()
+            getStatsForBarChart() 
             .then((res) => {
-               setBarData(res)               
+                const result = [];
+                result.push(["Group", "H", "M", "L"])
+                for(let data of res){
+                    result.push([data.group, data.H, data.M, data.L])
+                }
+                console.log("Result.......", result)
+                setBarData(result)         
+
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
@@ -127,43 +131,59 @@ export const DashboardVisual = () => {
                     <div className="stack-bar-h">
                     Confidentiality
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highAssetConfidentiality})</span>
-                                <span className="value-span-s span-M-s">M({mediumAssetConfidentiality})</span>
-                                <span className="value-span-s span-L-s">L({lowAssetConfidentiality})</span>
-                            </div>
+                           
+                             
+                                  <HSBar
+                                showTextDown
+                                id="hsbarExample"
+                                        
+                              data={[
+                                { value: parseInt(highAssetConfidentiality), name: "H",description :`${highAssetConfidentiality}` ,color: "#09375f" },
+                                { value: parseInt(mediumAssetConfidentiality), name: "M",description :`${mediumAssetConfidentiality}`, color: "#126dba" },
+                                { value: parseInt(lowAssetConfidentiality), name: "L",description :`${lowAssetConfidentiality}`, color:"#72b7f2" }
+                              ]}
+
+                        
+                            />
+                        
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Integrity
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highAssetIntegrity})</span>
-                                <span className="value-span-s span-M-s">M({mediumAssetIntegrity})</span>
-                                <span className="value-span-s span-L-s">L({lowAssetIntegrity})</span>
-                            </div>
+
+                <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                     
+                    data={[
+                      { value: parseInt(highAssetIntegrity), name: "H",description :`${highAssetIntegrity}` ,color: "#09375f" },
+                      { value: parseInt(mediumAssetIntegrity), name: "M",description :`${mediumAssetIntegrity}`, color: "#126dba" },
+                      { value: parseInt(lowAssetIntegrity), name: "L",description :`${lowAssetIntegrity}`, color:"#72b7f2" }
+                    ]}
+
+              
+                  />
+
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Availability
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highAssetAvailability})</span>
-                                <span className="value-span-s span-M-s">M({mediumAssetAvailability})</span>
-                                <span className="value-span-s span-L-s">L({lowAssetAvailability})</span>
-                            </div>
+
+                      <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                     
+          data={[
+            { value: parseInt(highAssetAvailability), name: "H",description :`${highAssetAvailability}` ,color: "#09375f" },
+            { value: parseInt(mediumAssetAvailability), name: "M",description :`${mediumAssetAvailability}`, color: "#126dba" },
+            { value: parseInt(lowAssetAvailability), name: "L",description :`${lowAssetAvailability}`, color:"#72b7f2" }
+          ]}
+
+     
+        />
+
                         </div>
                     </div>
                 </td>
@@ -172,11 +192,11 @@ export const DashboardVisual = () => {
                     <Chart
                         chartType="ColumnChart"
                         width="100%"
-                        height="300px"
-                        data={data}
+                        height="500px"
+                        data={barData}
                         options={options}
                     />
-                    {/* <SummaryBarChart data={barData} /> */}
+
                 </td>
                 </tr>
             </table>

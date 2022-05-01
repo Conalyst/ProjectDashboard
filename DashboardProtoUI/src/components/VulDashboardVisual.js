@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
-
+import HSBar from "react-horizontal-stacked-bar-chart";
 export const data = [
     ["Group", "H", "M", "L"],
     ["Technical", 3, 5, 9],
@@ -36,6 +36,7 @@ export const VulDashboardVisual = () => {
     const [highVulnerabilityLikelihood, setHighVulnerabilityLikelihood] = useState(null);
     const [mediumVulnerabilityLikelihood, setMediumVulnerabilityLikelihood] = useState(null);
     const [lowVulnerabilityLikelihood, setLowVulnerabilityLikelihood] = useState(null);
+    
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -50,11 +51,9 @@ export const VulDashboardVisual = () => {
               setHighVulnerabilities(res.static.highVulnerability[0].high_Vulnerability)
               setMediumVulnerabilities(res.static.mediumVulnerability[0].mediun_Vulnerability)
               setLowVulnerabilities(res.static.lowVulnerability[0].low_Vulnerability)
-
               setHighVulnerabilityImpact(res.visual.highVulnerabilityImpact[0].high_Vulnerability)
               setMediumVulnerabilityImpact(res.visual.mediumVulnerabilityImpact[0].mediun_Vulnerability)
               setLowVulnerabilityImpact(res.visual.lowVulnerabilityImpact[0].low_Vulnerability)
-
               setHighVulnerabilityLikelihood(res.visual.highVulnerabilityLikelihood[0].high_Vulnerability)
               setMediumVulnerabilityLikelihood(res.visual.mediumVulnerabilityLikelihood[0].mediun_Vulnerability)
               setLowVulnerabilityLikelihood(res.visual.lowVulnerabilityLikelihood[0].low_Vulnerability)
@@ -87,29 +86,29 @@ export const VulDashboardVisual = () => {
                     <div className="stack-bar-h">
                         Impact
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highVulnerabilityImpact})</span>
-                                <span className="value-span-s span-M-s">M({mediumVulnerabilityImpact})</span>
-                                <span className="value-span-s span-L-s">L({lowVulnerabilityImpact})</span>
-                            </div>
+                        <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: parseInt(highVulnerabilityImpact) , name: "H" , description :`${highVulnerabilityImpact}`, color: "#09375f" },
+                            { value: parseInt(mediumVulnerabilityImpact) , name: "M" , description :`${mediumVulnerabilityImpact}`, color: "#126dba" },
+                            { value: parseInt(lowVulnerabilityImpact) , name: "L" , description :`${lowVulnerabilityImpact}`, color:"#72b7f2" }
+                            ]}
+                        />
                         </div>
                     </div>
                     <div className="stack-bar-h">
                         Likelihood
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highVulnerabilityLikelihood})</span>
-                                <span className="value-span-s span-M-s">M({mediumVulnerabilityLikelihood})</span>
-                                <span className="value-span-s span-L-s">L({lowVulnerabilityLikelihood})</span>
-                            </div>
+                        <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: parseInt(highVulnerabilityLikelihood) , name: "H" , description :`${highVulnerabilityLikelihood}`, color: "#09375f" },
+                            { value: parseInt(mediumVulnerabilityLikelihood) , name: "M" , description :`${mediumVulnerabilityLikelihood}`, color: "#126dba" },
+                            { value: parseInt(lowVulnerabilityLikelihood) , name: "L" , description :`${lowVulnerabilityLikelihood}`, color:"#72b7f2" }
+                            ]}
+                        />
                         </div>
                     </div>
                 </td>
