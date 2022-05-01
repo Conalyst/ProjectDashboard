@@ -260,7 +260,7 @@ export const AddAsset = () => {
                 <Form.Group className="mb-3" id="exampleFormControlInput1">
                   <Form.Label className="Label">Integrity <span className="optional">Optional</span></Form.Label>
                   <Form.Select className="Frame-left" value={integrity} onChange={(e) => setIntegrity(e.target.value)}>
-                  <option value='L' >L</option>
+                  <option value='L'>L</option>
                   <option value='M'>M</option>
                   <option value='H'>H</option>
                   </Form.Select>

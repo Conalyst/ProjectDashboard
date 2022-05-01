@@ -89,20 +89,22 @@ export const ThreatsDashboardVisual = () => {
                             ]}
                         />
                         </div>
+                <div className="grey-threat"> 
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
                 </div>     
                
                 {agentsRating.map((agent) => (
                   <div className="Rectangle-1407">                  
-                    <span className="Phishing">                       
+                    <span className="text-thr">                       
                         {agent.agent}
                     </span>
                     </div>                           
                 ))}
                   
-                
+            </div>    
             </div>
+            
             <div className="col-4">
                 <div className="Overall-Rating-threat">
                     Impact
@@ -118,17 +120,19 @@ export const ThreatsDashboardVisual = () => {
                             ]}
                         />
                         </div>   
+            <div className="grey-threat">        
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:                  
                 </div>
                 {agentsImpact.map((agent) => (
-                    <div div className="Rectangle-1407-Mal">               
-                        <span className="Malware">
+                    <div div className="Rectangle-1407">               
+                        <span className="text-thr">
                             {agent.agent}
                         </span>
                     </div>
                 ))}                 
               
+            </div>
             </div>
             <div className="col-4">
                 <div className="Overall-Rating-threat">
@@ -144,18 +148,20 @@ export const ThreatsDashboardVisual = () => {
                             { value: data.lowThreatsLikelihood , description: "L", color:"#72b7f2" }
                             ]}
                         />
-                        </div>                
+                        </div>    
+                <div className="grey-threat">             
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Likelihood:
                 </div>
                 {agentsLikelihood.map((agent) => (
-                    <div className="Rectangle-1408-Fin">
-                        <span className="Financial-Fraud">
+                    <div className="Rectangle-1407">
+                        <span className="text-thr">
                             {agent.agent}
                         </span>
                     </div>
                 ))}
             </div>
+        </div>
         </div>         
 
     </>
