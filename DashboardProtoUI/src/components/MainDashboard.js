@@ -152,14 +152,14 @@ export const MainDashboard = () => {
                 <div className="mb-4 w-100 d-flex justify-content-between p-4">
                   <b>Total</b>
                   {/* this number should be replaced with the one coming from backend */}
-                  <b>95</b>
+                  <b>3</b>
                 </div>
                 <div className="shadow p-4 w-100">
                   <b>High</b>
                   <div className="d-flex justify-content-between mr">
                     <img style={{width: 40}} src={high} />
                     {/* this number should be replaced with the one coming from backend */}
-                    <b>20</b>
+                    <b>2</b>
                   </div>
                 </div>
                 <div className="shadow p-4 w-100">
@@ -167,7 +167,7 @@ export const MainDashboard = () => {
                   <div className="d-flex justify-content-between mr">
                     <img style={{width: 40}} src={medium} />
                     {/* this number should be replaced with the one coming from backend */}
-                    <b>45</b>
+                    <b>1</b>
                   </div>
                 </div>
                 <div className="shadow p-4 w-100">
@@ -175,7 +175,7 @@ export const MainDashboard = () => {
                   <div className="d-flex justify-content-between mr">
                     <img style={{width: 40}} src={low} />
                     {/* this number should be replaced with the one coming from backend */}
-                    <b>25</b>
+                    <b>0</b>
                   </div>
                 </div>
               </div>
@@ -195,7 +195,7 @@ export const MainDashboard = () => {
                 <img className="sidenav-icon" src={vulnerabilities} alt="" />
                 Vulnerabilities
               </a>
-              <div className="p-4 text-end">85 <img style={{width: 40}} src={high}/></div>
+              <div className="p-4 text-end">10 <img style={{width: 40}} src={high}/></div>
             </div>
           </div>
           <div className="p-2 col-3">
@@ -204,7 +204,7 @@ export const MainDashboard = () => {
                 <img className="sidenav-icon" src={threats} alt="" />
                 Threats
               </a>
-              <div className="p-4 text-end">102 <img style={{width: 40}} src={low}/></div>
+              <div className="p-4 text-end">10 <img style={{width: 40}} src={low}/></div>
             </div>
           </div>
           <div className="p-2 col-3">
@@ -213,7 +213,7 @@ export const MainDashboard = () => {
                 <img className="sidenav-icon" src={assets} alt="" />
                 Assets
               </a>
-              <div className="p-4 text-end">55 <img style={{width: 40}} src={flag}/></div>
+              <div className="p-4 text-end">9 <img style={{width: 40}} src={flag}/></div>
             </div>
           </div>
           <div className="p-2 col-3">
@@ -222,7 +222,7 @@ export const MainDashboard = () => {
                 <img className="sidenav-icon" src={recommendations} alt="" />
                 Recommendations
               </a>
-              <div className="p-4 text-end">120 <img style={{width: 40}} src={recommend}/></div>
+              <div className="p-4 text-end">2 <img style={{width: 40}} src={recommend}/></div>
             </div>
           </div>
       </div>
