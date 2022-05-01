@@ -109,6 +109,18 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date(),
     }], {});
+    // await queryInterface.bulkInsert('threats', [{
+    //   category: "Deliberate",
+    //   agent: "Competitor",
+    //   title:"Competitor Phishing Campaign",
+    //   description:"A competitor launched a successful phishing campaign and gets credentials to steal information.",
+    //   impact:"M",
+    //   likelihood:"H",
+    //   rating:"M",
+    //   indexRating: 3,
+    //   createdAt: new Date(),
+    //   updatedAt: new Date(),
+    // }], {});
   },
 
   down: async (queryInterface, Sequelize) => {

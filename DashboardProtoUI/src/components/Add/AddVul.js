@@ -94,13 +94,23 @@ export const AddVul = () => {
    });
   }  
 
-  const onCancel =(e)=>{
-    e.preventdefault();
-    history.push({
-       pathname: VULDASHBOARD,
+  // const onCancel =(e)=>{
+  //   e.preventdefault();
+  //   history.push({
+  //      pathname: VULDASHBOARD,
   
-     });
-    }  
+  //    });
+  //   }  
+
+    const onCancel =()=>{
+      history.push({
+         pathname: VULDASHBOARD,
+    
+       });
+      }  
+
+
+
   const onAdd = (e) => {
   if(vulTitle){
       try {

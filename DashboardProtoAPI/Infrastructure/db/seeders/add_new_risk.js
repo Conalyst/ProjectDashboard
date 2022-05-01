@@ -4,7 +4,7 @@ module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('risks', [{      
       category: "Governance",
-      title:"Not known",
+      title:"Lack of mature cyber-security",
       description:"There is a risk of compromise due to a lack of mature security and systems hygiene, policies and processes. ",
       impact:"L",
       likelihood:"H",
@@ -14,7 +14,7 @@ module.exports = {
     }], {});
     await queryInterface.bulkInsert('risks', [{      
       category: "Operational",
-      title:"Not Known",
+      title:"Risk of ransomware or malware",
       description:"There is a risk of ransomware or malware breach due to social engineering through spear phishing.",
       impact:"H",
       likelihood:"L",
@@ -24,8 +24,8 @@ module.exports = {
     }], {});
     await queryInterface.bulkInsert('risks', [{      
       category: "Technical",
-      title:"Not Known",
-      description:"There is a risk of unknown factors.",
+      title:"Use of legacy applications",
+      description:"CLIENT is using legacy applications that are no longer supported.",
       impact:"M",
       likelihood:"M",
       rating:"M",   

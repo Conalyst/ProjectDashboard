@@ -3,7 +3,7 @@
 module.exports = {
   up: async (queryInterface, Sequelize) => {
     await queryInterface.bulkInsert('users', [{
-      name: "victoria",
+      name: "Victoria",
       email: "victoria@valencia.com",
       password: "$2b$10$YTbenZcXxssb/iLi6d9yI.peJHmtzq/a5z.m0oM.Y/X2Smr/U.lc.",
       companyId: 1,
@@ -12,7 +12,7 @@ module.exports = {
       updatedAt: new Date(),
     }], {});
     await queryInterface.bulkInsert('users', [{
-      name: "sam",
+      name: "Sam",
       email: "sam@abc.com",
       password: "$2b$10$VWzF/ljTmLHavdh05gAH6.oy5QK32Wa38k3qbWCEGyTsOW9Wu13Me",
       companyId: 1,
