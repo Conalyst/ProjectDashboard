@@ -2,10 +2,9 @@ import React,{useEffect,useState} from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { getStaticRisks } from "../services/riskService";
-import HSBar from "react-horizontal-stacked-bar-chart";
 import { Chart } from "react-google-charts";
 import risk_data from "./../risk_data.json";
-import HeatMap from "./HeatMap"
+import HeatMap from "./HeatMap";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const RiskDashboardVisual = () => {
