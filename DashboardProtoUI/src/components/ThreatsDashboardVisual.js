@@ -8,10 +8,6 @@ import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
  
 export const ThreatsDashboardVisual = () => {
 
-   
-
-   
-
     const [totalThreats, setTotalThreats] = useState(null);
     const [highThreats, setHighThreats] = useState(null);
     const [mediumThreats, setMediumThreats] = useState(null);
@@ -47,10 +43,7 @@ export const ThreatsDashboardVisual = () => {
                 setMediumThreatsImpact(res.visual.mediumThreatImpact[0].mediun_Threat)
                 setHighThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
                 setMediumThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
-                setLowThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)
-
-               
-             
+                setLowThreatsLikelihood(res.visual.mediumThreatLikelihood[0].mediun_Threat)   
             })
               .catch((err) => {
                 console.log("getAllThreats > err=", err);
@@ -78,7 +71,7 @@ export const ThreatsDashboardVisual = () => {
             
         <div className="row g-2 visual-rating-threat">
             <div className=" col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                      Overall Rating
                 </div>
                 <div className="V-T-Color">
@@ -113,7 +106,7 @@ export const ThreatsDashboardVisual = () => {
                 
             </div>
             <div className="col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                     Impact
                 </div>
                 <div className="V-T-Color">
@@ -143,7 +136,7 @@ export const ThreatsDashboardVisual = () => {
                
             </div>
             <div className="col-4">
-                <div className="Overall-Rating-threat">
+                <div className="threat-summary-label">
                     Likelihood
                 </div>
                 <div className="V-T-Color">

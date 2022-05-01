@@ -193,7 +193,7 @@ export const EditRec = () => {
                 </span>
                 <button className="Top-Cancel" onClick={() =>onCancel()}>X</button>
               </div>            
-              <div className="Rectangle-grey-box-long edit-box">
+              <div className="Rectangle-grey-box-modal edit-box">
               <Table size="sm" class="table-items-tables-table--column-items">
                 <thead>
                   <tr className="row-item-master-01 cr-button__text">
