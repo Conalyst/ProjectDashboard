@@ -10,6 +10,17 @@ export const ThreatsDashboardVisual = () => {
 
     const [data, setData] = useState([]) 
     const map = {'0': 0, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
+
+    const [totalThreats, setTotalThreats] = useState(null);
+    const [highThreats, setHighThreats] = useState(null);
+    const [mediumThreats, setMediumThreats] = useState(null);
+    const [lowThreats, setLowThreats] = useState(null);
+    const [highThreatsImpact, setHighThreatsImpact] = useState(null);
+    const [mediumThreatsImpact, setMediumThreatsImpact] = useState(null);
+    const [lowThreatsImpact, setLowThreatsImpact] = useState(null);
+    const [highThreatsLikelihood, setHighThreatsLikelihood] = useState(null);
+    const [mediumThreatsLikelihood, setMediumThreatsLikelihood] = useState(null);
+    const [lowThreatsLikelihood, setLowThreatsLikelihood] = useState(null);
     const [agentsRating, setAgentsRating] = useState([]);
     const [agentsImpact, setAgentsImpact] = useState([]);
     const [agentsLikelihood, setAgentsLikelihood] = useState([]);
@@ -18,6 +29,7 @@ export const ThreatsDashboardVisual = () => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
+ 
        
         return new Promise((resolve, reject) => {
           try {

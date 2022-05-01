@@ -24,7 +24,21 @@ export const options = {
 
 
 export const DashboardVisual = () => {
+    const [totalAssets, setTotalAssets] = useState(null);
+    const [highAssets, setHighAssets] = useState(null);
+    const [mediumAssets, setMediumAssets] = useState(null);
+    const [lowAssets, setLowAssets] = useState(null);
 
+    const [highAssetConfidentiality, setHighAssetConfidentiality] = useState(null);
+    const [mediumAssetConfidentiality, setMediumAssetConfidentiality] = useState(null);
+    const [lowAssetConfidentiality, setLowAssetConfidentiality] = useState(null);
+    const [highAssetIntegrity, setHighAssetIntegrity] = useState(null);
+    const [mediumAssetIntegrity, setMediumAssetIntegrity] = useState(null);
+    const [lowAssetIntegrity, setLowAssetIntegrity] = useState(null);
+
+    const [highAssetAvailability, setHighAssetAvailability] = useState(null);
+    const [mediumAssetAvailability, setMediumAssetAvailability] = useState(null);
+    const [lowAssetAvailability, setLowAssetAvailability] = useState(null);
     const [data, setData] = useState([]) 
     const [barData, setBarData] = useState([]);
  console.log("###############",highAssetConfidentiality,mediumAssetConfidentiality,lowAssetConfidentiality)

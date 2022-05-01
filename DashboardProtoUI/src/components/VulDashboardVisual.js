@@ -30,6 +30,10 @@ export const VulDashboardVisual = () => {
     const [barData, setBarData] = useState([]);
     const map = {'0': 0, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
 
+    const [totalVulnerabilities, setTotalVulnerabilities] = useState(null);
+    const [highVulnerabilities, setHighVulnerabilities] = useState(null);
+    const [mediumVulnerabilities, setMediumVulnerabilities] = useState(null);
+    const [lowVulnerabilities, setLowVulnerabilities] = useState(null);
     const [highVulnerabilityImpact, setHighVulnerabilityImpact] = useState(null);
     const [mediumVulnerabilityImpact, setMediumVulnerabilityImpact] = useState(null);
     const [lowVulnerabilityImpact, setLowVulnerabilityImpact] = useState(null);
@@ -40,6 +44,7 @@ export const VulDashboardVisual = () => {
     
     useEffect(() => {
         console.log("in detail")
+ 
         const storedUser = localStorage.getItem("storedUser");   
         const parsedUser = JSON.parse(storedUser);
        
