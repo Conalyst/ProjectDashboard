@@ -1,72 +1,19 @@
+
 [
-    {
+    {   
         "id": 1,
-        "title": "Retire SiteScrape",
-        "description": "While SiteScape can be considered to be  ORG‚Äôs most critical business application, it is also a legacy application that has not been supported or patched in five years. Penetration testing revealed a number of technical vulnerabilities that leaves sensitive data stored within the application exposed.  These vulnerabilities will continue to persist until  ORG moves to a modern or cloud-based solution.",
-        "safeguard": "L",
-        "risks_ids": "R1, R3, R5"
+        "title": "Enhance Logging and Monitoring Practices and Capabilities",
+        "description": "CLIENT should identify and implement comprehensive network monitoring and logging tools that will support CLIENT and operational practices.  CLIENT should ensure that logs generated from the corporate infrastructure are stored on an independently secure, separate, central logging solution to secure system and network event logs. This could be achieved by implementing a SIEM solution across key components of the network. CLIENT should define, implement, and tune monitoring and auditing rules within this solution to detect abnormal activity within the corporate environment, especially those actions that could indicate unauthorised or inappropriate access/use of the corporate network and/or privilege escalation.",
+        "safeguard": "H",
+        "risks_ids": "R1, R2"
     },
+   
     {
         "id": 2,
-        "title": "Encrypt Endpoint",
-        "description": "Currently  ORG uses Windows 10 on their corporate laptops, but do not encrypt their hard disks.  Windows 10 comes with a native hard disk encryption feature called BitLocker. ORG should develop a plan to roll out BitLocker and encrypt the hard disks for all corporate laptops.",
-        "safeguard": "H",
-        "risks_ids": "R1, R6, R10"
-    },
-    {   
-        "id": 3,
-        "title": "Implement Multi-Factor Authentication for Privileged and Remote Access Users",
-        "description": " ORG has developed a corporate IT roadmap, which has many of their services moving to the cloud.  As  ORG begins to adopt more cloud-based solutions,  ORG should ensure that privileged and administrator accounts are accessing systems with multi-factor authentication for an added layer of security.  Additionally, should  ORG allow their staff to access these cloud-based services remotely,  ORG should consider requiring multi-factor authentication for accessing these services from outside the  ORG corporate network.",
-        "safeguard": "M",
-        "risks_ids": "R1, R3, R5, R15"
-    },
-    {   
-        "id": 4,
-        "title": "Enhance Logging and Monitoring Practices and Capabilities",
-        "description": "ORG should identify and implement comprehensive network monitoring and logging tools that will support  ORG‚Äôs operational practices.  ORG should ensure that logs generated from the corporate infrastructure are stored on an independently secure, separate, central logging solution to secure system and network event logs. This could be achieved by implementing a SIEM solution across key components of the network. ORG should define, implement, and tune monitoring and auditing rules within this solution to detect abnormal activity within the corporate environment, especially those actions that could indicate unauthorised or inappropriate access/use of the corporate network and/or privilege escalation.",
-        "safeguard": "H",
-        "risks_ids": "R1, R3, R5"
-    },
-    {   
-        "id": 5,
-        "title": "Improve Malicious Code Detection and Response Capabilities",
-        "description": "A domain controller is a server that responds to authentication requests and verifies users.",
-        "safeguard": "M",
-        "risks_ids": "R1, R3, R6, R15"
-    },
-    {   
-        "id": 6,
-        "title": "Isolate DNS Servers from Guest Wifi",
-        "description": "Valencia‚Äôs wireless security assessment determined that internal DNS servers were visible from the Guest wireless network.  This is a result of VLAN traffic being allowed between the guest and corporate networks, which could allow for ‚ÄúVLAN-hopping‚Äù should a cyber-criminal gain access to the guest network.  All traffic between the Guest wireless network and the corporate network should be blocked to prevent this from happening.",
-        "safeguard": "L",
-        "risks_ids": "R1, R5, R6"
-    },
-    {
-        "id": 7,
-        "title": "Conduct Table-top Incident Response Exercise leveraging  ORG‚Äôs Incident Response Guide",
-        "description": " ORG has a well-documented incident response guide outlining the roles and responsibilities across the organization, external stakeholders, and processes involved in the event of a security incident.    ORG has a well-documented incident response guide outlining the roles and responsibilities across the organization, external stakeholders, and processes involved in the event of a security incident.  Conducting a table-top exercise will help socialize the guide to all involved parties and help to establish and familiarize roles and responsibilities",
-        "safeguard": "L",
-        "risks_ids": "R1, R3, R6, R15"
-    },
-    {
-        "id": 8,
         "title": "Develop Incident Response Playbooks",
-        "description": " ORG should consider developing incident response playbooks to complement their incident response guide.  These documents are designed to be specific to certain types of security incidents (i.e. ransomware, malware, lost or stolen device, etc.).  Playbooks should provide step-by-step processes for responding to incidents that will allow incident responders to act and contain and eradicate the threat as quickly as possible",
+        "description": "CLIENT should consider developing incident response playbooks to complement their incident response guide.  These documents are designed to be specific to certain types of security incidents (i.e. ransomware, malware, lost or stolen device, etc.).  Playbooks should provide step-by-step processes for responding to incidents that will allow incident responders to act and contain and eradicate the threat as quickly as possible",
         "safeguard": "H",
-        "risks_ids": "R1, R3, R5"
-    },
-    {   
-        "id": 9,
-        "title": "Implement Standard Privacy and Security Requirements for the Procurement of Cloud Services.",
-        "description": "As  ORG moves more services to the cloud,  ORG should consider developing their own requirements for vendors who will be holding sensitive information on behalf of  ORG.   ORG may wish to consider using the Cloud Security Alliance‚Äôs Cloud Control Matrix (CSA CCM) as a baseline for assessing the security posture of cloud vendors, or at least as a guide for gathering their own requirements for cloud vendors. Where possible,  ORG should also seek to develop a standard set of contractual terms that speak to those privacy and security requirements and incorporate them into agreements with third-parties holding  ORG data.",
-        "safeguard": "M",
-        "risks_ids": "R3, R3, R15"
-    },
-    {   
-        "id": 10,
-        "title": "Guest Wifi Security Improvements",
-        "description": " ORG currently only screens staff at onboarding through a general background check.  No further requirements or processes are in place to trigger when staff may require access to documentation that is Protected B or higher, requiring security screening.",
-        "safeguard": "M",
-        "risks_ids": "R1, R15, R15"
+        "risks_ids": "R3"
     }
+    
 ]

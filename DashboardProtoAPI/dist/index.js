@@ -20,6 +20,7 @@ app.use(express_1.default.urlencoded({ extended: true }));
 app.use('/api/v2', routes_1.default);
 const port = process.env.PORT || 5000;
 models_1.default.sequelize.sync({ alter: true }).then(() => {
+    // db.sequelize.sync({ force: true }).then(() => {
     console.log("Welcome.......");
     app.listen(port, () => console.log(`App listening on PORT ${port}`));
 });
