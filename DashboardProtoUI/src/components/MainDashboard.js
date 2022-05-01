@@ -11,7 +11,7 @@ import risks from "../images/icons/risk_icon.svg";
 import vulnerabilities from "../images/icons/vulner_icon.svg";
 import threats from "../images/icons/threat_icon.svg";
 import assets from "../images/icons/asset_icon.png";
-import recommendations from "../images/icons/rec_icon.svg";
+import rec_icon from "../images/icons/rec_icon.svg";
 import reports from "../images/icons/report_icon.svg";
 import settings from "../images/icons/setting_icon.svg";
 import high from "../images/icons/high.svg";
@@ -85,7 +85,7 @@ export const MainDashboard = () => {
             </li>
             <li className="sidenav-item">
               <a className="sidenav-link" href="/rec">
-                <img className="sidenav-icon" src={recommendations} alt="" />
+                <img className="sidenav-icon" src={rec_icon} alt="" />
                 Recommendations
               </a>
             </li>
@@ -222,7 +222,7 @@ export const MainDashboard = () => {
           <div className="p-2 col-3">
             <div className="db-container p-2">
               <a className="sidenav-link" href="/rec">
-                <img className="sidenav-icon" src={recommendations} alt="" />
+                <img className="sidenav-icon" src={rec_icon} alt="" />
                 Recommendations
               </a>
               <div className="p-4 text-end">2 <img style={{width: 40}} src={recommend}/></div>

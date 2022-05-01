@@ -9,7 +9,7 @@ import pen_black from '../images/icons/pen_black.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
 import { ADDASSET, EDITASSET } from "../navigation/CONSTANTS";
-import recommendations from '../images/icons/rec_icon.svg';
+import rec_icon from '../images/icons/rec_icon.svg';
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
@@ -38,7 +38,7 @@ export const MainDashboardDetails = () => {
           <button className="Button-Icon-Filter-Addasset"> <img  src={filter_blue} alt =""/> Filter</button>
         </div>  */}
         <a className="sidenav-link" href="/rec">
-                  <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
+                  <img className="sidenav-icon" src={rec_icon} alt =""/>Recommendations
                 </a>
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
