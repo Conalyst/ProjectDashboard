@@ -6,7 +6,7 @@ import user_icon from '../../images/user/user_icon.png';
 import dashboard_a from '../../images/icons/dashboard_icon.svg';
 import risks from '../../images/icons/risk_icon.svg';
 import vulnerabilities from '../../images/icons/vulner_icon.svg';
-import threats from '../../images/icons/threat_icon.svg';
+import threats_icon from '../../images/icons/threat_icon.svg';
 import assets from '../../images/icons/asset_icon.png';
 import recommendations from '../../images/icons/rec_icon.svg';
 import reports from '../../images/icons/report_icon.svg';
@@ -207,7 +207,7 @@ export const AddVul = () => {
               </li>
               <li className="sidenav-item">
                 <a className="sidenav-link" href="/threat">
-                  <img className="sidenav-icon" src={threats} alt =""/>Threats
+                  <img className="sidenav-icon" src={threats_icon} alt =""/>Threats
                 </a>
              </li>
              <li className="sidenav-item">
