@@ -124,10 +124,10 @@ export const DashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Asset Ratings</p>
-            <p className="orange-total">Total<br/>{data.totalAssets}</p>
-            <p>High<br/>{data.highAssets}</p>
-            <p>Medium<br/>{data.mediumAssets}</p>
-            <p>Low<br/>{data.lowAssets}</p>
+            <p className="orange-total">Total<br/>{totalAssets}</p>
+            <p>High<br/>{highAssets}</p>
+            <p>Medium<br/>{mediumAssets}</p>
+            <p>Low<br/>{lowAssets}</p>
             
         </div>
             <table className="visual-rating">

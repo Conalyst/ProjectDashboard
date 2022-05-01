@@ -4,29 +4,30 @@ import { getStaticVulnerability } from "../services/vulnerabilityService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
 
-export const data = [
-    ["Group", "H", "M", "L"],
-    ["Technical", 3, 5, 9],
-    ["Operational", 3, 10, 8],
-    ["Personnel", 2, 7, 5]
-  ];
-  
-export const options = {
-    chartArea: { width: "75%" },
-    colors: ["#09375f", "#126dba", "#72b7f2"],
-    hAxis: {},
-    vAxis: {
-        minValue: 0,
-        ticks: [5, 10]
-    },
-    bar: {
-        groupWidth: 64
-    }
-};
 
 export const VulDashboardVisual = () => {
+    const data = [
+        ["Group", "H", "M", "L"],
+        ["Technical", 3, 5, 9],
+        ["Operational", 3, 10, 8],
+        ["Personnel", 2, 7, 5]
+      ];
+      
+    const options = {
+        chartArea: { width: "75%" },
+        colors: ["#09375f", "#126dba", "#72b7f2"],
+        hAxis: {},
+        vAxis: {
+            minValue: 0,
+            ticks: [5, 10]
+        },
+        bar: {
+            groupWidth: 64
+        }
+    };
+    
 
-    const [data, setData] = useState([]) 
+    // const [data, setData] = useState([]) 
     const [barData, setBarData] = useState([]);
     const map = {'0': 0, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
 
@@ -87,10 +88,10 @@ export const VulDashboardVisual = () => {
     <>
         <div class="asset-rating">
             <p>Vulnerability Ratings</p>
-            <p className="orange-total">Total<br/>{data.totalVulnerabilities}</p>
-            <p>High<br/>{data.highVulnerabilities}</p>
-            <p>Medium<br/>{data.mediumVulnerabilities}</p>
-            <p>Low<br/>{data.lowVulnerabilities}</p>
+            <p className="orange-total">Total<br/>{totalVulnerabilities}</p>
+            <p>High<br/>{highVulnerabilities}</p>
+            <p>Medium<br/>{mediumVulnerabilities}</p>
+            <p>Low<br/>{lowVulnerabilities}</p>
         </div>
         <table className="visual-rating">
             <tr>
