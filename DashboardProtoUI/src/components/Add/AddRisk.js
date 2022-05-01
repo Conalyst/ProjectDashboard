@@ -7,7 +7,7 @@ import dashboard_a from '../../images/icons/dashboard_icon.svg';
 import risks from '../../images/icons/risk_icon.svg';
 import vulnerabilities from '../../images/icons/vulner_icon.svg';
 import threats from '../../images/icons/threat_icon.svg';
-import assets from '../../images/icons/asset_icon.png';
+import assets_icon from '../../images/icons/asset_icon.png';
 import recommendations from '../../images/icons/rec_icon.svg';
 import reports from '../../images/icons/report_icon.svg';
 import settings from '../../images/icons/setting_icon.svg';
@@ -182,7 +182,7 @@ export const AddRisk = () => {
              </li>
              <li className="sidenav-item">
                 <a className="sidenav-link" href="/asset">
-                  <img className="sidenav-icon" src={assets} alt =""/>Assets
+                  <img className="sidenav-icon" src={assets_icon} alt =""/>Assets
                 </a>
               </li>
               <li className="sidenav-item">
