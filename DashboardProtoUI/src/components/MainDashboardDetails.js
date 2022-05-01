@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {InputGroup, Dropdown,  Table} from "react-bootstrap";
-import data from "../data.json";
+import rec_data from "../rec_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
@@ -16,7 +16,7 @@ import Info from "./Info";
 
 export const MainDashboardDetails = () => {
 
-  const [assets, setAssets] = useState(data);
+  const [recommendations, setRecommendations] = useState(rec_data);
 
     const history =useHistory();
     const onAddAsset =()=>{
@@ -61,15 +61,15 @@ export const MainDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {assets.map((asset) => (
-                <tr className="cr-text">
+                {/* {assets.map((asset) => (
+                <tr className="cr-text"> */}
                   {/* <td>
                   <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
               </td> */}
-                <td>{asset.assetId}</td>
+                {/* <td>{asset.assetId}</td>
                 <td>{asset.Asset.title}</td>
-                <td>{asset.Asset.description}</td>
+                <td>{asset.Asset.description}</td> */}
                 {/* <td>{asset.Asset.categoryId}</td> */}
                 {/* <td>{asset.confidentiality}</td> */}
                 {/* <td>{asset.integrity}</td> */}
@@ -80,7 +80,20 @@ export const MainDashboardDetails = () => {
                      <button className="pen-button" onClick={onEditAsset}><img src={pen_black} alt =""/></button> 
                     </td>               
                 </td> */}
-              </tr>
+              {/* </tr>
+            ) )} */}
+              {recommendations.map((recommendation) => (
+                <tr className="cr-text ">
+                    <td>{recommendation.id}</td>
+                    <td>{recommendation.title}</td>
+                    <td>{recommendation.description}</td>
+                    {/* <td>{recommendation.safeguard}</td>
+                    <td>{recommendation.risks_ids}</td>
+                     */}
+                    {/* {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRec}><img src={pen_black} alt =""/></button>  </td>   )} */}
+                             
+
+                </tr>
             ) )}
           </tbody>
         </Table>   
