@@ -26,7 +26,7 @@ module.exports = {
       category: "Technical",
       title:"Not Known",
       description:"There is a risk of unknown factors.",
-      impact:"L",
+      impact:"M",
       likelihood:"M",
       rating:"M",   
       createdAt: new Date(),

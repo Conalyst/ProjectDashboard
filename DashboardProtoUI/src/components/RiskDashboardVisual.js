@@ -6,6 +6,7 @@ import risk_data from "./../risk_data.json";
  import HeatMap from "./HeatMap"
  import HSBar from "react-horizontal-stacked-bar-chart";
 import { Chart } from "react-google-charts";
+
 export const pie_data = [
   ["Group", "H", "M", "L"],
   ["Technical", 3, 5, 9],
@@ -26,6 +27,7 @@ export const options = {
       groupWidth: 64
   }
 };
+
 export const RiskDashboardVisual = () => {
     const [totalRisks, setTotalRisks] = useState(null);
     const [highRisks, setHighRisks] = useState(null);
@@ -41,6 +43,7 @@ export const RiskDashboardVisual = () => {
             // do db call or API endpoint axios call here and return the promise.
             getStaticRisks()
             .then((res) => {
+              console.log("res in RIsk@@@@@@@", res)
               setTotalRisks(res.static.numberRisk[0].total_Risk);
               setHighRisks(res.static.highRisk[0].high_Risk)
               setMediumRisks(res.static.mediumRisk[0].mediun_Risk)
@@ -58,6 +61,21 @@ export const RiskDashboardVisual = () => {
           }
         });
       }, []);
+
+        const pie_data = [
+          ["Risks", "3"],
+          ["Operational", 1],
+          ["Technical", 1],
+          ["Governance", 1],
+        ];
+      
+        const options = {
+          width:480,
+          pieHole: 0.5,
+          is3D: false,
+          colors: ["#ed723c", "#ffb244", "#f3d381"],
+        };
+      
     return (
     <>
         <div class="asset-rating">
@@ -67,7 +85,6 @@ export const RiskDashboardVisual = () => {
             <p>Medium<br/>{mediumRisks}</p>
             <p>Low<br/>{lowRisks}</p>
         </div>
-
         <div className="row g-2 visual-rating-risk">
             <div className=" col-4">
            
@@ -88,16 +105,6 @@ export const RiskDashboardVisual = () => {
             { value: 22, description: "L", color:"#72b7f2" }
           ]}
         />
-               {/* <div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                    <span className="span-H">
-                         H
-                    </span>
-                    <span className="span-M">
-                         M
-                    </span>
-                    <span className="span-L">
-                         L
-                    </span>*/}
     </div>
             </div>   
             <div className="Overall-Rating-threat">
@@ -113,16 +120,6 @@ export const RiskDashboardVisual = () => {
             { value: 2, description: "L", color:"#72b7f2" }
           ]}
         />
-                 {/*<div className="Dark-Blue-Color"><div className="Light-Blue-Color"><div className="Grey-Color"></div></div></div>
-                    <span className="span-H">
-                         H
-                    </span>
-                    <span className="span-M">
-                         M
-                    </span>
-                    <span className="span-L">
-                         L
-                    </span>*/}
                      </div>
                 </div>    
            </div>
@@ -142,27 +139,12 @@ export const RiskDashboardVisual = () => {
             data={pie_data}
             options={options}
           />
-       
-                
+                       
           
             
             </div>
         </div>    
-            {/* <table className="visual-rating">
-                <tr>
-                    <td className="stack-bars-summary">
-                        Confidentiality
-                    </td>
-                    <td className="bar-charts-summary">
-                        Availability
-                    </td>
-                </tr>
-            </table>
-        <div className="injury-level1">
-                <span className="dark_blue"></span>
-                <span className="blue"></span>
-                <span class="grey"></span>
-        </div> */}
+
             
     </>
     );

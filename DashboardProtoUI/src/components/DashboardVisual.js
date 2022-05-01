@@ -7,7 +7,6 @@ import { assetData, data } from "./db-visuals/visuals-data";
 import { getStaticAssets, getStatsForBarChart } from "../services/assetsService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
- 
   
 export const options = {
     chartArea: { width: "75%" },
@@ -24,24 +23,10 @@ export const options = {
 
 
 export const DashboardVisual = () => {
-    const [totalAssets, setTotalAssets] = useState(null);
-    const [highAssets, setHighAssets] = useState(null);
-    const [mediumAssets, setMediumAssets] = useState(null);
-    const [lowAssets, setLowAssets] = useState(null);
 
-    const [highAssetConfidentiality, setHighAssetConfidentiality] = useState(null);
-    const [mediumAssetConfidentiality, setMediumAssetConfidentiality] = useState(null);
-    const [lowAssetConfidentiality, setLowAssetConfidentiality] = useState(null);
-    const [highAssetIntegrity, setHighAssetIntegrity] = useState(null);
-    const [mediumAssetIntegrity, setMediumAssetIntegrity] = useState(null);
-    const [lowAssetIntegrity, setLowAssetIntegrity] = useState(null);
-
-    const [highAssetAvailability, setHighAssetAvailability] = useState(null);
-    const [mediumAssetAvailability, setMediumAssetAvailability] = useState(null);
-    const [lowAssetAvailability, setLowAssetAvailability] = useState(null);
+    const [data, setData] = useState([]) 
     const [barData, setBarData] = useState([]);
- console.log("###############",highAssetConfidentiality,mediumAssetConfidentiality,lowAssetConfidentiality)
- 
+
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -85,6 +70,11 @@ export const DashboardVisual = () => {
       }, []);
 
       useEffect(() => {
+        console.log("data@@@@@@@@@@", data)
+        // console.log("data....", data.highAssetConfidentiality, data.mediumAssetConfidentiality, data.lowAssetConfidentiality)
+      }, [data])
+
+      useEffect(() => {
        
         return new Promise((resolve, reject) => {
           try {
@@ -96,7 +86,7 @@ export const DashboardVisual = () => {
                 for(let data of res){
                     result.push([data.group, data.H, data.M, data.L])
                 }
-                console.log("Result.......", result)
+
                 setBarData(result)         
 
             })
@@ -113,14 +103,16 @@ export const DashboardVisual = () => {
         
       }, []);
 
+      
+
     return (
     <>
         <div class="asset-rating">
             <p>Asset Ratings</p>
-            <p className="orange-total">Total<br/>{totalAssets}</p>
-            <p>High<br/>{highAssets}</p>
-            <p>Medium<br/>{mediumAssets}</p>
-            <p>Low<br/>{lowAssets}</p>
+            <p className="orange-total">Total<br/>{data.totalAssets}</p>
+            <p>High<br/>{data.highAssets}</p>
+            <p>Medium<br/>{data.mediumAssets}</p>
+            <p>Low<br/>{data.lowAssets}</p>
             
         </div>
             <table className="visual-rating">
@@ -183,7 +175,6 @@ export const DashboardVisual = () => {
 
      
         />
-
                         </div>
                     </div>
                 </td>
@@ -192,7 +183,7 @@ export const DashboardVisual = () => {
                     <Chart
                         chartType="ColumnChart"
                         width="100%"
-                        height="500px"
+                        height="300px"
                         data={barData}
                         options={options}
                     />

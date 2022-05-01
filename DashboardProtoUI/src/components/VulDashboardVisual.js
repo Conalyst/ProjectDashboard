@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const data = [
+export const tdata = [
     ["Group", "H", "M", "L"],
     ["Technical", 3, 5, 9],
     ["Operational", 3, 10, 8],
@@ -24,18 +25,10 @@ export const options = {
 
 export const VulDashboardVisual = () => {
 
-    const [totalVulnerabilities, setTotalVulnerabilities] = useState(null);
-    const [highVulnerabilities, setHighVulnerabilities] = useState(null);
-    const [mediumVulnerabilities, setMediumVulnerabilities] = useState(null);
-    const [lowVulnerabilities, setLowVulnerabilities] = useState(null);
+    const [data, setData] = useState([]) 
+    const [barData, setBarData] = useState([]);
+    const map = {'0': 0, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
 
-    const [highVulnerabilityImpact, setHighVulnerabilityImpact] = useState(null);
-    const [mediumVulnerabilityImpact, setMediumVulnerabilityImpact] = useState(null);
-    const [lowVulnerabilityImpact, setLowVulnerabilityImpact] = useState(null);
-
-    const [highVulnerabilityLikelihood, setHighVulnerabilityLikelihood] = useState(null);
-    const [mediumVulnerabilityLikelihood, setMediumVulnerabilityLikelihood] = useState(null);
-    const [lowVulnerabilityLikelihood, setLowVulnerabilityLikelihood] = useState(null);
     useEffect(() => {
         console.log("in detail")
         const storedUser = localStorage.getItem("storedUser");   
@@ -46,18 +39,21 @@ export const VulDashboardVisual = () => {
             // do db call or API endpoint axios call here and return the promise.
             getStaticVulnerability()
             .then((res) => {
-              setTotalVulnerabilities(res.static.numberVulnerability[0].total_Vulnerability);
-              setHighVulnerabilities(res.static.highVulnerability[0].high_Vulnerability)
-              setMediumVulnerabilities(res.static.mediumVulnerability[0].mediun_Vulnerability)
-              setLowVulnerabilities(res.static.lowVulnerability[0].low_Vulnerability)
-
-              setHighVulnerabilityImpact(res.visual.highVulnerabilityImpact[0].high_Vulnerability)
-              setMediumVulnerabilityImpact(res.visual.mediumVulnerabilityImpact[0].mediun_Vulnerability)
-              setLowVulnerabilityImpact(res.visual.lowVulnerabilityImpact[0].low_Vulnerability)
-
-              setHighVulnerabilityLikelihood(res.visual.highVulnerabilityLikelihood[0].high_Vulnerability)
-              setMediumVulnerabilityLikelihood(res.visual.mediumVulnerabilityLikelihood[0].mediun_Vulnerability)
-              setLowVulnerabilityLikelihood(res.visual.lowVulnerabilityLikelihood[0].low_Vulnerability)
+                const data = {
+                    totalVulnerabilities: res.static.numberVulnerability[0].total_Vulnerability,
+                    highVulnerabilities: res.static.highVulnerability[0].high_Vulnerability,
+                    mediumVulnerabilities: res.static.mediumVulnerability[0].mediun_Vulnerability,
+                    lowVulnerabilities: res.static.lowVulnerability[0].low_Vulnerability,
+      
+                    highVulnerabilityImpact: map[res.visual.highVulnerabilityImpact[0].high_Vulnerability],
+                    mediumVulnerabilityImpact: map[res.visual.mediumVulnerabilityImpact[0].mediun_Vulnerability],
+                    lowVulnerabilityImpact: map[res.visual.lowVulnerabilityImpact[0].low_Vulnerability],
+      
+                    highVulnerabilityLikelihood: map[res.visual.highVulnerabilityLikelihood[0].high_Vulnerability],
+                    mediumVulnerabilityLikelihood: map[res.visual.mediumVulnerabilityLikelihood[0].mediun_Vulnerability],
+                    lowVulnerabilityLikelihood: map[res.visual.lowVulnerabilityLikelihood[0].low_Vulnerability],
+                }
+                setData(data)
                
             })
               .catch((err) => {
@@ -72,14 +68,19 @@ export const VulDashboardVisual = () => {
         });
       }, []);
 
+      useEffect(() => {
+        console.log("data@@@@@@@@@@", data)
+        // console.log("data....", data.highAssetConfidentiality, data.mediumAssetConfidentiality, data.lowAssetConfidentiality)
+      }, [data])
+
     return (
     <>
         <div class="asset-rating">
             <p>Vulnerability Ratings</p>
-            <p className="orange-total">Total<br/>{totalVulnerabilities}</p>
-            <p>High<br/>{highVulnerabilities}</p>
-            <p>Medium<br/>{mediumVulnerabilities}</p>
-            <p>Low<br/>{lowVulnerabilities}</p>
+            <p className="orange-total">Total<br/>{data.totalVulnerabilities}</p>
+            <p>High<br/>{data.highVulnerabilities}</p>
+            <p>Medium<br/>{data.mediumVulnerabilities}</p>
+            <p>Low<br/>{data.lowVulnerabilities}</p>
         </div>
         <table className="visual-rating">
             <tr>
@@ -87,29 +88,29 @@ export const VulDashboardVisual = () => {
                     <div className="stack-bar-h">
                         Impact
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highVulnerabilityImpact})</span>
-                                <span className="value-span-s span-M-s">M({mediumVulnerabilityImpact})</span>
-                                <span className="value-span-s span-L-s">L({lowVulnerabilityImpact})</span>
-                            </div>
+                        <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: data.highVulnerabilityImpact , description: "H", color: "#09375f" },
+                            { value: data.mediumVulnerabilityImpact , description: "M", color: "#126dba" },
+                            { value: data.lowVulnerabilityImpact , description: "L", color:"#72b7f2" }
+                            ]}
+                        />
                         </div>
                     </div>
                     <div className="stack-bar-h">
                         Likelihood
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
-                            <div className="Light-Blue-Color">
-                            <div className="Grey-Color">
-                            </div></div></div>
-                            <div className="label-span-s">
-                                <span className="value-span-s span-H-s">H({highVulnerabilityLikelihood})</span>
-                                <span className="value-span-s span-M-s">M({mediumVulnerabilityLikelihood})</span>
-                                <span className="value-span-s span-L-s">L({lowVulnerabilityLikelihood})</span>
-                            </div>
+                        <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                         data={[
+                            { value: data.highVulnerabilityLikelihood , description: "H", color: "#09375f" },
+                            { value: data.mediumVulnerabilityLikelihood , description: "M", color: "#126dba" },
+                            { value: data.lowVulnerabilityLikelihood , description: "L", color:"#72b7f2" }
+                            ]}
+                        />
                         </div>
                     </div>
                 </td>
@@ -119,7 +120,7 @@ export const VulDashboardVisual = () => {
                         chartType="ColumnChart"
                         width="100%"
                         height="300px"
-                        data={data}
+                        data={tdata}
                         options={options}
                     />
                 </td>
