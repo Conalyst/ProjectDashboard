@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Chart from "react-google-charts";
 import { getStaticVulnerability } from "../services/vulnerabilityService";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const data = [
+export const ldata = [
     ["Group", "H", "M", "L"],
     ["Technical", 3, 5, 9],
     ["Operational", 3, 10, 8],
@@ -87,7 +88,20 @@ export const VulDashboardVisual = () => {
                     <div className="stack-bar-h">
                         Impact
                         <div className="V-T-Color">
-                            <div className="Dark-Blue-Color">
+                        <HSBar
+          showTextDown
+          
+         
+          id="hsbarExample"
+          data={[
+            { value: 1, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 4, description: "L", color:"#72b7f2" }
+          ]}
+
+        
+        />
+                           {/* <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
                             </div></div></div>
@@ -95,12 +109,22 @@ export const VulDashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highVulnerabilityImpact})</span>
                                 <span className="value-span-s span-M-s">M({mediumVulnerabilityImpact})</span>
                                 <span className="value-span-s span-L-s">L({lowVulnerabilityImpact})</span>
-                            </div>
+    </div>*/}
                         </div>
                     </div>
                     <div className="stack-bar-h">
                         Likelihood
                         <div className="V-T-Color">
+                            <HSBar
+           showTextDown          
+         
+          id="hsbarExample"
+          data={[
+            { value: 80, description: "H", color: "#09375f" },
+            { value: 40, description: "M", color: "#126dba" },
+            { value: 12, description: "L", color:"#72b7f2" }
+          ]}
+        />              {/*
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
@@ -109,7 +133,7 @@ export const VulDashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highVulnerabilityLikelihood})</span>
                                 <span className="value-span-s span-M-s">M({mediumVulnerabilityLikelihood})</span>
                                 <span className="value-span-s span-L-s">L({lowVulnerabilityLikelihood})</span>
-                            </div>
+                        </div>*/}
                         </div>
                     </div>
                 </td>
@@ -119,7 +143,7 @@ export const VulDashboardVisual = () => {
                         chartType="ColumnChart"
                         width="100%"
                         height="300px"
-                        data={data}
+                        data={ldata}
                         options={options}
                     />
                 </td>

@@ -5,8 +5,9 @@ import Chart from "react-google-charts";
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
 import { assetData } from "./db-visuals/visuals-data";
 import { getStaticAssets } from "../services/assetsService";
+import HSBar from "react-horizontal-stacked-bar-chart";
 
-export const data = [
+export const ldata = [
     ["Group", "H", "M", "L"],
     ["Data", 15, 43, 25],
     ["Network", 30, 24, 12],
@@ -101,6 +102,18 @@ export const DashboardVisual = () => {
                     <div className="stack-bar-h">
                     Confidentiality
                         <div className="V-T-Color">
+                        <HSBar
+                     showTextDown
+                     id="hsbarExample"
+          data={[
+            { value: 1, description: "H", color: "#09375f" },
+            { value: 5, description: "M", color: "#126dba" },
+            { value: 4, description: "L", color:"#72b7f2" }
+          ]}
+
+        
+        />
+                            {/*
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
@@ -109,12 +122,22 @@ export const DashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highAssetConfidentiality})</span>
                                 <span className="value-span-s span-M-s">M({mediumAssetConfidentiality})</span>
                                 <span className="value-span-s span-L-s">L({lowAssetConfidentiality})</span>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Integrity
                         <div className="V-T-Color">
+                        <HSBar
+                        showTextDown
+                            id="hsbarExample"
+                        data={[
+                            { value: 80, description: "H", color: "#09375f" },
+                            { value: 40, description: "M", color: "#126dba" },
+                            { value: 12, description: "L", color:"#72b7f2" }
+                             ]}
+                        />
+                            {/*
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
@@ -123,12 +146,22 @@ export const DashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highAssetIntegrity})</span>
                                 <span className="value-span-s span-M-s">M({mediumAssetIntegrity})</span>
                                 <span className="value-span-s span-L-s">L({lowAssetIntegrity})</span>
-                            </div>
+                            </div>*/}
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Availability
                         <div className="V-T-Color">
+                        <HSBar
+                        showTextDown         
+                            id="hsbarExample"
+                        data={[
+                            { value: 8, description: "H", color: "#09375f" },
+                            { value: 4, description: "M", color: "#126dba" },
+                            { value: 12, description: "L", color:"#72b7f2" }
+                             ]}
+                         />
+                            {/*
                             <div className="Dark-Blue-Color">
                             <div className="Light-Blue-Color">
                             <div className="Grey-Color">
@@ -137,7 +170,7 @@ export const DashboardVisual = () => {
                                 <span className="value-span-s span-H-s">H({highAssetAvailability})</span>
                                 <span className="value-span-s span-M-s">M({mediumAssetAvailability})</span>
                                 <span className="value-span-s span-L-s">L({lowAssetAvailability})</span>
-                            </div>
+                        </div>*/}
                         </div>
                     </div>
                 </td>
@@ -147,7 +180,7 @@ export const DashboardVisual = () => {
                         chartType="ColumnChart"
                         width="100%"
                         height="300px"
-                        data={data}
+                        data={ldata}
                         options={options}
                     />
                 </td>

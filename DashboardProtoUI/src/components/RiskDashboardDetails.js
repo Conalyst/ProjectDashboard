@@ -63,7 +63,7 @@ export const RiskDashboardDetails = () => {
                     <th>Likelihood</th>
                     <th>Impact</th>
                     <th>Rating</th>
-                    <th>Action</th>
+                    {/*<th>Action</th>*/}
                     {(isAdmin === "Admin") && (
                     <th>
                      <img  src={pen_white} alt =""/>
@@ -85,7 +85,7 @@ export const RiskDashboardDetails = () => {
                     <td>{risk.likelihood}</td>
                     <td>{risk.impact}</td>
                     <td>{risk.rating}</td>
-                    <td>{risk.action}</td>
+                   {/* <td>{risk.action}</td>*/}
                     
                     {(isAdmin === "Admin") && ( <td> <button className="pen-button" onClick={onEditRisk}><img src={pen_black} alt =""/></button> </td> )}
               
