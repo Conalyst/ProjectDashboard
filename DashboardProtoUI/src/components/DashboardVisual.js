@@ -72,7 +72,7 @@ export const DashboardVisual = () => {
               setLowAssetAvailability(res.visual.lowAssetAvailability[0].low_Asset)
               setLowAssetConfidentiality(res.visual.lowAssetConfidentiality[0].low_Asset)
               setLowAssetIntegrity(res.visual.lowAssetIntegrity[0].low_Asset)
-               console.log("in stactic asset ", res)
+               console.log("=========in stactic asset ", res)
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
