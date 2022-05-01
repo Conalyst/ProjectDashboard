@@ -18,21 +18,6 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Overall Rating
                 </div>
-<<<<<<< HEAD
-                <div className="Group-1359">
-                    <div className="V-T-Color">
-                        <div className="Dark-Blue-Color">
-                        <div className="Light-Blue-Color">
-                        <div className="Grey-Color">
-                        </div></div></div>
-                        <div className="label-span-s">
-                            <span className="value-span-s span-H-s">H</span>
-                            <span className="value-span-s span-M-s">M</span>
-                            <span className="value-span-s span-L-s">L</span>
-                        </div>
-                    </div>
-                    </div>   
-=======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
           showTextDown
@@ -60,8 +45,7 @@ export const ThreatsDashboardVisual = () => {
                 </span></div></div>   
 >>>>>>> fe78d7c (horizantally stacked bar charts)
 =======
-                </span>*/}</div></div>   
->>>>>>> 045beb0 (Stacked bar charts H/M/L)
+                </span>*/}</div></div>
                 <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                      Top 3 threat agents with High Overall ratings:
@@ -87,21 +71,6 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Impact
                 </div>
-<<<<<<< HEAD
-                <div className="Group-1359">
-                    <div className="V-T-Color">
-                        <div className="Dark-Blue-Color">
-                        <div className="Light-Blue-Color">
-                        <div className="Grey-Color">
-                        </div></div></div>
-                        <div className="label-span-s">
-                            <span className="value-span-s span-H-s">H</span>
-                            <span className="value-span-s span-M-s">M</span>
-                            <span className="value-span-s span-L-s">L</span>
-                        </div>
-                    </div>
-                </div>    
-=======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
            showTextDown
@@ -126,7 +95,6 @@ export const ThreatsDashboardVisual = () => {
                     </span>*/}
                 </div>
             </div>    
->>>>>>> fe78d7c (horizantally stacked bar charts)
             <div className="grey-threat">
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">
                     Top 3 threat agents with High Impact:
@@ -152,20 +120,6 @@ export const ThreatsDashboardVisual = () => {
                 <div className="threat-summary-label">
                     Likelihood
                 </div>
-<<<<<<< HEAD
-                <div className="Group-1359">
-                    <div className="V-T-Color">
-                        <div className="Dark-Blue-Color">
-                        <div className="Light-Blue-Color">
-                        <div className="Grey-Color">
-                        </div></div></div>
-                        <div className="label-span-s">
-                            <span className="value-span-s span-H-s">H</span>
-                            <span className="value-span-s span-M-s">M</span>
-                            <span className="value-span-s span-L-s">L</span>
-                        </div>
-                    </div>
-=======
                 <div className="Group-1359"><div className="V-T-Color">
                 <HSBar
           showTextDown       
@@ -187,7 +141,6 @@ export const ThreatsDashboardVisual = () => {
                          L
                     </span>*/}
                      </div>
->>>>>>> fe78d7c (horizantally stacked bar charts)
                 </div>   
                 <div className="grey-threat">             
                 <div className="Top-3-threat-agents-with-High-Overall-ratings">

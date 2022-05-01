@@ -98,7 +98,6 @@ export const RiskDashboardVisual = () => {
           <div className="Group-1359">
             <div className="V-T-Color">
             <HSBar
->>>>>>> 1dcd8a4 (Dashboard)
           showTextDown       
           id="hsbarExample"
           data={[
@@ -133,8 +132,7 @@ export const RiskDashboardVisual = () => {
                          L
                     </span>*/}
                      </div>
-                </div>    
->>>>>>> f5f2ab7 (Stacked bar charts for Risk Analysis)
+                </div>
            </div>
             <div className="col-4">
                 <div className="Group-300006272">
@@ -144,22 +142,6 @@ per Risk Category
 </span>
                 </div>
                 
-     
-=======
-              </div>
-              <span className="span-H">H</span>
-              <span className="span-M">M</span>
-              <span className="span-L">L</span>*/}
-            </div>
-  </div>
-        </div>
-        <div className="col-4">
-          <div className="Group-300006272">
-            <span className="High-Value-Assets-Distributed-per-Risk-Category">
-              High Value Assets Distibuted per Risk Category
-            </span>
-          </div>
->>>>>>> 1dcd8a4 (Dashboard)
           <Chart
             chartType="PieChart"
             // width="100%"
