@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {useHistory} from 'react-router-dom'
 import {Button, Form} from "react-bootstrap";
 import vendor_icon from '../images/icons/vendor_icon.png';
-import { DASHBOARD } from "../navigation/CONSTANTS";
+import { MAINDASHBOARD } from "../navigation/CONSTANTS";
 import { postLogin } from "../services/loginService";
 import { login } from '../actions/userActions';
 import axios from "axios";
@@ -17,7 +17,7 @@ export const Login = (props) => {
   const history =useHistory();
   const onLogin =()=>{
   history.push({
-     pathname: DASHBOARD,
+     pathname: MAINDASHBOARD,
 
    });
   }  

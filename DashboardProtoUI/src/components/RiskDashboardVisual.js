@@ -8,6 +8,21 @@ import HeatMap from "./HeatMap";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
 export const RiskDashboardVisual = () => {
+
+  const pie_data = [
+    ["Risks", "3"],
+    ["Operational", 1],
+    ["Technical", 1],
+    ["Governance", 1],
+  ];
+
+  const options = {
+    width:480,
+    pieHole: 0.5,
+    is3D: false,
+    colors: ["#ed723c", "#ffb244", "#f3d381"],
+  };
+  
     const [totalRisks, setTotalRisks] = useState(null);
     const [highRisks, setHighRisks] = useState(null);
     const [mediumRisks, setMediumRisks] = useState(null);
@@ -41,7 +56,7 @@ export const RiskDashboardVisual = () => {
       }, []);
     return (
     <>
-        <div class="asset-rating">
+        <div className="asset-rating">
             <p>Risks Ratings</p>
             <p className="orange-total">Total<br/>{totalRisks}</p>
             <p>High<br/>{highRisks}</p>
