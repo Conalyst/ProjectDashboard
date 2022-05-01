@@ -3,6 +3,7 @@ import risk_data from "./../risk_data.json";
 import HeatMap from "./HeatMap";
 import { Button, InputGroup, Tabs, Tab } from "react-bootstrap";
 import { getAllTest } from "../services";
+
 import company_icon from "../images/user/company_icon.png";
 import user_icon from "../images/user/user_icon.png";
 import dashboard_a from "../images/icons/dashboard_icon.svg";
@@ -29,26 +30,6 @@ import MainDashboardDetails from "./MainDashboardDetails";
 export const MainDashboard = () => {
   // const [tests, setTests] = useState(null);
 
-  /*    useEffect(() => {
-        return new Promise((resolve, reject) => {
-          try {
-            // do db call  or API endpoint axios call here and return the promise.
-           getAllTest()
-            .then((res) => {
-              setTests(res);
-              //resolve(res);
-            })
-              .catch((err) => {
-                setTests([]); 
-                reject("Request error!");
-              });
-          } catch (error) {
-            console.error("GetTest error!==", error);
-            reject("Test error!");
-          }
-        });
-      }, []);
-*/
   return (
     <div className="db-site-container">
       <div className="db-container db-sidenav">
@@ -158,6 +139,7 @@ export const MainDashboard = () => {
             />
           </div>
         </div>
+
         <div className="d-flex flex-row">
           <div className="dashboard-main-wrapper col-6 p-2">
           <a className="sidenav-link" href="/risk">
@@ -243,7 +225,7 @@ export const MainDashboard = () => {
               <div className="p-4 text-end">120 <img style={{width: 40}} src={recommend}/></div>
             </div>
           </div>
-        </div>
+      </div>
       </div>
     </div>
   );

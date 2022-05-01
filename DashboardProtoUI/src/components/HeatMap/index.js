@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 export default function HeatMap(props) {
   const risk_data = props.risk_data;
 
@@ -204,3 +205,4 @@ export default function HeatMap(props) {
     </>
   );
 }
+

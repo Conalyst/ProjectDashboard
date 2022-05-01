@@ -79,7 +79,7 @@ export const EditAsset = () => {
         availibility:availibility,
         rating:rating
        };
-
+      
       if (!assetTitle) {
         setErrors("An asset title is needed!");
       } else {
@@ -110,6 +110,7 @@ export const EditAsset = () => {
       .catch((err) => {
         console.log(err);
       });
+
     e.preventDefault()
   }
 

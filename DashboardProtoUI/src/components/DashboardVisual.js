@@ -3,18 +3,10 @@ import * as crossfilter from "crossfilter2";
 import Chart from "react-google-charts";
 import SummaryBarChart from './db-visuals/SummaryBarChart';
 import SummaryStackedChart from "./db-visuals/SummaryStackedChart";
-import { assetData } from "./db-visuals/visuals-data";
+import { assetData, data } from "./db-visuals/visuals-data";
 import { getStaticAssets, getStatsForBarChart } from "../services/assetsService";
 import HSBar from "react-horizontal-stacked-bar-chart";
 
-// export const data = [
-//     ["Group", "H", "M", "L"],
-//     ["Data", 15, 43, 25],
-//     ["Network", 30, 24, 12],
-//     ["Personnel", 21, 32, 15],
-//     ["Software", 10, 43, 30],
-//     ["Intangible", 41, 30, 19]
-//   ];
   
 export const options = {
     chartArea: { width: "75%" },
@@ -34,7 +26,6 @@ export const DashboardVisual = () => {
 
     const [data, setData] = useState([]) 
     const [barData, setBarData] = useState([]);
-    const map = {'0': 1, '1': 10, '2': 20, '3': 30, '4': 40, '5': 50, '6': 60, '7': 70, '8': 80, '9': 90}
 
     useEffect(() => {
         console.log("in detail")
@@ -46,25 +37,24 @@ export const DashboardVisual = () => {
             // do db call or API endpoint axios call here and return the promise.
             getStaticAssets()
             .then((res) => {
-                const data = {
-                    totalAssets: res.static.numberAsset[0].total_Asset,
-                    highAssets: res.static.highAsset[0].high_Asset,
-                    mediumAssets: res.static.mediumAsset[0].mediun_Asset,
-                    lowAssets: res.static.lowAsset[0].low_Asset,
-                    highAssetAvailability: map[res.visual.highAssetAvailability[0].high_Asset],
-                    highAssetConfidentiality: map[res.visual.highAssetConfidentiality[0].high_Asset],
-                    highAssetIntegrity: map[res.visual.highAssetIntegrity[0].high_Asset],
-      
-                    mediumAssetAvailability: map[res.visual.mediumAssetAvailability[0].mediun_Asset],
-                    mediumAssetConfidentiality: map[res.visual.mediumAssetConfidentiality[0].mediun_Asset],
-                    mediumAssetIntegrity: map[res.visual.mediumAssetIntegrity[0].mediun_Asset],
-      
-                    lowAssetAvailability: map[res.visual.lowAssetAvailability[0].low_Asset],
-                    lowAssetConfidentiality: map[res.visual.lowAssetConfidentiality[0].low_Asset],
-                    lowAssetIntegrity: map[res.visual.lowAssetIntegrity[0].low_Asset],
-                }
-                // console.log("Tempdata@@@@@@", data)
-                setData(data)
+              setTotalAssets(res.static.numberAsset[0].total_Asset);
+              setHighAssets(res.static.highAsset[0].high_Asset)
+              setMediumAssets(res.static.mediumAsset[0].mediun_Asset)
+              setLowAssets(res.static.lowAsset[0].low_Asset)
+              setHighAssetAvailability(res.visual.highAssetAvailability[0].high_Asset)
+              setHighAssetConfidentiality(res.visual.highAssetConfidentiality[0].high_Asset)
+              setHighAssetIntegrity(res.visual.highAssetIntegrity[0].high_Asset)
+
+              setMediumAssetAvailability(res.visual.mediumAssetAvailability[0].mediun_Asset)
+              setMediumAssetConfidentiality(res.visual.mediumAssetConfidentiality[0].mediun_Asset)
+              setMediumAssetIntegrity(res.visual.mediumAssetIntegrity[0].mediun_Asset)
+
+              setLowAssetAvailability(res.visual.lowAssetAvailability[0].low_Asset)
+              setLowAssetConfidentiality(res.visual.lowAssetConfidentiality[0].low_Asset)
+              setLowAssetIntegrity(res.visual.lowAssetIntegrity[0].low_Asset)
+               console.log("in stactic asset ", res)
+
+ 
             })
               .catch((err) => {
                 console.log("getAllAssets > err=", err);
@@ -133,43 +123,58 @@ export const DashboardVisual = () => {
                     <div className="stack-bar-h">
                     Confidentiality
                         <div className="V-T-Color">
-                        <HSBar
-                     showTextDown
-                     id="hsbarExample"
-                         data={[
-                            { value: data.highAssetConfidentiality , description: "H", color: "#09375f" },
-                            { value: data.mediumAssetConfidentiality , description: "M", color: "#126dba" },
-                            { value: data.lowAssetConfidentiality , description: "L", color:"#72b7f2" }
-                            ]}
-                        />
+                           
+                             
+                                  <HSBar
+                                showTextDown
+                                id="hsbarExample"
+                                        
+                              data={[
+                                { value: parseInt(highAssetConfidentiality), name: "H",description :`${highAssetConfidentiality}` ,color: "#09375f" },
+                                { value: parseInt(mediumAssetConfidentiality), name: "M",description :`${mediumAssetConfidentiality}`, color: "#126dba" },
+                                { value: parseInt(lowAssetConfidentiality), name: "L",description :`${lowAssetConfidentiality}`, color:"#72b7f2" }
+                              ]}
+
+                        
+                            />
+                        
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Integrity
                         <div className="V-T-Color">
-                        <HSBar
-                        showTextDown
-                            id="hsbarExample"
-                        data={[
-                            { value: data.highAssetIntegrity, description: "H", color: "#09375f" },
-                            { value: data.mediumAssetIntegrity, description: "M", color: "#126dba" },
-                            { value: data.lowAssetIntegrity, description: "L", color:"#72b7f2" }
-                             ]}
-                        />
+
+                <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                     
+                    data={[
+                      { value: parseInt(highAssetIntegrity), name: "H",description :`${highAssetIntegrity}` ,color: "#09375f" },
+                      { value: parseInt(mediumAssetIntegrity), name: "M",description :`${mediumAssetIntegrity}`, color: "#126dba" },
+                      { value: parseInt(lowAssetIntegrity), name: "L",description :`${lowAssetIntegrity}`, color:"#72b7f2" }
+                    ]}
+
+              
+                  />
+
                         </div>
                     </div>
                     <div className="stack-bar-h">
                     Availability
                         <div className="V-T-Color">
-                        <HSBar
-                        showTextDown         
-                            id="hsbarExample"
-                        data={[
-                            { value: data.highAssetAvailability, description: "H", color: "#09375f" },
-                            { value: data.mediumAssetAvailability, description: "M", color: "#126dba" },
-                            { value: data.lowAssetAvailability, description: "L", color:"#72b7f2" }
-                             ]}
-                         />
+
+                      <HSBar
+                     showTextDown
+                     id="hsbarExample"
+                     
+          data={[
+            { value: parseInt(highAssetAvailability), name: "H",description :`${highAssetAvailability}` ,color: "#09375f" },
+            { value: parseInt(mediumAssetAvailability), name: "M",description :`${mediumAssetAvailability}`, color: "#126dba" },
+            { value: parseInt(lowAssetAvailability), name: "L",description :`${lowAssetAvailability}`, color:"#72b7f2" }
+          ]}
+
+     
+        />
                         </div>
                     </div>
                 </td>

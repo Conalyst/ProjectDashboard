@@ -20,6 +20,7 @@ export const GET_VULNERABILITY_BY_ID = (vulnerabilityId)=>BASE_ADDRESS()+'/v2/vu
 export const POST_VULNERABILITY = ()=>BASE_ADDRESS()+'/v2/vulnerabilities';
 export const GET_STATIC_VULNERABILITIES= () => `${BASE_ADDRESS()}/v2/vulnerabilities/static`
 export const DELETE_VULN= (id) => `${BASE_ADDRESS()}/v2/vulnerabilities/${id}`
+export const PUT_VULN= (id) => `${BASE_ADDRESS()}/v2/vulnerabilities/${id}`
 
 export const POST_VULN_THREAT= () => `${BASE_ADDRESS()}/v2/vuln-threat`
 

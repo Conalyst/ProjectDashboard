@@ -2,10 +2,31 @@ import React,{useEffect,useState} from "react";
 import * as crossfilter from "crossfilter2";
 import {csv,timeFormat,timeParse,timeMonth,format} from 'd3'
 import { getStaticRisks } from "../services/riskService";
-import { Chart } from "react-google-charts";
 import risk_data from "./../risk_data.json";
-import HeatMap from "./HeatMap";
-import HSBar from "react-horizontal-stacked-bar-chart";
+ import HeatMap from "./HeatMap"
+ import HSBar from "react-horizontal-stacked-bar-chart";
+import { Chart } from "react-google-charts";
+
+export const pie_data = [
+  ["Group", "H", "M", "L"],
+  ["Technical", 3, 5, 9],
+  ["Operational", 3, 10, 8],
+  ["Personnel", 2, 7, 5]
+];
+
+
+export const options = {
+  chartArea: { width: "75%" },
+  colors: ["#09375f", "#126dba", "#72b7f2"],
+  hAxis: {
+  },
+  vAxis: {
+      minValue: 0
+  },
+  bar: {
+      groupWidth: 64
+  }
+};
 
 export const RiskDashboardVisual = () => {
     const [totalRisks, setTotalRisks] = useState(null);
@@ -118,12 +139,12 @@ export const RiskDashboardVisual = () => {
             data={pie_data}
             options={options}
           />
-       
-                
+                       
           
             
             </div>
         </div>    
+
             
     </>
     );
