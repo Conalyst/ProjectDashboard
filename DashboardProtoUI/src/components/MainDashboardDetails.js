@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {InputGroup, Dropdown,  Table} from "react-bootstrap";
-import data from "../data.json";
+import rec_data from "../rec_data.json";
 import info_black from '../images/icons/info_icon.png';
 import filter_blue from '../images/icons/filter_blue.png';
 import info_white from '../images/icons/outline_info_white.png';
@@ -9,14 +9,14 @@ import pen_black from '../images/icons/pen_black.png';
 import { getAllAssets, getAssetsByCompanyId, getAssetsById } from "../services";
 //import ManageModal from "./ManageModal";
 import { ADDASSET, EDITASSET } from "../navigation/constants";
-import recommendations from '../images/icons/rec_icon.svg';
+import rec_icon from '../images/icons/rec_icon.svg';
 import {useHistory} from 'react-router-dom';
 import Filter from "./Filter";
 import Info from "./Info";
 
 export const MainDashboardDetails = () => {
 
-  const [assets, setAssets] = useState(data);
+  const [recommendations, setRecommedations] = useState(rec_data);
 
     const history =useHistory();
     const onAddAsset =()=>{
@@ -38,7 +38,7 @@ export const MainDashboardDetails = () => {
           <button className="Button-Icon-Filter-Addasset"> <img  src={filter_blue} alt =""/> Filter</button>
         </div>  */}
         <a className="sidenav-link" href="/rec">
-                  <img className="sidenav-icon" src={recommendations} alt =""/>Recommendations
+                  <img className="sidenav-icon" src={rec_icon} alt =""/>Recommendations
                 </a>
         <div className="table-border-blue scrollable">
         <Table striped hover size="sm" class="table-items-tables-table--column-items">
@@ -61,15 +61,15 @@ export const MainDashboardDetails = () => {
                 </tr>
             </thead>
             <tbody>
-                {assets.map((asset) => (
+                {recommendations.map((recommendation) => (
                 <tr className="cr-text">
                   {/* <td>
                   <button type="button" className="button-modal" data-bs-toggle="modal" data-bs-target="#exampleModal1"> <img src={info_black} alt =""/></button> 
                     <Info/>
               </td> */}
-                <td>{asset.assetId}</td>
-                <td>{asset.Asset.title}</td>
-                <td>{asset.Asset.description}</td>
+                      <td>{recommendation.id}</td>
+                    <td>{recommendation.title}</td>
+                    <td>{recommendation.description}</td>
                 {/* <td>{asset.Asset.categoryId}</td> */}
                 {/* <td>{asset.confidentiality}</td> */}
                 {/* <td>{asset.integrity}</td> */}
